@@ -16,14 +16,18 @@ document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
   }
 });
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links (skip bare # links used for modals)
 document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const href = a.getAttribute('href');
+  if (!href || href === '#') return;
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    try {
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (_) {}
   });
 });
 

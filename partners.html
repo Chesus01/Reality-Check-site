@@ -458,6 +458,7 @@
   // Open modal on any data-modal="contact" click
   document.addEventListener('click', function(e) {
     if (e.target.closest('[data-modal="contact"]')) {
+      e.preventDefault();
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
