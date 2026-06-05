@@ -46,21 +46,30 @@
     .contact-strip h3 { font-size:1.5rem; margin-bottom:6px; }
     .contact-strip p { color:var(--muted); font-size:14px; }
     /* POST CAROUSEL */
-    .carousel-btn { width:40px; height:40px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 0.2s; flex-shrink:0; }
-    .carousel-btn:hover { border-color:var(--orange); color:var(--orange); }
-    .post-slide { flex-shrink:0; width:calc(33.333% - 14px); background:var(--bg3); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease; }
-    .post-slide:hover { border-color:rgba(249,115,22,0.4); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
-    .post-slide img { width:100%; height:380px; object-fit:contain; background:#111; display:block; }
-    .post-slide.exiting { transform:translateX(-120%) scale(0.75); opacity:0; }
-    .post-slide.entering { transform:translateX(120%); opacity:0; }
-    @media (max-width:900px) { .post-slide { width:calc(50% - 10px); } .post-slide:nth-child(3) { display:none; } }
-    @media (max-width:600px) { .post-slide { width:100%; } .post-slide:nth-child(2), .post-slide:nth-child(3) { display:none; } }
+    .post-carousel-wrap { position:relative; display:flex; align-items:center; gap:16px; max-width:1120px; margin:0 auto; padding:0 2rem; }
+    .carousel-btn { width:44px; height:44px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:18px; transition:all 0.2s; flex-shrink:0; z-index:2; }
+    .carousel-btn:hover { border-color:var(--orange); color:var(--orange); background:rgba(249,115,22,0.08); }
+    .post-stage-inner { display:flex; gap:16px; flex:1; overflow:hidden; align-items:center; }
+    .post-slide { flex-shrink:0; background:var(--bg3); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease, width 0.45s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .post-slide img { width:100%; object-fit:contain; background:#111; display:block; transition:height 0.45s ease; }
+    .post-slide.side { width:calc(28% - 8px); opacity:0.65; transform:scale(0.95); }
+    .post-slide.side img { height:300px; }
+    .post-slide.center { width:44%; border-color:var(--orange); box-shadow:0 0 32px rgba(249,115,22,0.25); }
+    .post-slide.center img { height:420px; }
+    .post-slide.center.lit { animation:post-glow 0.6s ease-out; }
+    @keyframes post-glow { 0%{box-shadow:0 0 0 rgba(249,115,22,0); border-color:var(--orange)} 40%{box-shadow:0 0 60px rgba(249,115,22,0.6); border-color:#fb923c} 100%{box-shadow:0 0 32px rgba(249,115,22,0.25); border-color:var(--orange)} }
+    .post-slide.exiting-left { transform:translateX(-140%) scale(0.6); opacity:0; }
+    .post-slide.entering-right { transform:translateX(140%); opacity:0; }
+    .post-slide.exiting-right { transform:translateX(140%) scale(0.6); opacity:0; }
+    .post-slide.entering-left { transform:translateX(-140%); opacity:0; }
+    @media (max-width:900px) { .post-slide.side:last-child { display:none; } .post-slide.center { width:64%; } .post-slide.side { width:34%; } }
+    @media (max-width:600px) { .post-stage-inner { justify-content:center; } .post-slide.side { display:none; } .post-slide.center { width:100%; } }
 
     /* GIF ROWS */
     .gif-row { display:flex; gap:12px; width:max-content; }
     .gif-row img { height:110px; width:auto; border-radius:10px; flex-shrink:0; border:1px solid var(--border); }
-    .gif-row-left { animation:gif-left 35s linear infinite; }
-    .gif-row-right { animation:gif-right 35s linear infinite; }
+    .gif-row-left { animation:gif-left 45s linear infinite; }
+    .gif-row-right { animation:gif-right 45s linear infinite; }
     .gif-row:hover { animation-play-state:paused; }
     @keyframes gif-left { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
     @keyframes gif-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
@@ -226,19 +235,16 @@
   </section>
   <!-- TOP POSTS CAROUSEL -->
   <section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0; overflow:hidden;">
-    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 36px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-      <div>
-        <p class="section-label">Top Posts on X</p>
-        <h2>From the <span class="orange">timeline.</span></h2>
-      </div>
-      <div style="display:flex; gap:10px;">
-        <button class="carousel-btn" id="post-prev" aria-label="Previous">&#8592;</button>
-        <button class="carousel-btn" id="post-next" aria-label="Next">&#8594;</button>
-      </div>
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 36px;">
+      <p class="section-label">Top Posts on X</p>
+      <h2>From the <span class="orange">timeline.</span></h2>
     </div>
-    <div style="max-width:1120px; margin:0 auto; padding:0 2rem; overflow:hidden;">
-      <div id="post-stage" style="display:flex; gap:20px; transition:none; position:relative;"></div>
+    <div class="post-carousel-wrap">
+      <button class="carousel-btn" id="post-prev" aria-label="Previous">&#8592;</button>
+      <div class="post-stage-inner" id="post-stage"></div>
+      <button class="carousel-btn" id="post-next" aria-label="Next">&#8594;</button>
     </div>
+    <div style="height:48px;"></div>
   </section>
 
   <!-- GIF ROWS -->
@@ -250,15 +256,15 @@
     <!-- Row 1: scrolls left -->
     <div style="overflow:hidden; margin-bottom:12px;">
       <div class="gif-row gif-row-left">
-        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Cooking.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" />
-        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Cooking.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" /><img src="assets/Chesus brick by brick.gif" alt="" loading="lazy" /><img src="assets/Chesus Wave.gif" alt="" loading="lazy" /><img src="assets/Chesus Twerking.gif" alt="" loading="lazy" /><img src="assets/Chesus You Sold.gif" alt="" loading="lazy" /><img src="assets/chesus.gif" alt="" loading="lazy" /><img src="assets/Chesus Soak It In.gif" alt="" loading="lazy" /><img src="assets/chesus sun.gif" alt="" loading="lazy" /><img src="assets/Chesus Playing Game.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" /><img src="assets/Chesus brick by brick.gif" alt="" loading="lazy" /><img src="assets/Chesus Wave.gif" alt="" loading="lazy" /><img src="assets/Chesus Twerking.gif" alt="" loading="lazy" /><img src="assets/Chesus You Sold.gif" alt="" loading="lazy" /><img src="assets/chesus.gif" alt="" loading="lazy" /><img src="assets/Chesus Soak It In.gif" alt="" loading="lazy" /><img src="assets/chesus sun.gif" alt="" loading="lazy" /><img src="assets/Chesus Playing Game.gif" alt="" loading="lazy" />
       </div>
     </div>
     <!-- Row 2: scrolls right -->
     <div style="overflow:hidden;">
       <div class="gif-row gif-row-right">
-        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" />
-        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thought.gif" alt="" loading="lazy" /><img src="assets/Chesus Flowers.gif" alt="" loading="lazy" /><img src="assets/Chesus Wait What 2.gif" alt="" loading="lazy" /><img src="assets/Chesus waiting.gif" alt="" loading="lazy" /><img src="assets/chesus woah .gif" alt="" loading="lazy" /><img src="assets/CHESUS WTF.gif" alt="" loading="lazy" /><img src="assets/Why Are you Gay.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thought.gif" alt="" loading="lazy" /><img src="assets/Chesus Flowers.gif" alt="" loading="lazy" /><img src="assets/Chesus Wait What 2.gif" alt="" loading="lazy" /><img src="assets/Chesus waiting.gif" alt="" loading="lazy" /><img src="assets/chesus woah .gif" alt="" loading="lazy" /><img src="assets/CHESUS WTF.gif" alt="" loading="lazy" /><img src="assets/Why Are you Gay.gif" alt="" loading="lazy" />
       </div>
     </div>
   </section>
@@ -308,22 +314,36 @@ const nextBtn = document.getElementById('post-next');
 if (stage) {
   let idx = 0;
   let animating = false;
-  const VISIBLE = 3;
 
-  function makeSlide(i) {
+  function getPost(i) { return POSTS[((i % POSTS.length) + POSTS.length) % POSTS.length]; }
+
+  function makeSlide(postFile, cls) {
     const div = document.createElement('div');
-    div.className = 'post-slide';
+    div.className = 'post-slide ' + cls;
     const img = document.createElement('img');
-    img.src = 'assets/posts/' + POSTS[i % POSTS.length];
+    img.src = 'assets/posts/' + postFile;
     img.alt = 'X Post';
     img.loading = 'lazy';
     div.appendChild(img);
     return div;
   }
 
-  // Initial render
-  for (let i = 0; i < VISIBLE; i++) {
-    stage.appendChild(makeSlide(idx + i));
+  // Initial render: [left-side] [center] [right-side]
+  function render() {
+    stage.innerHTML = '';
+    stage.appendChild(makeSlide(getPost(idx - 1), 'side'));
+    stage.appendChild(makeSlide(getPost(idx),     'center'));
+    stage.appendChild(makeSlide(getPost(idx + 1), 'side'));
+  }
+  render();
+
+  function triggerGlow() {
+    const center = stage.querySelector('.center');
+    if (!center) return;
+    center.classList.remove('lit');
+    void center.offsetWidth; // reflow
+    center.classList.add('lit');
+    setTimeout(() => center.classList.remove('lit'), 650);
   }
 
   function advance(dir) {
@@ -332,39 +352,35 @@ if (stage) {
 
     const slides = Array.from(stage.children);
     if (dir === 1) {
-      // Exit: first slide flies off left
-      slides[0].classList.add('exiting');
-      // New slide enters from right
-      const newSlide = makeSlide(idx + VISIBLE);
-      newSlide.classList.add('entering');
-      stage.appendChild(newSlide);
+      // Forward: left slide exits left, everything shifts, new slide enters right
+      slides[0].classList.add('exiting-left');
+      slides[1].classList.remove('center'); slides[1].classList.add('side');
+      slides[2].classList.remove('side');   slides[2].classList.add('center');
+      const incoming = makeSlide(getPost(idx + 2), 'side entering-right');
+      stage.appendChild(incoming);
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        newSlide.classList.remove('entering');
+        incoming.classList.remove('entering-right');
       }));
       setTimeout(() => {
         slides[0].remove();
-        idx = (idx + 1) % POSTS.length;
+        idx = (idx + 1 + POSTS.length) % POSTS.length;
+        triggerGlow();
         animating = false;
       }, 460);
     } else {
-      // Exit: last slide flies off right
-      const last = slides[slides.length - 1];
-      last.style.transform = 'translateX(120%) scale(0.75)';
-      last.style.opacity = '0';
-      last.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease';
-      // New slide enters from left
+      // Backward: right slide exits right, everything shifts, new slide enters left
+      slides[2].classList.add('exiting-right');
+      slides[1].classList.remove('center'); slides[1].classList.add('side');
+      slides[0].classList.remove('side');   slides[0].classList.add('center');
       idx = (idx - 1 + POSTS.length) % POSTS.length;
-      const newSlide = makeSlide(idx);
-      newSlide.style.transform = 'translateX(-120%)';
-      newSlide.style.opacity = '0';
-      newSlide.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease';
-      stage.insertBefore(newSlide, stage.firstChild);
+      const incoming = makeSlide(getPost(idx - 1), 'side entering-left');
+      stage.insertBefore(incoming, stage.firstChild);
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        newSlide.style.transform = 'translateX(0)';
-        newSlide.style.opacity = '1';
+        incoming.classList.remove('entering-left');
       }));
       setTimeout(() => {
-        last.remove();
+        slides[2].remove();
+        triggerGlow();
         animating = false;
       }, 460);
     }
@@ -372,7 +388,6 @@ if (stage) {
 
   if (nextBtn) nextBtn.addEventListener('click', () => advance(1));
   if (prevBtn) prevBtn.addEventListener('click', () => advance(-1));
-}
-</script>
+}</script>
 </body>
 </html>
