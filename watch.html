@@ -21,6 +21,8 @@
     .platform-btn { display:inline-flex; align-items:center; gap:9px; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:700; text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--bg3); transition:all 0.2s; }
     .platform-btn:hover { border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
     .platform-btn svg { flex-shrink:0; }
+    .platform-btn img { flex-shrink:0; transition:filter 0.2s; filter:brightness(0) invert(1); }
+    .platform-btn:hover img { filter:brightness(0) saturate(100%) invert(58%) sepia(97%) saturate(500%) hue-rotate(349deg) brightness(101%) contrast(97%); }
 
     /* Featured / Latest */
     .featured-wrap { margin-bottom:60px; }
@@ -134,7 +136,7 @@
           Live on X Spaces
         </a>
         <a href="https://portal.abs.xyz/stream/Cheese" target="_blank" rel="noopener" class="platform-btn">
-          <img src="assets/abstract-icon.png" alt="Abstract" style="width:18px;height:18px;border-radius:4px;object-fit:cover;" />
+          <img src="assets/abstract-icon-white.png" alt="Abstract" style="width:18px;height:18px;border-radius:3px;object-fit:cover;" />
           Abstract Stream
         </a>
       </div>
@@ -275,8 +277,8 @@
           Follow on X
         </a>
         <a href="https://www.youtube.com/@RealityCheckWeb3?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-outline">Subscribe on YouTube</a>
-        <a href="https://portal.abs.xyz/stream/Cheese" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:8px;">
-          <img src="assets/abstract-icon.png" alt="Abstract" style="width:18px; height:18px; border-radius:3px; object-fit:cover;" />
+        <a href="https://portal.abs.xyz/stream/Cheese" target="_blank" rel="noopener" class="platform-btn">
+          <img src="assets/abstract-icon-white.png" alt="Abstract" style="width:18px;height:18px;border-radius:3px;object-fit:cover;" />
           Watch on Abstract
         </a>
       </div>
