@@ -17,7 +17,8 @@
       "mcp__Claude_in_Chrome__read_page",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\" | Where-Object { $_.Extension -in '.png','.jpg','.jpeg' } | Select-Object Name | Sort-Object Name)",
       "PowerShell(Copy-Item \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\\\\ChatGPT Image Jun 5, 2026, 03_46_28 PM.png\" \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\hud-bg.png\" -Force)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   }
 }
