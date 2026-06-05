@@ -39,7 +39,8 @@
     .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
     .service-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:26px; transition:all 0.25s; }
     .service-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 24px rgba(249,115,22,0.1); }
-    .service-icon { font-size:1.6rem; margin-bottom:12px; color:var(--orange); }
+    .service-icon { width:44px; height:44px; margin-bottom:16px; color:var(--orange); }
+    .service-icon svg { width:100%; height:100%; }
     .service-name { font-weight:700; font-size:0.95rem; margin-bottom:8px; }
     .service-desc { color:var(--muted); font-size:13px; line-height:1.6; }
     .contact-strip { background:linear-gradient(135deg,rgba(249,115,22,0.08) 0%,transparent 100%); border:1px solid rgba(249,115,22,0.2); border-radius:20px; padding:48px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:60px; }
@@ -190,33 +191,75 @@
       <p class="section-label">Work With Chesus</p>
       <h2>What Chesus <span class="orange">provides.</span></h2>
       <div class="services-grid">
+        <!-- Live Show Hosting: Studio microphone -->
         <div class="service-card">
-          <div class="service-icon">&#127897;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="2" width="6" height="11" rx="3"/>
+              <path d="M5 10a7 7 0 0 0 14 0"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </div>
           <div class="service-name">Live Show Hosting</div>
           <div class="service-desc">Daily live hosting of Reality Check on X Spaces with real-time community engagement.</div>
         </div>
+        <!-- Brand Partnerships: Handshake -->
         <div class="service-card">
-          <div class="service-icon">&#9993;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
+            </svg>
+          </div>
           <div class="service-name">Brand Partnerships</div>
           <div class="service-desc">Direct partnerships, mentions, and integrations on the show and across social channels.</div>
         </div>
+        <!-- Project Promotion: Megaphone -->
         <div class="service-card">
-          <div class="service-icon">&#9733;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+            </svg>
+          </div>
           <div class="service-name">Project Promotion</div>
           <div class="service-desc">Amplifying projects, protocols, and launches to an engaged Web3 audience.</div>
         </div>
+        <!-- Founder Interviews: Speech bubbles -->
         <div class="service-card">
-          <div class="service-icon">&#9670;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <line x1="9" y1="9" x2="15" y2="9"/>
+              <line x1="9" y1="13" x2="13" y2="13"/>
+            </svg>
+          </div>
           <div class="service-name">Founder Interviews</div>
           <div class="service-desc">Long-form live conversations with Web3 founders and creators on the show.</div>
         </div>
+        <!-- Consulting: Lightbulb -->
         <div class="service-card">
-          <div class="service-icon">&#9651;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="2" x2="12" y2="3"/>
+              <path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.2 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8A6 6 0 0 1 6 12a6 6 0 0 1 6-6z"/>
+              <line x1="9" y1="21" x2="15" y2="21"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </div>
           <div class="service-name">Consulting</div>
           <div class="service-desc">Web3 strategy, community building, and creator economy expertise. Coming soon.</div>
         </div>
+        <!-- Community Building: Group of people -->
         <div class="service-card">
-          <div class="service-icon">&#9673;</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
           <div class="service-name">Community Building</div>
           <div class="service-desc">Connecting brands and projects with the right people in the Web3 ecosystem.</div>
         </div>
