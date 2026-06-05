@@ -46,24 +46,21 @@
     .contact-strip h3 { font-size:1.5rem; margin-bottom:6px; }
     .contact-strip p { color:var(--muted); font-size:14px; }
     /* POST CAROUSEL */
-    .post-carousel-wrap { position:relative; display:flex; align-items:center; gap:16px; max-width:1120px; margin:0 auto; padding:0 2rem; }
-    .carousel-btn { width:44px; height:44px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:18px; transition:all 0.2s; flex-shrink:0; z-index:2; }
+    .post-carousel-wrap { display:flex; align-items:center; gap:16px; max-width:1120px; margin:0 auto; padding:0 2rem; }
+    .carousel-btn { width:44px; height:44px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:18px; transition:all 0.2s; flex-shrink:0; }
     .carousel-btn:hover { border-color:var(--orange); color:var(--orange); background:rgba(249,115,22,0.08); }
-    .post-stage-inner { display:flex; gap:16px; flex:1; overflow:hidden; align-items:center; }
-    .post-slide { flex-shrink:0; background:var(--bg3); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease, width 0.45s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .post-slide img { width:100%; object-fit:contain; background:#111; display:block; transition:height 0.45s ease; }
-    .post-slide.side { width:calc(28% - 8px); opacity:0.65; transform:scale(0.95); }
-    .post-slide.side img { height:300px; }
-    .post-slide.center { width:44%; border-color:var(--orange); box-shadow:0 0 32px rgba(249,115,22,0.25); }
-    .post-slide.center img { height:420px; }
-    .post-slide.center.lit { animation:post-glow 0.6s ease-out; }
-    @keyframes post-glow { 0%{box-shadow:0 0 0 rgba(249,115,22,0); border-color:var(--orange)} 40%{box-shadow:0 0 60px rgba(249,115,22,0.6); border-color:#fb923c} 100%{box-shadow:0 0 32px rgba(249,115,22,0.25); border-color:var(--orange)} }
-    .post-slide.exiting-left { transform:translateX(-140%) scale(0.6); opacity:0; }
-    .post-slide.entering-right { transform:translateX(140%); opacity:0; }
-    .post-slide.exiting-right { transform:translateX(140%) scale(0.6); opacity:0; }
-    .post-slide.entering-left { transform:translateX(-140%); opacity:0; }
-    @media (max-width:900px) { .post-slide.side:last-child { display:none; } .post-slide.center { width:64%; } .post-slide.side { width:34%; } }
-    @media (max-width:600px) { .post-stage-inner { justify-content:center; } .post-slide.side { display:none; } .post-slide.center { width:100%; } }
+    .post-stage-outer { flex:1; overflow:hidden; height:440px; position:relative; }
+    .post-stage-inner { display:flex; gap:16px; align-items:center; height:100%; position:absolute; left:0; right:0; }
+    .post-slide { background:var(--bg3); border:2px solid var(--border); border-radius:14px; overflow:hidden; height:100%; transition:width 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease, transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.3s ease, box-shadow 0.3s ease; flex-shrink:0; }
+    .post-slide img { width:100%; height:100%; object-fit:contain; background:#111; display:block; }
+    .post-slide.side { width:calc(28% - 8px); opacity:0.55; }
+    .post-slide.center { width:44%; border-color:var(--orange); box-shadow:0 0 28px rgba(249,115,22,0.2); }
+    .post-slide.center.lit { animation:post-glow 0.7s ease-out forwards; }
+    @keyframes post-glow { 0%{box-shadow:0 0 28px rgba(249,115,22,0.2)} 35%{box-shadow:0 0 64px rgba(249,115,22,0.7); border-color:#fb923c} 100%{box-shadow:0 0 28px rgba(249,115,22,0.2); border-color:var(--orange)} }
+    .post-slide.off-left { transform:translateX(calc(-100% - 200px)); opacity:0; width:0; }
+    .post-slide.off-right { transform:translateX(calc(100% + 200px)); opacity:0; width:0; }
+    @media (max-width:900px) { .post-stage-outer { height:360px; } .post-slide.side:last-child { display:none; } .post-slide.center { width:62%; } .post-slide.side { width:36%; } }
+    @media (max-width:600px) { .post-stage-outer { height:300px; } .post-slide.side { display:none; } .post-slide.center { width:100%; } }
 
     /* GIF ROWS */
     .gif-row { display:flex; gap:12px; width:max-content; }
@@ -241,7 +238,7 @@
     </div>
     <div class="post-carousel-wrap">
       <button class="carousel-btn" id="post-prev" aria-label="Previous">&#8592;</button>
-      <div class="post-stage-inner" id="post-stage"></div>
+      <div class="post-stage-outer"><div class="post-stage-inner" id="post-stage"></div></div>
       <button class="carousel-btn" id="post-next" aria-label="Next">&#8594;</button>
     </div>
     <div style="height:48px;"></div>
@@ -314,75 +311,81 @@ const nextBtn = document.getElementById('post-next');
 if (stage) {
   let idx = 0;
   let animating = false;
+  const TOTAL = POSTS.length;
+  function mod(n) { return ((n % TOTAL) + TOTAL) % TOTAL; }
 
-  function getPost(i) { return POSTS[((i % POSTS.length) + POSTS.length) % POSTS.length]; }
-
-  function makeSlide(postFile, cls) {
+  function makeSlide(i, cls) {
     const div = document.createElement('div');
     div.className = 'post-slide ' + cls;
     const img = document.createElement('img');
-    img.src = 'assets/posts/' + postFile;
+    img.src = 'assets/posts/' + POSTS[mod(i)];
     img.alt = 'X Post';
     img.loading = 'lazy';
     div.appendChild(img);
     return div;
   }
 
-  // Initial render: [left-side] [center] [right-side]
   function render() {
     stage.innerHTML = '';
-    stage.appendChild(makeSlide(getPost(idx - 1), 'side'));
-    stage.appendChild(makeSlide(getPost(idx),     'center'));
-    stage.appendChild(makeSlide(getPost(idx + 1), 'side'));
+    stage.appendChild(makeSlide(idx - 1, 'side'));
+    stage.appendChild(makeSlide(idx,     'center'));
+    stage.appendChild(makeSlide(idx + 1, 'side'));
   }
   render();
 
-  function triggerGlow() {
-    const center = stage.querySelector('.center');
-    if (!center) return;
-    center.classList.remove('lit');
-    void center.offsetWidth; // reflow
-    center.classList.add('lit');
-    setTimeout(() => center.classList.remove('lit'), 650);
+  function glowCenter() {
+    const c = stage.querySelector('.center');
+    if (!c) return;
+    c.classList.remove('lit');
+    void c.offsetWidth;
+    c.classList.add('lit');
+    setTimeout(() => c.classList.remove('lit'), 720);
   }
 
   function advance(dir) {
     if (animating) return;
     animating = true;
-
     const slides = Array.from(stage.children);
+
     if (dir === 1) {
-      // Forward: left slide exits left, everything shifts, new slide enters right
-      slides[0].classList.add('exiting-left');
-      slides[1].classList.remove('center'); slides[1].classList.add('side');
-      slides[2].classList.remove('side');   slides[2].classList.add('center');
-      const incoming = makeSlide(getPost(idx + 2), 'side entering-right');
-      stage.appendChild(incoming);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        incoming.classList.remove('entering-right');
-      }));
+      // Slide left (next)
+      const leaving = slides[0];
+      const newSlide = makeSlide(idx + 2, 'side off-right');
+      stage.appendChild(newSlide);
+
+      requestAnimationFrame(() => {
+        leaving.classList.add('off-left');
+        slides[1].classList.replace('center', 'side');
+        slides[2].classList.replace('side', 'center');
+        requestAnimationFrame(() => newSlide.classList.remove('off-right'));
+      });
+
       setTimeout(() => {
-        slides[0].remove();
-        idx = (idx + 1 + POSTS.length) % POSTS.length;
-        triggerGlow();
+        leaving.remove();
+        idx = mod(idx + 1);
+        glowCenter();
         animating = false;
-      }, 460);
+      }, 480);
+
     } else {
-      // Backward: right slide exits right, everything shifts, new slide enters left
-      slides[2].classList.add('exiting-right');
-      slides[1].classList.remove('center'); slides[1].classList.add('side');
-      slides[0].classList.remove('side');   slides[0].classList.add('center');
-      idx = (idx - 1 + POSTS.length) % POSTS.length;
-      const incoming = makeSlide(getPost(idx - 1), 'side entering-left');
-      stage.insertBefore(incoming, stage.firstChild);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        incoming.classList.remove('entering-left');
-      }));
+      // Slide right (prev)
+      const leaving = slides[2];
+      const newSlide = makeSlide(idx - 2, 'side off-left');
+      stage.insertBefore(newSlide, stage.firstChild);
+
+      requestAnimationFrame(() => {
+        leaving.classList.add('off-right');
+        slides[1].classList.replace('center', 'side');
+        slides[0].classList.replace('side', 'center');
+        requestAnimationFrame(() => newSlide.classList.remove('off-left'));
+      });
+
       setTimeout(() => {
-        slides[2].remove();
-        triggerGlow();
+        leaving.remove();
+        idx = mod(idx - 1);
+        glowCenter();
         animating = false;
-      }, 460);
+      }, 480);
     }
   }
 
