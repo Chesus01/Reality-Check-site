@@ -351,6 +351,55 @@ footer {
 }
 .page-hero-inner { max-width: 1120px; margin: 0 auto; }
 
+/* ── SHARED INNER PAGE HERO EFFECTS ── */
+.hero-bg-effects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+/* Stream background image overlay */
+.hero-bg-effects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/Reality Check Stream BG Main.png') center center / cover no-repeat;
+  opacity: 0.06;
+  filter: saturate(0.5);
+}
+/* Grid line pattern */
+.hero-bg-effects::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+/* Orange glow spots */
+.hero-glow-1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 65%);
+  top: -100px;
+  right: 10%;
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 65%);
+  bottom: -80px;
+  left: 5%;
+  pointer-events: none;
+}
+
 /* ── DIVIDER ── */
 .divider {
   height: 1px;
