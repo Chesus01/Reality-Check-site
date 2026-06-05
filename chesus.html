@@ -46,29 +46,24 @@
     .contact-strip h3 { font-size:1.5rem; margin-bottom:6px; }
     .contact-strip p { color:var(--muted); font-size:14px; }
     /* POST CAROUSEL */
-    .carousel-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; }
-    .carousel-header { max-width:1120px; margin:0 auto; padding:48px 2rem 32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-    .carousel-controls { display:flex; gap:10px; }
     .carousel-btn { width:40px; height:40px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 0.2s; flex-shrink:0; }
     .carousel-btn:hover { border-color:var(--orange); color:var(--orange); }
-    .carousel-track-wrap { overflow:hidden; padding-bottom:48px; }
-    .carousel-track { display:flex; gap:16px; width:max-content; animation:carousel-scroll 40s linear infinite; }
-    .carousel-track:hover { animation-play-state:paused; }
-    .carousel-track.paused { animation-play-state:paused; }
-    @keyframes carousel-scroll {
-      0% { transform:translateX(0); }
-      100% { transform:translateX(-50%); }
-    }
-    .post-card { flex-shrink:0; width:280px; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:var(--bg3); transition:all 0.25s; cursor:pointer; }
-    .post-card:hover { border-color:var(--orange); transform:translateY(-4px); box-shadow:0 12px 32px rgba(249,115,22,0.12); }
-    .post-card img { width:100%; display:block; object-fit:cover; }
+    .post-slide { flex-shrink:0; width:calc(33.333% - 14px); background:var(--bg3); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease; }
+    .post-slide:hover { border-color:rgba(249,115,22,0.4); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
+    .post-slide img { width:100%; height:380px; object-fit:contain; background:#111; display:block; }
+    .post-slide.exiting { transform:translateX(-120%) scale(0.75); opacity:0; }
+    .post-slide.entering { transform:translateX(120%); opacity:0; }
+    @media (max-width:900px) { .post-slide { width:calc(50% - 10px); } .post-slide:nth-child(3) { display:none; } }
+    @media (max-width:600px) { .post-slide { width:100%; } .post-slide:nth-child(2), .post-slide:nth-child(3) { display:none; } }
 
-    /* GIF Wall */
-    .gif-wall { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:48px; }
-    .gif-wall img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; border:1px solid var(--border); transition:transform 0.2s; }
-    .gif-wall img:hover { transform:scale(1.05); border-color:rgba(249,115,22,0.4); z-index:1; position:relative; }
-    @media (max-width:900px) { .gif-wall { grid-template-columns:repeat(4,1fr); } }
-    @media (max-width:600px) { .gif-wall { grid-template-columns:repeat(3,1fr); } }
+    /* GIF ROWS */
+    .gif-row { display:flex; gap:12px; width:max-content; }
+    .gif-row img { height:110px; width:auto; border-radius:10px; flex-shrink:0; border:1px solid var(--border); }
+    .gif-row-left { animation:gif-left 35s linear infinite; }
+    .gif-row-right { animation:gif-right 35s linear infinite; }
+    .gif-row:hover { animation-play-state:paused; }
+    @keyframes gif-left { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes gif-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
     @media (max-width:900px) { .profile-hero-inner { flex-direction:column; text-align:center; } .profile-socials { justify-content:center; } .bio-grid { grid-template-columns:1fr; } .services-grid { grid-template-columns:1fr 1fr; } }
     @media (max-width:600px) { .profile-avatar-wrap { width:160px; height:160px; } .services-grid { grid-template-columns:1fr; } .contact-strip { text-align:center; justify-content:center; } }
   </style>
@@ -230,89 +225,45 @@
     </div>
   </section>
   <!-- TOP POSTS CAROUSEL -->
-  <section class="carousel-section">
-    <div class="carousel-header">
+  <section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0; overflow:hidden;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 36px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px;">
       <div>
         <p class="section-label">Top Posts on X</p>
         <h2>From the <span class="orange">timeline.</span></h2>
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
-        <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
+      <div style="display:flex; gap:10px;">
+        <button class="carousel-btn" id="post-prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn" id="post-next" aria-label="Next">&#8594;</button>
       </div>
     </div>
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carousel-track">
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093428.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093547.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093712.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093747.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093853.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093955.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094104.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094136.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094321.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094516.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094742.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094838.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094855.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 095009.png" alt="X Post" loading="lazy" /></div>
-        <!-- Duplicate for seamless loop -->
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093428.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093547.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093712.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093747.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093853.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 093955.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094104.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094136.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094321.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094516.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094742.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094838.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 094855.png" alt="X Post" loading="lazy" /></div>
-        <div class="post-card"><img src="assets/posts/Screenshot 2026-06-05 095009.png" alt="X Post" loading="lazy" /></div>
-      </div>
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem; overflow:hidden;">
+      <div id="post-stage" style="display:flex; gap:20px; transition:none; position:relative;"></div>
     </div>
   </section>
 
-  <!-- GIF WALL -->
-  <section class="section" style="background:var(--bg); border-top:1px solid var(--border);">
-    <div class="section-inner">
+  <!-- GIF ROWS -->
+  <section style="background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 0; overflow:hidden;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 20px;">
       <p class="section-label">The Giphy Universe</p>
       <h2>Chesus in <span class="orange">motion.</span></h2>
-      <p style="color:var(--muted); margin-top:12px; font-size:14px;">Custom Chesus character GIFs &mdash; part of the <a href="https://giphy.com/bearish" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none;">Bearish Giphy library</a> with 11B+ views.</p>
-      <div class="gif-wall">
-        <img src="assets/Chesus Alarm Clock.gif" alt="Chesus Alarm Clock" loading="lazy" />
-        <img src="assets/Chesus Believe.gif" alt="Chesus Believe" loading="lazy" />
-        <img src="assets/Chesus Big Brain.gif" alt="Chesus Big Brain" loading="lazy" />
-        <img src="assets/Chesus Bling.gif" alt="Chesus Bling" loading="lazy" />
-        <img src="assets/Chesus Chillin.gif" alt="Chesus Chillin" loading="lazy" />
-        <img src="assets/Chesus Deep Thinking.gif" alt="Chesus Deep Thinking" loading="lazy" />
-        <img src="assets/Chesus Down Only.gif" alt="Chesus Down Only" loading="lazy" />
-        <img src="assets/Chesus Fit Check.gif" alt="Chesus Fit Check" loading="lazy" />
-        <img src="assets/Chesus Freak Out.gif" alt="Chesus Freak Out" loading="lazy" />
-        <img src="assets/Chesus GM Cheers.gif" alt="Chesus GM Cheers" loading="lazy" />
-        <img src="assets/Chesus GM Jump .gif" alt="Chesus GM Jump" loading="lazy" />
-        <img src="assets/Chesus I Gotchu Boo.gif" alt="Chesus I Gotchu Boo" loading="lazy" />
-        <img src="assets/Chesus Laughing.gif" alt="Chesus Laughing" loading="lazy" />
-        <img src="assets/Chesus Love.gif" alt="Chesus Love" loading="lazy" />
-        <img src="assets/Chesus Message Reaction.gif" alt="Chesus Message Reaction" loading="lazy" />
-        <img src="assets/Chesus Pointing.gif" alt="Chesus Pointing" loading="lazy" />
-        <img src="assets/Chesus Salute.gif" alt="Chesus Salute" loading="lazy" />
-        <img src="assets/Chesus Taking Notes.gif" alt="Chesus Taking Notes" loading="lazy" />
-        <img src="assets/Chesus Who Me .gif" alt="Chesus Who Me" loading="lazy" />
-        <img src="assets/Chesus x Abster .gif" alt="Chesus x Abster" loading="lazy" />
-        <img src="assets/GIGA CHEESE.gif" alt="GIGA CHEESE" loading="lazy" />
-        <img src="assets/GM Sign Walk.gif" alt="GM Sign Walk" loading="lazy" />
-        <img src="assets/Chesus Bearish Walk.gif" alt="Chesus Bearish Walk" loading="lazy" />
-        <img src="assets/Chesus Bearish Zoom.gif" alt="Chesus Bearish Zoom" loading="lazy" />
+      <p style="color:var(--muted); margin-top:8px; font-size:13px;">Part of the <a href="https://giphy.com/bearish" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none;">Bearish Giphy library</a> &mdash; 11B+ views</p>
+    </div>
+    <!-- Row 1: scrolls left -->
+    <div style="overflow:hidden; margin-bottom:12px;">
+      <div class="gif-row gif-row-left">
+        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Cooking.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus LFG.gif" alt="" loading="lazy" /><img src="assets/Chesus Alarm Clock.gif" alt="" loading="lazy" /><img src="assets/Chesus Big Brain.gif" alt="" loading="lazy" /><img src="assets/Chesus Cooking.gif" alt="" loading="lazy" /><img src="assets/Chesus Bling.gif" alt="" loading="lazy" /><img src="assets/Chesus GM Cheers.gif" alt="" loading="lazy" /><img src="assets/Chesus Laughing.gif" alt="" loading="lazy" /><img src="assets/Chesus Salute.gif" alt="" loading="lazy" /><img src="assets/Chesus Pointing.gif" alt="" loading="lazy" /><img src="assets/GIGA CHEESE.gif" alt="" loading="lazy" /><img src="assets/Chesus I Gotchu Boo.gif" alt="" loading="lazy" /><img src="assets/Chesus Love.gif" alt="" loading="lazy" />
       </div>
-      <div style="text-align:center; margin-top:28px;">
-        <a href="https://giphy.com/bearish" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px;">
-          &#127909; View All on Giphy &#8599;
-        </a>
+    </div>
+    <!-- Row 2: scrolls right -->
+    <div style="overflow:hidden;">
+      <div class="gif-row gif-row-right">
+        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" />
+        <img src="assets/Chesus Freak Out.gif" alt="" loading="lazy" /><img src="assets/Chesus Believe.gif" alt="" loading="lazy" /><img src="assets/Chesus Deep Thinking.gif" alt="" loading="lazy" /><img src="assets/Chesus Fit Check.gif" alt="" loading="lazy" /><img src="assets/Chesus Chillin.gif" alt="" loading="lazy" /><img src="assets/Chesus Who Me .gif" alt="" loading="lazy" /><img src="assets/Chesus GM Jump .gif" alt="" loading="lazy" /><img src="assets/Chesus Down Only.gif" alt="" loading="lazy" /><img src="assets/Chesus Message Reaction.gif" alt="" loading="lazy" /><img src="assets/Chesus Taking Notes.gif" alt="" loading="lazy" /><img src="assets/Chesus x Abster .gif" alt="" loading="lazy" /><img src="assets/GM Sign Walk.gif" alt="" loading="lazy" />
       </div>
+    </div>
+    <div style="text-align:center; margin-top:28px;">
+      <a href="https://giphy.com/bearish" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px;">&#127909; View All on Giphy &#8599;</a>
     </div>
   </section>
 </main>
@@ -336,25 +287,95 @@
 
 <script src="js/main.js"></script>
 <script>
-// Post carousel prev/next controls
-const track = document.getElementById('carousel-track');
-const prevBtn = document.getElementById('carousel-prev');
-const nextBtn = document.getElementById('carousel-next');
-if (track && prevBtn && nextBtn) {
-  const cardWidth = 296; // 280px + 16px gap
-  prevBtn.addEventListener('click', () => {
-    track.style.animation = 'none';
-    track.style.transform = `translateX(${(parseFloat(track.style.transform?.replace('translateX(','') || '0')) + cardWidth)}px)`;
-    setTimeout(() => { track.style.animation = ''; }, 50);
-  });
-  nextBtn.addEventListener('click', () => {
-    track.style.animation = 'none';
-    track.style.transform = `translateX(${(parseFloat(track.style.transform?.replace('translateX(','') || '0')) - cardWidth)}px)`;
-    setTimeout(() => { track.style.animation = ''; }, 50);
-  });
-  // Pause on hover
-  track.addEventListener('mouseenter', () => track.classList.add('paused'));
-  track.addEventListener('mouseleave', () => track.classList.remove('paused'));
+// ── POST CAROUSEL ──
+const POSTS = [
+  'Screenshot 2026-06-05 093428.png',
+  'Screenshot 2026-06-05 094742.png',
+  'Screenshot 2026-06-05 094104.png',
+  'Screenshot 2026-06-05 093853.png',
+  'Screenshot 2026-06-05 094321.png',
+  'Screenshot 2026-06-05 094136.png',
+  'Screenshot 2026-06-05 093955.png',
+  'Screenshot 2026-06-05 093547.png',
+  'Screenshot 2026-06-05 095009.png',
+  'Screenshot 2026-06-05 093712.png',
+  'Screenshot 2026-06-05 093747.png',
+  'Screenshot 2026-06-05 094838.png',
+  'Screenshot 2026-06-05 094516.png',
+  'Screenshot 2026-06-05 094855.png'
+];
+
+const stage = document.getElementById('post-stage');
+const prevBtn = document.getElementById('post-prev');
+const nextBtn = document.getElementById('post-next');
+
+if (stage) {
+  let idx = 0;
+  let animating = false;
+  const VISIBLE = 3;
+
+  function makeSlide(i) {
+    const div = document.createElement('div');
+    div.className = 'post-slide';
+    const img = document.createElement('img');
+    img.src = 'assets/posts/' + POSTS[i % POSTS.length];
+    img.alt = 'X Post';
+    img.loading = 'lazy';
+    div.appendChild(img);
+    return div;
+  }
+
+  // Initial render
+  for (let i = 0; i < VISIBLE; i++) {
+    stage.appendChild(makeSlide(idx + i));
+  }
+
+  function advance(dir) {
+    if (animating) return;
+    animating = true;
+
+    const slides = Array.from(stage.children);
+    if (dir === 1) {
+      // Exit: first slide flies off left
+      slides[0].classList.add('exiting');
+      // New slide enters from right
+      const newSlide = makeSlide(idx + VISIBLE);
+      newSlide.classList.add('entering');
+      stage.appendChild(newSlide);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        newSlide.classList.remove('entering');
+      }));
+      setTimeout(() => {
+        slides[0].remove();
+        idx = (idx + 1) % POSTS.length;
+        animating = false;
+      }, 460);
+    } else {
+      // Exit: last slide flies off right
+      const last = slides[slides.length - 1];
+      last.style.transform = 'translateX(120%) scale(0.75)';
+      last.style.opacity = '0';
+      last.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease';
+      // New slide enters from left
+      idx = (idx - 1 + POSTS.length) % POSTS.length;
+      const newSlide = makeSlide(idx);
+      newSlide.style.transform = 'translateX(-120%)';
+      newSlide.style.opacity = '0';
+      newSlide.style.transition = 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease';
+      stage.insertBefore(newSlide, stage.firstChild);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        newSlide.style.transform = 'translateX(0)';
+        newSlide.style.opacity = '1';
+      }));
+      setTimeout(() => {
+        last.remove();
+        animating = false;
+      }, 460);
+    }
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', () => advance(1));
+  if (prevBtn) prevBtn.addEventListener('click', () => advance(-1));
 }
 </script>
 </body>
