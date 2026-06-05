@@ -147,18 +147,23 @@
         </div>
       </div>
 
-      <!-- Grid -->
+      <!-- Grid — 3 curated latest episodes -->
       <div>
         <p class="section-label">Recent Shows</p>
         <h2 style="margin-bottom:36px;">More <span class="orange">episodes.</span></h2>
         <div class="video-grid" id="video-grid">
-          <!-- skeletons while loading -->
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
-          <div class="video-card"><div class="video-skel-thumb"></div><div class="video-info"><div class="video-skel-line"></div><div class="video-skel-line short"></div></div></div>
+          <div class="video-card">
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/AMaRhz5BpPE" title="Reality Check: NFTs UP &amp; BTC Down" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check: NFTs UP &amp; BTC Down</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+          </div>
+          <div class="video-card">
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/3DPhXr9ZmtQ" title="Reality Check: Abstract XP Day &amp; NFT" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check: Abstract XP Day &amp; NFT</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+          </div>
+          <div class="video-card">
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/hh790cQVhog" title="Reality Check: Clutch Markets / PupCup NFT Reveal" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check: Clutch Markets / PupCup NFT Reveal</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+          </div>
         </div>
         <div class="load-more-wrap">
           <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:8px;">
@@ -167,6 +172,28 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- FOUNDER SERIES -->
+  <section class="section" id="founder-series" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="section-inner">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:16px;">
+        <div>
+          <p class="section-label">Founder Series</p>
+          <h2>1-on-1 <span class="orange">interviews.</span></h2>
+          <p style="color:var(--muted); font-size:14px; margin-top:10px; max-width:560px;">Deep conversations with Web3 founders, builders, and project teams — unfiltered and on the record.</p>
+        </div>
+        <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px; padding:10px 18px;">
+          View All &#8599;
+        </a>
+      </div>
+      <div class="video-grid" id="founder-grid">
+        <!-- Founder Series videos will go here — links coming soon -->
+        <div class="video-card" style="display:flex; align-items:center; justify-content:center; min-height:180px; background:var(--bg3);">
+          <p style="color:var(--muted); font-size:13px; text-align:center; padding:20px;">Founder Series episodes coming soon</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -242,60 +269,25 @@
 <script>
 const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
 
-// Fallback videos if RSS fails
-let VIDEOS = [
-  { id: 'AMaRhz5BpPE', title: 'Reality Check: NFTs UP & BTC Down' },
-  { id: '3DPhXr9ZmtQ', title: 'Reality Check: Abstract XP Day & NFT' },
-  { id: 'hh790cQVhog', title: 'Reality Check: Clutch Markets / PupCup NFT Reveal' },
-  { id: 'AMaRhz5BpPE', title: 'Reality Check: NFTs UP & BTC Down' },
-  { id: '3DPhXr9ZmtQ', title: 'Reality Check: Abstract XP Day & NFT' },
-  { id: 'hh790cQVhog', title: 'Reality Check: Clutch Markets / PupCup NFT Reveal' },
-];
-
-function renderGrid(videos) {
-  // Skip the first (featured)
-  const rest = videos.slice(1, 7);
-  document.getElementById('video-grid').innerHTML = rest.map(v => `
-    <div class="video-card">
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/${v.id}"
-          title="${v.title}" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-title">${v.title}</div>
-        <div class="video-meta">Reality Check &middot; Web3 Live Show</div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function renderFeatured(video) {
-  document.getElementById('featured-embed').innerHTML = `
-    <iframe src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0"
-      title="${video.title}" allowfullscreen loading="lazy"></iframe>
-  `;
-}
-
-renderGrid(VIDEOS);
-
-async function loadFromRSS() {
+// Only update the featured video from RSS — grid is curated manually
+async function loadFeaturedFromRSS() {
   try {
     const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID);
     const res = await fetch(proxy, { signal: AbortSignal.timeout(7000) });
     if (!res.ok) return;
     const data = await res.json();
     if (data.status !== 'ok' || !data.items?.length) return;
-    const fresh = data.items.slice(0, 10).map(item => ({
-      id: item.link.split('v=')[1],
-      title: item.title
-    }));
-    VIDEOS = fresh;
-    renderFeatured(fresh[0]);
-    renderGrid(fresh);
+    const latest = data.items[0];
+    const id = latest.link.split('v=')[1];
+    if (!id) return;
+    document.getElementById('featured-embed').innerHTML = `
+      <iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0"
+        title="${latest.title}" allowfullscreen loading="lazy"></iframe>
+    `;
   } catch (_) {}
 }
 
-loadFromRSS();
+loadFeaturedFromRSS();
 </script>
 </body>
 </html>
