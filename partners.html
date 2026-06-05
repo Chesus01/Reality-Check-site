@@ -30,7 +30,8 @@
     .offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
     .offer-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:30px 24px; transition:all 0.25s; }
     .offer-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
-    .offer-icon { width:48px; height:48px; border-radius:12px; background:var(--orange-dim); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:18px; }
+    .offer-icon { width:52px; height:52px; border-radius:12px; background:var(--orange-dim); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:18px; color:var(--orange); }
+    .offer-icon svg { width:26px; height:26px; }
     .offer-card h3 { margin-bottom:10px; font-size:1rem; }
     .offer-card p { color:var(--muted); font-size:13px; line-height:1.65; }
     /* ACTIVE PARTNERS */
@@ -203,33 +204,74 @@
       <p class="section-label">What We Provide</p>
       <h2>How we deliver <span class="orange">for partners.</span></h2>
       <div class="offer-grid">
+        <!-- Live Show Mentions: Microphone -->
         <div class="offer-card">
-          <div class="offer-icon">&#127897;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="2" width="6" height="11" rx="3"/>
+              <path d="M5 10a7 7 0 0 0 14 0"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </div>
           <h3>Live Show Mentions</h3>
           <p>Dedicated shoutouts during the live broadcast reaching our real-time audience on X Spaces and stream.</p>
         </div>
+        <!-- X & Social Promotion: Broadcast/send -->
         <div class="offer-card">
-          <div class="offer-icon">&#9993;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+            </svg>
+          </div>
           <h3>X &amp; Social Promotion</h3>
           <p>Promotion across @RealityCheck_RR and host accounts, reaching our combined X following directly.</p>
         </div>
+        <!-- Website Feature: Globe/link -->
         <div class="offer-card">
-          <div class="offer-icon">&#9733;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
           <h3>Website Feature</h3>
           <p>Your brand featured on this site as an active partner &mdash; with your logo, link, and QR code visible to all visitors.</p>
         </div>
+        <!-- Dedicated Interview Segment: Speech bubble -->
         <div class="offer-card">
-          <div class="offer-icon">&#9670;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <line x1="9" y1="9" x2="15" y2="9"/>
+              <line x1="9" y1="13" x2="13" y2="13"/>
+            </svg>
+          </div>
           <h3>Dedicated Interview Segment</h3>
           <p>Founders and teams can join the show for a live conversation &mdash; introducing your project directly to our community.</p>
         </div>
+        <!-- Community Integration: People -->
         <div class="offer-card">
-          <div class="offer-icon">&#9651;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
           <h3>Community Integration</h3>
           <p>We bring your project into genuine conversation &mdash; our audience asks real questions and engages with what they care about.</p>
         </div>
+        <!-- Recap & VOD Exposure: Play button -->
         <div class="offer-card">
-          <div class="offer-icon">&#9673;</div>
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <h3>Recap &amp; VOD Exposure</h3>
           <p>Show recordings go to YouTube and X, giving your partnership exposure beyond just the live broadcast.</p>
         </div>
