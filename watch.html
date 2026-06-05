@@ -239,15 +239,17 @@
         <!-- Abstract Stream -->
         <div class="live-card">
           <div class="live-card-icon">
-            <svg width="30" height="30" viewBox="0 0 120 120" fill="none">
-              <!-- Abstract logo: 3 boomerang pieces rotated 120deg each -->
-              <g fill="var(--orange)">
-                <!-- Top piece -->
-                <path d="M60 8 L72 32 L64 32 L60 24 L56 32 L48 32 Z"/>
-                <!-- Bottom-left piece -->
-                <path d="M22 90 L46 78 L42 71 L34 75 L38 60 L30 57 Z"/>
-                <!-- Bottom-right piece -->
-                <path d="M98 90 L90 57 L82 60 L86 75 L78 71 L74 78 Z"/>
+            <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+              <!-- Abstract logo: one chevron piece, rotated x3 at 120deg -->
+              <!-- Each piece: thick V, bend pointing toward center, arms fanning outward -->
+              <g transform="translate(50,52)" fill="var(--orange)">
+                <path d="M-17,-22 L-22,-6 L-5,4 L5,4 L22,-6 L17,-22 L9,-22 L12,-6 L0,-2 L-12,-6 L-9,-22 Z"/>
+                <g transform="rotate(120)">
+                  <path d="M-17,-22 L-22,-6 L-5,4 L5,4 L22,-6 L17,-22 L9,-22 L12,-6 L0,-2 L-12,-6 L-9,-22 Z"/>
+                </g>
+                <g transform="rotate(240)">
+                  <path d="M-17,-22 L-22,-6 L-5,4 L5,4 L22,-6 L17,-22 L9,-22 L12,-6 L0,-2 L-12,-6 L-9,-22 Z"/>
+                </g>
               </g>
             </svg>
           </div>
