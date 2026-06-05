@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner With Reality Check</title>
+  <meta name="description" content="Partner with Reality Check &mdash; the live Web3 show reaching crypto communities, NFT collectors, Web3 gamers, and founders every weekday." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/RC Logo.jpg" type="image/jpeg" />
+  <style>
+    .page-hero { padding:80px 2rem 70px; border-bottom:1px solid var(--border); background:var(--bg2); position:relative; overflow:hidden; text-align:center; }
+    .page-hero-glow { position:absolute; width:600px; height:400px; background:radial-gradient(ellipse,rgba(249,115,22,0.1) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .page-hero-inner { position:relative; z-index:1; max-width:780px; margin:0 auto; }
+    .page-hero p { color:var(--muted); font-size:1.1rem; max-width:600px; margin:16px auto 0; line-height:1.75; }
+    .reach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:48px; }
+    .reach-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:28px 20px; text-align:center; }
+    .reach-num { font-size:2.2rem; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); }
+    .reach-label { color:var(--muted); font-size:13px; margin-top:6px; line-height:1.4; }
+    .audience-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; }
+    .audience-card { background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:28px; }
+    .audience-card h3 { margin-bottom:16px; font-size:1.05rem; }
+    .tag-cloud { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { padding:6px 14px; border-radius:100px; font-size:12px; font-weight:600; font-family:'Space Mono',monospace; }
+    .tag-orange { background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.3); color:var(--orange); }
+    .tag-white { background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--muted); }
+    #offer { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+    .offer-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:30px 24px; transition:all 0.25s; }
+    .offer-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
+    .offer-icon { width:48px; height:48px; border-radius:12px; background:var(--orange-dim); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:18px; }
+    .offer-card h3 { margin-bottom:10px; font-size:1rem; }
+    .offer-card p { color:var(--muted); font-size:13px; line-height:1.65; }
+    /* ACTIVE PARTNERS */
+    #active-partners { background:var(--bg); }
+    .bearish-card { background:var(--bg2); border:1px solid rgba(249,115,22,0.25); border-radius:20px; overflow:hidden; }
+    .bearish-card-header { background:linear-gradient(135deg,rgba(249,115,22,0.1) 0%,rgba(249,115,22,0.03) 100%); border-bottom:1px solid rgba(249,115,22,0.15); padding:36px 40px; display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
+    .bearish-logo-wrap { width:88px; height:88px; border-radius:18px; background:var(--bg3); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; font-size:3rem; flex-shrink:0; }
+    .bearish-header-info { flex:1; }
+    .bearish-header-info h3 { font-size:1.8rem; font-weight:700; margin-bottom:4px; }
+    .bearish-tagline { color:var(--orange); font-family:'Space Mono',monospace; font-size:13px; margin-bottom:12px; }
+    .bearish-header-info p { color:var(--muted); font-size:14px; line-height:1.65; max-width:560px; }
+    .bearish-stats { display:flex; gap:32px; flex-wrap:wrap; margin-top:4px; }
+    .bearish-stat { text-align:center; }
+    .bearish-stat-num { font-size:1.4rem; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); }
+    .bearish-stat-label { font-size:11px; color:var(--muted); margin-top:2px; }
+    .bearish-card-body { padding:28px 40px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+    .bearish-socials { display:flex; gap:10px; flex-wrap:wrap; }
+    .bearish-social { display:inline-flex; align-items:center; gap:7px; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; border:1px solid var(--border); color:var(--muted); background:var(--bg3); transition:all 0.2s; }
+    .bearish-social:hover { border-color:var(--orange); color:var(--orange); }
+    .bearish-visit { display:inline-flex; align-items:center; gap:8px; padding:11px 24px; background:var(--orange); color:#000; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; transition:all 0.2s; white-space:nowrap; }
+    .bearish-visit:hover { background:var(--orange2); transform:translateY(-2px); box-shadow:0 8px 28px var(--orange-glow); }
+
+    /* BLINKO REFERRAL */
+    #blinko { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .blinko-wrap { background:linear-gradient(135deg,rgba(249,115,22,0.07) 0%,rgba(249,115,22,0.02) 100%); border:1px solid rgba(249,115,22,0.2); border-radius:24px; padding:56px 48px; display:grid; grid-template-columns:1fr auto; gap:56px; align-items:center; }
+    .blinko-badge { display:inline-flex; align-items:center; gap:7px; padding:5px 14px; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.3); border-radius:100px; font-size:11px; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); letter-spacing:1px; text-transform:uppercase; margin-bottom:18px; }
+    .blinko-wrap h2 { font-size:clamp(1.8rem,3.5vw,2.6rem); margin-bottom:16px; line-height:1.1; }
+    .blinko-wrap > div > p { color:var(--muted); font-size:1rem; line-height:1.75; max-width:520px; margin-bottom:28px; }
+    .blinko-code-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+    .blinko-code-box { background:var(--bg3); border:1px solid rgba(249,115,22,0.3); border-radius:12px; padding:14px 22px; }
+    .blinko-code-label { font-size:10px; font-family:'Space Mono',monospace; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+    .blinko-code-val { font-size:1.5rem; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); letter-spacing:2px; }
+    .blinko-link { font-size:13px; font-family:'Space Mono',monospace; color:var(--muted); }
+    .blinko-link a { color:var(--orange); text-decoration:none; }
+    .blinko-link a:hover { text-decoration:underline; }
+    .blinko-prizes { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+    .blinko-prize-tag { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; background:var(--bg3); border:1px solid var(--border); border-radius:8px; font-size:12px; font-weight:600; color:var(--muted); }
+    .blinko-prize-tag .dot { width:6px; height:6px; border-radius:50%; background:var(--orange); flex-shrink:0; }
+    .blinko-qr-wrap { flex-shrink:0; text-align:center; }
+    .blinko-qr-img { width:200px; height:200px; border-radius:16px; overflow:hidden; display:block; background:#080808; }
+    .blinko-qr-img img { width:100%; height:100%; object-fit:cover; border-radius:16px; display:block; }
+    .blinko-qr-caption { font-size:11px; font-family:'Space Mono',monospace; color:var(--muted); margin-top:12px; letter-spacing:1px; }
+    @media (max-width:900px) { .blinko-wrap { grid-template-columns:1fr; } .blinko-qr-wrap { display:flex; flex-direction:column; align-items:flex-start; } .bearish-card-header { padding:28px; } .bearish-card-body { padding:20px 28px 24px; } }
+    @media (max-width:600px) { .blinko-wrap { padding:32px 24px; } .blinko-qr-img { width:160px; height:160px; } }
+    #contact { text-align:center; padding:100px 2rem; position:relative; overflow:hidden; }
+    .contact-glow { position:absolute; width:500px; height:300px; background:radial-gradient(ellipse,rgba(249,115,22,0.08) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .contact-inner { max-width:640px; margin:0 auto; position:relative; z-index:1; }
+    .contact-inner p { color:var(--muted); margin:16px 0 36px; font-size:1.05rem; }
+    @media (max-width:900px) { .reach-grid { grid-template-columns:1fr 1fr; } .offer-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:600px) { .audience-grid { grid-template-columns:1fr; } .offer-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/Reality Check Logo.png" alt="Reality Check" />
+    <span class="nav-logo-text">Reality Check</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="watch.html">Watch</a></li>
+    <li><a href="partners.html">Partner With Us</a></li>
+    <li class="nav-dropdown">
+      <a href="#">The Team &#9660;</a>
+      <div class="nav-dropdown-menu">
+        <a href="chesus.html">Chesus</a>
+        <a href="cohost1.html">Kenny Powerz</a>
+        <a href="cohost2.html">AnIdiot</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">
+      <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+  </div>
+  <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="watch.html">Watch</a>
+  <a href="partners.html">Partner With Us</a>
+  <span class="mobile-nav-label">The Team</span>
+  <a href="chesus.html" class="mobile-nav-sub">Chesus</a>
+  <a href="cohost1.html" class="mobile-nav-sub">Kenny Powerz</a>
+  <a href="cohost2.html" class="mobile-nav-sub">AnIdiot</a>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-inner">
+      <p class="section-label">Partnerships</p>
+      <h1>Partner with<br/><span class="orange">Reality Check.</span></h1>
+      <p>Get your brand, project, or protocol in front of an active, engaged Web3 audience &mdash; live and direct, every weekday. No fluff. No bots. Real community.</p>
+    </div>
+  </section>
+
+  <section class="section" id="reach">
+    <div class="section-inner">
+      <p class="section-label">Our Reach</p>
+      <h2>A growing Web3 <span class="orange">audience.</span></h2>
+      <div class="reach-grid">
+        <div class="reach-card">
+          <div class="reach-num">5&times;</div>
+          <div class="reach-label">Live shows per week, Mon&ndash;Fri</div>
+        </div>
+        <div class="reach-card">
+          <div class="reach-num">Daily</div>
+          <div class="reach-label">Active community on X &amp; Spaces</div>
+        </div>
+        <div class="reach-card">
+          <div class="reach-num">Live</div>
+          <div class="reach-label">Real-time audience on X Spaces &amp; Stream</div>
+        </div>
+        <div class="reach-card">
+          <div class="reach-num">Web3</div>
+          <div class="reach-label">Crypto, NFT, gaming &amp; DeFi audience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="audience" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="section-inner">
+      <p class="section-label">Who's Listening</p>
+      <h2>Our <span class="orange">audience.</span></h2>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3>Who Tunes In</h3>
+          <div class="tag-cloud">
+            <span class="tag tag-orange">Crypto Traders</span>
+            <span class="tag tag-orange">NFT Collectors</span>
+            <span class="tag tag-orange">Web3 Founders</span>
+            <span class="tag tag-orange">DeFi Users</span>
+            <span class="tag tag-orange">Content Creators</span>
+            <span class="tag tag-orange">On-Chain Gamers</span>
+            <span class="tag tag-white">Developers</span>
+            <span class="tag tag-white">Community Builders</span>
+            <span class="tag tag-white">Investors</span>
+            <span class="tag tag-white">Collectors</span>
+          </div>
+        </div>
+        <div class="audience-card">
+          <h3>Topics We Cover</h3>
+          <div class="tag-cloud">
+            <span class="tag tag-orange">Crypto Markets</span>
+            <span class="tag tag-orange">NFTs</span>
+            <span class="tag tag-orange">Web3 Gaming</span>
+            <span class="tag tag-orange">Abstract Ecosystem</span>
+            <span class="tag tag-white">DeFi</span>
+            <span class="tag tag-white">Creator Economy</span>
+            <span class="tag tag-white">Protocol News</span>
+            <span class="tag tag-white">Timeline Takes</span>
+            <span class="tag tag-white">Market Alpha</span>
+            <span class="tag tag-white">Live Interviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="offer">
+    <div class="section-inner">
+      <p class="section-label">What We Provide</p>
+      <h2>How we deliver <span class="orange">for partners.</span></h2>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <div class="offer-icon">&#127897;</div>
+          <h3>Live Show Mentions</h3>
+          <p>Dedicated shoutouts during the live broadcast reaching our real-time audience on X Spaces and stream.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">&#9993;</div>
+          <h3>X &amp; Social Promotion</h3>
+          <p>Promotion across @RealityCheck_RR and host accounts, reaching our combined X following directly.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">&#9733;</div>
+          <h3>Website Feature</h3>
+          <p>Your brand featured on this site as an active partner &mdash; with your logo, link, and QR code visible to all visitors.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">&#9670;</div>
+          <h3>Dedicated Interview Segment</h3>
+          <p>Founders and teams can join the show for a live conversation &mdash; introducing your project directly to our community.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">&#9651;</div>
+          <h3>Community Integration</h3>
+          <p>We bring your project into genuine conversation &mdash; our audience asks real questions and engages with what they care about.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">&#9673;</div>
+          <h3>Recap &amp; VOD Exposure</h3>
+          <p>Show recordings go to YouTube and X, giving your partnership exposure beyond just the live broadcast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVE PARTNERS -->
+  <section class="section" id="active-partners">
+    <div class="section-inner">
+      <p class="section-label">Active Partners</p>
+      <h2>Brands we work <span class="orange">with.</span></h2>
+      <div class="bearish-card" style="margin-top:48px;">
+        <div class="bearish-card-header">
+          <div class="bearish-logo-wrap" style="background:#f9f3e8; padding:8px;">
+          <img src="assets/bearish-logo.png" alt="Bearish" style="width:100%;height:100%;object-fit:contain;display:block;" />
+        </div>
+          <div class="bearish-header-info">
+            <h3>Bearish</h3>
+            <p class="bearish-tagline">smart. cute. shipping. &mdash; The Cutest Builders Onchain</p>
+            <p>Bearish is the most active builder community on Abstract, with 11 billion+ Giphy views, 100+ community-built apps, and a gaming ecosystem reaching half a million plays. They build things people actually use &mdash; and make it look good doing it.</p>
+          </div>
+          <div class="bearish-stats">
+            <div class="bearish-stat">
+              <div class="bearish-stat-num">11B+</div>
+              <div class="bearish-stat-label">Giphy Views</div>
+            </div>
+            <div class="bearish-stat">
+              <div class="bearish-stat-num">500K+</div>
+              <div class="bearish-stat-label">Blinko Games</div>
+            </div>
+            <div class="bearish-stat">
+              <div class="bearish-stat-num">100+</div>
+              <div class="bearish-stat-label">Apps Shipped</div>
+            </div>
+          </div>
+        </div>
+        <!-- Bearish GIF showcase -->
+        <div style="padding:20px 40px; border-top:1px solid rgba(249,115,22,0.12); border-bottom:1px solid rgba(249,115,22,0.12); background:rgba(0,0,0,0.2); display:grid; grid-template-columns:repeat(8,1fr); gap:10px;">
+          <img src="assets/Angry Hurry Up GIF by BEARISH.gif" alt="Bearish Hurry Up" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Mood Remain Calm GIF by BEARISH.gif" alt="Bearish Remain Calm" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Confused Teddy Bear GIF by BEARISH.gif" alt="Bearish Confused" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Mood Wtf GIF by BEARISH.gif" alt="Bearish WTF" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Disappointed No Way GIF by BEARISH.gif" alt="Bearish No Way" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Angry Writing GIF by BEARISH.gif" alt="Bearish Writing" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/Dumping Teddy Bear GIF by BEARISH.gif" alt="Bearish Dumping" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+          <img src="assets/gif.gif" alt="Bearish" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block;" />
+        </div>
+        <div class="bearish-card-body">
+          <div class="bearish-socials">
+            <a href="https://www.bearish.af/" target="_blank" rel="noopener" class="bearish-social">&#127760; bearish.af</a>
+            <a href="https://x.com/bearish_af" target="_blank" rel="noopener" class="bearish-social">
+              <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              @bearish_af
+            </a>
+            <a href="https://www.tiktok.com/@bearishaf" target="_blank" rel="noopener" class="bearish-social">TikTok</a>
+            <a href="https://www.instagram.com/bearish.af/" target="_blank" rel="noopener" class="bearish-social">Instagram</a>
+            <a href="https://giphy.com/bearish" target="_blank" rel="noopener" class="bearish-social">&#127909; Giphy &mdash; 11B+ Views</a>
+          </div>
+          <a href="https://www.bearish.af/" target="_blank" rel="noopener" class="bearish-visit">Visit Bearish &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLINKO REFERRAL -->
+  <section class="section" id="blinko">
+    <div class="section-inner">
+      <div class="blinko-wrap">
+        <div>
+          <div class="blinko-badge">&#127918; Featured Partner Game</div>
+          <h2>Play Blinko.<br/><span class="orange">Win with Reality Check.</span></h2>
+          <p>
+            Bearish's game Blinko has hit <strong style="color:var(--text);">500K+ games</strong> and <strong style="color:var(--text);">$3M+ in volume</strong>. Use the Reality Check referral code when you play &mdash; we give away <strong style="color:var(--text);">NFTs and prizes</strong> to players who join through our link. Scan the QR or hit the link below to get started.
+          </p>
+          <div class="blinko-code-row">
+            <div class="blinko-code-box">
+              <div class="blinko-code-label">Referral Code</div>
+              <div class="blinko-code-val">REALITY</div>
+            </div>
+            <div>
+              <div class="blinko-link" style="margin-bottom:6px;">
+                <a href="https://blinko.gg/?r=reality" target="_blank" rel="noopener">blinko.gg/?r=reality &#8599;</a>
+              </div>
+              <div style="font-size:12px; color:var(--muted);">Use code at sign-up or scan QR &rarr;</div>
+            </div>
+          </div>
+          <div class="blinko-prizes">
+            <span class="blinko-prize-tag"><span class="dot"></span>NFT Giveaways</span>
+            <span class="blinko-prize-tag"><span class="dot"></span>Prizes for RC Players</span>
+            <span class="blinko-prize-tag"><span class="dot"></span>Live Show Announcements</span>
+            <span class="blinko-prize-tag"><span class="dot"></span>$3M+ Volume</span>
+          </div>
+          <a href="https://blinko.gg/?r=reality" target="_blank" rel="noopener" class="btn btn-orange" style="font-size:15px; padding:14px 28px;">
+            &#127918; Play Blinko with Code REALITY
+          </a>
+        </div>
+        <div class="blinko-qr-wrap">
+          <div class="blinko-qr-img">
+            <img src="assets/blinko-qr.png" alt="Scan to play Blinko with Reality Check referral code" />
+          </div>
+          <div class="blinko-qr-caption">SCAN TO PLAY &bull; CODE: REALITY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-glow"></div>
+    <div class="contact-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2>Ready to <span class="orange">partner up?</span></h2>
+      <p>Reach out directly to talk about how Reality Check can work with your brand, protocol, or project.</p>
+      <a href="mailto:realitycheckrr@gmail.com" class="btn btn-orange" style="font-size:16px;padding:14px 32px;">
+        Contact Reality Check
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="index.html" class="footer-logo">
+    <img src="assets/Reality Check Logo.png" alt="Reality Check" />
+    <span style="font-weight:700;font-size:14px;">Reality Check</span>
+  </a>
+  <span class="footer-copy">Live Mon&ndash;Fri &middot; 11AM EST &middot; X Spaces &amp; Stream</span>
+  <div class="footer-links">
+    <a href="watch.html">Watch</a>
+    <a href="chesus.html">Chesus</a>
+    <a href="cohost1.html">Kenny Powerz</a>
+    <a href="cohost2.html">AnIdiot</a>
+    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">X</a>
+    <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener">YouTube</a>
+    <a href="mailto:realitycheckrr@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

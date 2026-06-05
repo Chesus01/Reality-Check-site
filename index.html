@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reality Check &mdash; Live Web3 Show</title>
+  <meta name="description" content="A live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline. Live Mon-Fri at 11AM EST on X Spaces." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/RC Logo.jpg" type="image/jpeg" />
+  <style>
+    /* HERO */
+    #hero { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0; position:relative; }
+    .hero-banner { width:100%; display:block; line-height:0; overflow:hidden; }
+    .hero-banner img { width:100%; height:auto; max-height:540px; object-fit:cover; object-position:center center; display:block; }
+    .hero-content { padding:56px 2rem 64px; width:100%; display:flex; flex-direction:column; align-items:center; }
+    .hero-tagline { font-family:'Space Mono',monospace; font-size:clamp(0.7rem,1.5vw,0.9rem); letter-spacing:4px; color:var(--orange); text-transform:uppercase; margin-bottom:12px; }
+    .hero-sub { font-size:clamp(1rem,2vw,1.2rem); color:var(--muted); max-width:620px; margin:20px auto 36px; line-height:1.75; }
+    .hero-actions { display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+    .schedule-pill { display:inline-flex; align-items:center; gap:12px; padding:12px 24px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-family:'Space Mono',monospace; font-size:13px; flex-wrap:wrap; justify-content:center; }
+    .schedule-pill strong { color:var(--orange); }
+    .schedule-pill span { color:var(--muted); }
+    .sep { color:var(--border); }
+    @media (max-width:600px) {
+      .hero-banner img { max-height:240px; }
+      .hero-content { padding:36px 1.25rem 48px; }
+    }
+    @media (max-width:900px) and (min-width:601px) {
+      .hero-banner img { max-height:360px; }
+    }
+
+    /* ABOUT */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .about-image { border-radius:20px; overflow:hidden; border:1px solid rgba(249,115,22,0.15); box-shadow:0 0 40px rgba(249,115,22,0.08); }
+    .about-image img { width:100%; height:auto; display:block; }
+    .about-text p { color:var(--muted); font-size:1.05rem; line-height:1.8; margin-bottom:1.2rem; }
+    .about-text p strong { color:var(--text); }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
+    .stat-box { background:var(--bg3); border:1px solid var(--border); border-radius:12px; padding:20px; }
+    .stat-num { font-size:2rem; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); }
+    .stat-label { color:var(--muted); font-size:12px; margin-top:4px; }
+
+    /* TOPICS */
+    #topics { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .topics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
+    .topic-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:26px; transition:all 0.25s; }
+    .topic-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
+    .topic-icon { font-size:1.8rem; margin-bottom:10px; color:var(--orange); }
+    .topic-name { font-weight:700; margin-bottom:6px; }
+    .topic-desc { color:var(--muted); font-size:13px; line-height:1.6; }
+
+    /* YOUTUBE */
+    #streams { background:var(--bg); }
+    .streams-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:16px; }
+    .yt-carousel { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .yt-card { background:var(--bg2); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:all 0.25s; }
+    .yt-card:hover { border-color:rgba(249,115,22,0.4); transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.4); }
+    .yt-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; }
+    .yt-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
+    .yt-info { padding:14px 16px; }
+    .yt-title { font-size:14px; font-weight:600; line-height:1.4; margin-bottom:6px; }
+    .yt-meta { font-size:12px; color:var(--muted); font-family:'Space Mono',monospace; }
+    .yt-skeleton { pointer-events:none; }
+    .yt-skel-thumb { background:linear-gradient(90deg,var(--bg3) 25%,#222 50%,var(--bg3) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; padding-bottom:56.25%; height:0; }
+    .yt-skel-line { height:14px; border-radius:6px; margin-bottom:8px; background:linear-gradient(90deg,var(--bg3) 25%,#222 50%,var(--bg3) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
+    .yt-skel-line.short { width:60%; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .yt-error { grid-column:1/-1; text-align:center; padding:48px 20px; color:var(--muted); font-size:14px; }
+    .yt-error a { color:var(--orange); text-decoration:none; }
+
+    /* TEAM */
+    #team { background:var(--bg2); border-top:1px solid var(--border); }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+    .team-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:32px 24px; text-align:center; transition:all 0.25s; }
+    .team-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 32px rgba(249,115,22,0.1); }
+    .team-avatar { width:80px; height:80px; border-radius:50%; margin:0 auto 16px; background:linear-gradient(135deg,#1a1a1a,#2a2a2a); border:2px solid rgba(249,115,22,0.3); overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:1.8rem; }
+    .team-handle { font-family:'Space Mono',monospace; color:var(--orange); font-size:1rem; margin-bottom:4px; }
+    .team-role { color:var(--muted); font-size:13px; margin-bottom:20px; }
+    .team-card .btn { width:100%; justify-content:center; font-size:13px; padding:10px 16px; }
+
+    /* CTA */
+    #cta { text-align:center; padding:100px 2rem; position:relative; overflow:hidden; }
+    .cta-glow { position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cta-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+    .cta-inner p { color:var(--muted); font-size:1.1rem; margin:16px 0 36px; }
+    .cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+    @media (max-width:900px) {
+      .about-grid { grid-template-columns:1fr; }
+      .topics-grid { grid-template-columns:1fr 1fr; }
+      .yt-carousel { grid-template-columns:1fr; }
+      .team-grid { grid-template-columns:1fr; max-width:360px; margin-left:auto; margin-right:auto; }
+    }
+    @media (max-width:600px) {
+      .topics-grid { grid-template-columns:1fr; }
+      .about-stats { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/Reality Check Logo.png" alt="Reality Check" />
+    <span class="nav-logo-text">Reality Check</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="watch.html">Watch</a></li>
+    <li><a href="partners.html">Partner With Us</a></li>
+    <li class="nav-dropdown">
+      <a href="#">The Team &#9660;</a>
+      <div class="nav-dropdown-menu">
+        <a href="chesus.html">Chesus</a>
+        <a href="cohost1.html">Kenny Powerz</a>
+        <a href="cohost2.html">AnIdiot</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">
+      <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+  </div>
+  <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="watch.html">Watch</a>
+  <a href="partners.html">Partner With Us</a>
+  <span class="mobile-nav-label">The Team</span>
+  <a href="chesus.html" class="mobile-nav-sub">Chesus</a>
+  <a href="cohost1.html" class="mobile-nav-sub">Kenny Powerz</a>
+  <a href="cohost2.html" class="mobile-nav-sub">AnIdiot</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-banner">
+      <img src="assets/RC Banner Main.png" alt="Reality Check &mdash; Question. Think. Verify." />
+    </div>
+    <div class="hero-content">
+      <div class="live-badge"><div class="live-dot"></div>Live Mon &ndash; Fri</div>
+      <p class="hero-tagline">The Live Web3 Show</p>
+      <h1>Question. <span class="orange">Think. Verify.</span></h1>
+      <p class="hero-sub">
+        Real conversations, market reactions, crypto culture, NFTs, Web3 gaming,
+        and the unfiltered daily chaos of the timeline.
+      </p>
+      <div class="hero-actions">
+        <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener" class="btn btn-orange">
+          <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Tune In on X Spaces
+        </a>
+        <a href="partners.html" class="btn btn-outline">Partner With Us</a>
+      </div>
+      <div class="schedule-pill">
+        <span>&#127897; Every</span>
+        <strong>Mon &ndash; Fri</strong>
+        <span class="sep">|</span>
+        <strong>11:00 AM EST</strong>
+        <span class="sep">|</span>
+        <span>X Spaces &amp; Stream</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker">
+      <span class="ticker-item"><span class="tag">#Crypto</span> Real Alpha Daily</span>
+      <span class="ticker-item"><span class="tag">#NFTs</span> Culture &amp; Collectors</span>
+      <span class="ticker-item"><span class="tag">#Web3Gaming</span> Play. Build. Earn.</span>
+      <span class="ticker-item"><span class="tag">#Abstract</span> Ecosystem Coverage</span>
+      <span class="ticker-item"><span class="tag">#Markets</span> Live Reactions</span>
+      <span class="ticker-item"><span class="tag">#Timeline</span> Unfiltered Takes</span>
+      <span class="ticker-item"><span class="tag">#Founders</span> Creator Interviews</span>
+      <span class="ticker-item"><span class="tag">#Community</span> Real Conversations</span>
+      <span class="ticker-item"><span class="tag">#Crypto</span> Real Alpha Daily</span>
+      <span class="ticker-item"><span class="tag">#NFTs</span> Culture &amp; Collectors</span>
+      <span class="ticker-item"><span class="tag">#Web3Gaming</span> Play. Build. Earn.</span>
+      <span class="ticker-item"><span class="tag">#Abstract</span> Ecosystem Coverage</span>
+      <span class="ticker-item"><span class="tag">#Markets</span> Live Reactions</span>
+      <span class="ticker-item"><span class="tag">#Timeline</span> Unfiltered Takes</span>
+      <span class="ticker-item"><span class="tag">#Founders</span> Creator Interviews</span>
+      <span class="ticker-item"><span class="tag">#Community</span> Real Conversations</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="assets/RC Main Image.png" alt="Reality Check Show" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">What we do</p>
+          <h2>We question <span class="orange">everything.</span></h2>
+          <p>
+            Reality Check is a live Web3 show built around <strong>real conversations</strong>,
+            market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.
+          </p>
+          <p>
+            We bring together <strong>creators, founders, traders, collectors, and communities</strong>
+            from across Web3 &mdash; every weekday, unscripted.
+          </p>
+          <p>
+            We question everything, verify the truth, talk through the noise, and try to find
+            that <strong>1% of real alpha</strong> while keeping it entertaining.
+          </p>
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-num">5&times;</div>
+              <div class="stat-label">Live shows per week</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">11AM</div>
+              <div class="stat-label">Eastern, every weekday</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">1%</div>
+              <div class="stat-label">Real alpha in the noise</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">Live</div>
+              <div class="stat-label">X Spaces + Stream</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="section" id="topics">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:8px;">
+        <p class="section-label">What we cover</p>
+        <h2>The full Web3 <span class="orange">spectrum.</span></h2>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <div class="topic-icon">&#8383;</div>
+          <div class="topic-name">Crypto &amp; Markets</div>
+          <div class="topic-desc">Live market reactions, token analysis, macro takes, and the on-chain moves that matter.</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">&#9670;</div>
+          <div class="topic-name">NFTs &amp; Culture</div>
+          <div class="topic-desc">Collections, drops, collectors, artists, and everything happening in the NFT space right now.</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">&#9881;</div>
+          <div class="topic-name">Web3 Gaming</div>
+          <div class="topic-desc">Play-to-earn, on-chain gaming, guilds, and the projects redefining what games can be.</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">&#9651;</div>
+          <div class="topic-name">Abstract Ecosystem</div>
+          <div class="topic-desc">Deep coverage of the Abstract ecosystem &mdash; builders, projects, and what's shipping.</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">&#9673;</div>
+          <div class="topic-name">Creator Interviews</div>
+          <div class="topic-desc">Long-form conversations with founders, developers, artists, and the people building Web3.</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-icon">&#9733;</div>
+          <div class="topic-name">Timeline Takes</div>
+          <div class="topic-desc">Unfiltered reactions to what's trending &mdash; the chaos, the drama, and the signal.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST STREAMS -->
+  <section class="section" id="streams">
+    <div class="section-inner">
+      <div class="streams-header">
+        <div>
+          <p class="section-label">Latest Episodes</p>
+          <h2>Catch up on <span class="orange">recent shows.</span></h2>
+        </div>
+        <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px; padding:10px 18px;">
+          View All on YouTube &#8599;
+        </a>
+      </div>
+      <div class="yt-carousel" id="yt-grid">
+        <div class="yt-card yt-skeleton"><div class="yt-embed yt-skel-thumb"></div><div class="yt-info"><div class="yt-skel-line"></div><div class="yt-skel-line short"></div></div></div>
+        <div class="yt-card yt-skeleton"><div class="yt-embed yt-skel-thumb"></div><div class="yt-info"><div class="yt-skel-line"></div><div class="yt-skel-line short"></div></div></div>
+        <div class="yt-card yt-skeleton"><div class="yt-embed yt-skel-thumb"></div><div class="yt-info"><div class="yt-skel-line"></div><div class="yt-skel-line short"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:0;">
+        <p class="section-label">The Crew</p>
+        <h2>Meet the <span class="orange">hosts.</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="padding:0; overflow:hidden;">
+            <img src="assets/chesus-pfp.png" alt="Chesus" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div class="team-handle">@chesus</div>
+          <div class="team-role">Founder &amp; Main Host</div>
+          <a href="chesus.html" class="btn btn-orange">View Profile</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="padding:0; overflow:hidden; background:#1a1a1a;">
+            <img src="assets/kenny-pfp.jpg" alt="Kenny Powerz" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div class="team-handle">@KennyPowerz</div>
+          <div class="team-role">Co-Host</div>
+          <a href="cohost1.html" class="btn btn-orange">View Profile</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="padding:0; overflow:hidden; background:#1a1a1a;">
+            <img src="assets/anidiot-pfp.jpg" alt="AnIdiot" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div class="team-handle">@AnIdiot</div>
+          <div class="team-role">Co-Host</div>
+          <a href="cohost2.html" class="btn btn-orange">View Profile</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLINKO TEASER -->
+  <section class="section" id="blinko-teaser" style="background:var(--bg); border-top:1px solid var(--border);">
+    <div class="section-inner">
+      <div style="background:linear-gradient(135deg,rgba(249,115,22,0.08) 0%,rgba(249,115,22,0.02) 100%); border:1px solid rgba(249,115,22,0.2); border-radius:20px; padding:48px 40px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+        <div>
+          <p class="section-label">Featured Partner</p>
+          <h2 style="margin-bottom:12px;">Play <span class="orange">Blinko.</span> Win prizes.</h2>
+          <p style="color:var(--muted); font-size:1rem; line-height:1.75; max-width:520px; margin-bottom:0;">
+            Our partner <strong style="color:var(--text);">Bearish</strong> makes Blinko &mdash; 500K+ games, $3M+ volume. Use code <strong style="color:var(--orange); font-family:'Space Mono',monospace;">REALITY</strong> at sign-up and you're eligible for NFT giveaways &amp; prizes announced live on the show.
+          </p>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; flex-shrink:0;">
+          <a href="https://blinko.gg/?r=reality" target="_blank" rel="noopener" class="btn btn-orange" style="font-size:15px; padding:14px 28px; white-space:nowrap;">
+            ðŸŽ® Play Blinko &mdash; Code REALITY
+          </a>
+          <a href="partners.html#blinko" style="font-size:12px; font-family:'Space Mono',monospace; color:var(--muted); text-decoration:none;">Learn more &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-glow"></div>
+    <div class="cta-inner">
+      <p class="section-label">Don't miss it</p>
+      <h2>Tune in. <span class="orange">Question everything.</span></h2>
+      <p>Live every weekday at 11AM EST on X Spaces and stream. No filters. No fluff. Just Web3.</p>
+      <div class="cta-btns">
+        <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener" class="btn btn-orange">
+          <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Follow @RealityCheck_RR
+        </a>
+        <a href="partners.html" class="btn btn-outline">Partner With Reality Check</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">
+    <img src="assets/Reality Check Logo.png" alt="Reality Check" />
+    <span style="font-weight:700; font-size:14px;">Reality Check</span>
+  </a>
+  <span class="footer-copy">Live Mon&ndash;Fri &middot; 11AM EST &middot; X Spaces &amp; Stream</span>
+  <div class="footer-links">
+    <a href="watch.html">Watch</a>
+    <a href="partners.html">Partner With Us</a>
+    <a href="chesus.html">Chesus</a>
+    <a href="cohost1.html">Kenny Powerz</a>
+    <a href="cohost2.html">AnIdiot</a>
+    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">X</a>
+    <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener">YouTube</a>
+    <a href="mailto:realitycheckrr@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
+const YT_CHANNEL = 'https://www.youtube.com/@RealityCheckWeb3';
+
+let VIDEOS = [
+  { id: 'AMaRhz5BpPE', title: 'Reality Check: NFTs UP & BTC Down' },
+  { id: '3DPhXr9ZmtQ', title: 'Reality Check: Abstract XP Day & NFT' },
+  { id: 'hh790cQVhog', title: 'Reality Check: Clutch Markets / PupCup NFT Reveal' },
+];
+
+function renderVideos(videos) {
+  const grid = document.getElementById('yt-grid');
+  grid.innerHTML = videos.slice(0, 3).map(v => `
+    <div class="yt-card">
+      <div class="yt-embed">
+        <iframe src="https://www.youtube-nocookie.com/embed/${v.id}"
+          title="${v.title}" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-info">
+        <div class="yt-title">${v.title}</div>
+        <div class="yt-meta">Reality Check &middot; Web3 Live Show</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderVideos(VIDEOS);
+
+async function refreshFromRSS() {
+  try {
+    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID);
+    const res = await fetch(proxy, { signal: AbortSignal.timeout(6000) });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.status !== 'ok' || !data.items || !data.items.length) return;
+    const fresh = data.items.slice(0, 3).map(item => ({
+      id: item.link.split('v=')[1],
+      title: item.title
+    }));
+    if (fresh[0].id !== VIDEOS[0].id) renderVideos(fresh);
+  } catch (_) {}
+}
+
+refreshFromRSS();
+</script>
+</body>
+</html>
