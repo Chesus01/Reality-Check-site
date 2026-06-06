@@ -467,11 +467,19 @@ async function refreshFromRSS() {
     if (!res.ok) return;
     const data = await res.json();
     if (data.status !== 'ok' || !data.items || !data.items.length) return;
-    const fresh = data.items.slice(0, 3).map(item => ({
-      id: item.link.split('v=')[1],
-      title: item.title
-    }));
-    if (fresh[0].id !== VIDEOS[0].id) renderVideos(fresh);
+    const fresh = data.items
+      .filter(item => {
+        const link = item.link || '';
+        if (link.includes('/shorts/')) return false;
+        const id = link.split('v=')[1];
+        return !!id;
+      })
+      .slice(0, 3)
+      .map(item => ({
+        id: item.link.split('v=')[1],
+        title: item.title
+      }));
+    if (fresh.length && fresh[0].id !== VIDEOS[0].id) renderVideos(fresh);
   } catch (_) {}
 }
 
