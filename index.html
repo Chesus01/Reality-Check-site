@@ -57,7 +57,8 @@
     .topics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
     .topic-card { background:var(--bg3); border:1px solid var(--border); border-radius:14px; padding:26px; transition:all 0.25s; }
     .topic-card:hover { border-color:var(--orange); transform:translateY(-3px); box-shadow:0 8px 28px rgba(249,115,22,0.1); }
-    .topic-icon { font-size:1.8rem; margin-bottom:10px; color:var(--orange); }
+    .topic-icon { width:48px; height:48px; border-radius:12px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--orange); }
+    .topic-icon svg { width:24px; height:24px; }
     .topic-name { font-weight:700; margin-bottom:6px; }
     .topic-desc { color:var(--muted); font-size:13px; line-height:1.6; }
 
@@ -259,32 +260,56 @@
       </div>
       <div class="topics-grid">
         <div class="topic-card">
-          <div class="topic-icon">&#8383;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
           <div class="topic-name">Crypto &amp; Markets</div>
           <div class="topic-desc">Live market reactions, token analysis, macro takes, and the on-chain moves that matter.</div>
         </div>
         <div class="topic-card">
-          <div class="topic-icon">&#9670;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
           <div class="topic-name">NFTs &amp; Culture</div>
           <div class="topic-desc">Collections, drops, collectors, artists, and everything happening in the NFT space right now.</div>
         </div>
         <div class="topic-card">
-          <div class="topic-icon">&#9881;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="15 3 21 3 21 9"/><polygon points="9 21 3 21 3 15"/><path d="M21 3l-7 7M3 21l7-7"/>
+            </svg>
+          </div>
           <div class="topic-name">Web3 Gaming</div>
           <div class="topic-desc">Play-to-earn, on-chain gaming, guilds, and the projects redefining what games can be.</div>
         </div>
         <div class="topic-card">
-          <div class="topic-icon">&#9651;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
           <div class="topic-name">Abstract Ecosystem</div>
           <div class="topic-desc">Deep coverage of the Abstract ecosystem &mdash; builders, projects, and what's shipping.</div>
         </div>
         <div class="topic-card">
-          <div class="topic-icon">&#9673;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
           <div class="topic-name">Creator Interviews</div>
           <div class="topic-desc">Long-form conversations with founders, developers, artists, and the people building Web3.</div>
         </div>
         <div class="topic-card">
-          <div class="topic-icon">&#9733;</div>
+          <div class="topic-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
           <div class="topic-name">Timeline Takes</div>
           <div class="topic-desc">Unfiltered reactions to what's trending &mdash; the chaos, the drama, and the signal.</div>
         </div>
