@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Checkpoint &mdash; Daily Web3 Newsletter | Reality Check</title>
+  <meta name="description" content="The Checkpoint by Reality Check. Your daily Web3 briefing — crypto, NFTs, markets, gaming, and macro. Question. Think. Verify. Free. Mon–Fri at 7AM EST." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rcweb3.xyz/newsletter.html" />
+  <meta property="og:title" content="The Checkpoint — Daily Web3 Newsletter | Reality Check" />
+  <meta property="og:description" content="Your daily Web3 briefing — crypto, NFTs, markets, gaming, and macro. Question. Think. Verify. Free. Mon–Fri at 7AM EST." />
+  <meta property="og:image" content="https://rcweb3.xyz/assets/rc-banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@RealityCheck_RR" />
+  <meta name="twitter:title" content="The Checkpoint — Daily Web3 Newsletter | Reality Check" />
+  <meta name="twitter:description" content="Your daily Web3 briefing — crypto, NFTs, markets, gaming, and macro. Question. Think. Verify. Free. Mon–Fri at 7AM EST." />
+  <meta name="twitter:image" content="https://rcweb3.xyz/assets/rc-banner.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/RC Favicon Logo.png" type="image/png" />
+  <style>
+
+    /* HERO */
+    .nl-hero {
+      padding: 110px 2rem 80px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .nl-hero-glow {
+      position: absolute;
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.12) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .nl-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .nl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 100px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .nl-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .nl-hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+    .nl-hero-motto {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--orange);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .nl-hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SIGNUP FORM */
+    .nl-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .nl-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .nl-form input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .nl-form input[type="email"]:focus {
+      border-color: var(--orange);
+    }
+    .nl-form input[type="email"]::placeholder { color: var(--muted); }
+    .nl-form button {
+      padding: 14px 24px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .nl-form button:hover { background: var(--orange2); transform: translateY(-1px); }
+    .nl-form-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* STATS BAR */
+    .nl-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 40px 2rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .nl-stat {
+      text-align: center;
+    }
+    .nl-stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'Space Mono', monospace;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .nl-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* WHAT'S INSIDE */
+    .nl-sections { padding: 80px 2rem; }
+    .nl-sections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .nl-section-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+    .nl-section-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.08);
+    }
+    .nl-section-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .nl-section-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .nl-section-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* PREVIEW */
+    .nl-preview-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 2rem;
+    }
+    .nl-preview-wrap {
+      max-width: 620px;
+      margin: 48px auto 0;
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(249,115,22,0.08);
+    }
+    .nl-preview-header {
+      background: #0d0d0d;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid #222;
+    }
+    .nl-preview-logo {
+      height: 44px;
+      width: auto;
+    }
+    .nl-preview-title-wrap {}
+    .nl-preview-title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .nl-preview-motto {
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .nl-preview-datebar {
+      background: #1a1a1a;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+    }
+    .nl-preview-datebar span {
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+    }
+    .nl-preview-body {
+      background: #fff;
+      padding: 24px;
+    }
+    .nl-preview-intro {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .nl-preview-intro strong {
+      color: #0d0d0d;
+      font-size: 14px;
+    }
+    .nl-preview-divider {
+      height: 2px;
+      background: var(--orange);
+      margin-bottom: 20px;
+    }
+    .nl-preview-section-label {
+      color: #E8670A;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+    .nl-preview-headline {
+      font-size: 17px;
+      font-weight: 900;
+      color: #0d0d0d;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+    }
+    .nl-preview-text {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.7;
+      font-family: Arial, sans-serif;
+    }
+    .nl-preview-callout {
+      background: #fff5ec;
+      border-left: 3px solid #E8670A;
+      padding: 10px 14px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #444;
+      font-family: Arial, sans-serif;
+    }
+    .nl-preview-fade {
+      height: 80px;
+      background: linear-gradient(transparent, #fff);
+      margin-top: -80px;
+      position: relative;
+    }
+
+    /* BOTTOM CTA */
+    .nl-cta {
+      padding: 80px 2rem;
+      text-align: center;
+    }
+    .nl-cta h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; margin-bottom: 16px; }
+    .nl-cta p { color: var(--muted); font-size: 1rem; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nl-sections-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nl-form { flex-direction: column; }
+      .nl-sections-grid { grid-template-columns: 1fr; }
+      .nl-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/RC Favicon Logo.png" alt="Reality Check" />
+    <span class="nav-logo-text">Reality Check</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="watch.html">Watch</a></li>
+    <li><a href="newsletter.html" style="color:var(--orange);">Newsletter</a></li>
+    <li><a href="partners.html">Partner With Us</a></li>
+    <li class="nav-dropdown">
+      <a href="#">The Team &#9660;</a>
+      <div class="nav-dropdown-menu">
+        <a href="chesus.html">Chesus</a>
+        <a href="cohost1.html">Kenny Powerz</a>
+        <a href="cohost2.html">AnIdiot</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">
+      <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+  </div>
+  <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="watch.html">Watch</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="partners.html">Partner With Us</a>
+  <span class="mobile-nav-label">The Team</span>
+  <a href="chesus.html" class="mobile-nav-sub">Chesus</a>
+  <a href="cohost1.html" class="mobile-nav-sub">Kenny Powerz</a>
+  <a href="cohost2.html" class="mobile-nav-sub">AnIdiot</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="nl-hero">
+    <div class="nl-hero-glow"></div>
+    <div class="hero-bg-effects"></div>
+    <div class="nl-hero-inner">
+      <div class="nl-badge">
+        <span class="nl-badge-dot"></span>
+        Free &mdash; Mon–Fri &mdash; 7AM EST
+      </div>
+      <h1>The <span class="orange">Checkpoint.</span></h1>
+      <p class="nl-hero-motto">Question. Think. Verify.</p>
+      <p>Your daily Web3 briefing. Crypto prices, NFTs, markets, gaming, macro, and the signal that actually matters — delivered every morning before the market opens.</p>
+
+      <div class="nl-form-wrap">
+        <form class="nl-form" id="subscribe-form">
+          <input type="email" placeholder="Enter your email address" required />
+          <button type="submit">Subscribe Free</button>
+        </form>
+        <p class="nl-form-note">Free forever. No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="nl-stats">
+    <div class="nl-stat">
+      <div class="nl-stat-num">7AM</div>
+      <div class="nl-stat-label">EST Delivery</div>
+    </div>
+    <div class="nl-stat">
+      <div class="nl-stat-num">5×</div>
+      <div class="nl-stat-label">Per Week</div>
+    </div>
+    <div class="nl-stat">
+      <div class="nl-stat-num">Free</div>
+      <div class="nl-stat-label">Always</div>
+    </div>
+    <div class="nl-stat">
+      <div class="nl-stat-num">10+</div>
+      <div class="nl-stat-label">Data Sources</div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="nl-sections">
+    <div class="container">
+      <p class="section-label">What's Inside</p>
+      <h2>Every section. <span class="orange">Every morning.</span></h2>
+      <div class="nl-sections-grid">
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">⚠️</div>
+          <h3>The Reality Check</h3>
+          <p>The most impactful story of the day. Full breakdown, skeptical take, and what to verify yourself.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">📈</div>
+          <h3>Majors</h3>
+          <p>BTC, ETH, SOL — live prices, 24h changes, and what the moves actually mean.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">🔥</div>
+          <h3>Alts & Trending</h3>
+          <p>What's moving in the alt market. Trending coins, meme coin tracker, and narrative shifts.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">🖼️</div>
+          <h3>NFTs</h3>
+          <p>Floor prices, volume, collection news, today's mints, and marketplace updates.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">🌐</div>
+          <h3>Web3, Gaming & Ecosystems</h3>
+          <p>Protocol launches, GameFi, DeFi, RWAs, infrastructure, and builder updates.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">📊</div>
+          <h3>Stocks & Macro Watch</h3>
+          <p>NASDAQ, Fed moves, ETF flows, inflation data, and what it means for crypto.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">👁️</div>
+          <h3>What To Watch</h3>
+          <p>3–5 catalysts, risks, and narratives to keep on your radar heading into the next 24 hours.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">🧠</div>
+          <h3>The Checkpoint Take</h3>
+          <p>One sharp opinion that cuts through the noise. No hype. No fake certainty. Just signal.</p>
+        </div>
+
+        <div class="nl-section-card">
+          <div class="nl-section-icon">😱</div>
+          <h3>Fear & Greed Index</h3>
+          <p>Daily sentiment score so you know exactly where the market's head is at before you trade.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIEW -->
+  <section class="nl-preview-section">
+    <div class="container" style="text-align:center;">
+      <p class="section-label">Sample Issue</p>
+      <h2>What it looks <span class="orange">like.</span></h2>
+
+      <div class="nl-preview-wrap">
+        <!-- Preview Header -->
+        <div class="nl-preview-header">
+          <img src="assets/rc-logo-full.png" alt="Reality Check" class="nl-preview-logo" />
+          <div style="padding-left:14px;border-left:2px solid #333;">
+            <div class="nl-preview-title" style="padding-left:14px;">THE CHECKPOINT</div>
+            <div class="nl-preview-motto" style="padding-left:14px;">Question. Think. Verify.</div>
+          </div>
+        </div>
+        <!-- Date Bar -->
+        <div class="nl-preview-datebar">
+          <span>Your Daily Web3 Briefing</span>
+          <span>MONDAY, JUNE 9, 2026</span>
+        </div>
+        <!-- Body Preview -->
+        <div class="nl-preview-body">
+          <div class="nl-preview-intro">
+            <strong>GM and welcome back to The Checkpoint.</strong><br>
+            Markets are moving. Institutions are watching. The noise is loud today — here's what actually matters.
+          </div>
+          <div class="nl-preview-divider"></div>
+          <div class="nl-preview-section-label">⚠ The Reality Check</div>
+          <div class="nl-preview-headline">BlackRock Expands Tokenized Fund to a Second Blockchain</div>
+          <div class="nl-preview-text">BlackRock is expanding its tokenized money market fund to another chain, signaling growing institutional confidence in on-chain infrastructure. The move could accelerate real-world asset adoption.</div>
+          <div class="nl-preview-callout">
+            <strong>Reality Check:</strong> Expansion is a signal, not adoption. Watch for actual on-chain activity and user traction before calling this a win.
+          </div>
+        </div>
+        <div class="nl-preview-fade"></div>
+      </div>
+
+      <p style="color:var(--muted);font-size:13px;margin-top:20px;font-family:'Space Mono',monospace;">Subscribe to get the full edition every morning.</p>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="nl-cta">
+    <div class="container">
+      <p class="section-label">Join The Checkpoint</p>
+      <h2>Start your mornings with <span class="orange">signal.</span></h2>
+      <p>Free. Direct. Web3 native. No fluff, no paid shill tone. Just the information you need to navigate the market every day.</p>
+      <div class="nl-form-wrap" style="max-width:480px;margin:0 auto;">
+        <form class="nl-form" id="subscribe-form-2">
+          <input type="email" placeholder="Enter your email address" required />
+          <button type="submit">Subscribe Free</button>
+        </form>
+        <p class="nl-form-note">Free forever. No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--border);padding:48px 2rem 32px;text-align:center;">
+  <div class="container">
+    <a href="index.html" class="nav-logo" style="justify-content:center;margin-bottom:20px;display:flex;">
+      <img src="assets/RC Favicon Logo.png" alt="Reality Check" style="height:36px;" />
+      <span class="nav-logo-text" style="margin-left:10px;">Reality Check</span>
+    </a>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">The Checkpoint — Question. Think. Verify.</p>
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+      <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">Home</a>
+      <a href="watch.html" style="color:var(--muted);font-size:13px;text-decoration:none;">Watch</a>
+      <a href="newsletter.html" style="color:var(--orange);font-size:13px;text-decoration:none;">Newsletter</a>
+      <a href="partners.html" style="color:var(--muted);font-size:13px;text-decoration:none;">Partner With Us</a>
+      <a href="https://x.com/RealityCheck_RR" target="_blank" style="color:var(--muted);font-size:13px;text-decoration:none;">X / Twitter</a>
+    </div>
+    <p style="color:var(--muted);font-size:12px;">© 2026 Reality Check. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Form submission handler - connects to Brevo
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector('input[type="email"]').value;
+    const btn = form.querySelector('button');
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': 'YOUR_BREVO_API_KEY'
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [2],
+        updateEnabled: true
+      })
+    })
+    .then(res => {
+      if (res.ok || res.status === 204 || res.status === 201) {
+        btn.textContent = '✓ You\'re in!';
+        btn.style.background = '#22c55e';
+        form.querySelector('input').value = '';
+      } else {
+        throw new Error('Failed');
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+      btn.style.background = '';
+    });
+  }
+
+  document.getElementById('subscribe-form').addEventListener('submit', handleSubscribe);
+  document.getElementById('subscribe-form-2').addEventListener('submit', handleSubscribe);
+</script>
+
+</body>
+</html>
