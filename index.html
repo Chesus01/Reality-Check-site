@@ -708,20 +708,33 @@
 </script>
 <script>
 const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
-const YT_CHANNEL = 'https://www.youtube.com/@RealityCheckWeb3';
 
-let VIDEOS = [
+// Fallback videos in case RSS fails
+const FALLBACK_VIDEOS = [
   { id: 'AMaRhz5BpPE', title: 'Reality Check: NFTs UP & BTC Down' },
   { id: '3DPhXr9ZmtQ', title: 'Reality Check: Abstract XP Day & NFT' },
   { id: 'hh790cQVhog', title: 'Reality Check: Clutch Markets / PupCup NFT Reveal' },
 ];
 
+function isShort(item) {
+  const link = (item.link || '').toLowerCase();
+  const title = (item.title || '').toLowerCase();
+  return link.includes('/shorts/') || title.includes('#shorts') || title.includes('#short');
+}
+
+function getVideoId(link) {
+  if (link.includes('/shorts/')) return link.split('/shorts/')[1].split('?')[0];
+  const m = link.match(/[?&]v=([^&]+)/);
+  return m ? m[1] : null;
+}
+
 function renderVideos(videos) {
   const grid = document.getElementById('yt-grid');
+  if (!grid) return;
   grid.innerHTML = videos.slice(0, 3).map(v => `
     <div class="yt-card">
       <div class="yt-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/${v.id}"
+        <iframe src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0"
           title="${v.title}" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="yt-info">
@@ -732,7 +745,28 @@ function renderVideos(videos) {
   `).join('');
 }
 
-renderVideos(VIDEOS);
+async function loadLatestVideos() {
+  try {
+    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' +
+      encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID) +
+      '&count=20';
+    const res = await fetch(proxy, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    if (data.status !== 'ok' || !data.items?.length) throw new Error('bad data');
+
+    const fullVideos = data.items
+      .filter(item => !isShort(item))
+      .map(item => ({ id: getVideoId(item.link), title: item.title }))
+      .filter(v => v.id);
+
+    renderVideos(fullVideos.length >= 3 ? fullVideos : FALLBACK_VIDEOS);
+  } catch (_) {
+    renderVideos(FALLBACK_VIDEOS);
+  }
+}
+
+loadLatestVideos();
 
 </script>
 </body>

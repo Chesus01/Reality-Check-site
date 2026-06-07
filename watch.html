@@ -322,25 +322,66 @@
 <script>
 const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
 
-// Only update the featured video from RSS — grid is curated manually
-async function loadFeaturedFromRSS() {
-  try {
-    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID);
-    const res = await fetch(proxy, { signal: AbortSignal.timeout(7000) });
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data.status !== 'ok' || !data.items?.length) return;
-    const latest = data.items[0];
-    const id = latest.link.split('v=')[1];
-    if (!id) return;
-    document.getElementById('featured-embed').innerHTML = `
-      <iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0"
-        title="${latest.title}" allowfullscreen loading="lazy"></iframe>
-    `;
-  } catch (_) {}
+function isShort(item) {
+  const link = (item.link || '').toLowerCase();
+  const title = (item.title || '').toLowerCase();
+  return link.includes('/shorts/') || title.includes('#shorts') || title.includes('#short');
 }
 
-loadFeaturedFromRSS();
+function getVideoId(link) {
+  if (!link) return null;
+  if (link.includes('/shorts/')) return link.split('/shorts/')[1].split('?')[0];
+  const m = link.match(/[?&]v=([^&]+)/);
+  return m ? m[1] : null;
+}
+
+async function loadLatestEpisodes() {
+  try {
+    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' +
+      encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID) +
+      '&count=20';
+    const res = await fetch(proxy, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    if (data.status !== 'ok' || !data.items?.length) throw new Error('bad data');
+
+    // Filter out Shorts, get full video items
+    const fullVideos = data.items
+      .filter(item => !isShort(item))
+      .map(item => ({ id: getVideoId(item.link), title: item.title }))
+      .filter(v => v.id);
+
+    if (!fullVideos.length) return;
+
+    // Update featured
+    const featured = fullVideos[0];
+    document.getElementById('featured-embed').innerHTML = `
+      <iframe src="https://www.youtube-nocookie.com/embed/${featured.id}?rel=0"
+        title="${featured.title}" allowfullscreen loading="lazy"></iframe>
+    `;
+
+    // Update Recent Shows grid (skip the featured, take next 3)
+    const gridVideos = fullVideos.slice(1, 4);
+    if (gridVideos.length) {
+      document.getElementById('video-grid').innerHTML = gridVideos.map(v => `
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0"
+              title="${v.title}" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-title">${v.title}</div>
+            <div class="video-meta">Reality Check &middot; Web3 Live Show</div>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (_) {
+    // Fallback: leave existing hardcoded iframes in place
+  }
+}
+
+loadLatestEpisodes();
 </script>
 </body>
 </html>
