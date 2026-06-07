@@ -78,7 +78,7 @@
     @media (max-width:600px) { .post-carousel-stage-wrap{height:420px;} .post-slide{width:260px;} .post-slide.pos-left{transform:translateX(-175px) scale(0.78);} .post-slide.pos-right{transform:translateX(175px) scale(0.78);} }
 
     /* GIF ROWS */
-    .gif-row { display:flex; gap:12px; width:max-content; }
+    .gif-row { display:flex; gap:12px; width:max-content; will-change:transform; }
     .gif-row img { height:110px; width:auto; border-radius:10px; flex-shrink:0; border:1px solid var(--border); }
     .gif-row-left { animation:gif-left 45s linear infinite; }
     .gif-row-right { animation:gif-right 45s linear infinite; }

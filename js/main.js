@@ -31,6 +31,32 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// ── SCROLLING ROWS — pause when off-screen, play when visible ──
+// Covers .gif-row, .img-row, .friends-img-row on all pages
+(function() {
+  const rows = document.querySelectorAll('.gif-row, .img-row, .friends-img-row');
+  if (!rows.length || !('IntersectionObserver' in window)) return;
+
+  // Add decoding="async" to every image in a scrolling row
+  rows.forEach(row => {
+    row.querySelectorAll('img').forEach(img => {
+      img.decoding = 'async';
+      if (!img.getAttribute('loading')) img.loading = 'lazy';
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+    });
+  }, { rootMargin: '0px 0px 200px 0px' }); // start loading 200px before reaching view
+
+  rows.forEach(row => {
+    row.style.animationPlayState = 'paused'; // start paused, observer will start them
+    observer.observe(row);
+  });
+})();
+
 // ── MOBILE NAV ──
 const hamburger = document.querySelector('.hamburger');
 const mobileNav = document.querySelector('.mobile-nav');

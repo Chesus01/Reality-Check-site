@@ -95,7 +95,7 @@
     @media (max-width:900px) { .reach-grid { grid-template-columns:1fr 1fr; } .offer-grid { grid-template-columns:1fr 1fr; } }
     @media (max-width:600px) { .audience-grid { grid-template-columns:1fr; } .offer-grid { grid-template-columns:1fr; } }
     /* FRIENDS SCROLLING ROWS */
-    .friends-img-row { display:flex; gap:14px; width:max-content; align-items:center; }
+    .friends-img-row { display:flex; gap:14px; width:max-content; align-items:center; will-change:transform; }
     .friends-img-row img { width:90px; height:90px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--border); }
     .friends-img-row-left  { animation:img-left  90s linear infinite; }
     .friends-img-row-right { animation:img-right 90s linear infinite; }
