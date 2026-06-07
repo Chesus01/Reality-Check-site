@@ -280,7 +280,7 @@ const stage = document.getElementById('post-stage');
 const prevBtn = document.getElementById('post-prev');
 const nextBtn = document.getElementById('post-next');
 if (stage) {
-  let idx = 0; let animating = false;
+  let idx = 5; let animating = false;
   const TOTAL = POSTS.length;
   function mod(n) { return ((n % TOTAL) + TOTAL) % TOTAL; }
   function makeSlide(postIdx, posClass) {
