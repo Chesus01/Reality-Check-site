@@ -71,6 +71,14 @@
     .post-slide.pos-far-right { transform:translateX(700px) scale(0.65); z-index:1; opacity:0; pointer-events:none; }
     .post-slide.pos-center.lit { animation:post-glow 0.7s ease-out forwards; }
     @keyframes post-glow { 0%{box-shadow:0 8px 56px rgba(249,115,22,0.35)} 35%{box-shadow:0 8px 90px rgba(249,115,22,0.85), 0 0 0 2px rgba(249,115,22,0.5); border-color:#fb923c} 100%{box-shadow:0 8px 56px rgba(249,115,22,0.35), 0 0 0 1px rgba(249,115,22,0.15); border-color:var(--orange)} }
+    /* IMAGE ROWS */
+    .img-row { display:flex; gap:12px; width:max-content; }
+    .img-row img { height:110px; width:auto; border-radius:10px; flex-shrink:0; border:1px solid var(--border); }
+    .img-row-left { animation:img-left 50s linear infinite; }
+    .img-row-right { animation:img-right 50s linear infinite; }
+    .img-row:hover { animation-play-state:paused; }
+    @keyframes img-left { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes img-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
     @media (max-width:900px) { .profile-hero-inner { flex-direction:column; text-align:center; } .profile-socials { justify-content:center; } .bio-grid { grid-template-columns:1fr; } .services-grid { grid-template-columns:1fr 1fr; } .post-carousel-stage-wrap{height:520px;} .post-slide{width:300px;} .post-slide.pos-left{transform:translateX(-240px) scale(0.82);} .post-slide.pos-right{transform:translateX(240px) scale(0.82);} }
     @media (max-width:600px) { .profile-avatar-wrap { width:160px; height:160px; } .services-grid { grid-template-columns:1fr; } .contact-strip { text-align:center; justify-content:center; } .post-carousel-stage-wrap{height:420px;} .post-slide{width:260px;} .post-slide.pos-left{transform:translateX(-175px) scale(0.78);} .post-slide.pos-right{transform:translateX(175px) scale(0.78);} }
   </style>
@@ -271,6 +279,26 @@
       </div>
     </div>
   </section>
+  <!-- IMAGE ROWS -->
+  <section style="background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 0; overflow:hidden;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 20px;">
+      <p class="section-label">The AnIdiot Universe</p>
+      <h2>AnIdiot in <span class="orange">motion.</span></h2>
+    </div>
+    <div style="overflow:hidden; margin-bottom:12px;">
+      <div class="img-row img-row-left">
+        <img src="assets/anidiot/G-EpHIOWYAAhwXN.jpg" alt="" loading="lazy" /><img src="assets/anidiot/G6OE8C9XAAADbiT.jpg" alt="" loading="lazy" /><img src="assets/anidiot/G_RZPeyWgAAJyY7.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HE-4g6MasAAkZa2.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HF39-tKasAIpH6m.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HGIn6fGWoAAbH2w.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HGsrqSZW0AATKPA.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HH-U7ENWsAEZ5WN.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HI2JbolXYAAffiF.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HImln9wWMAAT9l_.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIMvblzWYAABiqA.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIR3DnZXYAA39YH.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIOBbHbXYAEo7CS.jpg" alt="" loading="lazy" />
+        <img src="assets/anidiot/G-EpHIOWYAAhwXN.jpg" alt="" loading="lazy" /><img src="assets/anidiot/G6OE8C9XAAADbiT.jpg" alt="" loading="lazy" /><img src="assets/anidiot/G_RZPeyWgAAJyY7.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HE-4g6MasAAkZa2.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HF39-tKasAIpH6m.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HGIn6fGWoAAbH2w.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HGsrqSZW0AATKPA.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HH-U7ENWsAEZ5WN.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HI2JbolXYAAffiF.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HImln9wWMAAT9l_.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIMvblzWYAABiqA.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIR3DnZXYAA39YH.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HIOBbHbXYAEo7CS.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+    <div style="overflow:hidden;">
+      <div class="img-row img-row-right">
+        <img src="assets/anidiot/HJ-XytbW8AAsf7r.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ0nJSyX0AAk52V.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ0T4kQXYAAqtRe.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ4X_x-XgAAQfHl.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ5gzdDWAAAzjx4.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJAIARcWQAA2IG2.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJL37u8W8AAxKI-.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJU7uQjXcAMgCpt.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJz_9ByXAAAPACT.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKE7R3dWoAAwqiU.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKIQP2_W8AA990r.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKJV-_QXIAAg6m4.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKNa0nHXoAAba4X.jpg" alt="" loading="lazy" />
+        <img src="assets/anidiot/HJ-XytbW8AAsf7r.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ0nJSyX0AAk52V.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ0T4kQXYAAqtRe.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ4X_x-XgAAQfHl.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJ5gzdDWAAAzjx4.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJAIARcWQAA2IG2.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJL37u8W8AAxKI-.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJU7uQjXcAMgCpt.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HJz_9ByXAAAPACT.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKE7R3dWoAAwqiU.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKIQP2_W8AA990r.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKJV-_QXIAAg6m4.jpg" alt="" loading="lazy" /><img src="assets/anidiot/HKNa0nHXoAAba4X.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <!-- TOP POSTS CAROUSEL -->
   <section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0; overflow:hidden;">
     <div class="post-carousel-section-inner">

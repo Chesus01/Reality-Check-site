@@ -71,10 +71,14 @@
     .post-slide.pos-far-right { transform:translateX(700px) scale(0.65); z-index:1; opacity:0; pointer-events:none; }
     .post-slide.pos-center.lit { animation:post-glow 0.7s ease-out forwards; }
     @keyframes post-glow { 0%{box-shadow:0 8px 56px rgba(249,115,22,0.35)} 35%{box-shadow:0 8px 90px rgba(249,115,22,0.85), 0 0 0 2px rgba(249,115,22,0.5); border-color:#fb923c} 100%{box-shadow:0 8px 56px rgba(249,115,22,0.35), 0 0 0 1px rgba(249,115,22,0.15); border-color:var(--orange)} }
-    /* PHOTO GRID */
-    .photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
-    .photo-grid img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:14px; border:1px solid var(--border); transition:all 0.25s; cursor:pointer; }
-    .photo-grid img:hover { border-color:var(--orange); transform:scale(1.02); box-shadow:0 8px 32px rgba(249,115,22,0.2); }
+    /* IMAGE ROWS */
+    .img-row { display:flex; gap:12px; width:max-content; }
+    .img-row img { height:110px; width:auto; border-radius:10px; flex-shrink:0; border:1px solid var(--border); }
+    .img-row-left { animation:img-left 40s linear infinite; }
+    .img-row-right { animation:img-right 40s linear infinite; }
+    .img-row:hover { animation-play-state:paused; }
+    @keyframes img-left { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes img-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
     @media (max-width:900px) { .profile-hero-inner { flex-direction:column; text-align:center; } .profile-socials { justify-content:center; } .bio-grid { grid-template-columns:1fr; } .services-grid { grid-template-columns:1fr 1fr; } .post-carousel-stage-wrap{height:520px;} .post-slide{width:300px;} .post-slide.pos-left{transform:translateX(-240px) scale(0.82);} .post-slide.pos-right{transform:translateX(240px) scale(0.82);} .photo-grid{grid-template-columns:repeat(2,1fr);} }
     @media (max-width:600px) { .profile-avatar-wrap { width:160px; height:160px; } .services-grid { grid-template-columns:1fr; } .contact-strip { text-align:center; justify-content:center; } .post-carousel-stage-wrap{height:420px;} .post-slide{width:260px;} .post-slide.pos-left{transform:translateX(-175px) scale(0.78);} .post-slide.pos-right{transform:translateX(175px) scale(0.78);} }
   </style>
@@ -290,18 +294,22 @@
     </div>
   </section>
 
-  <!-- RC PHOTO GALLERY -->
-  <section style="background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0;">
-    <div style="max-width:1120px; margin:0 auto; padding:0 2rem;">
+  <!-- RC PHOTO ROWS -->
+  <section style="background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 0; overflow:hidden;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 20px;">
       <p class="section-label">RC Art</p>
       <h2>Kenny in the <span class="orange">universe.</span></h2>
-      <div class="photo-grid">
-        <img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" />
-        <img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" />
-        <img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" />
-        <img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" />
-        <img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" />
-        <img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" />
+    </div>
+    <div style="overflow:hidden; margin-bottom:12px;">
+      <div class="img-row img-row-left">
+        <img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" />
+      </div>
+    </div>
+    <div style="overflow:hidden;">
+      <div class="img-row img-row-right">
+        <img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" /><img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" />
       </div>
     </div>
   </section>
