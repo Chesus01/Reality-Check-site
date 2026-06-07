@@ -585,17 +585,10 @@
     btn.textContent = 'Subscribing...';
     btn.disabled = true;
 
-    fetch('https://api.brevo.com/v3/contacts', {
+    fetch('https://hook.us2.make.com/v4gs7lb35k1bpzahwld3fev9kpfiidtr', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': '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'
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [2],
-        updateEnabled: true
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
     })
     .then(res => {
       if (res.ok || res.status === 204 || res.status === 201) {
