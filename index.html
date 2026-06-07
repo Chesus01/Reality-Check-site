@@ -23,6 +23,69 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/RC Favicon Logo.png" type="image/png" />
   <style>
+    /* ── INTRO OVERLAY ── */
+    #rc-intro {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #080808;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow: hidden;
+    }
+    #rc-intro.hidden { display: none; }
+    #intro-skip {
+      position: absolute; top: 24px; right: 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+      padding: 8px 16px; cursor: pointer; z-index: 10;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    #intro-skip:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.35); }
+    #intro-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.6s ease;
+    }
+    #intro-static { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+    #intro-static canvas { width: 100%; height: 100%; display: block; }
+    #intro-scanline {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+    }
+    #intro-stage {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; position: relative; z-index: 5; width: 100%;
+    }
+    #intro-bars { display: flex; align-items: flex-end; gap: 5px; margin-bottom: 48px; opacity: 0; }
+    .ibar { width: 8px; border-radius: 3px 3px 0 0; background: rgba(255,255,255,0.15); transition: background 0.3s; }
+    .ibar.on { background: #F97316; }
+    .ibar:nth-child(1){height:12px} .ibar:nth-child(2){height:20px} .ibar:nth-child(3){height:28px} .ibar:nth-child(4){height:36px} .ibar:nth-child(5){height:44px}
+    #intro-wave-wrap { width: min(480px,90vw); margin-bottom: 40px; opacity: 0; }
+    #intro-wave { width: 100%; height: 56px; display: block; }
+    #intro-status {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase;
+      color: #F97316; margin-bottom: 52px; min-height: 20px; opacity: 0;
+    }
+    #intro-logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; opacity: 0; }
+    #intro-logo-img { width: clamp(100px,22vw,160px); height: clamp(100px,22vw,160px); object-fit: contain; mix-blend-mode: screen; }
+    #intro-title { font-size: clamp(2rem,6vw,3.6rem); font-weight: 700; letter-spacing: -2px; color: #fff; text-align: center; line-height: 1; }
+    #intro-title span { color: #F97316; }
+    #intro-sub { font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,12px); letter-spacing: 5px; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    #intro-motto { display: flex; gap: clamp(16px,3vw,32px); margin-top: 20px; opacity: 0; }
+    .imword { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); transition: color 0.3s; }
+    .imword.lit { color: #fff; }
+    .imsep { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); color: #F97316; opacity: 0.5; }
+    #intro-locked { display: flex; align-items: center; gap: 8px; margin-top: 16px; opacity: 0; font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,11px); letter-spacing: 3px; text-transform: uppercase; color: #F97316; }
+    #intro-locked .ldot { width: 8px; height: 8px; border-radius: 50%; background: #F97316; box-shadow: 0 0 8px #F97316; animation: ldot-pulse 1s ease-in-out infinite; }
+    @keyframes ldot-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    #intro-curtain { position: absolute; inset: 0; background: #080808; opacity: 0; pointer-events: none; z-index: 20; }
+    @keyframes iglitch { 0%{transform:translate(0);filter:none} 20%{transform:translate(-3px,1px);filter:hue-rotate(90deg)} 40%{transform:translate(3px,-1px);filter:hue-rotate(-90deg)} 60%{transform:translate(-2px,2px);filter:brightness(1.4)} 80%{transform:translate(2px,-2px);filter:brightness(0.7)} 100%{transform:translate(0);filter:none} }
+    .iglitch { animation: iglitch 0.15s steps(2) forwards; }
+  </style>
+  <style>
     /* HERO */
     #hero { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0; position:relative; }
     .hero-banner { width:100%; display:block; line-height:0; overflow:hidden; }
@@ -113,6 +176,37 @@
   </style>
 </head>
 <body>
+
+<!-- ── INTRO OVERLAY ── -->
+<div id="rc-intro" class="hidden">
+  <button id="intro-skip">Skip &#8594;</button>
+  <div id="intro-glow"></div>
+  <div id="intro-static"><canvas id="intro-static-cvs"></canvas></div>
+  <div id="intro-scanline"></div>
+  <div id="intro-curtain"></div>
+  <div id="intro-stage">
+    <div id="intro-bars">
+      <div class="ibar" id="ib1"></div><div class="ibar" id="ib2"></div>
+      <div class="ibar" id="ib3"></div><div class="ibar" id="ib4"></div>
+      <div class="ibar" id="ib5"></div>
+    </div>
+    <div id="intro-wave-wrap"><canvas id="intro-wave"></canvas></div>
+    <div id="intro-status">Searching for signal&hellip;</div>
+    <div id="intro-logo-wrap">
+      <img id="intro-logo-img" src="assets/RC Favicon Logo.png" alt="Reality Check" />
+      <div id="intro-title">Reality <span>Check</span></div>
+      <div id="intro-sub">Live Web3 Show &bull; Mon&ndash;Fri 11AM EST</div>
+    </div>
+    <div id="intro-motto">
+      <span class="imword" id="imw1">Question</span>
+      <span class="imsep">/</span>
+      <span class="imword" id="imw2">Think</span>
+      <span class="imsep">/</span>
+      <span class="imword" id="imw3">Verify</span>
+    </div>
+    <div id="intro-locked"><div class="ldot"></div>Signal Locked</div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -436,6 +530,119 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+// ── RC INTRO — only on fresh visit ──
+(function() {
+  if (sessionStorage.getItem('rc_intro_seen')) return;
+  sessionStorage.setItem('rc_intro_seen', '1');
+
+  const overlay = document.getElementById('rc-intro');
+  overlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+
+  // ── helpers ──
+  const $ = id => document.getElementById(id);
+  const bars = [$('ib1'),$('ib2'),$('ib3'),$('ib4'),$('ib5')];
+  function setBars(n){ bars.forEach((b,i)=> b.classList.toggle('on', i<n)); }
+  function fadeTo(el, v, ms, delay){ return new Promise(r=>{ setTimeout(()=>{ el.style.transition=`opacity ${ms}ms ease`; el.style.opacity=v; setTimeout(r,ms); }, delay||0); }); }
+  function setStatus(msg){ const s=$('intro-status'); s.style.opacity=0; setTimeout(()=>{ s.textContent=msg; s.style.transition='opacity 0.15s'; s.style.opacity=1; },160); }
+  function glitch(n=3){ let c=0; const id=setInterval(()=>{ const st=$('intro-stage'); st.classList.add('iglitch'); setTimeout(()=>st.classList.remove('iglitch'),120); if(++c>=n) clearInterval(id); },80); }
+
+  // ── static noise ──
+  const scvs = $('intro-static-cvs');
+  const sctx = scvs.getContext('2d');
+  let sOpacity = 0;
+  function resizeS(){ scvs.width=window.innerWidth; scvs.height=window.innerHeight; }
+  resizeS(); window.addEventListener('resize', resizeS);
+  function drawStatic(intensity){
+    $('intro-static').style.opacity = intensity<=0 ? 0 : intensity*0.55;
+    if(intensity<=0) return;
+    const w=scvs.width, h=scvs.height, img=sctx.createImageData(w,h), d=img.data;
+    for(let i=0;i<d.length;i+=4){ const v=Math.random()>.5?Math.floor(Math.random()*255):0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=Math.random()>.6?255:0; }
+    sctx.putImageData(img,0,0);
+  }
+
+  // ── waveform ──
+  const wcvs = $('intro-wave');
+  const wctx = wcvs.getContext('2d');
+  let wPhase=0, wAmp=0, wChaos=1;
+  function resizeW(){ wcvs.width=wcvs.offsetWidth*devicePixelRatio; wcvs.height=wcvs.offsetHeight*devicePixelRatio; wctx.scale(devicePixelRatio,devicePixelRatio); }
+  resizeW();
+  function drawWave(amp,chaos,phase){
+    const w=wcvs.offsetWidth, h=wcvs.offsetHeight, mid=h/2;
+    wctx.clearRect(0,0,w,h); wctx.beginPath();
+    for(let x=0;x<w;x++){
+      const noise=chaos>0?(Math.random()-.5)*amp*chaos*1.4:0;
+      const y=mid+Math.sin((x/w)*Math.PI*6+phase)*amp+noise;
+      x===0?wctx.moveTo(x,y):wctx.lineTo(x,y);
+    }
+    const g=wctx.createLinearGradient(0,0,w,0);
+    g.addColorStop(0,'rgba(249,115,22,0)'); g.addColorStop(.2,`rgba(249,115,22,${.4+amp/40})`);
+    g.addColorStop(.5,`rgba(249,115,22,${.7+amp/40})`); g.addColorStop(.8,`rgba(249,115,22,${.4+amp/40})`);
+    g.addColorStop(1,'rgba(249,115,22,0)');
+    wctx.strokeStyle=g; wctx.lineWidth=1.5; wctx.stroke();
+  }
+
+  // ── intervals ──
+  let sInt = setInterval(()=>drawStatic(sOpacity), 40);
+  let wInt = setInterval(()=>{ wPhase+=0.12; drawWave(wAmp,wChaos,wPhase); }, 30);
+
+  // ── dismiss overlay ──
+  function dismiss(){
+    clearInterval(sInt); clearInterval(wInt);
+    const c=$('intro-curtain');
+    c.style.transition='opacity 0.55s ease'; c.style.opacity=1;
+    setTimeout(()=>{ overlay.classList.add('hidden'); document.body.style.overflow=''; }, 600);
+  }
+
+  // ── skip ──
+  $('intro-skip').addEventListener('click', dismiss);
+
+  // ── timeline ──
+  async function run(){
+    sOpacity=1; wAmp=8; wChaos=1.8; setBars(1);
+    $('intro-scanline').style.transition='opacity 0.3s'; $('intro-scanline').style.opacity=1;
+
+    await new Promise(r=>setTimeout(r,300));
+    fadeTo($('intro-bars'),1,400); fadeTo($('intro-wave-wrap'),1,400); fadeTo($('intro-status'),1,400);
+
+    await new Promise(r=>setTimeout(r,600));
+    setStatus('Receiving signal…'); setBars(2); wAmp=12;
+
+    await new Promise(r=>setTimeout(r,400));
+    glitch(4); setBars(1); wAmp=6; wChaos=2.5; sOpacity=0.9;
+
+    await new Promise(r=>setTimeout(r,400));
+    setStatus('Filtering noise…'); setBars(3); wAmp=16; wChaos=1.2; sOpacity=0.6;
+    fadeTo($('intro-logo-wrap'),1,500);
+
+    await new Promise(r=>setTimeout(r,600));
+    setStatus('Locking onto source…'); setBars(4); wAmp=20; wChaos=0.4; sOpacity=0.25;
+    $('intro-glow').style.opacity=1;
+    fadeTo($('intro-motto'),1,300);
+    await new Promise(r=>setTimeout(r,300));
+    $('imw1').classList.add('lit');
+    await new Promise(r=>setTimeout(r,220));
+    $('imw2').classList.add('lit');
+    await new Promise(r=>setTimeout(r,220));
+    $('imw3').classList.add('lit');
+
+    await new Promise(r=>setTimeout(r,400));
+    setStatus('Signal locked.'); setBars(5); wChaos=0; wAmp=22; sOpacity=0;
+    $('intro-scanline').style.opacity=0.35;
+    glitch(1);
+
+    await new Promise(r=>setTimeout(r,200));
+    fadeTo($('intro-locked'),1,400);
+
+    // auto-dismiss after 2s on locked screen
+    await new Promise(r=>setTimeout(r,2000));
+    dismiss();
+  }
+
+  run();
+})();
+</script>
 <script>
 const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
 const YT_CHANNEL = 'https://www.youtube.com/@RealityCheckWeb3';
