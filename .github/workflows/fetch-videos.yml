@@ -1,0 +1,100 @@
+name: Fetch Latest YouTube Videos
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # Runs every 6 hours
+  workflow_dispatch:          # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  fetch-videos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and filter videos from YouTube Data API
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request
+          import json
+          import re
+          import os
+          from datetime import datetime
+
+          API_KEY = os.environ['YOUTUBE_API_KEY']
+          CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ'
+
+          # Step 1 — get the latest 20 video IDs from the channel
+          search_url = (
+            'https://www.googleapis.com/youtube/v3/search'
+            f'?part=snippet&channelId={CHANNEL_ID}'
+            '&maxResults=20&order=date&type=video'
+            f'&key={API_KEY}'
+          )
+          with urllib.request.urlopen(search_url) as r:
+            search_data = json.loads(r.read())
+
+          video_ids = [item['id']['videoId'] for item in search_data.get('items', [])]
+          if not video_ids:
+            print('No videos returned from search')
+            exit(0)
+
+          # Step 2 — fetch full details including duration for each video
+          ids_param = ','.join(video_ids)
+          details_url = (
+            'https://www.googleapis.com/youtube/v3/videos'
+            f'?part=contentDetails,snippet&id={ids_param}'
+            f'&key={API_KEY}'
+          )
+          with urllib.request.urlopen(details_url) as r:
+            details_data = json.loads(r.read())
+
+          # Step 3 — parse ISO 8601 duration, filter out Shorts (<= 60 seconds)
+          def parse_duration(iso):
+            m = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', iso or '')
+            if not m:
+              return 0
+            return int(m.group(1) or 0)*3600 + int(m.group(2) or 0)*60 + int(m.group(3) or 0)
+
+          videos = []
+          for item in details_data.get('items', []):
+            duration = parse_duration(item['contentDetails']['duration'])
+            if duration > 60:
+              snippet = item['snippet']
+              thumb = (
+                snippet['thumbnails'].get('maxres') or
+                snippet['thumbnails'].get('high') or
+                snippet['thumbnails'].get('medium') or {}
+              )
+              videos.append({
+                'id': item['id'],
+                'title': snippet['title'],
+                'thumbnail': thumb.get('url', '')
+              })
+
+          videos = videos[:6]  # keep top 6 (featured + 3 grid + 2 buffer)
+
+          os.makedirs('data', exist_ok=True)
+          output = {
+            'videos': videos,
+            'updated': datetime.utcnow().isoformat() + 'Z'
+          }
+          with open('data/latest-videos.json', 'w') as f:
+            json.dump(output, f, indent=2)
+
+          print(f'Saved {len(videos)} videos to data/latest-videos.json')
+          for v in videos:
+            print(f"  {v['id']} — {v['title'][:60]}")
+          PYEOF
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/latest-videos.json
+          git diff --staged --quiet || git commit -m "chore: update latest YouTube videos [skip ci]"
+          git push

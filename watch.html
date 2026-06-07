@@ -320,56 +320,23 @@
 
 <script src="js/main.js"></script>
 <script>
-const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
-
-function getVideoId(link) {
-  if (!link) return null;
-  const m = link.match(/(?:[?&]v=|\/shorts\/)([A-Za-z0-9_-]{11})/);
-  return m ? m[1] : null;
-}
-
-function checkIsShort(id) {
-  return new Promise(resolve => {
-    const img = new Image();
-    const timer = setTimeout(() => { img.src = ''; resolve(false); }, 3000);
-    img.onload = () => { clearTimeout(timer); resolve(img.naturalHeight > img.naturalWidth); };
-    img.onerror = () => { clearTimeout(timer); resolve(false); };
-    img.src = `https://i.ytimg.com/vi/${id}/oardefault.jpg`;
-  });
-}
-
-function titleLooksLikeShort(title) {
-  return /#short[s]?\b/i.test(title);
-}
-
 async function loadLatestEpisodes() {
   try {
-    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' +
-      encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID) +
-      '&count=25';
-    const res = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
-    if (!res.ok) throw new Error('fetch failed');
+    const res = await fetch('data/latest-videos.json?t=' + Date.now());
+    if (!res.ok) throw new Error('no data file');
     const data = await res.json();
-    if (data.status !== 'ok' || !data.items?.length) throw new Error('bad data');
+    const videos = data.videos || [];
+    if (!videos.length) return;
 
-    const candidates = data.items
-      .map(item => ({ id: getVideoId(item.link), title: item.title || '' }))
-      .filter(v => v.id && !titleLooksLikeShort(v.title));
-
-    const shortFlags = await Promise.all(candidates.map(v => checkIsShort(v.id)));
-    const fullVideos = candidates.filter((_, i) => !shortFlags[i]);
-
-    if (!fullVideos.length) return;
-
-    // Update featured player
-    const featured = fullVideos[0];
+    // Update featured player with newest video
+    const featured = videos[0];
     document.getElementById('featured-embed').innerHTML = `
       <iframe src="https://www.youtube-nocookie.com/embed/${featured.id}?rel=0"
         title="${featured.title}" allowfullscreen loading="lazy"></iframe>
     `;
 
-    // Update Recent Shows grid (next 3 after featured)
-    const gridVideos = fullVideos.slice(1, 4);
+    // Update Recent Shows grid with next 3
+    const gridVideos = videos.slice(1, 4);
     if (gridVideos.length) {
       document.getElementById('video-grid').innerHTML = gridVideos.map(v => `
         <div class="video-card">

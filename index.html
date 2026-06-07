@@ -707,37 +707,11 @@
 })();
 </script>
 <script>
-const CHANNEL_ID = 'UCoXM9ehSmDW-VaRltwiWXwQ';
-
 const FALLBACK_VIDEOS = [
   { id: 'AMaRhz5BpPE', title: 'Reality Check: NFTs UP & BTC Down' },
   { id: '3DPhXr9ZmtQ', title: 'Reality Check: Abstract XP Day & NFT' },
   { id: 'hh790cQVhog', title: 'Reality Check: Clutch Markets / PupCup NFT Reveal' },
 ];
-
-// Extract video ID from any YouTube link format
-function getVideoId(link) {
-  if (!link) return null;
-  const m = link.match(/(?:[?&]v=|\/shorts\/)([A-Za-z0-9_-]{11})/);
-  return m ? m[1] : null;
-}
-
-// Shorts have a portrait thumbnail at oardefault.jpg; regular videos 404 that URL
-// Returns true if the video is a Short
-function checkIsShort(id) {
-  return new Promise(resolve => {
-    const img = new Image();
-    const timer = setTimeout(() => { img.src = ''; resolve(false); }, 3000);
-    img.onload = () => { clearTimeout(timer); resolve(img.naturalHeight > img.naturalWidth); };
-    img.onerror = () => { clearTimeout(timer); resolve(false); };
-    img.src = `https://i.ytimg.com/vi/${id}/oardefault.jpg`;
-  });
-}
-
-// Also catch obvious Shorts by title tag (no network call needed)
-function titleLooksLikeShort(title) {
-  return /#short[s]?\b/i.test(title);
-}
 
 function renderVideos(videos) {
   const grid = document.getElementById('yt-grid');
@@ -758,24 +732,11 @@ function renderVideos(videos) {
 
 async function loadLatestVideos() {
   try {
-    const proxy = 'https://api.rss2json.com/v1/api.json?rss_url=' +
-      encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID) +
-      '&count=25';
-    const res = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
-    if (!res.ok) throw new Error('fetch failed');
+    const res = await fetch('data/latest-videos.json?t=' + Date.now());
+    if (!res.ok) throw new Error('no data file');
     const data = await res.json();
-    if (data.status !== 'ok' || !data.items?.length) throw new Error('bad data');
-
-    // Map to {id, title} — skip immediately if title has #shorts
-    const candidates = data.items
-      .map(item => ({ id: getVideoId(item.link), title: item.title || '' }))
-      .filter(v => v.id && !titleLooksLikeShort(v.title));
-
-    // Check thumbnails in parallel to detect Shorts
-    const shortFlags = await Promise.all(candidates.map(v => checkIsShort(v.id)));
-    const fullVideos = candidates.filter((_, i) => !shortFlags[i]);
-
-    renderVideos(fullVideos.length >= 3 ? fullVideos : FALLBACK_VIDEOS);
+    const videos = data.videos || [];
+    renderVideos(videos.length >= 3 ? videos : FALLBACK_VIDEOS);
   } catch (_) {
     renderVideos(FALLBACK_VIDEOS);
   }
