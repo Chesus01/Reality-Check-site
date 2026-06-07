@@ -70,7 +70,25 @@
       color: #F97316; margin-bottom: 52px; min-height: 20px; opacity: 0;
     }
     #intro-logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; opacity: 0; }
-    #intro-logo-img { width: clamp(100px,22vw,160px); height: clamp(100px,22vw,160px); object-fit: contain; mix-blend-mode: screen; }
+    #intro-logo-ring {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: clamp(130px,24vw,180px); height: clamp(130px,24vw,180px);
+    }
+    #intro-logo-ring::before {
+      content: ''; position: absolute; inset: -12px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.35) 0%, rgba(249,115,22,0.12) 45%, transparent 70%);
+      animation: intro-logo-pulse 2s ease-in-out infinite;
+    }
+    #intro-logo-ring::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px solid rgba(249,115,22,0.4);
+      box-shadow: 0 0 24px rgba(249,115,22,0.3), inset 0 0 24px rgba(249,115,22,0.08);
+    }
+    @keyframes intro-logo-pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.7; }
+    }
+    #intro-logo-img { width: 75%; height: 75%; object-fit: contain; position: relative; z-index: 1; }
     #intro-title { font-size: clamp(2rem,6vw,3.6rem); font-weight: 700; letter-spacing: -2px; color: #fff; text-align: center; line-height: 1; }
     #intro-title span { color: #F97316; }
     #intro-sub { font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,12px); letter-spacing: 5px; color: rgba(255,255,255,0.45); text-transform: uppercase; }
@@ -193,7 +211,9 @@
     <div id="intro-wave-wrap"><canvas id="intro-wave"></canvas></div>
     <div id="intro-status">Searching for signal&hellip;</div>
     <div id="intro-logo-wrap">
-      <img id="intro-logo-img" src="assets/RC Favicon Logo.png" alt="Reality Check" />
+      <div id="intro-logo-ring">
+        <img id="intro-logo-img" src="assets/rc-logo-transparent.png" alt="Reality Check" />
+      </div>
       <div id="intro-title">Reality <span>Check</span></div>
       <div id="intro-sub">Live Web3 Show &bull; Mon&ndash;Fri 11AM EST</div>
     </div>
@@ -584,8 +604,8 @@
   }
 
   // ── intervals ──
-  let sInt = setInterval(()=>drawStatic(sOpacity), 40);
-  let wInt = setInterval(()=>{ wPhase+=0.12; drawWave(wAmp,wChaos,wPhase); }, 30);
+  let sInt = setInterval(()=>drawStatic(sOpacity), 100);
+  let wInt = setInterval(()=>{ wPhase+=0.06; drawWave(wAmp,wChaos,wPhase); }, 30);
 
   // ── dismiss overlay ──
   function dismiss(){
@@ -601,42 +621,48 @@
   // ── timeline ──
   async function run(){
     sOpacity=1; wAmp=8; wChaos=1.8; setBars(1);
-    $('intro-scanline').style.transition='opacity 0.3s'; $('intro-scanline').style.opacity=1;
+    $('intro-scanline').style.transition='opacity 0.5s'; $('intro-scanline').style.opacity=1;
 
-    await new Promise(r=>setTimeout(r,300));
-    fadeTo($('intro-bars'),1,400); fadeTo($('intro-wave-wrap'),1,400); fadeTo($('intro-status'),1,400);
-
+    // 0.6s — elements fade in
     await new Promise(r=>setTimeout(r,600));
+    fadeTo($('intro-bars'),1,600); fadeTo($('intro-wave-wrap'),1,600); fadeTo($('intro-status'),1,600);
+
+    // 1.4s — weak signal
+    await new Promise(r=>setTimeout(r,1400));
     setStatus('Receiving signal…'); setBars(2); wAmp=12;
 
-    await new Promise(r=>setTimeout(r,400));
+    // 2.2s — interference burst
+    await new Promise(r=>setTimeout(r,900));
     glitch(4); setBars(1); wAmp=6; wChaos=2.5; sOpacity=0.9;
 
-    await new Promise(r=>setTimeout(r,400));
+    // 3.0s — filtering
+    await new Promise(r=>setTimeout(r,900));
     setStatus('Filtering noise…'); setBars(3); wAmp=16; wChaos=1.2; sOpacity=0.6;
-    fadeTo($('intro-logo-wrap'),1,500);
+    fadeTo($('intro-logo-wrap'),1,700);
 
-    await new Promise(r=>setTimeout(r,600));
-    setStatus('Locking onto source…'); setBars(4); wAmp=20; wChaos=0.4; sOpacity=0.25;
+    // 4.2s — locking
+    await new Promise(r=>setTimeout(r,1200));
+    setStatus('Locking onto source…'); setBars(4); wAmp=20; wChaos=0.4; sOpacity=0.2;
     $('intro-glow').style.opacity=1;
-    fadeTo($('intro-motto'),1,300);
-    await new Promise(r=>setTimeout(r,300));
+    fadeTo($('intro-motto'),1,400);
+    await new Promise(r=>setTimeout(r,400));
     $('imw1').classList.add('lit');
-    await new Promise(r=>setTimeout(r,220));
+    await new Promise(r=>setTimeout(r,350));
     $('imw2').classList.add('lit');
-    await new Promise(r=>setTimeout(r,220));
+    await new Promise(r=>setTimeout(r,350));
     $('imw3').classList.add('lit');
 
-    await new Promise(r=>setTimeout(r,400));
+    // 5.7s — locked
+    await new Promise(r=>setTimeout(r,700));
     setStatus('Signal locked.'); setBars(5); wChaos=0; wAmp=22; sOpacity=0;
-    $('intro-scanline').style.opacity=0.35;
+    $('intro-scanline').style.opacity=0.3;
     glitch(1);
 
-    await new Promise(r=>setTimeout(r,200));
-    fadeTo($('intro-locked'),1,400);
+    await new Promise(r=>setTimeout(r,400));
+    fadeTo($('intro-locked'),1,500);
 
-    // auto-dismiss after 2s on locked screen
-    await new Promise(r=>setTimeout(r,2000));
+    // hold on locked state for 2.5s then dismiss
+    await new Promise(r=>setTimeout(r,2500));
     dismiss();
   }
 
