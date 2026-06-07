@@ -22,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/RC Favicon Logo.png" type="image/png" />
+  <script>if(sessionStorage.getItem('rc_intro_seen')){document.documentElement.classList.add('intro-skip');}</script>
   <style>
     /* ── INTRO OVERLAY ── */
     #rc-intro {
@@ -32,7 +33,7 @@
       font-family: 'Space Grotesk', sans-serif;
       overflow: hidden;
     }
-    #rc-intro.hidden { display: none; }
+    .intro-skip #rc-intro { display: none; }
     #intro-skip {
       position: absolute; top: 24px; right: 24px;
       font-family: 'Space Mono', monospace;
@@ -556,8 +557,6 @@
   if (sessionStorage.getItem('rc_intro_seen')) return;
   sessionStorage.setItem('rc_intro_seen', '1');
 
-  const overlay = document.getElementById('rc-intro');
-  overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 
   // ── helpers ──
@@ -612,7 +611,10 @@
     clearInterval(sInt); clearInterval(wInt);
     const c=$('intro-curtain');
     c.style.transition='opacity 0.55s ease'; c.style.opacity=1;
-    setTimeout(()=>{ overlay.classList.add('hidden'); document.body.style.overflow=''; }, 600);
+    setTimeout(()=>{
+      document.getElementById('rc-intro').style.display='none';
+      document.body.style.overflow='';
+    }, 600);
   }
 
   // ── skip ──
