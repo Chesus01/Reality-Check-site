@@ -70,7 +70,6 @@
       font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase;
       color: #F97316; margin-bottom: 52px; min-height: 20px; opacity: 0;
     }
-    #intro-logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; opacity: 0; }
     #intro-logo-ring {
       position: relative; display: flex; align-items: center; justify-content: center;
       width: clamp(130px,24vw,180px); height: clamp(130px,24vw,180px);
@@ -93,16 +92,33 @@
     #intro-title { font-size: clamp(2rem,6vw,3.6rem); font-weight: 700; letter-spacing: -2px; color: #fff; text-align: center; line-height: 1; }
     #intro-title span { color: #F97316; }
     #intro-sub { font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,12px); letter-spacing: 5px; color: rgba(255,255,255,0.45); text-transform: uppercase; }
-    #intro-motto { display: flex; gap: clamp(16px,3vw,32px); margin-top: 20px; opacity: 0; }
     .imword { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); transition: color 0.3s; }
     .imword.lit { color: #fff; }
     .imsep { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); color: #F97316; opacity: 0.5; }
-    #intro-locked { display: flex; align-items: center; gap: 8px; margin-top: 16px; opacity: 0; font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,11px); letter-spacing: 3px; text-transform: uppercase; color: #F97316; }
+    #intro-locked { display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 40px; opacity: 0; font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,11px); letter-spacing: 3px; text-transform: uppercase; color: #F97316; }
     #intro-locked .ldot { width: 8px; height: 8px; border-radius: 50%; background: #F97316; box-shadow: 0 0 8px #F97316; animation: ldot-pulse 1s ease-in-out infinite; }
     @keyframes ldot-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     #intro-curtain { position: absolute; inset: 0; background: #080808; opacity: 0; pointer-events: none; z-index: 20; }
+    /* glitch burst on stage */
     @keyframes iglitch { 0%{transform:translate(0);filter:none} 20%{transform:translate(-3px,1px);filter:hue-rotate(90deg)} 40%{transform:translate(3px,-1px);filter:hue-rotate(-90deg)} 60%{transform:translate(-2px,2px);filter:brightness(1.4)} 80%{transform:translate(2px,-2px);filter:brightness(0.7)} 100%{transform:translate(0);filter:none} }
     .iglitch { animation: iglitch 0.15s steps(2) forwards; }
+    /* glitch fade-in for logo/text */
+    @keyframes intro-glitch-reveal {
+      0%   { opacity:0; transform:translateX(-6px) skewX(-2deg); filter:blur(4px) hue-rotate(40deg) brightness(1.5); }
+      15%  { opacity:0.5; transform:translateX(5px) skewX(1.5deg); filter:blur(2px) hue-rotate(-30deg) brightness(1.3); }
+      30%  { opacity:0.35; transform:translateX(-3px); filter:blur(3px) hue-rotate(20deg); }
+      45%  { opacity:0.75; transform:translateX(3px) skewX(-1deg); filter:blur(1px) brightness(1.2); }
+      60%  { opacity:0.6; transform:translateX(-2px); filter:blur(1.5px); }
+      75%  { opacity:0.85; transform:translateX(1px); filter:blur(0.5px); }
+      90%  { opacity:0.95; transform:translateX(0); filter:blur(0px); }
+      100% { opacity:1; transform:none; filter:none; }
+    }
+    #intro-logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; opacity: 0; }
+    #intro-logo-wrap.glitch-in  { animation: intro-glitch-reveal 1.4s steps(1) forwards; }
+    #intro-logo-wrap.settled    { opacity:1; transform:none; filter:none; transition: filter 0.4s ease, transform 0.4s ease; }
+    #intro-motto { display: flex; gap: clamp(16px,3vw,32px); margin-top: 20px; opacity: 0; }
+    #intro-motto.glitch-in  { animation: intro-glitch-reveal 1.2s steps(1) forwards; }
+    #intro-motto.settled    { opacity:1; transform:none; filter:none; transition: filter 0.4s ease; }
   </style>
   <style>
     /* HERO */
@@ -197,7 +213,7 @@
 <body>
 
 <!-- ── INTRO OVERLAY ── -->
-<div id="rc-intro" class="hidden">
+<div id="rc-intro">
   <button id="intro-skip">Skip &#8594;</button>
   <div id="intro-glow"></div>
   <div id="intro-static"><canvas id="intro-static-cvs"></canvas></div>
@@ -211,6 +227,7 @@
     </div>
     <div id="intro-wave-wrap"><canvas id="intro-wave"></canvas></div>
     <div id="intro-status">Searching for signal&hellip;</div>
+    <div id="intro-locked"><div class="ldot"></div>Signal Locked</div>
     <div id="intro-logo-wrap">
       <div id="intro-logo-ring">
         <img id="intro-logo-img" src="assets/rc-logo-transparent.png" alt="Reality Check" />
@@ -225,7 +242,6 @@
       <span class="imsep">/</span>
       <span class="imword" id="imw3">Verify</span>
     </div>
-    <div id="intro-locked"><div class="ldot"></div>Signal Locked</div>
   </div>
 </div>
 
@@ -640,13 +656,18 @@
     // 3.0s — filtering
     await new Promise(r=>setTimeout(r,900));
     setStatus('Filtering noise…'); setBars(3); wAmp=16; wChaos=1.2; sOpacity=0.6;
-    fadeTo($('intro-logo-wrap'),1,700);
 
-    // 4.2s — locking
+    // 4.2s — locking, logo glitches in
     await new Promise(r=>setTimeout(r,1200));
     setStatus('Locking onto source…'); setBars(4); wAmp=20; wChaos=0.4; sOpacity=0.2;
     $('intro-glow').style.opacity=1;
-    fadeTo($('intro-motto'),1,400);
+    // logo glitch-reveals
+    const lw = $('intro-logo-wrap');
+    lw.classList.add('glitch-in');
+    // motto glitch-reveals shortly after
+    await new Promise(r=>setTimeout(r,600));
+    const mt = $('intro-motto');
+    mt.classList.add('glitch-in');
     await new Promise(r=>setTimeout(r,400));
     $('imw1').classList.add('lit');
     await new Promise(r=>setTimeout(r,350));
@@ -654,13 +675,18 @@
     await new Promise(r=>setTimeout(r,350));
     $('imw3').classList.add('lit');
 
-    // 5.7s — locked
+    // 6.5s — locked: clear all glitch, settle to clean
     await new Promise(r=>setTimeout(r,700));
-    setStatus('Signal locked.'); setBars(5); wChaos=0; wAmp=22; sOpacity=0;
-    $('intro-scanline').style.opacity=0.3;
+    setBars(5); wChaos=0; wAmp=22; sOpacity=0;
+    $('intro-scanline').style.opacity=0.15;
+    // remove status line entirely on lock
+    $('intro-status').style.opacity=0;
+    // settle logo and motto — remove glitch, snap to clean
+    lw.classList.remove('glitch-in'); lw.classList.add('settled');
+    mt.classList.remove('glitch-in'); mt.classList.add('settled');
     glitch(1);
 
-    await new Promise(r=>setTimeout(r,400));
+    await new Promise(r=>setTimeout(r,300));
     fadeTo($('intro-locked'),1,500);
 
     // hold on locked state for 2.5s then dismiss
