@@ -31,28 +31,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── SCROLLING ROWS — pause when off-screen, play when visible ──
+// ── SCROLLING ROWS — lazy load + pause when off-screen ──
 // Covers .gif-row, .img-row, .friends-img-row on all pages
 (function() {
   const rows = document.querySelectorAll('.gif-row, .img-row, .friends-img-row');
   if (!rows.length || !('IntersectionObserver' in window)) return;
 
-  // Add decoding="async" to every image in a scrolling row
+  // For non-gif rows: add decoding async + loading lazy
   rows.forEach(row => {
     row.querySelectorAll('img').forEach(img => {
       img.decoding = 'async';
-      if (!img.getAttribute('loading')) img.loading = 'lazy';
+      if (!img.getAttribute('loading') && !img.dataset.src) img.loading = 'lazy';
     });
   });
 
+  // Track which rows have had their data-src images loaded
+  const loaded = new WeakSet();
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      const row = entry.target;
+      if (entry.isIntersecting) {
+        // Swap data-src → src for GIF lazy loading (only once)
+        if (!loaded.has(row)) {
+          loaded.add(row);
+          row.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          });
+        }
+        row.style.animationPlayState = 'running';
+      } else {
+        row.style.animationPlayState = 'paused';
+      }
     });
-  }, { rootMargin: '0px 0px 200px 0px' }); // start loading 200px before reaching view
+  }, { rootMargin: '0px 0px 300px 0px' }); // pre-load 300px before reaching view
 
   rows.forEach(row => {
-    row.style.animationPlayState = 'paused'; // start paused, observer will start them
+    row.style.animationPlayState = 'paused';
     observer.observe(row);
   });
 })();
