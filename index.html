@@ -583,7 +583,13 @@
   const bars = [$('ib1'),$('ib2'),$('ib3'),$('ib4'),$('ib5')];
   function setBars(n){ bars.forEach((b,i)=> b.classList.toggle('on', i<n)); }
   function fadeTo(el, v, ms, delay){ return new Promise(r=>{ setTimeout(()=>{ el.style.transition=`opacity ${ms}ms ease`; el.style.opacity=v; setTimeout(r,ms); }, delay||0); }); }
-  function setStatus(msg){ const s=$('intro-status'); s.style.opacity=0; setTimeout(()=>{ s.textContent=msg; s.style.transition='opacity 0.15s'; s.style.opacity=1; },160); }
+  function setStatus(msg){
+    const s=$('intro-status');
+    s.style.transition='opacity 0.25s ease';
+    s.style.opacity=0;
+    setTimeout(()=>{ s.textContent=msg; }, 260); // change text only after fully faded out
+    setTimeout(()=>{ s.style.opacity=1; }, 300);  // then fade back in
+  }
   function glitch(n=3){ let c=0; const id=setInterval(()=>{ const st=$('intro-stage'); st.classList.add('iglitch'); setTimeout(()=>st.classList.remove('iglitch'),120); if(++c>=n) clearInterval(id); },80); }
 
   // ── static noise ──
