@@ -94,6 +94,14 @@
     .contact-inner p { color:var(--muted); margin:16px 0 36px; font-size:1.05rem; }
     @media (max-width:900px) { .reach-grid { grid-template-columns:1fr 1fr; } .offer-grid { grid-template-columns:1fr 1fr; } }
     @media (max-width:600px) { .audience-grid { grid-template-columns:1fr; } .offer-grid { grid-template-columns:1fr; } }
+    /* FRIENDS SCROLLING ROWS */
+    .friends-img-row { display:flex; gap:14px; width:max-content; align-items:center; }
+    .friends-img-row img { width:90px; height:90px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--border); }
+    .friends-img-row-left  { animation:img-left  45s linear infinite; }
+    .friends-img-row-right { animation:img-right 45s linear infinite; }
+    .friends-img-row:hover { animation-play-state:paused; }
+    @keyframes img-left  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes img-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
   </style>
 </head>
 <body>
@@ -391,6 +399,183 @@
             <img src="assets/blinko-qr.png" alt="Scan to play Blinko with Reality Check referral code" />
           </div>
           <div class="blinko-qr-caption">SCAN TO PLAY &bull; CODE: REALITY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRIENDS OF REALITY CHECK -->
+  <section style="background:var(--bg); border-top:1px solid var(--border); padding:60px 0; overflow:hidden;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem 40px;">
+      <h2>Friends of <span class="orange">Reality Check.</span></h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px; overflow:hidden;">
+      <!-- Row 1: Founders & Friends (scroll left) -->
+      <div style="overflow:hidden;">
+        <div class="friends-img-row friends-img-row-left">
+          <img src="assets/founders/79FyZB4f_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Aaron Harber Unvalut.jpg" alt="Aaron Harber" />
+          <img src="assets/founders/AlexMaze Moody Madness.jpg" alt="AlexMaze" />
+          <img src="assets/founders/Ammar Revolving Games.jpg" alt="Ammar" />
+          <img src="assets/founders/Blake Claynosaurz.jpg" alt="Blake" />
+          <img src="assets/founders/bLYbGkC1_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Camol OnSight-Sugartown.jpg" alt="Camol" />
+          <img src="assets/founders/Dominic Smith Creepz.webp" alt="Dominic Smith" />
+          <img src="assets/founders/Dutch Froge69mg - Copy.jpg" alt="Dutch" />
+          <img src="assets/founders/e6x2fTJD_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Farokh Rug Radio-Myriad Markets.jpg" alt="Farokh" />
+          <img src="assets/founders/Henry the Grape Cyber Kongz.jpg" alt="Henry the Grape" />
+          <img src="assets/founders/HJ6EqvKWgAAxhcm.png" alt="RC Friend" />
+          <img src="assets/founders/hzv3Q4yJ_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Inisght Chimpers.jpg" alt="Insight" />
+          <img src="assets/founders/J6wYDxYk_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Joe Carnell Creepz.jpg" alt="Joe Carnell" />
+          <img src="assets/founders/Justin Sun.jpg" alt="Justin Sun" />
+          <img src="assets/founders/Kevin Henrikson DeGods.png" alt="Kevin Henrikson" />
+          <!-- duplicate for seamless loop -->
+          <img src="assets/founders/79FyZB4f_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Aaron Harber Unvalut.jpg" alt="Aaron Harber" />
+          <img src="assets/founders/AlexMaze Moody Madness.jpg" alt="AlexMaze" />
+          <img src="assets/founders/Ammar Revolving Games.jpg" alt="Ammar" />
+          <img src="assets/founders/Blake Claynosaurz.jpg" alt="Blake" />
+          <img src="assets/founders/bLYbGkC1_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Camol OnSight-Sugartown.jpg" alt="Camol" />
+          <img src="assets/founders/Dominic Smith Creepz.webp" alt="Dominic Smith" />
+          <img src="assets/founders/Dutch Froge69mg - Copy.jpg" alt="Dutch" />
+          <img src="assets/founders/e6x2fTJD_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Farokh Rug Radio-Myriad Markets.jpg" alt="Farokh" />
+          <img src="assets/founders/Henry the Grape Cyber Kongz.jpg" alt="Henry the Grape" />
+          <img src="assets/founders/HJ6EqvKWgAAxhcm.png" alt="RC Friend" />
+          <img src="assets/founders/hzv3Q4yJ_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Inisght Chimpers.jpg" alt="Insight" />
+          <img src="assets/founders/J6wYDxYk_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Joe Carnell Creepz.jpg" alt="Joe Carnell" />
+          <img src="assets/founders/Justin Sun.jpg" alt="Justin Sun" />
+          <img src="assets/founders/Kevin Henrikson DeGods.png" alt="Kevin Henrikson" />
+        </div>
+      </div>
+      <!-- Row 2: Web3 Brands (scroll right) -->
+      <div style="overflow:hidden;">
+        <div class="friends-img-row friends-img-row-right">
+          <img src="assets/founders/koh9FrwE_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Kp4m0B8W_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Luca Netz Pudgy Penguins.jpg" alt="Luca Netz" />
+          <img src="assets/founders/OSF Rekt Guy.jpg" alt="OSF" />
+          <img src="assets/founders/Rafsby A Kid Called Beast.jpg" alt="Rafsby" />
+          <img src="assets/founders/Ron's Basement.jpg" alt="Ron's Basement" />
+          <img src="assets/founders/Scotty Bearish.jpg" alt="Scotty" />
+          <img src="assets/founders/Shan Tenset.png" alt="Shan" />
+          <img src="assets/founders/Simple Farmer Pixel Pups.jpg" alt="Simple Farmer" />
+          <img src="assets/founders/Spike Persona-Records.jpg" alt="Spike" />
+          <img src="assets/founders/Toli Bearish.jpg" alt="Toli" />
+          <img src="assets/founders/Travladd Crypto.jpg" alt="Travladd" />
+          <img src="assets/founders/Vi World of Women.jpg" alt="Vi" />
+          <img src="assets/founders/Viktor Ton Blockchain.jpg" alt="Viktor" />
+          <img src="assets/founders/VKgHX611_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/wJsFeHOJ_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Ybzp_QKu_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Yot Fugz.jpg" alt="Yot" />
+          <img src="assets/founders/zpECl1tN_400x400.jpg" alt="RC Friend" />
+          <!-- duplicate for seamless loop -->
+          <img src="assets/founders/koh9FrwE_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Kp4m0B8W_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Luca Netz Pudgy Penguins.jpg" alt="Luca Netz" />
+          <img src="assets/founders/OSF Rekt Guy.jpg" alt="OSF" />
+          <img src="assets/founders/Rafsby A Kid Called Beast.jpg" alt="Rafsby" />
+          <img src="assets/founders/Ron's Basement.jpg" alt="Ron's Basement" />
+          <img src="assets/founders/Scotty Bearish.jpg" alt="Scotty" />
+          <img src="assets/founders/Shan Tenset.png" alt="Shan" />
+          <img src="assets/founders/Simple Farmer Pixel Pups.jpg" alt="Simple Farmer" />
+          <img src="assets/founders/Spike Persona-Records.jpg" alt="Spike" />
+          <img src="assets/founders/Toli Bearish.jpg" alt="Toli" />
+          <img src="assets/founders/Travladd Crypto.jpg" alt="Travladd" />
+          <img src="assets/founders/Vi World of Women.jpg" alt="Vi" />
+          <img src="assets/founders/Viktor Ton Blockchain.jpg" alt="Viktor" />
+          <img src="assets/founders/VKgHX611_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/wJsFeHOJ_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Ybzp_QKu_400x400.jpg" alt="RC Friend" />
+          <img src="assets/founders/Yot Fugz.jpg" alt="Yot" />
+          <img src="assets/founders/zpECl1tN_400x400.jpg" alt="RC Friend" />
+        </div>
+      </div>
+      <!-- Row 3: Web3 Brands (scroll left) -->
+      <div style="overflow:hidden;">
+        <div class="friends-img-row friends-img-row-left">
+          <img src="assets/web3brands/-jUwNNAe_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-Njexkgs_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-RLE2RH__400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-WC3RTPY_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/4v0dXdrX_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/5Hrnxo3A_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/8888u2PV_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/A30us7K4_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/BhB9cffy_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/dYjH3esy_400x400.png" alt="Web3 Brand" />
+          <img src="assets/web3brands/e78eG3Ja_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/eOCfsI7L_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Gv2Ly_qn_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Hpex3_M4_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/HVfFP7Qe_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/iTe8aax2_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/JMKWBLqB_400x400.jpg" alt="Web3 Brand" />
+          <!-- duplicate for seamless loop -->
+          <img src="assets/web3brands/-jUwNNAe_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-Njexkgs_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-RLE2RH__400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/-WC3RTPY_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/4v0dXdrX_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/5Hrnxo3A_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/8888u2PV_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/A30us7K4_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/BhB9cffy_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/dYjH3esy_400x400.png" alt="Web3 Brand" />
+          <img src="assets/web3brands/e78eG3Ja_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/eOCfsI7L_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Gv2Ly_qn_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Hpex3_M4_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/HVfFP7Qe_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/iTe8aax2_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/JMKWBLqB_400x400.jpg" alt="Web3 Brand" />
+        </div>
+      </div>
+      <!-- Row 4: Remaining brands (scroll right) -->
+      <div style="overflow:hidden;">
+        <div class="friends-img-row friends-img-row-right">
+          <img src="assets/web3brands/KgrWKH9u_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/KpHn_Yzw_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/lPnfw692_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Ly1eNYu-_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Mr92TfMN_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/nsJ37GGF_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/rNE9GYuj_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/s4WFeZOX_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Uztz1q-9_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/VmW7EMts_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/vVwggE8x_400x400.png" alt="Web3 Brand" />
+          <img src="assets/web3brands/vwewGUfO_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/VysuN6mu_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/wBX9rQcZ_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Xdohv622_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/xJ-8AETS_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/ZJNjC7Ni_400x400.jpg" alt="Web3 Brand" />
+          <!-- duplicate for seamless loop -->
+          <img src="assets/web3brands/KgrWKH9u_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/KpHn_Yzw_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/lPnfw692_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Ly1eNYu-_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Mr92TfMN_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/nsJ37GGF_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/rNE9GYuj_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/s4WFeZOX_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Uztz1q-9_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/VmW7EMts_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/vVwggE8x_400x400.png" alt="Web3 Brand" />
+          <img src="assets/web3brands/vwewGUfO_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/VysuN6mu_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/wBX9rQcZ_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/Xdohv622_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/xJ-8AETS_400x400.jpg" alt="Web3 Brand" />
+          <img src="assets/web3brands/ZJNjC7Ni_400x400.jpg" alt="Web3 Brand" />
         </div>
       </div>
     </div>
