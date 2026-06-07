@@ -65,10 +65,16 @@
     .ibar:nth-child(1){height:12px} .ibar:nth-child(2){height:20px} .ibar:nth-child(3){height:28px} .ibar:nth-child(4){height:36px} .ibar:nth-child(5){height:44px}
     #intro-wave-wrap { width: min(480px,90vw); margin-bottom: 40px; opacity: 0; }
     #intro-wave { width: 100%; height: 56px; display: block; }
+    #intro-signal-zone {
+      position: relative; height: 36px; display: flex;
+      align-items: center; justify-content: center;
+      margin: 16px 0 32px;
+    }
     #intro-status {
+      position: absolute;
       font-family: 'Space Mono', monospace;
       font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase;
-      color: #F97316; margin-bottom: 52px; min-height: 20px; opacity: 0;
+      color: #F97316; opacity: 0;
     }
     #intro-logo-ring {
       position: relative; display: flex; align-items: center; justify-content: center;
@@ -90,7 +96,7 @@
     .imword { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); transition: color 0.3s; }
     .imword.lit { color: #fff; }
     .imsep { font-family: 'Space Mono', monospace; font-size: clamp(10px,1.8vw,13px); color: #F97316; opacity: 0.5; }
-    #intro-locked { display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 40px; opacity: 0; font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,11px); letter-spacing: 3px; text-transform: uppercase; color: #F97316; }
+    #intro-locked { position: absolute; display: flex; align-items: center; gap: 8px; opacity: 0; font-family: 'Space Mono', monospace; font-size: clamp(9px,1.5vw,11px); letter-spacing: 3px; text-transform: uppercase; color: #F97316; }
     #intro-locked .ldot { width: 8px; height: 8px; border-radius: 50%; background: #F97316; box-shadow: 0 0 8px #F97316; animation: ldot-pulse 1s ease-in-out infinite; }
     @keyframes ldot-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     #intro-curtain { position: absolute; inset: 0; background: #080808; opacity: 0; pointer-events: none; z-index: 20; }
@@ -221,8 +227,10 @@
       <div class="ibar" id="ib5"></div>
     </div>
     <div id="intro-wave-wrap"><canvas id="intro-wave"></canvas></div>
-    <div id="intro-status">Searching for signal&hellip;</div>
-    <div id="intro-locked"><div class="ldot"></div>Signal Locked</div>
+    <div id="intro-signal-zone">
+      <div id="intro-status">Searching for signal&hellip;</div>
+      <div id="intro-locked"><div class="ldot"></div>Signal Locked</div>
+    </div>
     <div id="intro-logo-wrap">
       <div id="intro-logo-ring">
         <img id="intro-logo-img" src="assets/rc-logo-transparent.png" alt="Reality Check" />
