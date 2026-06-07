@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reality Check — Signal Incoming</title>
+  <link rel="icon" href="assets/RC Favicon Logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #F97316;
+      --orange2: #FB923C;
+      --bg: #080808;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── SKIP BUTTON ── */
+    #skip-btn {
+      position: fixed; top: 24px; right: 24px; z-index: 1000;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); background: transparent;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+      padding: 8px 16px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    #skip-btn:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.35); }
+
+    /* ── STATIC / SCANLINE OVERLAY ── */
+    #static-overlay {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none;
+      opacity: 0;
+    }
+    #static-canvas { width: 100%; height: 100%; display: block; }
+
+    /* Scanline pass */
+    #scanline {
+      position: fixed; inset: 0; z-index: 3; pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.08) 3px,
+        rgba(0,0,0,0.08) 4px
+      );
+      opacity: 0;
+    }
+
+    /* ── MAIN STAGE ── */
+    #stage {
+      position: fixed; inset: 0; z-index: 5;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0;
+    }
+
+    /* ── SIGNAL BARS ── */
+    #signal-bars {
+      display: flex; align-items: flex-end; gap: 5px;
+      margin-bottom: 48px;
+      opacity: 0;
+    }
+    .bar {
+      width: 8px; border-radius: 3px 3px 0 0;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s ease;
+    }
+    .bar.active { background: var(--orange); }
+    .bar:nth-child(1) { height: 12px; }
+    .bar:nth-child(2) { height: 20px; }
+    .bar:nth-child(3) { height: 28px; }
+    .bar:nth-child(4) { height: 36px; }
+    .bar:nth-child(5) { height: 44px; }
+
+    /* ── WAVEFORM ── */
+    #waveform-wrap {
+      width: min(480px, 90vw);
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    #waveform-canvas { width: 100%; height: 56px; display: block; }
+
+    /* ── STATUS TEXT ── */
+    #status-line {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px, 1.8vw, 13px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 52px;
+      min-height: 20px;
+      opacity: 0;
+      filter: blur(0px);
+    }
+
+    /* ── LOGO AREA ── */
+    #logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 20px; opacity: 0;
+    }
+    #logo-img {
+      width: clamp(120px, 28vw, 200px);
+      height: clamp(120px, 28vw, 200px);
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    #logo-title {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 700; letter-spacing: -2px;
+      text-align: center; line-height: 1;
+    }
+    #logo-title span { color: var(--orange); }
+    #logo-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(9px, 1.5vw, 12px);
+      letter-spacing: 5px;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+    }
+
+    /* ── MOTTO ── */
+    #motto {
+      display: flex; gap: clamp(16px, 3vw, 32px);
+      margin-top: 20px; opacity: 0;
+    }
+    .motto-word {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px, 1.8vw, 13px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .motto-word.lit { color: #fff; }
+    .motto-sep {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(10px, 1.8vw, 13px);
+      color: var(--orange); opacity: 0.5;
+    }
+
+    /* ── LOCKED BADGE ── */
+    #locked-badge {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 16px; opacity: 0;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(9px, 1.5vw, 11px);
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange);
+    }
+    #locked-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 8px var(--orange);
+      animation: pulse-dot 1s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── CTA BUTTONS ── */
+    #cta-wrap {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center; margin-top: 40px;
+      opacity: 0; transform: translateY(20px);
+    }
+    .cta-btn {
+      padding: 13px 26px; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(13px, 1.8vw, 15px); font-weight: 700;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .cta-primary {
+      background: var(--orange); color: #000;
+      box-shadow: 0 0 24px rgba(249,115,22,0.4);
+    }
+    .cta-primary:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 0 32px rgba(249,115,22,0.6); }
+    .cta-secondary {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .cta-secondary:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+
+    /* ── GLITCH UTILITY ── */
+    .glitch {
+      animation: glitch-anim 0.15s steps(2) forwards;
+    }
+    @keyframes glitch-anim {
+      0%   { transform: translate(0); filter: none; }
+      20%  { transform: translate(-3px, 1px); filter: hue-rotate(90deg); }
+      40%  { transform: translate(3px, -1px); filter: hue-rotate(-90deg); }
+      60%  { transform: translate(-2px, 2px); filter: brightness(1.4); }
+      80%  { transform: translate(2px, -2px); filter: brightness(0.7); }
+      100% { transform: translate(0); filter: none; }
+    }
+
+    /* ── ORANGE GLOW RING ── */
+    #glow-ring {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%);
+      opacity: 0;
+    }
+
+    /* ── FADE OUT ── */
+    #curtain {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--bg); opacity: 0; pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="skip-btn">Skip &#8594;</button>
+  <div id="glow-ring"></div>
+  <div id="static-overlay"><canvas id="static-canvas"></canvas></div>
+  <div id="scanline"></div>
+  <div id="curtain"></div>
+
+  <div id="stage">
+    <div id="signal-bars">
+      <div class="bar" id="b1"></div>
+      <div class="bar" id="b2"></div>
+      <div class="bar" id="b3"></div>
+      <div class="bar" id="b4"></div>
+      <div class="bar" id="b5"></div>
+    </div>
+
+    <div id="waveform-wrap">
+      <canvas id="waveform-canvas"></canvas>
+    </div>
+
+    <div id="status-line">Searching for signal&hellip;</div>
+
+    <div id="logo-wrap">
+      <img id="logo-img" src="assets/RC Favicon Logo.png" alt="Reality Check" />
+      <div id="logo-title">Reality <span>Check</span></div>
+      <div id="logo-sub">Live Web3 Show &bull; Mon&ndash;Fri 11AM EST</div>
+    </div>
+
+    <div id="motto">
+      <span class="motto-word" id="mw1">Question</span>
+      <span class="motto-sep">/</span>
+      <span class="motto-word" id="mw2">Think</span>
+      <span class="motto-sep">/</span>
+      <span class="motto-word" id="mw3">Verify</span>
+    </div>
+
+    <div id="locked-badge">
+      <div class="dot"></div>
+      Signal Locked
+    </div>
+
+    <div id="cta-wrap">
+      <a href="index.html" class="cta-btn cta-primary">Enter Site</a>
+      <a href="watch.html" class="cta-btn cta-secondary">Watch Live</a>
+      <a href="partners.html" class="cta-btn cta-secondary">Partner With Us</a>
+      <a href="newsletter.html" class="cta-btn cta-secondary">Join The Checkpoint</a>
+    </div>
+  </div>
+
+<script>
+// ── UTILS ──
+const el = id => document.getElementById(id);
+const lerp = (a, b, t) => a + (b - a) * t;
+
+// Skip
+el('skip-btn').addEventListener('click', () => skipToEnd());
+
+// ── STATIC NOISE CANVAS ──
+const staticCvs = el('static-canvas');
+const sCtx = staticCvs.getContext('2d');
+let staticOpacity = 0;
+function resizeStatic() {
+  staticCvs.width = window.innerWidth;
+  staticCvs.height = window.innerHeight;
+}
+resizeStatic();
+window.addEventListener('resize', resizeStatic);
+
+function drawStatic(intensity) {
+  if (intensity <= 0) { el('static-overlay').style.opacity = 0; return; }
+  el('static-overlay').style.opacity = intensity * 0.55;
+  const w = staticCvs.width, h = staticCvs.height;
+  const img = sCtx.createImageData(w, h);
+  const data = img.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const v = Math.random() > 0.5 ? Math.floor(Math.random() * 255) : 0;
+    data[i] = data[i+1] = data[i+2] = v;
+    data[i+3] = Math.random() > 0.6 ? 255 : 0;
+  }
+  sCtx.putImageData(img, 0, 0);
+}
+
+// ── WAVEFORM CANVAS ──
+const waveCvs = el('waveform-canvas');
+const wCtx = waveCvs.getContext('2d');
+let wavePhase = 0;
+let waveAmplitude = 0;
+let waveChaos = 1;
+
+function resizeWave() {
+  waveCvs.width = waveCvs.offsetWidth * window.devicePixelRatio;
+  waveCvs.height = waveCvs.offsetHeight * window.devicePixelRatio;
+  wCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+resizeWave();
+
+function drawWave(amplitude, chaos, phase) {
+  const w = waveCvs.offsetWidth, h = waveCvs.offsetHeight;
+  wCtx.clearRect(0, 0, w, h);
+  wCtx.beginPath();
+  const mid = h / 2;
+  for (let x = 0; x < w; x++) {
+    const noise = chaos > 0 ? (Math.random() - 0.5) * amplitude * chaos * 1.4 : 0;
+    const clean = Math.sin((x / w) * Math.PI * 6 + phase) * amplitude;
+    const y = mid + clean + noise;
+    x === 0 ? wCtx.moveTo(x, y) : wCtx.lineTo(x, y);
+  }
+  const grad = wCtx.createLinearGradient(0, 0, w, 0);
+  grad.addColorStop(0, 'rgba(249,115,22,0)');
+  grad.addColorStop(0.2, `rgba(249,115,22,${0.4 + amplitude/40})`);
+  grad.addColorStop(0.5, `rgba(249,115,22,${0.7 + amplitude/40})`);
+  grad.addColorStop(0.8, `rgba(249,115,22,${0.4 + amplitude/40})`);
+  grad.addColorStop(1, 'rgba(249,115,22,0)');
+  wCtx.strokeStyle = grad;
+  wCtx.lineWidth = 1.5;
+  wCtx.stroke();
+}
+
+// ── SIGNAL BARS ──
+const bars = [el('b1'), el('b2'), el('b3'), el('b4'), el('b5')];
+function setSignalBars(count) {
+  bars.forEach((b, i) => {
+    b.classList.toggle('active', i < count);
+  });
+}
+
+// ── FADE ELEMENT ──
+function fadeTo(elem, opacity, duration, delay = 0) {
+  return new Promise(res => {
+    setTimeout(() => {
+      elem.style.transition = `opacity ${duration}ms ease`;
+      elem.style.opacity = opacity;
+      setTimeout(res, duration);
+    }, delay);
+  });
+}
+
+function slideUp(elem, duration, delay = 0) {
+  return new Promise(res => {
+    setTimeout(() => {
+      elem.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
+      elem.style.opacity = 1;
+      elem.style.transform = 'translateY(0)';
+      setTimeout(res, duration);
+    }, delay);
+  });
+}
+
+// ── STATUS TEXT ──
+const statusMessages = [
+  'Searching for signal…',
+  'Receiving signal…',
+  'Filtering noise…',
+  'Locking onto source…',
+  'Signal locked.',
+];
+let statusIdx = 0;
+function setStatus(msg) {
+  const s = el('status-line');
+  s.style.transition = 'opacity 0.15s ease';
+  s.style.opacity = 0;
+  setTimeout(() => {
+    s.textContent = msg;
+    s.style.opacity = 1;
+  }, 160);
+}
+
+// ── GLITCH BURST ──
+function glitchBurst(elem, times = 3, interval = 80) {
+  let count = 0;
+  const id = setInterval(() => {
+    elem.classList.add('glitch');
+    setTimeout(() => elem.classList.remove('glitch'), 120);
+    count++;
+    if (count >= times) clearInterval(id);
+  }, interval);
+}
+
+// ── MAIN ANIMATION TIMELINE ──
+let animationFrame;
+let staticInterval;
+let waveInterval;
+let skipped = false;
+
+async function runIntro() {
+  // Phase 0 — boot static noise immediately
+  el('scanline').style.transition = 'opacity 0.3s';
+  el('scanline').style.opacity = '1';
+
+  // Show static at full intensity
+  staticOpacity = 1;
+  staticInterval = setInterval(() => drawStatic(staticOpacity), 40);
+
+  // 300ms — signal bars + waveform fade in
+  await new Promise(r => setTimeout(r, 300));
+  fadeTo(el('signal-bars'), 1, 400);
+  fadeTo(el('waveform-wrap'), 1, 400);
+  fadeTo(el('status-line'), 1, 400);
+
+  // Waveform animation starts with chaos
+  waveAmplitude = 8;
+  waveChaos = 1.8;
+  waveInterval = setInterval(() => {
+    wavePhase += 0.12;
+    drawWave(waveAmplitude, waveChaos, wavePhase);
+  }, 30);
+
+  setSignalBars(1);
+
+  // 600ms — weak signal state
+  await new Promise(r => setTimeout(r, 600));
+  setStatus('Receiving signal…');
+  setSignalBars(2);
+  waveAmplitude = 12;
+
+  // 900ms — interference burst
+  await new Promise(r => setTimeout(r, 400));
+  glitchBurst(el('stage'), 4, 70);
+  setSignalBars(1);
+  waveAmplitude = 6;
+  waveChaos = 2.5;
+  staticOpacity = 0.9;
+
+  // 1200ms — recovering
+  await new Promise(r => setTimeout(r, 400));
+  setStatus('Filtering noise…');
+  setSignalBars(3);
+  waveAmplitude = 16;
+  waveChaos = 1.2;
+  staticOpacity = 0.6;
+
+  // Fade in logo during filter phase
+  fadeTo(el('logo-wrap'), 1, 500);
+
+  // 1700ms — signal strengthening
+  await new Promise(r => setTimeout(r, 600));
+  setStatus('Locking onto source…');
+  setSignalBars(4);
+  waveAmplitude = 20;
+  waveChaos = 0.4;
+  staticOpacity = 0.25;
+  el('glow-ring').style.transition = 'opacity 0.6s ease';
+  el('glow-ring').style.opacity = '1';
+
+  // Motto words light up
+  fadeTo(el('motto'), 1, 300);
+  await new Promise(r => setTimeout(r, 300));
+  el('mw1').classList.add('lit');
+  await new Promise(r => setTimeout(r, 220));
+  el('mw2').classList.add('lit');
+  await new Promise(r => setTimeout(r, 220));
+  el('mw3').classList.add('lit');
+
+  // 2500ms — LOCKED
+  await new Promise(r => setTimeout(r, 400));
+  setStatus('Signal locked.');
+  setSignalBars(5);
+  waveChaos = 0;
+  waveAmplitude = 22;
+  staticOpacity = 0;
+
+  // Scanlines soften
+  el('scanline').style.opacity = '0.35';
+
+  // One final glitch as it locks
+  glitchBurst(el('stage'), 1, 0);
+
+  await new Promise(r => setTimeout(r, 200));
+
+  // Locked badge
+  fadeTo(el('locked-badge'), 1, 400);
+
+  // CTA buttons slide up
+  await new Promise(r => setTimeout(r, 500));
+  slideUp(el('cta-wrap'), 500);
+
+  // Auto-navigate after 5s of CTA being shown (if not interacted)
+  setTimeout(() => {
+    if (!skipped) autoExit();
+  }, 6000);
+}
+
+function autoExit() {
+  const curtain = el('curtain');
+  curtain.style.transition = 'opacity 0.6s ease';
+  curtain.style.opacity = 1;
+  setTimeout(() => { window.location.href = 'index.html'; }, 700);
+}
+
+function skipToEnd() {
+  skipped = true;
+  clearInterval(staticInterval);
+  clearInterval(waveInterval);
+
+  // Kill static instantly
+  staticOpacity = 0;
+  el('static-overlay').style.opacity = 0;
+  el('scanline').style.opacity = '0.35';
+  el('glow-ring').style.opacity = '1';
+
+  // Set bars full
+  setSignalBars(5);
+
+  // Set wave calm
+  waveAmplitude = 22; waveChaos = 0;
+  waveInterval = setInterval(() => {
+    wavePhase += 0.08;
+    drawWave(waveAmplitude, 0, wavePhase);
+  }, 30);
+
+  // Show all elements
+  el('signal-bars').style.opacity = 1;
+  el('waveform-wrap').style.opacity = 1;
+  el('status-line').style.opacity = 1;
+  el('status-line').textContent = 'Signal locked.';
+  el('logo-wrap').style.opacity = 1;
+  el('motto').style.opacity = 1;
+  ['mw1','mw2','mw3'].forEach(id => el(id).classList.add('lit'));
+  el('locked-badge').style.opacity = 1;
+  el('cta-wrap').style.opacity = 1;
+  el('cta-wrap').style.transform = 'translateY(0)';
+
+  el('skip-btn').style.display = 'none';
+}
+
+// ── BOOT ──
+runIntro();
+</script>
+</body>
+</html>
