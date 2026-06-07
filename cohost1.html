@@ -54,8 +54,28 @@
     .contact-strip { background:linear-gradient(135deg,rgba(249,115,22,0.08) 0%,transparent 100%); border:1px solid rgba(249,115,22,0.2); border-radius:20px; padding:48px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-top:60px; }
     .contact-strip h3 { font-size:1.5rem; margin-bottom:6px; }
     .contact-strip p { color:var(--muted); font-size:14px; }
-    @media (max-width:900px) { .profile-hero-inner { flex-direction:column; text-align:center; } .profile-socials { justify-content:center; } .bio-grid { grid-template-columns:1fr; } .services-grid { grid-template-columns:1fr 1fr; } }
-    @media (max-width:600px) { .profile-avatar-wrap { width:160px; height:160px; } .services-grid { grid-template-columns:1fr; } .contact-strip { text-align:center; justify-content:center; } }
+    /* POST CAROUSEL */
+    .post-carousel-section-inner { max-width:1120px; margin:0 auto; padding:0 2rem 36px; }
+    .post-carousel-stage-wrap { position:relative; height:640px; }
+    .post-carousel-arrows { display:flex; justify-content:space-between; align-items:center; position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); pointer-events:none; z-index:10; padding:0 40px; }
+    .carousel-btn { width:48px; height:48px; border-radius:50%; background:rgba(8,8,8,0.9); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:20px; transition:all 0.2s; pointer-events:all; backdrop-filter:blur(8px); }
+    .carousel-btn:hover { border-color:var(--orange); color:var(--orange); background:rgba(249,115,22,0.1); }
+    .post-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:visible; }
+    .post-slide { position:absolute; width:360px; border-radius:16px; overflow:hidden; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease, box-shadow 0.4s ease, border-color 0.3s ease; border:2px solid transparent; }
+    .post-slide img { width:100%; height:auto; max-height:600px; object-fit:cover; object-position:top; display:block; }
+    .post-slide.pos-center { transform:translateX(0) scale(1); z-index:3; opacity:1; border-color:var(--orange); box-shadow:0 8px 56px rgba(249,115,22,0.35), 0 0 0 1px rgba(249,115,22,0.15); }
+    .post-slide.pos-left  { transform:translateX(-310px) scale(0.82); z-index:2; opacity:0.7; border-color:rgba(249,115,22,0.25); }
+    .post-slide.pos-right { transform:translateX(310px) scale(0.82); z-index:2; opacity:0.7; border-color:rgba(249,115,22,0.25); }
+    .post-slide.pos-far-left  { transform:translateX(-700px) scale(0.65); z-index:1; opacity:0; pointer-events:none; }
+    .post-slide.pos-far-right { transform:translateX(700px) scale(0.65); z-index:1; opacity:0; pointer-events:none; }
+    .post-slide.pos-center.lit { animation:post-glow 0.7s ease-out forwards; }
+    @keyframes post-glow { 0%{box-shadow:0 8px 56px rgba(249,115,22,0.35)} 35%{box-shadow:0 8px 90px rgba(249,115,22,0.85), 0 0 0 2px rgba(249,115,22,0.5); border-color:#fb923c} 100%{box-shadow:0 8px 56px rgba(249,115,22,0.35), 0 0 0 1px rgba(249,115,22,0.15); border-color:var(--orange)} }
+    /* PHOTO GRID */
+    .photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+    .photo-grid img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:14px; border:1px solid var(--border); transition:all 0.25s; cursor:pointer; }
+    .photo-grid img:hover { border-color:var(--orange); transform:scale(1.02); box-shadow:0 8px 32px rgba(249,115,22,0.2); }
+    @media (max-width:900px) { .profile-hero-inner { flex-direction:column; text-align:center; } .profile-socials { justify-content:center; } .bio-grid { grid-template-columns:1fr; } .services-grid { grid-template-columns:1fr 1fr; } .post-carousel-stage-wrap{height:520px;} .post-slide{width:300px;} .post-slide.pos-left{transform:translateX(-240px) scale(0.82);} .post-slide.pos-right{transform:translateX(240px) scale(0.82);} .photo-grid{grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:600px) { .profile-avatar-wrap { width:160px; height:160px; } .services-grid { grid-template-columns:1fr; } .contact-strip { text-align:center; justify-content:center; } .post-carousel-stage-wrap{height:420px;} .post-slide{width:260px;} .post-slide.pos-left{transform:translateX(-175px) scale(0.78);} .post-slide.pos-right{transform:translateX(175px) scale(0.78);} }
   </style>
 </head>
 <body>
@@ -202,6 +222,36 @@
       </div>
     </div>
   </section>
+  <!-- TOP POSTS CAROUSEL -->
+  <section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0; overflow:hidden;">
+    <div class="post-carousel-section-inner">
+      <p class="section-label">Top Posts on X</p>
+      <h2>From the <span class="orange">timeline.</span></h2>
+    </div>
+    <div class="post-carousel-stage-wrap">
+      <div class="post-stage" id="post-stage"></div>
+      <div class="post-carousel-arrows">
+        <button class="carousel-btn" id="post-prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn" id="post-next" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RC PHOTO GALLERY -->
+  <section style="background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:60px 0;">
+    <div style="max-width:1120px; margin:0 auto; padding:0 2rem;">
+      <p class="section-label">RC Art</p>
+      <h2>Kenny in the <span class="orange">universe.</span></h2>
+      <div class="photo-grid">
+        <img src="assets/kenny/rc1.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc2.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc3.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc4.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc5.jpg" alt="Kenny RC Art" loading="lazy" />
+        <img src="assets/kenny/rc6.jpg" alt="Kenny RC Art" loading="lazy" />
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -222,6 +272,57 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+// ── POST CAROUSEL ──
+const POSTS = ['post1.png','post2.png','post3.png','post4.png','post5.png','post6.png','post7.png','post8.png'];
+const POST_PATH = 'assets/posts/kenny/';
+const stage = document.getElementById('post-stage');
+const prevBtn = document.getElementById('post-prev');
+const nextBtn = document.getElementById('post-next');
+if (stage) {
+  let idx = 0; let animating = false;
+  const TOTAL = POSTS.length;
+  function mod(n) { return ((n % TOTAL) + TOTAL) % TOTAL; }
+  function makeSlide(postIdx, posClass) {
+    const div = document.createElement('div');
+    div.className = 'post-slide ' + posClass;
+    div.dataset.postIdx = postIdx;
+    const img = document.createElement('img');
+    img.src = POST_PATH + POSTS[mod(postIdx)];
+    img.alt = 'X Post'; img.loading = 'lazy';
+    div.appendChild(img); return div;
+  }
+  function render() {
+    stage.innerHTML = '';
+    stage.appendChild(makeSlide(idx - 2, 'pos-far-left'));
+    stage.appendChild(makeSlide(idx - 1, 'pos-left'));
+    stage.appendChild(makeSlide(idx,     'pos-center'));
+    stage.appendChild(makeSlide(idx + 1, 'pos-right'));
+    stage.appendChild(makeSlide(idx + 2, 'pos-far-right'));
+  }
+  render();
+  function glowCenter() {
+    const c = stage.querySelector('.pos-center');
+    if (!c) return;
+    c.classList.remove('lit'); void c.offsetWidth; c.classList.add('lit');
+    setTimeout(() => c.classList.remove('lit'), 750);
+  }
+  function advance(dir) {
+    if (animating) return; animating = true;
+    idx = mod(idx + dir);
+    render(); glowCenter();
+    setTimeout(() => { animating = false; }, 520);
+  }
+  prevBtn.addEventListener('click', () => advance(-1));
+  nextBtn.addEventListener('click', () => advance(1));
+  stage.addEventListener('click', (e) => {
+    const slide = e.target.closest('.post-slide');
+    if (!slide) return;
+    if (slide.classList.contains('pos-right')) advance(1);
+    else if (slide.classList.contains('pos-left')) advance(-1);
+  });
+}
+</script>
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contact-modal">
   <div class="modal-box">
