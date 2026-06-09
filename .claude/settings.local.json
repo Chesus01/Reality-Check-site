@@ -18,7 +18,26 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\" | Where-Object { $_.Extension -in '.png','.jpg','.jpeg' } | Select-Object Name | Sort-Object Name)",
       "PowerShell(Copy-Item \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\\\\ChatGPT Image Jun 5, 2026, 03_46_28 PM.png\" \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\hud-bg.png\" -Force)",
       "WebFetch(domain:www.youtube.com)",
-      "mcp__Claude_in_Chrome__javascript_tool"
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(git -C \"C:/Users/Devin/reality-check\" status)",
+      "Bash(git -C \"C:/Users/Devin/reality-check\" add index.html watch.html chesus.html cohost1.html cohost2.html partners.html)",
+      "Bash(git -C C:/Users/Devin/reality-check commit -m ' *)",
+      "Bash(git -C \"C:/Users/Devin/reality-check\" push)",
+      "Bash(git -C \"C:/Users/Devin/reality-check\" add assets/rc-banner.png index.html watch.html chesus.html cohost1.html cohost2.html partners.html)",
+      "Bash(git -C \"C:/Users/Devin/reality-check\" add index.html)",
+      "WebFetch(domain:qeindex.xyz)",
+      "WebFetch(domain:developers.beehiiv.com)",
+      "WebFetch(domain:www.brevo.com)",
+      "WebFetch(domain:mailchimp.com)",
+      "Bash(copy \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\\\\Reality Check Logo.png\" \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\rc-logo-full.png\")",
+      "Bash(copy \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Reality Check\\\\RC Main Image.png\" \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\rc-main-image.png\")",
+      "Bash(mkdir -p \"C:/Users/Devin/reality-check/assets/anidiot\" && cp \"C:/Users/Devin/Downloads/AnIdiot RC Images/\"*.jpg \"C:/Users/Devin/reality-check/assets/anidiot/\" && ls \"C:/Users/Devin/reality-check/assets/anidiot/\" | wc -l)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\rc-banner.png'\\); Write-Host \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "Bash(cp \"C:\\\\Users\\\\Devin\\\\Downloads\\\\RC Founders & Friends\"/* \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\founders/\")",
+      "Bash(cp \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Web3 Brands\"/* \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\web3brands/\")",
+      "Bash(cp \"C:\\\\Users\\\\Devin\\\\Downloads\\\\Untitled design.svg\" \"C:\\\\Users\\\\Devin\\\\reality-check\\\\assets\\\\rc-logo-full.svg\" && echo \"copied\")",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }
