@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "gICem3Eq1tA",
+      "title": "Reality Check: NFTs & Abstract XP Day",
+      "thumbnail": "https://i.ytimg.com/vi/gICem3Eq1tA/maxresdefault_live.jpg"
+    },
+    {
       "id": "cv8UfYuDZ6c",
       "title": "Reality Check: NFT Exploit & Market News",
       "thumbnail": "https://i.ytimg.com/vi/cv8UfYuDZ6c/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "AMaRhz5BpPE",
       "title": "Reality Check: Abstract XP Day & NFT",
       "thumbnail": "https://i.ytimg.com/vi/AMaRhz5BpPE/maxresdefault.jpg"
-    },
-    {
-      "id": "3DPhXr9ZmtQ",
-      "title": "Reality Check: Clutch Markets / PupCup NFT Reveal",
-      "thumbnail": "https://i.ytimg.com/vi/3DPhXr9ZmtQ/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-09T14:44:44.640234Z"
+  "updated": "2026-06-09T20:04:47.621979Z"
 }
