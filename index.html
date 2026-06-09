@@ -543,6 +543,18 @@
         </a>
         <a href="/partners" class="btn btn-outline">Partner With Reality Check</a>
       </div>
+
+      <!-- Newsletter signup -->
+      <div style="margin-top:48px; border-top:1px solid var(--border); padding-top:48px; max-width:480px; margin-left:auto; margin-right:auto; text-align:center;">
+        <p class="section-label">The Checkpoint</p>
+        <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:8px;">Daily Web3 briefing. <span class="orange">Free.</span></h3>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Crypto, NFTs, markets, and macro — delivered every weekday at 7AM EST.</p>
+        <form class="nl-form" id="subscribe-form-home" style="display:flex; gap:10px; margin-bottom:10px;">
+          <input type="email" placeholder="Enter your email" required style="flex:1; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:'Space Grotesk',sans-serif; font-size:14px; outline:none;" />
+          <button type="submit" style="padding:14px 24px; background:var(--orange); color:#fff; border:none; border-radius:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">Subscribe Free</button>
+        </form>
+        <p style="font-size:12px; color:var(--muted); font-family:'Space Mono',monospace;">Free forever. No spam. Unsubscribe anytime.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -740,6 +752,31 @@ async function loadLatestVideos() {
 }
 
 loadLatestVideos();
+
+// Newsletter signup
+document.getElementById('subscribe-form-home').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.querySelector('input[type="email"]').value;
+  const btn = form.querySelector('button');
+  btn.textContent = 'Subscribing...';
+  btn.disabled = true;
+  fetch('https://hook.us2.make.com/v4gs7lb35k1bpzahwld3fev9kpfiidtr', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(res => {
+    if (res.ok || res.status === 204 || res.status === 201) {
+      btn.textContent = '✓ You\'re in!';
+      btn.style.background = '#22c55e';
+      form.querySelector('input').value = '';
+    } else { throw new Error('Failed'); }
+  }).catch(() => {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+    btn.style.background = '';
+  });
+});
 </script>
 </body>
 </html>
