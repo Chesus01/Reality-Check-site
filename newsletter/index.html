@@ -347,34 +347,50 @@
 
     /* POLL TRIGGER */
     .poll-trigger-wrap {
-      margin-top: 32px;
-      padding-top: 28px;
+      margin-top: 40px;
+      padding-top: 36px;
       border-top: 1px solid var(--border);
       text-align: center;
     }
-    .poll-trigger-wrap p {
+    .poll-trigger-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .poll-trigger-heading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .poll-trigger-sub {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 14px;
+      margin-bottom: 20px;
     }
     .poll-trigger-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
+      gap: 10px;
+      padding: 14px 28px;
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.35);
+      border-radius: 12px;
+      color: var(--orange);
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
     }
     .poll-trigger-btn:hover {
+      background: rgba(249,115,22,0.15);
       border-color: var(--orange);
-      background: rgba(249,115,22,0.06);
+      transform: translateY(-1px);
     }
 
     /* POLL MODAL */
@@ -721,7 +737,9 @@
       </div>
 
       <div class="poll-trigger-wrap">
-        <p>Help shape what we cover each morning.</p>
+        <span class="poll-trigger-label">Community Voice</span>
+        <p class="poll-trigger-heading">Shape The Checkpoint.</p>
+        <p class="poll-trigger-sub">Tell us what you want to see every morning — we're listening.</p>
         <button class="poll-trigger-btn" id="open-poll">
           📋 What news do you want to see more of?
         </button>
