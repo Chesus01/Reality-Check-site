@@ -344,6 +344,164 @@
       .nl-sections-grid { grid-template-columns: 1fr; }
       .nl-stats { gap: 28px; }
     }
+
+    /* POLL TRIGGER */
+    .poll-trigger-wrap {
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .poll-trigger-wrap p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .poll-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .poll-trigger-btn:hover {
+      border-color: var(--orange);
+      background: rgba(249,115,22,0.06);
+    }
+
+    /* POLL MODAL */
+    .poll-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .poll-overlay.active { display: flex; }
+    .poll-modal {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .poll-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .poll-close:hover { color: var(--text); }
+    .poll-modal h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .poll-modal .poll-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .poll-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .poll-option:hover { border-color: rgba(249,115,22,0.4); }
+    .poll-option input[type="checkbox"] { display: none; }
+    .poll-option.checked {
+      border-color: var(--orange);
+      background: rgba(249,115,22,0.07);
+    }
+    .poll-checkbox {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .poll-option.checked .poll-checkbox {
+      border-color: var(--orange);
+      background: var(--orange);
+    }
+    .poll-option.checked .poll-checkbox::after {
+      content: '✓';
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .poll-option-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .poll-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .poll-submit:hover { background: var(--orange2); }
+    .poll-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .poll-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .poll-success .poll-success-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    .poll-success h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .poll-success p {
+      font-size: 13px;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
@@ -553,10 +711,87 @@
         </form>
         <p class="nl-form-note">Free forever. No spam. Unsubscribe anytime.</p>
       </div>
+
+      <div class="poll-trigger-wrap">
+        <p>Help shape what we cover each morning.</p>
+        <button class="poll-trigger-btn" id="open-poll">
+          📋 What news do you want to see more of?
+        </button>
+      </div>
+
     </div>
   </section>
 
 </main>
+
+<!-- POLL MODAL -->
+<div class="poll-overlay" id="poll-overlay">
+  <div class="poll-modal">
+    <button class="poll-close" id="poll-close">&times;</button>
+
+    <div id="poll-form-view">
+      <p class="section-label" style="margin-bottom:12px;">Community Poll</p>
+      <h3>What news do you want to see more of?</h3>
+      <p class="poll-sub">Help us build a better Checkpoint. Pick everything that matters to you.</p>
+
+      <div class="poll-options">
+        <label class="poll-option" data-value="Trending Coins &amp; Alts">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🔥 Trending Coins &amp; Alts</span>
+        </label>
+        <label class="poll-option" data-value="NFT Drops &amp; Floor Prices">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🖼️ NFT Drops &amp; Floor Prices</span>
+        </label>
+        <label class="poll-option" data-value="Web3 Gaming">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🎮 Web3 Gaming</span>
+        </label>
+        <label class="poll-option" data-value="Stocks &amp; Macro">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">📊 Stocks &amp; Macro</span>
+        </label>
+        <label class="poll-option" data-value="Fear &amp; Greed Deep Dive">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">😱 Fear &amp; Greed Deep Dive</span>
+        </label>
+        <label class="poll-option" data-value="Meme Coins">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🐸 Meme Coins</span>
+        </label>
+        <label class="poll-option" data-value="DeFi &amp; Protocols">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🏦 DeFi &amp; Protocols</span>
+        </label>
+        <label class="poll-option" data-value="Ecosystem News">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">🌐 Ecosystem News</span>
+        </label>
+        <label class="poll-option" data-value="Hot Takes &amp; Controversies">
+          <input type="checkbox" />
+          <span class="poll-checkbox"></span>
+          <span class="poll-option-label">⚠️ Hot Takes &amp; Controversies</span>
+        </label>
+      </div>
+
+      <button class="poll-submit" id="poll-submit">Submit My Picks</button>
+    </div>
+
+    <div id="poll-success-view" class="poll-success" style="display:none;">
+      <div class="poll-success-icon">🙌</div>
+      <h4>Thanks for the input!</h4>
+      <p>Your picks help us shape The Checkpoint. We'll keep delivering the signal that matters most to you.</p>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -611,6 +846,32 @@
 
   document.getElementById('subscribe-form').addEventListener('submit', handleSubscribe);
   document.getElementById('subscribe-form-2').addEventListener('submit', handleSubscribe);
+
+  // Poll modal
+  const pollOverlay = document.getElementById('poll-overlay');
+  document.getElementById('open-poll').addEventListener('click', () => pollOverlay.classList.add('active'));
+  document.getElementById('poll-close').addEventListener('click', () => pollOverlay.classList.remove('active'));
+  pollOverlay.addEventListener('click', (e) => { if (e.target === pollOverlay) pollOverlay.classList.remove('active'); });
+
+  document.querySelectorAll('.poll-option').forEach(opt => {
+    opt.addEventListener('click', () => opt.classList.toggle('checked'));
+  });
+
+  document.getElementById('poll-submit').addEventListener('click', () => {
+    const selected = [...document.querySelectorAll('.poll-option.checked')].map(o => o.dataset.value);
+    if (!selected.length) { alert('Please select at least one topic.'); return; }
+    const btn = document.getElementById('poll-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch('https://hook.us2.make.com/REPLACE_WITH_POLL_WEBHOOK', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topics: selected, submitted_at: new Date().toISOString() })
+    }).finally(() => {
+      document.getElementById('poll-form-view').style.display = 'none';
+      document.getElementById('poll-success-view').style.display = 'block';
+    });
+  });
 </script>
 
 </body>
