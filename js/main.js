@@ -95,25 +95,24 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const btn    = document.getElementById('rc-vol-btn');
   const slider = document.getElementById('rc-vol-slider');
 
-  // ── Mobile mute button ──
-  const mobileBtn = document.createElement('button');
-  mobileBtn.id = 'rc-mobile-mute';
-  mobileBtn.title = 'Toggle sound';
-  mobileBtn.textContent = '🔇';
-  document.body.appendChild(mobileBtn);
+  // ── Mobile controls (in hamburger menu) ──
+  const mobileBtn    = document.getElementById('rc-mobile-mute');
+  const mobileSlider = document.getElementById('rc-mobile-slider');
 
   function sliderBg(v) {
-    if (!slider) return;
-    slider.style.background = `linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`;
+    const bg = `linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`;
+    if (slider) slider.style.background = bg;
+    if (mobileSlider) mobileSlider.style.background = bg;
   }
   if (slider) sliderBg(currentVol);
+  if (mobileSlider) { mobileSlider.value = currentVol; sliderBg(currentVol); }
 
   function syncIcons() {
     const isOn = music && !muted && music.volume > 0;
     const icon = isOn ? (currentVol < 0.35 ? '🔉' : '🔊') : '🔇';
     if (btn) btn.textContent = icon;
-    mobileBtn.textContent = icon;
-    mobileBtn.classList.toggle('sound-on', isOn);
+    if (mobileBtn) { mobileBtn.textContent = icon; mobileBtn.classList.toggle('sound-on', isOn); }
+    if (mobileSlider) { mobileSlider.value = currentVol; sliderBg(currentVol); }
   }
 
   function fadeIn(targetVol) {
@@ -146,7 +145,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }
 
   if (btn) btn.addEventListener('click', toggleMute);
-  mobileBtn.addEventListener('click', toggleMute);
+  if (mobileBtn) mobileBtn.addEventListener('click', toggleMute);
+
+  if (mobileSlider) {
+    mobileSlider.addEventListener('input', () => {
+      currentVol = parseFloat(mobileSlider.value);
+      sessionStorage.setItem(VOL_KEY, currentVol);
+      sliderBg(currentVol);
+      if (slider) slider.value = currentVol;
+      if (currentVol > 0) {
+        muted = false;
+        if (!music || music.paused) { fadeIn(currentVol); }
+        else { music.volume = currentVol; }
+      } else {
+        muted = true;
+        if (music) music.volume = 0;
+      }
+      syncIcons();
+    });
+  }
 
   if (slider) {
     slider.addEventListener('input', () => {
