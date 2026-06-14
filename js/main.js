@@ -85,7 +85,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   let music    = null;
   let muted    = false;
   let volEnabled = sessionStorage.getItem(SOUND_KEY) === '1';
-  let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.7');
+  let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.5');
 
   const navCta = document.querySelector('.nav-cta');
   if (!navCta) return;
@@ -126,7 +126,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       music.volume = v;
       slider.value = v;
       updateSliderBg(v);
-      if (v >= targetVol) { clearInterval(t); updateIcon(); }
+      if (v >= targetVol) {
+        clearInterval(t);
+        btn.textContent = targetVol < 0.4 ? '🔉' : '🔊';
+        if (document.getElementById('rc-mobile-mute')) document.getElementById('rc-mobile-mute').textContent = targetVol < 0.4 ? '🔉' : '🔊';
+      }
     }, 40);
   }
 
@@ -165,6 +169,42 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       updateIcon();
     }
   });
+
+  // Mobile floating mute button
+  const mobileBtn = document.createElement('button');
+  mobileBtn.id = 'rc-mobile-mute';
+  mobileBtn.title = 'Toggle sound';
+  mobileBtn.textContent = '🔇';
+  document.body.appendChild(mobileBtn);
+
+  function syncMobileBtn() {
+    mobileBtn.textContent = (!music || muted || music.volume === 0) ? '🔇' : '🔊';
+    mobileBtn.classList.toggle('sound-on', !(!music || muted || music.volume === 0));
+  }
+
+  mobileBtn.addEventListener('click', () => {
+    if (!volEnabled) {
+      volEnabled = true;
+      sessionStorage.setItem(SOUND_KEY, '1');
+      ctrl.classList.add('visible');
+      fadeIn(currentVol);
+    } else if (muted || !music || music.paused || music.volume === 0) {
+      muted = false;
+      fadeIn(currentVol);
+    } else {
+      muted = true;
+      music.volume = 0;
+      updateIcon();
+    }
+    syncMobileBtn();
+  });
+
+  // Keep mobile btn in sync when desktop controls change
+  const origUpdateIcon = updateIcon;
+  function updateIcon() {
+    origUpdateIcon();
+    syncMobileBtn();
+  }
 
   // Auto-resume on non-homepage pages if previously enabled
   if (volEnabled) {

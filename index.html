@@ -669,6 +669,7 @@
 
   function buildStaticNoise() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.resume(); // required for iOS Safari
     const rate = audioCtx.sampleRate;
 
     // Base hiss — 4 seconds of noise

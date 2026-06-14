@@ -194,6 +194,34 @@ nav {
   cursor: pointer;
 }
 
+/* ── MOBILE MUTE BUTTON ── */
+#rc-mobile-mute {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 500;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(8,8,8,0.85);
+  border: 1px solid rgba(249,115,22,0.3);
+  color: var(--orange);
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s, background 0.2s;
+  align-items: center;
+  justify-content: center;
+}
+#rc-mobile-mute.sound-on {
+  border-color: rgba(249,115,22,0.7);
+  background: rgba(249,115,22,0.12);
+}
+@media (max-width: 900px) {
+  #rc-mobile-mute { display: flex; }
+}
+
 /* hamburger */
 .hamburger {
   display: none;
