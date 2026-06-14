@@ -670,16 +670,14 @@
   function buildStaticNoise() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // iOS Safari unlock — play a silent 1-sample buffer first, then start real audio
+    // iOS Safari: play silent buffer + resume synchronously within user gesture
     const unlock = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
     const unlockSrc = audioCtx.createBufferSource();
     unlockSrc.buffer = unlock;
     unlockSrc.connect(audioCtx.destination);
     unlockSrc.start(0);
+    audioCtx.resume(); // fire and forget — must stay synchronous for iOS
 
-    audioCtx.resume().then(() => startStatic()).catch(() => startStatic());
-
-    function startStatic() {
     const rate = audioCtx.sampleRate;
 
     // Base hiss — 4 seconds of noise
@@ -725,7 +723,6 @@
     bpf.connect(staticGain);
     staticGain.connect(audioCtx.destination);
     staticSource.start();
-    } // end startStatic
   }
 
   function setStaticVolume(v, ms) {

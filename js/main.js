@@ -73,20 +73,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
-// ── RC AUDIO SYSTEM ──
+// ── RC AUDIO SYSTEM (homepage only) ──
 (function() {
-  const SOUND_KEY = 'rc_sound_enabled';
-  const VOL_KEY   = 'rc_volume';
+  const VOL_KEY  = 'rc_volume';
+  const isRoot   = location.pathname === '/' || location.pathname.match(/^\/(index\.html)?$/);
 
-  const isRoot = location.pathname === '/' || location.pathname.match(/^\/(index\.html)?$/);
-  const musicSrc = isRoot ? 'assets/rc-intro.mp3' : '../assets/rc-intro.mp3';
+  // Only inject controls and music on homepage
+  if (!isRoot) return;
 
   let music      = null;
   let muted      = false;
-  let volEnabled = sessionStorage.getItem(SOUND_KEY) === '1';
   let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.1');
 
-  // ── Inject desktop volume control ──
+  // ── Desktop volume control ──
   const navCta = document.querySelector('.nav-cta');
   const ctrl = document.createElement('div');
   ctrl.id = 'rc-vol-ctrl';
@@ -96,7 +95,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const btn    = document.getElementById('rc-vol-btn');
   const slider = document.getElementById('rc-vol-slider');
 
-  // ── Inject mobile mute button ──
+  // ── Mobile mute button ──
   const mobileBtn = document.createElement('button');
   mobileBtn.id = 'rc-mobile-mute';
   mobileBtn.title = 'Toggle sound';
@@ -117,16 +116,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     mobileBtn.classList.toggle('sound-on', isOn);
   }
 
-  function ensureMusic() {
+  function fadeIn(targetVol) {
     if (!music) {
-      music = new Audio(musicSrc);
+      music = new Audio('assets/rc-intro.mp3');
       music.loop = true;
       music.volume = 0;
     }
-  }
-
-  function fadeIn(targetVol) {
-    ensureMusic();
     muted = false;
     const p = music.play();
     if (p) p.catch(() => {});
@@ -140,12 +135,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }
 
   function toggleMute() {
-    if (!volEnabled) {
-      volEnabled = true;
-      sessionStorage.setItem(SOUND_KEY, '1');
-      ctrl.classList.add('visible');
-      fadeIn(currentVol);
-    } else if (muted || !music || music.paused || music.volume === 0) {
+    if (muted || !music || music.paused || music.volume === 0) {
       muted = false;
       fadeIn(currentVol);
     } else {
@@ -175,17 +165,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }
 
-  if (volEnabled) {
-    ctrl.classList.add('visible');
-    if (!isRoot) fadeIn(currentVol);
-  }
-
+  // Exposed for intro sequence
   window.rcAudio = {
-    enable() {
-      volEnabled = true;
-      sessionStorage.setItem(SOUND_KEY, '1');
-      ctrl.classList.add('visible');
-    },
+    enable() { ctrl.classList.add('visible'); },
     startMusic() {
       ctrl.classList.add('visible');
       fadeIn(currentVol);
