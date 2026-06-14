@@ -284,6 +284,7 @@
       Follow on X
     </a>
   </div>
+  <button id="rc-mobile-mute" class="rc-nav-sound-btn" title="Toggle sound">🔇</button>
   <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
     <span></span><span></span><span></span>
   </div>
@@ -298,13 +299,6 @@
   <a href="/chesus" class="mobile-nav-sub">Chesus</a>
   <a href="/kennypowerz" class="mobile-nav-sub">Kenny Powerz</a>
   <a href="/anidiot" class="mobile-nav-sub">AnIdiot</a>
-  <div class="mobile-nav-sound">
-    <span class="mobile-nav-label" style="padding-bottom:12px;">Sound</span>
-    <div class="mobile-nav-sound-row">
-      <button id="rc-mobile-mute" title="Toggle sound">🔇</button>
-      <input id="rc-mobile-slider" type="range" min="0" max="1" step="0.01" />
-    </div>
-  </div>
 </div>
 
 <main>
@@ -677,13 +671,13 @@
   function buildStaticNoise() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // iOS Safari: play silent buffer + resume synchronously within user gesture
+    // iOS Safari unlock: silent buffer + resume within same user gesture
     const unlock = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
     const unlockSrc = audioCtx.createBufferSource();
     unlockSrc.buffer = unlock;
     unlockSrc.connect(audioCtx.destination);
     unlockSrc.start(0);
-    audioCtx.resume(); // fire and forget — must stay synchronous for iOS
+    audioCtx.resume();
 
     const rate = audioCtx.sampleRate;
 
@@ -729,7 +723,7 @@
     hpf.connect(bpf);
     bpf.connect(staticGain);
     staticGain.connect(audioCtx.destination);
-    staticSource.start();
+    staticSource.start(audioCtx.currentTime + 0.1);
   }
 
   function setStaticVolume(v, ms) {
