@@ -39,12 +39,24 @@
       position: absolute; top: 24px; right: 24px;
       font-family: 'Space Mono', monospace;
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(255,255,255,0.35); background: transparent;
-      border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+      color: rgba(249,115,22,0.6); background: transparent;
+      border: 1px solid rgba(249,115,22,0.25); border-radius: 6px;
       padding: 8px 16px; cursor: pointer; z-index: 10;
       transition: color 0.2s, border-color 0.2s;
     }
-    #intro-skip:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.35); }
+    #intro-skip:hover { color: #f97316; border-color: rgba(249,115,22,0.6); }
+    #intro-sound-btn {
+      position: absolute; top: 24px; left: 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: #f97316; background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.35); border-radius: 6px;
+      padding: 8px 16px; cursor: pointer; z-index: 10;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #intro-sound-btn:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.6); }
+    #intro-sound-btn.active { background: rgba(249,115,22,0.2); border-color: #f97316; }
     #intro-glow {
       position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%);
@@ -212,6 +224,7 @@
 
 <!-- ── INTRO OVERLAY ── -->
 <div id="rc-intro">
+  <button id="intro-sound-btn">🔇 Sound On</button>
   <button id="intro-skip">Skip &#8594;</button>
   <div id="intro-glow"></div>
   <div id="intro-static"><canvas id="intro-static-cvs"></canvas></div>
@@ -651,8 +664,53 @@
     }, 600);
   }
 
+  // ── audio ──
+  let audioCtx, staticSource, staticGain, soundEnabled = false;
+
+  function buildStaticNoise() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const rate = audioCtx.sampleRate;
+    const buf = audioCtx.createBuffer(1, rate * 3, rate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+
+    staticSource = audioCtx.createBufferSource();
+    staticSource.buffer = buf;
+    staticSource.loop = true;
+
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 800;
+    filter.Q.value = 0.4;
+
+    staticGain = audioCtx.createGain();
+    staticGain.gain.value = 0.18;
+
+    staticSource.connect(filter);
+    filter.connect(staticGain);
+    staticGain.connect(audioCtx.destination);
+    staticSource.start();
+  }
+
+  function setStaticVolume(v, ms) {
+    if (!staticGain) return;
+    staticGain.gain.linearRampToValueAtTime(v, audioCtx.currentTime + ms / 1000);
+  }
+
+  $('intro-sound-btn').addEventListener('click', function() {
+    if (soundEnabled) return;
+    soundEnabled = true;
+    this.textContent = '🔊 Sound On';
+    this.classList.add('active');
+    if (window.rcAudio) window.rcAudio.enable();
+    buildStaticNoise();
+  });
+
   // ── skip ──
-  $('intro-skip').addEventListener('click', dismiss);
+  $('intro-skip').addEventListener('click', () => {
+    if (staticSource) staticSource.stop();
+    dismiss();
+  });
 
   // ── timeline ──
   async function run(){
@@ -670,14 +728,17 @@
     // 2.2s — interference burst
     await new Promise(r=>setTimeout(r,900));
     glitch(4); setBars(1); wAmp=6; wChaos=2.5; sOpacity=0.9;
+    setStaticVolume(0.28, 300);
 
     // 3.0s — filtering
     await new Promise(r=>setTimeout(r,900));
     setStatus('Filtering noise…'); setBars(3); wAmp=16; wChaos=1.2; sOpacity=0.6;
+    setStaticVolume(0.12, 800);
 
     // 4.2s — locking, logo glitches in
     await new Promise(r=>setTimeout(r,1200));
     setStatus('Locking onto source…'); setBars(4); wAmp=20; wChaos=0.4; sOpacity=0.2;
+    setStaticVolume(0.04, 1000);
     $('intro-glow').style.opacity=1;
     // logo glitch-reveals
     const lw = $('intro-logo-wrap');
@@ -697,12 +758,14 @@
     await new Promise(r=>setTimeout(r,700));
     setBars(5); wChaos=0; wAmp=22; sOpacity=0;
     $('intro-scanline').style.opacity=0.15;
-    // remove status line entirely on lock
     $('intro-status').style.opacity=0;
-    // settle logo and motto — remove glitch, snap to clean
     lw.classList.remove('glitch-in'); lw.classList.add('settled');
     mt.classList.remove('glitch-in'); mt.classList.add('settled');
     glitch(1);
+    // stop static, fade in music
+    setStaticVolume(0, 400);
+    setTimeout(() => { if (staticSource) try { staticSource.stop(); } catch(_){} }, 500);
+    if (soundEnabled && window.rcAudio) window.rcAudio.startMusic();
 
     await new Promise(r=>setTimeout(r,300));
     fadeTo($('intro-locked'),1,500);
