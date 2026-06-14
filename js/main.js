@@ -78,33 +78,43 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const SOUND_KEY = 'rc_sound_enabled';
   const VOL_KEY   = 'rc_volume';
 
-  // Resolve asset path based on page depth
   const isRoot = location.pathname === '/' || location.pathname.match(/^\/(index\.html)?$/);
   const musicSrc = isRoot ? 'assets/rc-intro.mp3' : '../assets/rc-intro.mp3';
 
-  let music    = null;
-  let muted    = false;
+  let music      = null;
+  let muted      = false;
   let volEnabled = sessionStorage.getItem(SOUND_KEY) === '1';
-  let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.5');
+  let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.1');
 
+  // ── Inject desktop volume control ──
   const navCta = document.querySelector('.nav-cta');
-  if (!navCta) return;
-
   const ctrl = document.createElement('div');
   ctrl.id = 'rc-vol-ctrl';
   ctrl.innerHTML = `<button id="rc-vol-btn" title="Toggle sound">🔇</button><input id="rc-vol-slider" type="range" min="0" max="1" step="0.01" value="${currentVol}" />`;
-  navCta.insertBefore(ctrl, navCta.firstChild);
+  if (navCta) navCta.insertBefore(ctrl, navCta.firstChild);
 
   const btn    = document.getElementById('rc-vol-btn');
   const slider = document.getElementById('rc-vol-slider');
 
-  function updateSliderBg(v) {
+  // ── Inject mobile mute button ──
+  const mobileBtn = document.createElement('button');
+  mobileBtn.id = 'rc-mobile-mute';
+  mobileBtn.title = 'Toggle sound';
+  mobileBtn.textContent = '🔇';
+  document.body.appendChild(mobileBtn);
+
+  function sliderBg(v) {
+    if (!slider) return;
     slider.style.background = `linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`;
   }
-  updateSliderBg(currentVol);
+  if (slider) sliderBg(currentVol);
 
-  function updateIcon() {
-    btn.textContent = (!music || muted || music.volume === 0) ? '🔇' : currentVol < 0.4 ? '🔉' : '🔊';
+  function syncIcons() {
+    const isOn = music && !muted && music.volume > 0;
+    const icon = isOn ? (currentVol < 0.35 ? '🔉' : '🔊') : '🔇';
+    if (btn) btn.textContent = icon;
+    mobileBtn.textContent = icon;
+    mobileBtn.classList.toggle('sound-on', isOn);
   }
 
   function ensureMusic() {
@@ -122,97 +132,54 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (p) p.catch(() => {});
     let v = music.volume;
     const t = setInterval(() => {
-      v = Math.min(v + 0.02, targetVol);
+      v = Math.min(v + 0.005, targetVol);
       music.volume = v;
-      slider.value = v;
-      updateSliderBg(v);
-      if (v >= targetVol) {
-        clearInterval(t);
-        btn.textContent = targetVol < 0.4 ? '🔉' : '🔊';
-        if (document.getElementById('rc-mobile-mute')) document.getElementById('rc-mobile-mute').textContent = targetVol < 0.4 ? '🔉' : '🔊';
-      }
+      if (slider) { slider.value = v; sliderBg(v); }
+      if (v >= targetVol) { clearInterval(t); syncIcons(); }
     }, 40);
   }
 
-  // Slider — also starts music if it hasn't started yet
-  slider.addEventListener('input', () => {
-    currentVol = parseFloat(slider.value);
-    sessionStorage.setItem(VOL_KEY, currentVol);
-    updateSliderBg(currentVol);
-    if (currentVol > 0) {
+  function toggleMute() {
+    if (!volEnabled) {
+      volEnabled = true;
+      sessionStorage.setItem(SOUND_KEY, '1');
+      ctrl.classList.add('visible');
+      fadeIn(currentVol);
+    } else if (muted || !music || music.paused || music.volume === 0) {
       muted = false;
-      if (!music || music.paused) {
-        fadeIn(currentVol);
-      } else {
-        music.volume = currentVol;
-      }
+      fadeIn(currentVol);
     } else {
       muted = true;
       if (music) music.volume = 0;
+      syncIcons();
     }
-    updateIcon();
-  });
-
-  // Button — toggle mute or first-enable
-  btn.addEventListener('click', () => {
-    if (!volEnabled) {
-      volEnabled = true;
-      sessionStorage.setItem(SOUND_KEY, '1');
-      ctrl.classList.add('visible');
-      fadeIn(currentVol);
-    } else if (muted || !music || music.paused || music.volume === 0) {
-      muted = false;
-      fadeIn(currentVol);
-    } else {
-      muted = true;
-      music.volume = 0;
-      updateIcon();
-    }
-  });
-
-  // Mobile floating mute button
-  const mobileBtn = document.createElement('button');
-  mobileBtn.id = 'rc-mobile-mute';
-  mobileBtn.title = 'Toggle sound';
-  mobileBtn.textContent = '🔇';
-  document.body.appendChild(mobileBtn);
-
-  function syncMobileBtn() {
-    mobileBtn.textContent = (!music || muted || music.volume === 0) ? '🔇' : '🔊';
-    mobileBtn.classList.toggle('sound-on', !(!music || muted || music.volume === 0));
   }
 
-  mobileBtn.addEventListener('click', () => {
-    if (!volEnabled) {
-      volEnabled = true;
-      sessionStorage.setItem(SOUND_KEY, '1');
-      ctrl.classList.add('visible');
-      fadeIn(currentVol);
-    } else if (muted || !music || music.paused || music.volume === 0) {
-      muted = false;
-      fadeIn(currentVol);
-    } else {
-      muted = true;
-      music.volume = 0;
-      updateIcon();
-    }
-    syncMobileBtn();
-  });
+  if (btn) btn.addEventListener('click', toggleMute);
+  mobileBtn.addEventListener('click', toggleMute);
 
-  // Keep mobile btn in sync when desktop controls change
-  const origUpdateIcon = updateIcon;
-  function updateIcon() {
-    origUpdateIcon();
-    syncMobileBtn();
+  if (slider) {
+    slider.addEventListener('input', () => {
+      currentVol = parseFloat(slider.value);
+      sessionStorage.setItem(VOL_KEY, currentVol);
+      sliderBg(currentVol);
+      if (currentVol > 0) {
+        muted = false;
+        if (!music || music.paused) { fadeIn(currentVol); }
+        else { music.volume = currentVol; }
+      } else {
+        muted = true;
+        if (music) music.volume = 0;
+      }
+      syncIcons();
+    });
   }
 
-  // Auto-resume on non-homepage pages if previously enabled
   if (volEnabled) {
     ctrl.classList.add('visible');
     if (!isRoot) fadeIn(currentVol);
   }
 
-  // Exposed for homepage intro sequence
   window.rcAudio = {
     enable() {
       volEnabled = true;
