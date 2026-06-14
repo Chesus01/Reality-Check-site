@@ -45,19 +45,7 @@
       transition: color 0.2s, border-color 0.2s;
     }
     #intro-skip:hover { color: #f97316; border-color: rgba(249,115,22,0.6); }
-    #intro-sound-btn {
-      position: absolute; top: 24px; left: 24px;
-      font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-      color: #f97316; background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(249,115,22,0.35); border-radius: 6px;
-      padding: 8px 16px; cursor: pointer; z-index: 10;
-      display: flex; align-items: center; gap: 6px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    #intro-sound-btn:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.6); }
-    #intro-sound-btn.active { background: rgba(249,115,22,0.2); border-color: #f97316; }
-    #intro-glow {
+#intro-glow {
       position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%);
       opacity: 0; transition: opacity 0.6s ease;
@@ -224,8 +212,7 @@
 
 <!-- ── INTRO OVERLAY ── -->
 <div id="rc-intro">
-  <button id="intro-sound-btn">🔇 Sound On</button>
-  <button id="intro-skip">Skip &#8594;</button>
+<button id="intro-skip">Skip &#8594;</button>
   <div id="intro-glow"></div>
   <div id="intro-static"><canvas id="intro-static-cvs"></canvas></div>
   <div id="intro-scanline"></div>
@@ -664,84 +651,8 @@
     }, 600);
   }
 
-  // ── audio ──
-  let audioCtx, staticSource, staticGain, soundEnabled = false;
-
-  function buildStaticNoise() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    // iOS Safari unlock: silent buffer + resume within same user gesture
-    const unlock = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
-    const unlockSrc = audioCtx.createBufferSource();
-    unlockSrc.buffer = unlock;
-    unlockSrc.connect(audioCtx.destination);
-    unlockSrc.start(0);
-    audioCtx.resume();
-
-    const rate = audioCtx.sampleRate;
-
-    // Base hiss — 4 seconds of noise
-    const buf = audioCtx.createBuffer(1, rate * 4, rate);
-    const data = buf.getChannelData(0);
-    let i = 0;
-    while (i < data.length) {
-      if (Math.random() < 0.003) {
-        // Crackle burst: short spike of high amplitude
-        const len = Math.floor(Math.random() * 80) + 15;
-        const amp = 0.6 + Math.random() * 0.4;
-        for (let j = 0; j < len && i + j < data.length; j++) {
-          data[i + j] = (Math.random() * 2 - 1) * amp * (1 - j / len);
-        }
-        i += len;
-      } else {
-        // Quiet hiss base
-        data[i] = (Math.random() * 2 - 1) * 0.12;
-        i++;
-      }
-    }
-
-    staticSource = audioCtx.createBufferSource();
-    staticSource.buffer = buf;
-    staticSource.loop = true;
-
-    // High-pass to cut rumble, keeps the hiss crisp
-    const hpf = audioCtx.createBiquadFilter();
-    hpf.type = 'highpass';
-    hpf.frequency.value = 400;
-
-    // Bandpass shapes the crackle character
-    const bpf = audioCtx.createBiquadFilter();
-    bpf.type = 'bandpass';
-    bpf.frequency.value = 2200;
-    bpf.Q.value = 0.6;
-
-    staticGain = audioCtx.createGain();
-    staticGain.gain.value = 0.22;
-
-    staticSource.connect(hpf);
-    hpf.connect(bpf);
-    bpf.connect(staticGain);
-    staticGain.connect(audioCtx.destination);
-    staticSource.start(audioCtx.currentTime + 0.1);
-  }
-
-  function setStaticVolume(v, ms) {
-    if (!staticGain) return;
-    staticGain.gain.linearRampToValueAtTime(v, audioCtx.currentTime + ms / 1000);
-  }
-
-  $('intro-sound-btn').addEventListener('click', function() {
-    if (soundEnabled) return;
-    soundEnabled = true;
-    this.textContent = '🔊 Sound On';
-    this.classList.add('active');
-    if (window.rcAudio) window.rcAudio.enable();
-    buildStaticNoise();
-  });
-
   // ── skip ──
   $('intro-skip').addEventListener('click', () => {
-    if (staticSource) staticSource.stop();
     dismiss();
   });
 
@@ -795,11 +706,6 @@
     lw.classList.remove('glitch-in'); lw.classList.add('settled');
     mt.classList.remove('glitch-in'); mt.classList.add('settled');
     glitch(1);
-    // stop static, fade in music
-    setStaticVolume(0, 400);
-    setTimeout(() => { if (staticSource) try { staticSource.stop(); } catch(_){} }, 500);
-    if (soundEnabled && window.rcAudio) window.rcAudio.startMusic();
-
     await new Promise(r=>setTimeout(r,300));
     fadeTo($('intro-locked'),1,500);
 
