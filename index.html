@@ -670,24 +670,48 @@
   function buildStaticNoise() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const rate = audioCtx.sampleRate;
-    const buf = audioCtx.createBuffer(1, rate * 3, rate);
+
+    // Base hiss — 4 seconds of noise
+    const buf = audioCtx.createBuffer(1, rate * 4, rate);
     const data = buf.getChannelData(0);
-    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    let i = 0;
+    while (i < data.length) {
+      if (Math.random() < 0.003) {
+        // Crackle burst: short spike of high amplitude
+        const len = Math.floor(Math.random() * 80) + 15;
+        const amp = 0.6 + Math.random() * 0.4;
+        for (let j = 0; j < len && i + j < data.length; j++) {
+          data[i + j] = (Math.random() * 2 - 1) * amp * (1 - j / len);
+        }
+        i += len;
+      } else {
+        // Quiet hiss base
+        data[i] = (Math.random() * 2 - 1) * 0.12;
+        i++;
+      }
+    }
 
     staticSource = audioCtx.createBufferSource();
     staticSource.buffer = buf;
     staticSource.loop = true;
 
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 800;
-    filter.Q.value = 0.4;
+    // High-pass to cut rumble, keeps the hiss crisp
+    const hpf = audioCtx.createBiquadFilter();
+    hpf.type = 'highpass';
+    hpf.frequency.value = 400;
+
+    // Bandpass shapes the crackle character
+    const bpf = audioCtx.createBiquadFilter();
+    bpf.type = 'bandpass';
+    bpf.frequency.value = 2200;
+    bpf.Q.value = 0.6;
 
     staticGain = audioCtx.createGain();
-    staticGain.gain.value = 0.18;
+    staticGain.gain.value = 0.22;
 
-    staticSource.connect(filter);
-    filter.connect(staticGain);
+    staticSource.connect(hpf);
+    hpf.connect(bpf);
+    bpf.connect(staticGain);
     staticGain.connect(audioCtx.destination);
     staticSource.start();
   }

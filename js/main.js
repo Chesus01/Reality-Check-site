@@ -77,118 +77,112 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 (function() {
   const SOUND_KEY = 'rc_sound_enabled';
   const VOL_KEY   = 'rc_volume';
-  const MUSIC_SRC  = location.pathname === '/' || location.pathname.endsWith('index.html') && location.pathname.split('/').length <= 2
-    ? 'assets/rc-intro.mp3'
-    : '../assets/rc-intro.mp3';
 
-  // Resolve correct path based on page depth
-  const depth = location.pathname.replace(/\/$/, '').split('/').length;
-  const prefix = depth <= 2 ? '' : '../';
-  const musicSrc = prefix + 'assets/rc-intro.mp3';
+  // Resolve asset path based on page depth
+  const isRoot = location.pathname === '/' || location.pathname.match(/^\/(index\.html)?$/);
+  const musicSrc = isRoot ? 'assets/rc-intro.mp3' : '../assets/rc-intro.mp3';
 
-  let music = null;
+  let music    = null;
+  let muted    = false;
   let volEnabled = sessionStorage.getItem(SOUND_KEY) === '1';
   let currentVol = parseFloat(sessionStorage.getItem(VOL_KEY) || '0.7');
 
-  // Inject volume control into nav-cta
   const navCta = document.querySelector('.nav-cta');
-  if (navCta) {
-    const ctrl = document.createElement('div');
-    ctrl.id = 'rc-vol-ctrl';
-    ctrl.innerHTML = `<button id="rc-vol-btn" title="Toggle sound">🔊</button><input id="rc-vol-slider" type="range" min="0" max="1" step="0.01" value="${currentVol}" />`;
-    navCta.insertBefore(ctrl, navCta.firstChild);
+  if (!navCta) return;
 
-    const btn    = document.getElementById('rc-vol-btn');
-    const slider = document.getElementById('rc-vol-slider');
+  const ctrl = document.createElement('div');
+  ctrl.id = 'rc-vol-ctrl';
+  ctrl.innerHTML = `<button id="rc-vol-btn" title="Toggle sound">🔇</button><input id="rc-vol-slider" type="range" min="0" max="1" step="0.01" value="${currentVol}" />`;
+  navCta.insertBefore(ctrl, navCta.firstChild);
 
-    function updateSliderBg(v) {
-      slider.style.background = `linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`;
-    }
-    updateSliderBg(currentVol);
+  const btn    = document.getElementById('rc-vol-btn');
+  const slider = document.getElementById('rc-vol-slider');
 
-    function updateIcon() {
-      if (!music) { btn.textContent = '🔇'; return; }
-      btn.textContent = music.volume === 0 ? '🔇' : music.volume < 0.4 ? '🔉' : '🔊';
-    }
+  function updateSliderBg(v) {
+    slider.style.background = `linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`;
+  }
+  updateSliderBg(currentVol);
 
-    function startMusic() {
-      if (music) return;
+  function updateIcon() {
+    btn.textContent = (!music || muted || music.volume === 0) ? '🔇' : currentVol < 0.4 ? '🔉' : '🔊';
+  }
+
+  function ensureMusic() {
+    if (!music) {
       music = new Audio(musicSrc);
       music.loop = true;
       music.volume = 0;
-      music.play().catch(() => {});
-      // fade in
-      let v = 0;
-      const t = setInterval(() => {
-        v = Math.min(v + 0.03, currentVol);
-        music.volume = v;
-        updateSliderBg(v);
-        if (v >= currentVol) clearInterval(t);
-      }, 40);
-      updateIcon();
-    }
-
-    slider.addEventListener('input', () => {
-      currentVol = parseFloat(slider.value);
-      sessionStorage.setItem(VOL_KEY, currentVol);
-      if (music) music.volume = currentVol;
-      updateSliderBg(currentVol);
-      updateIcon();
-    });
-
-    btn.addEventListener('click', () => {
-      if (!music) {
-        sessionStorage.setItem(SOUND_KEY, '1');
-        volEnabled = true;
-        startMusic();
-        ctrl.classList.add('visible');
-      } else if (music.volume > 0) {
-        music.volume = 0;
-        updateIcon();
-      } else {
-        music.volume = currentVol;
-        updateIcon();
-      }
-    });
-
-    // Show control if sound was previously enabled
-    if (volEnabled) {
-      ctrl.classList.add('visible');
-      // try autoplay on subsequent pages
-      if (!location.pathname.endsWith('/') && !location.pathname.endsWith('index.html')) {
-        startMusic();
-      } else if (location.pathname !== '/' && !location.pathname.match(/^\/index/)) {
-        startMusic();
-      }
     }
   }
 
-  // Expose for homepage intro to call when locked
+  function fadeIn(targetVol) {
+    ensureMusic();
+    muted = false;
+    const p = music.play();
+    if (p) p.catch(() => {});
+    let v = music.volume;
+    const t = setInterval(() => {
+      v = Math.min(v + 0.02, targetVol);
+      music.volume = v;
+      slider.value = v;
+      updateSliderBg(v);
+      if (v >= targetVol) { clearInterval(t); updateIcon(); }
+    }, 40);
+  }
+
+  // Slider — also starts music if it hasn't started yet
+  slider.addEventListener('input', () => {
+    currentVol = parseFloat(slider.value);
+    sessionStorage.setItem(VOL_KEY, currentVol);
+    updateSliderBg(currentVol);
+    if (currentVol > 0) {
+      muted = false;
+      if (!music || music.paused) {
+        fadeIn(currentVol);
+      } else {
+        music.volume = currentVol;
+      }
+    } else {
+      muted = true;
+      if (music) music.volume = 0;
+    }
+    updateIcon();
+  });
+
+  // Button — toggle mute or first-enable
+  btn.addEventListener('click', () => {
+    if (!volEnabled) {
+      volEnabled = true;
+      sessionStorage.setItem(SOUND_KEY, '1');
+      ctrl.classList.add('visible');
+      fadeIn(currentVol);
+    } else if (muted || !music || music.paused || music.volume === 0) {
+      muted = false;
+      fadeIn(currentVol);
+    } else {
+      muted = true;
+      music.volume = 0;
+      updateIcon();
+    }
+  });
+
+  // Auto-resume on non-homepage pages if previously enabled
+  if (volEnabled) {
+    ctrl.classList.add('visible');
+    if (!isRoot) fadeIn(currentVol);
+  }
+
+  // Exposed for homepage intro sequence
   window.rcAudio = {
     enable() {
       volEnabled = true;
       sessionStorage.setItem(SOUND_KEY, '1');
-      const ctrl = document.getElementById('rc-vol-ctrl');
-      if (ctrl) ctrl.classList.add('visible');
+      ctrl.classList.add('visible');
     },
     startMusic() {
-      const ctrl = document.getElementById('rc-vol-ctrl');
-      if (ctrl) ctrl.classList.add('visible');
-      if (music) return;
-      music = new Audio(musicSrc);
-      music.loop = true;
-      music.volume = 0;
-      music.play().catch(() => {});
-      let v = 0;
-      const t = setInterval(() => {
-        v = Math.min(v + 0.02, currentVol);
-        music.volume = v;
-        const slider = document.getElementById('rc-vol-slider');
-        if (slider) { slider.value = v; const s=document.getElementById('rc-vol-ctrl'); if(s) s.querySelector('input').style.background=`linear-gradient(to right, #f97316 0%, #f97316 ${v*100}%, rgba(255,255,255,0.15) ${v*100}%)`; }
-        if (v >= currentVol) clearInterval(t);
-      }, 60);
-    },
-    get audioCtx() { return null; }
+      ctrl.classList.add('visible');
+      fadeIn(currentVol);
+    }
   };
 })();
 
