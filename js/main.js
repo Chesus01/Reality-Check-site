@@ -95,8 +95,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const btn    = document.getElementById('rc-vol-btn');
   const slider = document.getElementById('rc-vol-slider');
 
-  // ── Mobile mute button (in nav header) ──
-  const mobileBtn = document.getElementById('rc-mobile-mute');
+  const mobileBtn = null; // mobile mute removed
 
   function sliderBg(v) {
     if (!slider) return;
