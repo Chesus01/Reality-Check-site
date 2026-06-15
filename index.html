@@ -667,24 +667,7 @@
   // ── audio (static only) ──
   let audioCtx = null, staticSource, staticGain, soundEnabled = false;
 
-  // iOS Safari requires AudioContext to be created inside a user gesture.
-  // We create it on the very first touch so it's already running by the
-  // time the user taps "Sound On".
-  function ensureCtx() {
-    if (audioCtx) return;
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    // play a silent buffer to fully unlock on iOS
-    const silent = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
-    const silentSrc = audioCtx.createBufferSource();
-    silentSrc.buffer = silent;
-    silentSrc.connect(audioCtx.destination);
-    silentSrc.start(0);
-    audioCtx.resume();
-  }
-  document.addEventListener('touchstart', ensureCtx, { once: true });
-
   function buildStaticNoise() {
-    ensureCtx();
 
     const rate = audioCtx.sampleRate;
     const buf = audioCtx.createBuffer(1, rate * 4, rate);
@@ -732,12 +715,13 @@
     staticGain.gain.linearRampToValueAtTime(v, audioCtx.currentTime + ms / 1000);
   }
 
-  $('intro-sound-btn').addEventListener('click', function() {
+  $('intro-sound-btn').addEventListener('click', async function() {
     if (soundEnabled) return;
     soundEnabled = true;
     this.textContent = '🔊 Sound On';
     this.classList.add('active');
-    ensureCtx();
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    await audioCtx.resume();
     buildStaticNoise();
   });
 
