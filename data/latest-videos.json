@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "fLftEUjLV9M",
+      "title": "Reality Check: NFTs & Web3 News",
+      "thumbnail": "https://i.ytimg.com/vi/fLftEUjLV9M/maxresdefault_live.jpg"
+    },
+    {
       "id": "gICem3Eq1tA",
       "title": "Reality Check: NFTs & Abstract XP Day",
       "thumbnail": "https://i.ytimg.com/vi/gICem3Eq1tA/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "u271jxNP1pg",
       "title": "Reality Check: NFTs UP & BTC down",
       "thumbnail": "https://i.ytimg.com/vi/u271jxNP1pg/maxresdefault.jpg"
-    },
-    {
-      "id": "AMaRhz5BpPE",
-      "title": "Reality Check: Abstract XP Day & NFT",
-      "thumbnail": "https://i.ytimg.com/vi/AMaRhz5BpPE/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-15T17:23:42.671745Z"
+  "updated": "2026-06-15T20:53:06.161858Z"
 }
