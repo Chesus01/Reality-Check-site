@@ -701,7 +701,7 @@
     bpf.Q.value = 0.6;
 
     staticGain = audioCtx.createGain();
-    staticGain.gain.value = 0.22;
+    staticGain.gain.value = 0.8;
 
     staticSource.connect(hpf);
     hpf.connect(bpf);
@@ -720,9 +720,11 @@
     soundEnabled = true;
     this.textContent = '🔊 Sound On';
     this.classList.add('active');
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    await audioCtx.resume();
-    buildStaticNoise();
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      buildStaticNoise();
+    } catch(e) { console.error('audio error', e); }
   });
 
   // ── skip ──
