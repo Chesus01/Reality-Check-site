@@ -618,7 +618,7 @@
   const scvs = $('intro-static-cvs');
   const sctx = scvs.getContext('2d');
   let sOpacity = 0;
-  function resizeS(){ scvs.width=window.innerWidth; scvs.height=window.innerHeight; }
+  function resizeS(){ const dpr=window.devicePixelRatio||1; scvs.width=window.innerWidth*dpr; scvs.height=window.innerHeight*dpr; }
   resizeS(); window.addEventListener('resize', resizeS);
   function drawStatic(intensity){
     $('intro-static').style.opacity = intensity<=0 ? 0 : intensity*0.55;
