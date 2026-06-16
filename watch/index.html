@@ -173,7 +173,7 @@
       <div class="featured-wrap" id="featured-wrap">
         <div class="featured-label">&#9654; Latest Episode</div>
         <div class="featured-embed" id="featured-embed">
-          <iframe src="https://www.youtube-nocookie.com/embed/AMaRhz5BpPE"
+          <iframe src="https://www.youtube-nocookie.com/embed/mtrdS-hP88c?modestbranding=1&rel=0"
             title="Reality Check Latest Episode" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
@@ -184,16 +184,16 @@
         <h2 style="margin-bottom:36px;">More <span class="orange">episodes.</span></h2>
         <div class="video-grid" id="video-grid">
           <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/AMaRhz5BpPE" title="Reality Check: NFTs UP &amp; BTC Down" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check: NFTs UP &amp; BTC Down</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/cv8UfYuDZ6c?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
           </div>
           <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/3DPhXr9ZmtQ" title="Reality Check: Abstract XP Day &amp; NFT" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check: Abstract XP Day &amp; NFT</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/fLftEUjLV9M?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
           </div>
           <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/hh790cQVhog" title="Reality Check: Clutch Markets / PupCup NFT Reveal" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check: Clutch Markets / PupCup NFT Reveal</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
+            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/jOihX3Kkxi8?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
           </div>
         </div>
         <div class="load-more-wrap">
@@ -323,7 +323,7 @@
 <script>
 async function loadLatestEpisodes() {
   try {
-    const res = await fetch('data/latest-videos.json?t=' + Date.now());
+    const res = await fetch('../data/latest-videos.json?t=' + Date.now());
     if (!res.ok) throw new Error('no data file');
     const data = await res.json();
     const videos = data.videos || [];
@@ -332,7 +332,7 @@ async function loadLatestEpisodes() {
     // Update featured player with newest video
     const featured = videos[0];
     document.getElementById('featured-embed').innerHTML = `
-      <iframe src="https://www.youtube-nocookie.com/embed/${featured.id}?rel=0"
+      <iframe src="https://www.youtube-nocookie.com/embed/${featured.id}?modestbranding=1&rel=0"
         title="${featured.title}" allowfullscreen loading="lazy"></iframe>
     `;
 
@@ -342,7 +342,7 @@ async function loadLatestEpisodes() {
       document.getElementById('video-grid').innerHTML = gridVideos.map(v => `
         <div class="video-card">
           <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0"
+            <iframe src="https://www.youtube-nocookie.com/embed/${v.id}?modestbranding=1&rel=0"
               title="${v.title}" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="video-info">
