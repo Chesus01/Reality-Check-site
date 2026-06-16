@@ -1,6 +1,16 @@
 {
   "videos": [
     {
+      "id": "whNT3Wbi-h0",
+      "title": "Reality Check: Web3 News & Pup Cup",
+      "thumbnail": "https://i.ytimg.com/vi/whNT3Wbi-h0/maxresdefault_live.jpg"
+    },
+    {
+      "id": "fLftEUjLV9M",
+      "title": "Reality Check: NFTs & Web3 News",
+      "thumbnail": "https://i.ytimg.com/vi/fLftEUjLV9M/maxresdefault.jpg"
+    },
+    {
       "id": "gICem3Eq1tA",
       "title": "Reality Check: NFTs & Abstract XP Day",
       "thumbnail": "https://i.ytimg.com/vi/gICem3Eq1tA/maxresdefault.jpg"
@@ -19,17 +29,7 @@
       "id": "mtrdS-hP88c",
       "title": "Reality Check: NFT's & Abstract  News",
       "thumbnail": "https://i.ytimg.com/vi/mtrdS-hP88c/maxresdefault.jpg"
-    },
-    {
-      "id": "u271jxNP1pg",
-      "title": "Reality Check: NFTs UP & BTC down",
-      "thumbnail": "https://i.ytimg.com/vi/u271jxNP1pg/maxresdefault.jpg"
-    },
-    {
-      "id": "AMaRhz5BpPE",
-      "title": "Reality Check: Abstract XP Day & NFT",
-      "thumbnail": "https://i.ytimg.com/vi/AMaRhz5BpPE/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-14T19:22:27.418952Z"
+  "updated": "2026-06-16T20:47:47.832971Z"
 }
