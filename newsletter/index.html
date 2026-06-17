@@ -840,14 +840,14 @@
     btn.textContent = 'Subscribing...';
     btn.disabled = true;
 
-    fetch('https://hook.us2.make.com/v4gs7lb35k1bpzahwld3fev9kpfiidtr', {
+    fetch('https://hook.us2.make.com/jh06mlsk6gid56s52oypwek3sb4cotaj', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
     })
     .then(res => {
       if (res.ok || res.status === 204 || res.status === 201) {
-        btn.textContent = '✓ You\'re in!';
+        btn.textContent = '✓ Check your email!';
         btn.style.background = '#22c55e';
         form.querySelector('input').value = '';
       } else {
