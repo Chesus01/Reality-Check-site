@@ -847,7 +847,7 @@
     })
     .then(res => {
       if (res.ok || res.status === 204 || res.status === 201) {
-        btn.textContent = '✓ Check your email!';
+        btn.textContent = '✓ Check your email to confirm!';
         btn.style.background = '#22c55e';
         form.querySelector('input').value = '';
       } else {
