@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In &mdash; The Checkpoint | Reality Check</title>
+  <meta name="description" content="Your subscription to The Checkpoint newsletter has been confirmed. Welcome to the Reality Check community." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="../assets/RC Favicon Logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/RC Favicon Logo.png" />
+  <style>
+    .confirmed-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .confirmed-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 2rem 80px;
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .confirmed-glow {
+      position: absolute;
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.1) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .confirmed-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .confirmed-icon {
+      width: 80px; height: 80px;
+      background: rgba(249,115,22,0.12);
+      border: 2px solid rgba(249,115,22,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .confirmed-icon svg {
+      width: 36px; height: 36px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .confirmed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 100px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.15s both;
+    }
+
+    .confirmed-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirmed-inner h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      animation: fadeUp 0.5s 0.2s both;
+    }
+
+    .confirmed-inner h1 span { color: var(--orange); }
+
+    .confirmed-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s 0.25s both;
+    }
+
+    .confirmed-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s 0.3s both;
+    }
+
+    .confirmed-card-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .confirmed-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .confirmed-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .confirmed-items li::before {
+      content: '';
+      display: block;
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 8 6.5 11.5 13 5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 11px;
+    }
+
+    .confirmed-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.35s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(249,115,22,0.4); transform: translateY(-1px); }
+
+    .confirmed-footer {
+      padding: 24px 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .confirmed-footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .confirmed-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="../assets/RC Favicon Logo.png" alt="Reality Check" />
+      <span class="nav-logo-text">Reality Check</span>
+    </a>
+    <div class="nav-links">
+      <a href="/newsletter" class="nav-link">Newsletter</a>
+      <a href="/watch" class="nav-link">Watch</a>
+    </div>
+  </nav>
+
+  <div class="confirmed-page">
+    <section class="confirmed-hero">
+      <div class="confirmed-glow"></div>
+      <div class="confirmed-inner">
+
+        <div class="confirmed-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="confirmed-badge">
+          <span class="confirmed-badge-dot"></span>
+          Subscription Confirmed
+        </div>
+
+        <h1>You're In. <span>Welcome.</span></h1>
+
+        <p class="confirmed-sub">
+          The Checkpoint hits your inbox Mon–Fri at 7AM EST. Crypto, NFTs, markets, gaming — no fluff, no hype. Just the signal.
+        </p>
+
+        <div class="confirmed-card">
+          <div class="confirmed-card-label">What to expect</div>
+          <ul class="confirmed-items">
+            <li>Daily Web3 briefing delivered before the market opens</li>
+            <li>Top movers, trending NFTs, and macro context</li>
+            <li>Meme coins, alt season picks, and fear &amp; greed pulse</li>
+            <li>Straight talk — Question. Think. Verify.</li>
+          </ul>
+        </div>
+
+        <div class="confirmed-actions">
+          <a href="/" class="btn-primary">Back to Reality Check</a>
+          <a href="/watch" class="btn-ghost">Watch Live</a>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="confirmed-footer">
+      &copy; 2025 Reality Check &mdash; <a href="/newsletter">The Checkpoint Newsletter</a>
+    </footer>
+  </div>
+
+</body>
+</html>
