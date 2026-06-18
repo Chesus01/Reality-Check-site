@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "VBnetUfj2pg",
+      "title": "Reality Check: NFTs & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/VBnetUfj2pg/maxresdefault.jpg"
+    },
+    {
       "id": "L5qg4aV-9Rc",
       "title": "World Cup Fans LOVE Texas: Buc-ee's & BBQ Shock! #shorts",
       "thumbnail": "https://i.ytimg.com/vi/L5qg4aV-9Rc/maxresdefault.jpg"
@@ -9,11 +14,6 @@
       "id": "sHQuZs_3GwU",
       "title": "Elon Musk's Net Worth vs. Bitcoin #shorts",
       "thumbnail": "https://i.ytimg.com/vi/sHQuZs_3GwU/maxresdefault.jpg"
-    },
-    {
-      "id": "VBnetUfj2pg",
-      "title": "Reality Check: NFTs & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/VBnetUfj2pg/maxresdefault_live.jpg"
     },
     {
       "id": "Op57PHG2_Lo",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/fLftEUjLV9M/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-18T03:39:01.620557Z"
+  "updated": "2026-06-18T10:17:05.812652Z"
 }
