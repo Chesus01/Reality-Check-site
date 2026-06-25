@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "2KtwYKeaJDc",
+      "title": "Reality Check: BTC Dumping / Market Panic",
+      "thumbnail": "https://i.ytimg.com/vi/2KtwYKeaJDc/maxresdefault_live.jpg"
+    },
+    {
       "id": "tS5WLYKfXU8",
       "title": "Tollan Universe on Abstract",
       "thumbnail": "https://i.ytimg.com/vi/tS5WLYKfXU8/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "dDVHVDAeyto",
       "title": "Reality Check: Clippy Badge/ NFTs & Market News",
       "thumbnail": "https://i.ytimg.com/vi/dDVHVDAeyto/maxresdefault.jpg"
-    },
-    {
-      "id": "rjVERYQwB3E",
-      "title": "Reality Check: NFTs / BTC  to $47k & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/rjVERYQwB3E/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-25T14:26:33.329869Z"
+  "updated": "2026-06-25T19:56:26.726975Z"
 }
