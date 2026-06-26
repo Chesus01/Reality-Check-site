@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "OzxhIgL5ZVA",
+      "title": "Reality Check: NFTs & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/OzxhIgL5ZVA/maxresdefault_live.jpg"
+    },
+    {
       "id": "2KtwYKeaJDc",
       "title": "Reality Check: BTC Dumping / Market Panic",
       "thumbnail": "https://i.ytimg.com/vi/2KtwYKeaJDc/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "EqazfdVGukc",
       "title": "TikTok & Shorts Strategy: Viral Views with Cultural Trends #shorts",
       "thumbnail": "https://i.ytimg.com/vi/EqazfdVGukc/maxresdefault.jpg"
-    },
-    {
-      "id": "BHSh9xH3vh8",
-      "title": "Reality Check: Abstract XP & Clippy Badge Day 2",
-      "thumbnail": "https://i.ytimg.com/vi/BHSh9xH3vh8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-26T14:18:54.650034Z"
+  "updated": "2026-06-26T19:46:31.875310Z"
 }
