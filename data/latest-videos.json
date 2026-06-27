@@ -1,14 +1,14 @@
 {
   "videos": [
     {
+      "id": "OzxhIgL5ZVA",
+      "title": "Reality Check: NFTs & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/OzxhIgL5ZVA/maxresdefault.jpg"
+    },
+    {
       "id": "koHrguP92b8",
       "title": "USA Soccer's Surprise Loss: Key Takeaways & Analysis #shorts",
       "thumbnail": "https://i.ytimg.com/vi/koHrguP92b8/maxresdefault.jpg"
-    },
-    {
-      "id": "OzxhIgL5ZVA",
-      "title": "Reality Check: NFTs & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/OzxhIgL5ZVA/maxresdefault_live.jpg"
     },
     {
       "id": "2KtwYKeaJDc",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/YE0MLR9qqrM/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-06-27T02:50:48.030382Z"
+  "updated": "2026-06-27T08:32:44.273253Z"
 }
