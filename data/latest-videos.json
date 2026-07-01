@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "FiHhOKnITG0",
+      "title": "Reality Check: NFTs & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/FiHhOKnITG0/maxresdefault_live.jpg"
+    },
+    {
       "id": "WfzADZz2uAY",
       "title": "Reality Check: NFTs & MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/WfzADZz2uAY/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "koHrguP92b8",
       "title": "USA Soccer's Surprise Loss: Key Takeaways & Analysis #shorts",
       "thumbnail": "https://i.ytimg.com/vi/koHrguP92b8/maxresdefault.jpg"
-    },
-    {
-      "id": "2KtwYKeaJDc",
-      "title": "Reality Check: BTC Dumping / Market Panic",
-      "thumbnail": "https://i.ytimg.com/vi/2KtwYKeaJDc/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-01T14:29:07.853992Z"
+  "updated": "2026-07-01T19:50:26.306176Z"
 }
