@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "JfiTwRIqyow",
+      "title": "Reality Check: XEET / Cade Cup & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/JfiTwRIqyow/maxresdefault_live.jpg"
+    },
+    {
       "id": "mzlR42bXrDw",
       "title": "Reality Check: XEET / NFTs & Market News",
       "thumbnail": "https://i.ytimg.com/vi/mzlR42bXrDw/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "0NbYvLCmmGE",
       "title": "Kalshi's FIFA Partnership & Prediction Market Race #shorts",
       "thumbnail": "https://i.ytimg.com/vi/0NbYvLCmmGE/maxresdefault.jpg"
-    },
-    {
-      "id": "OzxhIgL5ZVA",
-      "title": "Reality Check: NFTs & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/OzxhIgL5ZVA/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-03T13:56:47.486043Z"
+  "updated": "2026-07-03T19:16:26.306552Z"
 }
