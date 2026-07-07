@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "uaVO-XozgDQ",
+      "title": "Reality Check: $ANSEM  & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/uaVO-XozgDQ/maxresdefault_live.jpg"
+    },
+    {
       "id": "-J4-XkReom0",
       "title": "Reality Check: $ANSEM / XEET & Market News",
       "thumbnail": "https://i.ytimg.com/vi/-J4-XkReom0/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "FiHhOKnITG0",
       "title": "Reality Check: NFTs & Market News",
       "thumbnail": "https://i.ytimg.com/vi/FiHhOKnITG0/maxresdefault.jpg"
-    },
-    {
-      "id": "WfzADZz2uAY",
-      "title": "Reality Check: NFTs & MEMEs",
-      "thumbnail": "https://i.ytimg.com/vi/WfzADZz2uAY/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-07T14:26:09.907919Z"
+  "updated": "2026-07-07T19:51:02.755588Z"
 }
