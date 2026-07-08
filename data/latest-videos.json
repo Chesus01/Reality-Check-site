@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "ho8ha_8xc4E",
+      "title": "Reality Check: $ANSEM vs Robinhood",
+      "thumbnail": "https://i.ytimg.com/vi/ho8ha_8xc4E/maxresdefault_live.jpg"
+    },
+    {
       "id": "uaVO-XozgDQ",
       "title": "Reality Check: $ANSEM  & Market News",
       "thumbnail": "https://i.ytimg.com/vi/uaVO-XozgDQ/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "mzlR42bXrDw",
       "title": "Reality Check: XEET / NFTs & Market News",
       "thumbnail": "https://i.ytimg.com/vi/mzlR42bXrDw/maxresdefault.jpg"
-    },
-    {
-      "id": "FiHhOKnITG0",
-      "title": "Reality Check: NFTs & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/FiHhOKnITG0/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-08T13:57:08.168289Z"
+  "updated": "2026-07-08T19:20:53.765752Z"
 }
