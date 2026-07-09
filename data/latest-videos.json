@@ -1,14 +1,14 @@
 {
   "videos": [
     {
+      "id": "ho8ha_8xc4E",
+      "title": "Reality Check: $ANSEM vs Robinhood",
+      "thumbnail": "https://i.ytimg.com/vi/ho8ha_8xc4E/maxresdefault.jpg"
+    },
+    {
       "id": "7qLTBNGVnm0",
       "title": "Tollan Universe - Live Giveaway",
       "thumbnail": "https://i.ytimg.com/vi/7qLTBNGVnm0/maxresdefault_live.jpg"
-    },
-    {
-      "id": "ho8ha_8xc4E",
-      "title": "Reality Check: $ANSEM vs Robinhood",
-      "thumbnail": "https://i.ytimg.com/vi/ho8ha_8xc4E/maxresdefault_live.jpg"
     },
     {
       "id": "uaVO-XozgDQ",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/JfiTwRIqyow/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-09T02:41:20.556663Z"
+  "updated": "2026-07-09T09:33:59.169882Z"
 }
