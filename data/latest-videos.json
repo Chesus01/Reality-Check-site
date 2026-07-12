@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "WebJHWq_ZVs",
+      "title": "Tollan Universe",
+      "thumbnail": "https://i.ytimg.com/vi/WebJHWq_ZVs/maxresdefault_live.jpg"
+    },
+    {
       "id": "HKhW2c-zcCo",
       "title": "Reality Check: $ANSEM / Robinhood MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/HKhW2c-zcCo/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "uaVO-XozgDQ",
       "title": "Reality Check: $ANSEM  & Market News",
       "thumbnail": "https://i.ytimg.com/vi/uaVO-XozgDQ/maxresdefault.jpg"
-    },
-    {
-      "id": "-J4-XkReom0",
-      "title": "Reality Check: $ANSEM / XEET & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/-J4-XkReom0/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-11T18:58:03.343063Z"
+  "updated": "2026-07-12T02:28:54.884216Z"
 }
