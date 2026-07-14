@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "5npSMB_xTh8",
+      "title": "Reality Check: Robinhood MEMEs & NFTs",
+      "thumbnail": "https://i.ytimg.com/vi/5npSMB_xTh8/maxresdefault_live.jpg"
+    },
+    {
       "id": "WebJHWq_ZVs",
       "title": "Tollan Universe",
       "thumbnail": "https://i.ytimg.com/vi/WebJHWq_ZVs/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "ho8ha_8xc4E",
       "title": "Reality Check: $ANSEM vs Robinhood",
       "thumbnail": "https://i.ytimg.com/vi/ho8ha_8xc4E/maxresdefault.jpg"
-    },
-    {
-      "id": "uaVO-XozgDQ",
-      "title": "Reality Check: $ANSEM  & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/uaVO-XozgDQ/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-14T13:27:51.047104Z"
+  "updated": "2026-07-14T19:15:03.873820Z"
 }
