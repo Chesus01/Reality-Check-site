@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "jq_EqJZi0Do",
+      "title": "Reality Check: Stonkbrokers Mint",
+      "thumbnail": "https://i.ytimg.com/vi/jq_EqJZi0Do/maxresdefault_live.jpg"
+    },
+    {
       "id": "VrHqeDPvNGA",
       "title": "Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/VrHqeDPvNGA/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "bbre0o_inCQ",
       "title": "Reality Check: $ANSEM / Robinhood MEMEs & XEET",
       "thumbnail": "https://i.ytimg.com/vi/bbre0o_inCQ/maxresdefault.jpg"
-    },
-    {
-      "id": "7qLTBNGVnm0",
-      "title": "Tollan Universe - Live Giveaway",
-      "thumbnail": "https://i.ytimg.com/vi/7qLTBNGVnm0/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-16T13:43:38.056913Z"
+  "updated": "2026-07-16T19:05:03.490351Z"
 }
