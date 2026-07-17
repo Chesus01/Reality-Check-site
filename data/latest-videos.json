@@ -1,14 +1,14 @@
 {
   "videos": [
     {
+      "id": "jq_EqJZi0Do",
+      "title": "Reality Check: Stonkbrokers Mint",
+      "thumbnail": "https://i.ytimg.com/vi/jq_EqJZi0Do/maxresdefault.jpg"
+    },
+    {
       "id": "EhOudMsRRFk",
       "title": "Tollan Universe",
       "thumbnail": "https://i.ytimg.com/vi/EhOudMsRRFk/maxresdefault.jpg"
-    },
-    {
-      "id": "jq_EqJZi0Do",
-      "title": "Reality Check: Stonkbrokers Mint",
-      "thumbnail": "https://i.ytimg.com/vi/jq_EqJZi0Do/maxresdefault_live.jpg"
     },
     {
       "id": "VrHqeDPvNGA",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/HKhW2c-zcCo/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-17T02:24:23.726291Z"
+  "updated": "2026-07-17T08:04:53.889122Z"
 }
