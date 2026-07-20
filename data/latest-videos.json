@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "gt6eAGTVA0k",
+      "title": "Reality Check: Stonkbrokers / Robinhood & RWAs",
+      "thumbnail": "https://i.ytimg.com/vi/gt6eAGTVA0k/maxresdefault_live.jpg"
+    },
+    {
       "id": "HEwn_xeve0U",
       "title": "Stonkbrokers / Robinhood & RWAs",
       "thumbnail": "https://i.ytimg.com/vi/HEwn_xeve0U/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "5npSMB_xTh8",
       "title": "Reality Check: Robinhood MEMEs & NFTs",
       "thumbnail": "https://i.ytimg.com/vi/5npSMB_xTh8/maxresdefault.jpg"
-    },
-    {
-      "id": "WebJHWq_ZVs",
-      "title": "Tollan Universe",
-      "thumbnail": "https://i.ytimg.com/vi/WebJHWq_ZVs/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-20T13:59:21.040851Z"
+  "updated": "2026-07-20T19:40:34.041143Z"
 }
