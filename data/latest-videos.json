@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "OPIb-ixBaPw",
+      "title": "Reality Check: Creepz Sold / Robinhood MEMEs",
+      "thumbnail": "https://i.ytimg.com/vi/OPIb-ixBaPw/maxresdefault_live.jpg"
+    },
+    {
       "id": "g_k1nrbE1ZQ",
       "title": "Reality Check: Robinhood MEMEs vs SOL MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/g_k1nrbE1ZQ/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "jq_EqJZi0Do",
       "title": "Reality Check: Stonkbrokers Mint",
       "thumbnail": "https://i.ytimg.com/vi/jq_EqJZi0Do/maxresdefault.jpg"
-    },
-    {
-      "id": "EhOudMsRRFk",
-      "title": "Tollan Universe",
-      "thumbnail": "https://i.ytimg.com/vi/EhOudMsRRFk/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-23T19:11:10.810928Z"
+  "updated": "2026-07-24T02:25:26.886621Z"
 }
