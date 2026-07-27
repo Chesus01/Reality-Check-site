@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "ffcD7TPKleI",
+      "title": "Reality Check:  Robinhood MEMEs / NFTs & More",
+      "thumbnail": "https://i.ytimg.com/vi/ffcD7TPKleI/maxresdefault_live.jpg"
+    },
+    {
       "id": "JNZxcR7PzE0",
       "title": "Reality Check:  Robinhood MEMEs & NFTs",
       "thumbnail": "https://i.ytimg.com/vi/JNZxcR7PzE0/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "gt6eAGTVA0k",
       "title": "Reality Check: Stonkbrokers / Robinhood & RWAs",
       "thumbnail": "https://i.ytimg.com/vi/gt6eAGTVA0k/maxresdefault.jpg"
-    },
-    {
-      "id": "HEwn_xeve0U",
-      "title": "Stonkbrokers / Robinhood & RWAs",
-      "thumbnail": "https://i.ytimg.com/vi/HEwn_xeve0U/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-07-27T14:26:30.534296Z"
+  "updated": "2026-07-27T19:22:59.348575Z"
 }
