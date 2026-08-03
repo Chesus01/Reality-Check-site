@@ -1,24 +1,19 @@
 {
   "videos": [
     {
+      "id": "P1LSv6u8ePQ",
+      "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
+      "thumbnail": "https://i.ytimg.com/vi/P1LSv6u8ePQ/maxresdefault_live.jpg"
+    },
+    {
       "id": "YMuL7sUtse8",
       "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
       "thumbnail": "https://i.ytimg.com/vi/YMuL7sUtse8/maxresdefault.jpg"
     },
     {
-      "id": "pdEYzH-E-SM",
-      "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
-      "thumbnail": "https://i.ytimg.com/vi/pdEYzH-E-SM/maxresdefault.jpg"
-    },
-    {
       "id": "L7uBLNOz-HE",
       "title": "Reality Check:  $DERP / $STONKBROKER Launch Pad",
       "thumbnail": "https://i.ytimg.com/vi/L7uBLNOz-HE/maxresdefault.jpg"
-    },
-    {
-      "id": "-hmqyVSjHBk",
-      "title": "Reality Check:  $FWA / $STONKBROKER Launch Pad",
-      "thumbnail": "https://i.ytimg.com/vi/-hmqyVSjHBk/maxresdefault.jpg"
     },
     {
       "id": "ffcD7TPKleI",
@@ -29,7 +24,12 @@
       "id": "JNZxcR7PzE0",
       "title": "Reality Check:  Robinhood MEMEs & NFTs",
       "thumbnail": "https://i.ytimg.com/vi/JNZxcR7PzE0/maxresdefault.jpg"
+    },
+    {
+      "id": "OPIb-ixBaPw",
+      "title": "Reality Check: Creepz Sold / Robinhood MEMEs",
+      "thumbnail": "https://i.ytimg.com/vi/OPIb-ixBaPw/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-08-03T14:33:48.970711Z"
+  "updated": "2026-08-03T19:26:18.225191Z"
 }
