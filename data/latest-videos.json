@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "w2WrjFySeic",
+      "title": "Reality Check: $MANCER /  NFTs / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/w2WrjFySeic/maxresdefault_live.jpg"
+    },
+    {
       "id": "WJJqPFxzlEY",
       "title": "Reality Check: $STONKBROKER / UniSwap",
       "thumbnail": "https://i.ytimg.com/vi/WJJqPFxzlEY/maxresdefault.jpg"
@@ -21,15 +26,10 @@
       "thumbnail": "https://i.ytimg.com/vi/YMuL7sUtse8/maxresdefault.jpg"
     },
     {
-      "id": "L7uBLNOz-HE",
-      "title": "Reality Check:  $DERP / $STONKBROKER Launch Pad",
-      "thumbnail": "https://i.ytimg.com/vi/L7uBLNOz-HE/maxresdefault.jpg"
-    },
-    {
-      "id": "ffcD7TPKleI",
-      "title": "Reality Check:  Robinhood MEMEs / NFTs & More",
-      "thumbnail": "https://i.ytimg.com/vi/ffcD7TPKleI/maxresdefault.jpg"
+      "id": "pdEYzH-E-SM",
+      "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
+      "thumbnail": "https://i.ytimg.com/vi/pdEYzH-E-SM/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-08-06T13:59:17.876815Z"
+  "updated": "2026-08-06T23:55:22.814858Z"
 }
