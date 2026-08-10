@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "HHusznmJIRE",
+      "title": "Reality Check: $CLOCKIN",
+      "thumbnail": "https://i.ytimg.com/vi/HHusznmJIRE/maxresdefault_live.jpg"
+    },
+    {
       "id": "l_Pk-PM3sqs",
       "title": "Reality Check: $MANCER /  NFTs / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/l_Pk-PM3sqs/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "P1LSv6u8ePQ",
       "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
       "thumbnail": "https://i.ytimg.com/vi/P1LSv6u8ePQ/maxresdefault.jpg"
-    },
-    {
-      "id": "YMuL7sUtse8",
-      "title": "Reality Check:  $STONKBROKER Broker Box / Robinhood",
-      "thumbnail": "https://i.ytimg.com/vi/YMuL7sUtse8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-08-10T12:59:57.192563Z"
+  "updated": "2026-08-10T18:58:44.206813Z"
 }
