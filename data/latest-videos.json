@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "nnF-iANAZzY",
+      "title": "Reality Check: $YARD / TickerYard / $STONKBROKER Launchpad",
+      "thumbnail": "https://i.ytimg.com/vi/nnF-iANAZzY/maxresdefault_live.jpg"
+    },
+    {
       "id": "w48OImB_1rY",
       "title": "Reality Check: $YARD / TickerYard / $STONKBROKER Launchpad",
       "thumbnail": "https://i.ytimg.com/vi/w48OImB_1rY/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "WJJqPFxzlEY",
       "title": "Reality Check: $STONKBROKER / UniSwap",
       "thumbnail": "https://i.ytimg.com/vi/WJJqPFxzlEY/maxresdefault.jpg"
-    },
-    {
-      "id": "eY-HO5H7lhY",
-      "title": "Reality Check:  $FWA / $STONKBROKER / Mancer/  Robinhood",
-      "thumbnail": "https://i.ytimg.com/vi/eY-HO5H7lhY/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-08-12T13:01:39.782301Z"
+  "updated": "2026-08-12T18:57:58.170411Z"
 }
