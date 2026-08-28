@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "-HVrbMKms4s",
+      "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/-HVrbMKms4s/maxresdefault_live.jpg"
+    },
+    {
       "id": "wHGDyRyJGR0",
       "title": "Reality Check: NFTs & MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/wHGDyRyJGR0/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "TLOU9U9XyL8",
       "title": "Reality Check: $CLOCKIN  Fall Out / $STONKBROKER Launchpad",
       "thumbnail": "https://i.ytimg.com/vi/TLOU9U9XyL8/maxresdefault.jpg"
-    },
-    {
-      "id": "F15NwUxjaZI",
-      "title": "Reality Check: $CLOCKIN  Fall Out / $STONKBROKER Launchpad",
-      "thumbnail": "https://i.ytimg.com/vi/F15NwUxjaZI/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-08-28T08:56:42.383051Z"
+  "updated": "2026-08-28T21:42:01.420631Z"
 }
