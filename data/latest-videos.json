@@ -1,6 +1,16 @@
 {
   "videos": [
     {
+      "id": "g6mQm8sxvAo",
+      "title": "Reality Check Founder Series: BaiBai",
+      "thumbnail": "https://i.ytimg.com/vi/g6mQm8sxvAo/maxresdefault_live.jpg"
+    },
+    {
+      "id": "E39fK3f1C8s",
+      "title": "Reality Check: NFTs & MEMEs  / $STONKBROKER / $MANCER",
+      "thumbnail": "https://i.ytimg.com/vi/E39fK3f1C8s/maxresdefault_live.jpg"
+    },
+    {
       "id": "ifpRUoCGGxU",
       "title": "Reality Check: NFTs & MEMEs  /  STORMM / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/ifpRUoCGGxU/maxresdefault.jpg"
@@ -19,17 +29,7 @@
       "id": "0R2x_U3fynQ",
       "title": "Reality Check: Markets UP/ NFTs & MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/0R2x_U3fynQ/maxresdefault.jpg"
-    },
-    {
-      "id": "o-_bTau3-Io",
-      "title": "Reality Check: Interns SOON  / $STONKBROKER Launchpad",
-      "thumbnail": "https://i.ytimg.com/vi/o-_bTau3-Io/maxresdefault.jpg"
-    },
-    {
-      "id": "zg24kCtOVGY",
-      "title": "Reality Check: Interns SOON  / $STONKBROKER Launchpad",
-      "thumbnail": "https://i.ytimg.com/vi/zg24kCtOVGY/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-01T16:01:20.825739Z"
+  "updated": "2026-09-01T20:30:23.306437Z"
 }
