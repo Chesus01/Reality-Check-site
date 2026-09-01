@@ -25,67 +25,6 @@
     .page-hero-inner { position:relative; z-index:1; max-width:780px; margin:0 auto; }
     .page-hero p { color:var(--muted); font-size:1.1rem; max-width:600px; margin:16px auto 0; line-height:1.75; }
 
-    /* VAULT777 CARD */
-    #vault777 { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .vault-card { background: var(--bg2); border: 1px solid rgba(30,100,255,0.25); border-radius: 20px; overflow: hidden; }
-    .vault-card-header {
-      position: relative;
-      overflow: hidden;
-      background: url('../assets/vault777-bg.png') center 40% / cover no-repeat;
-      border-bottom: 1px solid rgba(30,100,255,0.15);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .vault-card-header-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(4,13,30,1) 0%, rgba(4,13,30,0.98) 40%, rgba(4,13,30,0.55) 70%, rgba(4,13,30,0.3) 100%);
-      pointer-events: none;
-    }
-    .vault-card-header > * { position: relative; z-index: 1; }
-    .vault-header-info p { color: rgba(255,255,255,0.85) !important; }
-    .vault-blue-tag { opacity: 1 !important; }
-    .vault-header-info { flex: 1; min-width: 240px; }
-    .vault-header-info h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
-    .vault-blue-tag { color: #4da6ff; font-family: 'Space Mono', monospace; font-size: 13px; margin-bottom: 12px; }
-    .vault-header-info p { color: var(--muted); font-size: 14px; line-height: 1.65; max-width: 560px; }
-    .vault-header-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-    .vault-hlink { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid rgba(30,100,255,0.3); color: var(--muted); background: var(--bg3); transition: all 0.2s; }
-    .vault-hlink:hover { border-color: #4da6ff; color: #4da6ff; }
-    .vault-hlink.kick:hover { border-color: #53fc18; color: #53fc18; }
-    .vault-hlink.discord:hover { border-color: #7289da; color: #7289da; }
-    .vault-stats { display: flex; gap: 32px; flex-wrap: wrap; flex-shrink: 0; }
-    .vault-stat { text-align: center; }
-    .vault-stat-num { font-size: 1.4rem; font-weight: 700; font-family: 'Space Mono', monospace; color: #4da6ff; }
-    .vault-stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
-    /* bottom body — mirrors bearish-card-body */
-    .vault-card-body { padding: 28px 40px 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-    .vault-qr-wrap { flex-shrink: 0; text-align: center; }
-    .vault-qr-img { width: 160px; height: 160px; border-radius: 16px; overflow: hidden; background: #fff; display: block; }
-    .vault-qr-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; display: block; }
-    .vault-qr-caption { font-size: 11px; font-family: 'Space Mono', monospace; color: var(--muted); margin-top: 10px; letter-spacing: 1px; }
-    .vault-perks-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
-    .vault-perk-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
-    .vault-perk-card-dot { width: 8px; height: 8px; border-radius: 50%; background: #4da6ff; flex-shrink: 0; }
-    .vault-perk-card span { font-size: 13px; font-weight: 600; color: var(--text); }
-    .vault-code-col { flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; align-items: flex-end; }
-    .vault-code-box { background: var(--bg3); border: 1px solid rgba(30,140,255,0.3); border-radius: 12px; padding: 14px 22px; }
-    .vault-code-label { font-size: 10px; font-family: 'Space Mono', monospace; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .vault-code-val { font-size: 1.5rem; font-weight: 700; font-family: 'Space Mono', monospace; color: #4da6ff; letter-spacing: 2px; }
-    .vault-play-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; background: #1e5fff; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
-    .vault-play-btn:hover { background: #3b74ff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(30,95,255,0.35); }
-    @media (max-width: 900px) {
-      .vault-card-header { padding: 28px; }
-      .vault-card-body { padding: 20px 28px 24px; }
-      .vault-code-col { align-items: flex-start; }
-    }
-    @media (max-width: 600px) {
-      .vault-qr-img { width: 120px; height: 120px; }
-    }
-
     /* BEARISH */
     .bearish-card { background:var(--bg2); border:1px solid rgba(249,115,22,0.25); border-radius:20px; overflow:hidden; }
     .bearish-card-header { background:linear-gradient(135deg,rgba(249,115,22,0.1) 0%,rgba(249,115,22,0.03) 100%); border-bottom:1px solid rgba(249,115,22,0.15); padding:36px 40px; display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
@@ -127,9 +66,6 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .vault-inner { grid-template-columns: 1fr; gap: 40px; }
-      .vault-img-wrap { order: -1; }
-      .vault-img-wrap img { max-width: 280px; }
       .blinko-wrap { grid-template-columns:1fr; }
       .blinko-qr-wrap { display:flex; flex-direction:column; align-items:flex-start; }
       .bearish-card-header { padding:28px; }
@@ -210,69 +146,6 @@
       <p class="section-label">Partners &amp; Sponsors</p>
       <h1>Brands we <span class="orange">work with.</span></h1>
       <p>These are the brands Reality Check has partnered with. Use our referral codes to support the show &mdash; and get exclusive perks from our partners.</p>
-    </div>
-  </section>
-
-  <!-- VAULT777 PARTNER -->
-  <section class="section" id="vault777">
-    <div class="section-inner">
-      <p class="section-label">Active Partner</p>
-      <h2>Vault777 &mdash; Crypto <span class="orange">Casino Gaming.</span></h2>
-      <div class="vault-card" style="margin-top:48px;">
-
-        <!-- TOP: Brand info + links -->
-        <div class="vault-card-header">
-          <div class="vault-card-header-bg"></div>
-          <div class="vault-header-info">
-            <h3>Vault777</h3>
-            <p class="vault-blue-tag">Crypto Casino &mdash; Play at beta.vault777.com/R/CHESUS</p>
-            <p>Vault777 is Reality Check's casino partner &mdash; a crypto-native gaming platform built for the Web3 community. Sign up with referral code <strong style="color:var(--text);">CHESUS</strong>, watch Chesus play live on Kick, and join the Discord for exclusive drops and giveaways.</p>
-            <div class="vault-header-links">
-              <a href="https://beta.vault777.com/R/CHESUS" target="_blank" rel="noopener" class="vault-hlink">&#127760; beta.vault777.com</a>
-              <a href="https://kick.com/chesus" target="_blank" rel="noopener" class="vault-hlink kick">
-                <svg viewBox="0 0 24 24" style="width:13px;height:13px;"><circle cx="12" cy="12" r="10" fill="#53fc18"/><polygon points="10 8 16 12 10 16 10 8" fill="#000"/></svg>
-                Chesus on Kick
-              </a>
-              <a href="https://discord.gg/usevault777" target="_blank" rel="noopener" class="vault-hlink discord">
-                <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                Vault777 Discord
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- BOTTOM: QR + perk cards + CTA -->
-        <div class="vault-card-body">
-          <div class="vault-qr-wrap">
-            <div class="vault-qr-img">
-              <img src="../assets/vault777-qr.png" alt="Scan to play Vault777 with code CHESUS" />
-            </div>
-            <div class="vault-qr-caption">SCAN &bull; CODE: CHESUS</div>
-          </div>
-          <div class="vault-perks-col">
-            <div class="vault-perk-card">
-              <span class="vault-perk-card-dot"></span>
-              <span>Live Giveaways on Kick Stream</span>
-            </div>
-            <div class="vault-perk-card">
-              <span class="vault-perk-card-dot"></span>
-              <span>NFT Giveaways for RC Community</span>
-            </div>
-            <div class="vault-perk-card">
-              <span class="vault-perk-card-dot"></span>
-              <span>Exclusive Drops via Discord</span>
-            </div>
-          </div>
-          <div class="vault-code-col">
-            <div class="vault-code-box">
-              <div class="vault-code-label">Referral Code</div>
-              <div class="vault-code-val">CHESUS</div>
-            </div>
-            <a href="https://beta.vault777.com/R/CHESUS" target="_blank" rel="noopener" class="vault-play-btn">Play on Vault777 &#8599;</a>
-          </div>
-        </div>
-
-      </div>
     </div>
   </section>
 
