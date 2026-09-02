@@ -1,6 +1,16 @@
 {
   "videos": [
     {
+      "id": "03S47lqFRXY",
+      "title": "Reality Check Founder Series: Wire Network",
+      "thumbnail": "https://i.ytimg.com/vi/03S47lqFRXY/maxresdefault_live.jpg"
+    },
+    {
+      "id": "j0cH0-ycing",
+      "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/j0cH0-ycing/maxresdefault_live.jpg"
+    },
+    {
       "id": "g6mQm8sxvAo",
       "title": "Reality Check Founder Series: BaiBai",
       "thumbnail": "https://i.ytimg.com/vi/g6mQm8sxvAo/maxresdefault.jpg"
@@ -19,17 +29,7 @@
       "id": "-HVrbMKms4s",
       "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/-HVrbMKms4s/maxresdefault.jpg"
-    },
-    {
-      "id": "wHGDyRyJGR0",
-      "title": "Reality Check: NFTs & MEMEs",
-      "thumbnail": "https://i.ytimg.com/vi/wHGDyRyJGR0/maxresdefault.jpg"
-    },
-    {
-      "id": "0R2x_U3fynQ",
-      "title": "Reality Check: Markets UP/ NFTs & MEMEs",
-      "thumbnail": "https://i.ytimg.com/vi/0R2x_U3fynQ/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-02T15:55:32.870636Z"
+  "updated": "2026-09-02T20:28:33.849581Z"
 }
