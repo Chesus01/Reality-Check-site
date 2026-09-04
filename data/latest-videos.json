@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "P54zyTyx5Sk",
+      "title": "Reality Check: Hooja on Robinhood / $PONS / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/P54zyTyx5Sk/maxresdefault_live.jpg"
+    },
+    {
       "id": "Q4zWFbQtGFU",
       "title": "Reality Check: $PONS / $STONKBROKER / RH MEMEs",
       "thumbnail": "https://i.ytimg.com/vi/Q4zWFbQtGFU/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "E39fK3f1C8s",
       "title": "Reality Check: NFTs & MEMEs  / $STONKBROKER / $MANCER",
       "thumbnail": "https://i.ytimg.com/vi/E39fK3f1C8s/maxresdefault.jpg"
-    },
-    {
-      "id": "-HVrbMKms4s",
-      "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/-HVrbMKms4s/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-04T15:43:14.500856Z"
+  "updated": "2026-09-04T20:14:24.394094Z"
 }
