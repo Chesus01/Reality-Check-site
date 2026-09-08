@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "uxfh5ZofjCs",
+      "title": "Reality Check: Smart LP / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/uxfh5ZofjCs/maxresdefault_live.jpg"
+    },
+    {
       "id": "P54zyTyx5Sk",
       "title": "Reality Check: Hooja on Robinhood / $PONS / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/P54zyTyx5Sk/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "g6mQm8sxvAo",
       "title": "Reality Check Founder Series: BaiBai",
       "thumbnail": "https://i.ytimg.com/vi/g6mQm8sxvAo/maxresdefault.jpg"
-    },
-    {
-      "id": "-HVrbMKms4s",
-      "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/-HVrbMKms4s/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-08T15:56:35.567336Z"
+  "updated": "2026-09-08T20:40:59.958219Z"
 }
