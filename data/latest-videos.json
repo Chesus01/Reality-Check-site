@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "5On2lvVdLZs",
+      "title": "Reality Check: Nightshades by MeebCo / Smart LP / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/5On2lvVdLZs/maxresdefault_live.jpg"
+    },
+    {
       "id": "uxfh5ZofjCs",
       "title": "Reality Check: Smart LP / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/uxfh5ZofjCs/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "j0cH0-ycing",
       "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/j0cH0-ycing/maxresdefault.jpg"
-    },
-    {
-      "id": "g6mQm8sxvAo",
-      "title": "Reality Check Founder Series: BaiBai",
-      "thumbnail": "https://i.ytimg.com/vi/g6mQm8sxvAo/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-09T15:52:32.585127Z"
+  "updated": "2026-09-09T20:22:07.687192Z"
 }
