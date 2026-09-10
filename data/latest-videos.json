@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "ay-7dnqpYL0",
+      "title": "Reality Check: The Mutual Fun / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/ay-7dnqpYL0/maxresdefault_live.jpg"
+    },
+    {
       "id": "5On2lvVdLZs",
       "title": "Reality Check: Nightshades by MeebCo / Smart LP / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/5On2lvVdLZs/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "03S47lqFRXY",
       "title": "Reality Check Founder Series: Wire Network",
       "thumbnail": "https://i.ytimg.com/vi/03S47lqFRXY/maxresdefault.jpg"
-    },
-    {
-      "id": "j0cH0-ycing",
-      "title": "Reality Check: NFTs & MEMEs / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/j0cH0-ycing/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-10T15:47:41.086151Z"
+  "updated": "2026-09-10T20:23:35.168562Z"
 }
