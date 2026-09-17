@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "P14ZronBNpg",
+      "title": "Reality Check:  SEC Tokenized Stocks / Nightshade / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/P14ZronBNpg/maxresdefault_live.jpg"
+    },
+    {
       "id": "m4zBmmRo4wU",
       "title": "Reality Check:  Nightshade / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/m4zBmmRo4wU/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "ay-7dnqpYL0",
       "title": "Reality Check: The Mutual Fun / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/ay-7dnqpYL0/maxresdefault.jpg"
-    },
-    {
-      "id": "uxfh5ZofjCs",
-      "title": "Reality Check: Smart LP / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/uxfh5ZofjCs/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-17T16:11:13.767847Z"
+  "updated": "2026-09-17T20:55:35.103699Z"
 }
