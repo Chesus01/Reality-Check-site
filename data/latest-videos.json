@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "gypLv1ae9Xg",
+      "title": "Reality Check:  NFT Exploit  / Bitget Hack / $STONKBROKER",
+      "thumbnail": "https://i.ytimg.com/vi/gypLv1ae9Xg/maxresdefault.jpg"
+    },
+    {
       "id": "evJV7tC-TD8",
       "title": "Reality Check:  $POS / Interns  / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/evJV7tC-TD8/maxresdefault.jpg"
@@ -9,11 +14,6 @@
       "id": "aGn9G5B1aTs",
       "title": "Reality Check:  $POS / Interns  / $STONKBROKER",
       "thumbnail": "https://i.ytimg.com/vi/aGn9G5B1aTs/maxresdefault.jpg"
-    },
-    {
-      "id": "_qsLxuCPWmg",
-      "title": "Reality Check:  $POS / Interns  / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/_qsLxuCPWmg/maxresdefault.jpg"
     },
     {
       "id": "WvkfgqAqC3s",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/BkfMVW7wCJc/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-09-25T16:28:31.898033Z"
+  "updated": "2026-09-25T21:03:48.726879Z"
 }
