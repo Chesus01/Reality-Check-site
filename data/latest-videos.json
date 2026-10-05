@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "OWkm3ENN3bo",
+      "title": "Reality Check: NFT Drama / Abstract & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/OWkm3ENN3bo/maxresdefault_live.jpg"
+    },
+    {
       "id": "xjGR0QigS5E",
       "title": "Reality Check: The CardWall Giveaway / Abstract FUD",
       "thumbnail": "https://i.ytimg.com/vi/xjGR0QigS5E/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "bqVqu8ODlLw",
       "title": "Reality Check: CardWall / $STONKBROKER / Upcoming Mints",
       "thumbnail": "https://i.ytimg.com/vi/bqVqu8ODlLw/maxresdefault.jpg"
-    },
-    {
-      "id": "evJV7tC-TD8",
-      "title": "Reality Check:  $POS / Interns  / $STONKBROKER",
-      "thumbnail": "https://i.ytimg.com/vi/evJV7tC-TD8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-05T13:32:11.643418Z"
+  "updated": "2026-10-05T23:42:25.545692Z"
 }
