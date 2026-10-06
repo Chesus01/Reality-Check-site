@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "RuArO4VP9bg",
+      "title": "Reality Check: Ossen / Bearish Casino / Abstract & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/RuArO4VP9bg/maxresdefault_live.jpg"
+    },
+    {
       "id": "OWkm3ENN3bo",
       "title": "Reality Check: NFT Drama / Abstract & Market News",
       "thumbnail": "https://i.ytimg.com/vi/OWkm3ENN3bo/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "OO1ATsMnNOE",
       "title": "Reality Check: CardWall / $STONKBROKER / UsePaid",
       "thumbnail": "https://i.ytimg.com/vi/OO1ATsMnNOE/maxresdefault.jpg"
-    },
-    {
-      "id": "bqVqu8ODlLw",
-      "title": "Reality Check: CardWall / $STONKBROKER / Upcoming Mints",
-      "thumbnail": "https://i.ytimg.com/vi/bqVqu8ODlLw/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-06T12:42:33.763424Z"
+  "updated": "2026-10-06T22:17:12.245937Z"
 }
