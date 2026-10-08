@@ -14,7 +14,7 @@
   <meta name="twitter:site" content="@RealityCheck_RR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bai+Jamjuree:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="icon" href="../assets/RC Favicon Logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="../assets/RC Favicon Logo.png" />
@@ -75,6 +75,46 @@
       .blinko-wrap { padding:32px 24px; }
       .blinko-qr-img { width:160px; height:160px; }
     }
+
+    /* IMPERIAL (Chesus partner) */
+    .imp { --imp-canvas:#0b0c0e; --imp-surface:#121417; --imp-raised:#191b1f; --imp-orange:#f79929; --imp-gold:#e8c766; --imp-cream:#faf4e8; --imp-muted:#999ea6; --imp-cta:linear-gradient(180deg,#ffb56b 0%,#f2873d 100%); }
+    .imp .imp-font { font-family:'Bai Jamjuree','Space Grotesk',sans-serif; }
+    .imp-owner { display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:999px; border:1px solid rgba(232,199,102,0.4); background:rgba(232,199,102,0.08); color:var(--imp-gold); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+    .imp-owner img { width:18px; height:18px; border-radius:50%; object-fit:cover; }
+    .imp-sub { color:var(--muted); font-size:1rem; line-height:1.75; max-width:640px; margin-top:14px; }
+    .imp-card { margin-top:48px; background:var(--imp-surface); border:1px solid rgba(247,153,41,0.28); border-radius:20px; overflow:hidden; position:relative; }
+    .imp-card::before { content:""; position:absolute; inset:0 0 auto 0; height:2px; background:linear-gradient(90deg,#ffef15 0%,#ff450c 50%,#e50885 100%); }
+    .imp-head { background:radial-gradient(ellipse 70% 120% at 0% 0%,rgba(247,153,41,0.14) 0%,transparent 60%),var(--imp-canvas); border-bottom:1px solid rgba(247,153,41,0.15); padding:36px 40px; display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
+    .imp-logo { width:88px; height:88px; border-radius:18px; background:var(--imp-raised); border:1px solid rgba(247,153,41,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .imp-logo svg { width:58px; height:auto; display:block; }
+    .imp-info { flex:1; min-width:240px; }
+    .imp-info h3 { font-size:1.9rem; font-weight:700; letter-spacing:0.5px; margin-bottom:4px; }
+    .imp-tagline { color:var(--imp-orange); font-family:'Space Mono',monospace; font-size:13px; margin-bottom:12px; }
+    .imp-info p { color:var(--imp-muted); font-size:14px; line-height:1.65; max-width:560px; }
+    .imp-stats { display:flex; gap:32px; flex-wrap:wrap; }
+    .imp-stat { text-align:center; }
+    .imp-stat-num { font-size:1.25rem; font-weight:700; color:var(--imp-cream); }
+    .imp-stat-label { font-size:11px; color:var(--imp-muted); margin-top:2px; }
+    .imp-body { padding:36px 40px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; }
+    .imp-code-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+    .imp-code-box { background:var(--imp-canvas); border:1px solid rgba(247,153,41,0.35); border-radius:12px; padding:12px 22px; }
+    .imp-code-label { font-size:10px; font-family:'Space Mono',monospace; letter-spacing:2px; text-transform:uppercase; color:var(--imp-muted); margin-bottom:4px; }
+    .imp-code-val { font-size:1.5rem; font-weight:700; color:var(--imp-orange); letter-spacing:1px; }
+    .imp-link { font-size:13px; font-family:'Space Mono',monospace; }
+    .imp-link a { color:var(--imp-orange); text-decoration:none; }
+    .imp-link a:hover { text-decoration:underline; }
+    .imp-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .imp-cta { display:inline-flex; align-items:center; gap:10px; padding:14px 26px; background:var(--imp-cta); color:#1f0f03; border-radius:10px; font-size:15px; font-weight:700; text-decoration:none; transition:transform 0.2s, box-shadow 0.2s; }
+    .imp-cta svg { width:26px; height:auto; }
+    .imp-cta:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(247,153,41,0.35); }
+    .imp-social { display:inline-flex; align-items:center; gap:7px; padding:12px 18px; border-radius:10px; font-size:13px; font-weight:600; text-decoration:none; border:1px solid var(--border); color:var(--muted); background:var(--imp-raised); transition:all 0.2s; }
+    .imp-social:hover { border-color:var(--imp-orange); color:var(--imp-orange); }
+    .imp-risk { margin-top:20px; font-size:12px; color:var(--imp-muted); opacity:0.8; }
+    .imp-qr { text-align:center; flex-shrink:0; }
+    .imp-qr img { width:180px; height:180px; border-radius:18px; display:block; border:2px solid rgba(247,153,41,0.45); }
+    .imp-qr-caption { font-size:11px; font-family:'Space Mono',monospace; color:var(--imp-muted); margin-top:10px; letter-spacing:1px; }
+    @media (max-width:900px) { .imp-head { padding:28px; } .imp-body { grid-template-columns:1fr; padding:28px; } .imp-qr { text-align:left; } }
+    @media (max-width:600px) { .imp-qr img { width:150px; height:150px; } .imp-info h3 { font-size:1.6rem; } }
 
     /* FRIENDS SCROLLING ROWS */
     .friends-img-row { display:flex; gap:14px; width:max-content; align-items:center; will-change:transform; }
@@ -243,6 +283,54 @@
             <img src="../assets/blinko-qr.png" alt="Scan to play Blinko with Reality Check referral code" />
           </div>
           <div class="blinko-qr-caption">SCAN TO PLAY &bull; CODE: REALITY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPERIAL (CHESUS PARTNER) -->
+  <section class="section imp" id="imperial" style="background:var(--bg);">
+    <div class="section-inner">
+      <div class="imp-owner"><img src="../assets/Chesus Bearish PFP Main.png" alt="" />Chesus Partner</div>
+      <h2>Imperial. <span class="orange">Every market, one terminal.</span></h2>
+      <p class="imp-sub">A personal partnership with Chesus, separate from the Reality Check show partners above. Sign up through his link to back his work directly.</p>
+      <div class="imp-card">
+        <div class="imp-head">
+          <div class="imp-logo"><svg class="" viewBox="0 0 134 46" aria-hidden="true" fill="url(#imp-mark-a)"><defs><linearGradient id="imp-mark-a" gradientUnits="userSpaceOnUse" x1="147.74" y1="-1.17" x2="-4.71" y2="38.53"><stop offset="0.03" stop-color="#ffef15"/><stop offset="0.45" stop-color="#ff450c"/><stop offset="0.99" stop-color="#e50885"/></linearGradient></defs><path d="M12.3451 0C12.6311 0 12.9039 0.145183 13.0667 0.382758L42.0377 44.057C42.416 44.629 42.0069 45.3945 41.3161 45.3945H22.0417C21.7513 45.3945 21.483 45.2537 21.3202 45.0117L0.145182 13.1238C0.0483924 12.9831 0 12.8159 0 12.6487V0.86231C0 0.387159 0.38276 0 0.86231 0H12.3495H12.3451Z"/><path d="M46.6264 0C46.9123 0 47.1807 0.145183 47.3479 0.382758L65.936 28.4167C66.2791 28.9314 67.0359 28.9314 67.3746 28.4167L85.9671 0.382758C86.1255 0.145183 86.3939 0 86.6886 0H98.1714C98.6466 0 99.0338 0.38276 99.047 0.86231V12.6487C99.047 12.8159 98.9942 12.9831 98.9018 13.1238L77.7268 45.0117C77.5684 45.2493 77.2956 45.3945 77.0052 45.3945H56.323C56.0326 45.3945 55.7642 45.2537 55.6014 45.0117L34.4264 13.1238C34.3296 12.9831 34.2812 12.8159 34.2812 12.6487V0.86231C34.2812 0.387159 34.664 0 35.148 0H46.6308H46.6264Z"/><path d="M132.448 0C132.923 0 133.311 0.38276 133.315 0.86231V12.6487C133.315 12.8159 133.262 12.9831 133.17 13.1238L111.995 45.0117C111.836 45.2493 111.564 45.3945 111.273 45.3945H91.9989C91.3082 45.3945 90.899 44.629 91.2774 44.057L120.244 0.382758C120.407 0.145183 120.675 0 120.97 0H132.453H132.448Z"/><path d="M65.7248 0.497147C66.1603 -0.162784 67.1239 -0.162784 67.5638 0.497147L70.6611 5.16947C70.9031 5.53463 70.9031 6.01418 70.6611 6.38374L67.5946 11.0429H67.6034C67.1679 11.7072 66.1955 11.7072 65.7556 11.0429L62.6583 6.32215C62.4119 5.95698 62.4163 5.47303 62.6583 5.10787L65.7248 0.497147Z"/></svg></div>
+          <div class="imp-info">
+            <h3 class="imp-font">Imperial</h3>
+            <p class="imp-tagline">Perpetual futures router on Solana</p>
+            <p>Imperial routes your perps trades across venues on Solana and brings every open position into one place. One terminal, every market, no hopping between platforms.</p>
+          </div>
+          <div class="imp-stats imp-font">
+            <div class="imp-stat"><div class="imp-stat-num">Solana</div><div class="imp-stat-label">Network</div></div>
+            <div class="imp-stat"><div class="imp-stat-num">Multi Venue</div><div class="imp-stat-label">Order Routing</div></div>
+            <div class="imp-stat"><div class="imp-stat-num">Points</div><div class="imp-stat-label">Rewards</div></div>
+          </div>
+        </div>
+        <div class="imp-body">
+          <div>
+            <div class="imp-code-row">
+              <div class="imp-code-box">
+                <div class="imp-code-label">Referral Code</div>
+                <div class="imp-code-val imp-font">CHESUS</div>
+              </div>
+              <div class="imp-link"><a href="https://www.imperial.space/refer/chesus" target="_blank" rel="noopener">imperial.space/refer/chesus &#8599;</a></div>
+            </div>
+            <div class="imp-actions">
+              <a href="https://www.imperial.space/refer/chesus" target="_blank" rel="noopener" class="imp-cta imp-font"><svg class="" viewBox="0 0 134 46" aria-hidden="true" fill="url(#imp-mark-b)"><defs><linearGradient id="imp-mark-b" gradientUnits="userSpaceOnUse" x1="147.74" y1="-1.17" x2="-4.71" y2="38.53"><stop offset="0.03" stop-color="#ffef15"/><stop offset="0.45" stop-color="#ff450c"/><stop offset="0.99" stop-color="#e50885"/></linearGradient></defs><path d="M12.3451 0C12.6311 0 12.9039 0.145183 13.0667 0.382758L42.0377 44.057C42.416 44.629 42.0069 45.3945 41.3161 45.3945H22.0417C21.7513 45.3945 21.483 45.2537 21.3202 45.0117L0.145182 13.1238C0.0483924 12.9831 0 12.8159 0 12.6487V0.86231C0 0.387159 0.38276 0 0.86231 0H12.3495H12.3451Z"/><path d="M46.6264 0C46.9123 0 47.1807 0.145183 47.3479 0.382758L65.936 28.4167C66.2791 28.9314 67.0359 28.9314 67.3746 28.4167L85.9671 0.382758C86.1255 0.145183 86.3939 0 86.6886 0H98.1714C98.6466 0 99.0338 0.38276 99.047 0.86231V12.6487C99.047 12.8159 98.9942 12.9831 98.9018 13.1238L77.7268 45.0117C77.5684 45.2493 77.2956 45.3945 77.0052 45.3945H56.323C56.0326 45.3945 55.7642 45.2537 55.6014 45.0117L34.4264 13.1238C34.3296 12.9831 34.2812 12.8159 34.2812 12.6487V0.86231C34.2812 0.387159 34.664 0 35.148 0H46.6308H46.6264Z"/><path d="M132.448 0C132.923 0 133.311 0.38276 133.315 0.86231V12.6487C133.315 12.8159 133.262 12.9831 133.17 13.1238L111.995 45.0117C111.836 45.2493 111.564 45.3945 111.273 45.3945H91.9989C91.3082 45.3945 90.899 44.629 91.2774 44.057L120.244 0.382758C120.407 0.145183 120.675 0 120.97 0H132.453H132.448Z"/><path d="M65.7248 0.497147C66.1603 -0.162784 67.1239 -0.162784 67.5638 0.497147L70.6611 5.16947C70.9031 5.53463 70.9031 6.01418 70.6611 6.38374L67.5946 11.0429H67.6034C67.1679 11.7072 66.1955 11.7072 65.7556 11.0429L62.6583 6.32215C62.4119 5.95698 62.4163 5.47303 62.6583 5.10787L65.7248 0.497147Z"/></svg>Trade on Imperial</a>
+              <a href="https://x.com/ImperialPerps" target="_blank" rel="noopener" class="imp-social">
+                <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @ImperialPerps
+              </a>
+              <a href="https://www.imperial.space/" target="_blank" rel="noopener" class="imp-social">&#127760; imperial.space</a>
+            </div>
+            <p class="imp-risk">Perpetual futures are leveraged and high risk. Only trade what you can afford to lose.</p>
+          </div>
+          <div class="imp-qr">
+            <img src="../assets/imperial-qr.png" alt="Scan to trade on Imperial with Chesus referral code" />
+            <div class="imp-qr-caption">SCAN TO TRADE &bull; CODE: CHESUS</div>
+          </div>
         </div>
       </div>
     </div>
