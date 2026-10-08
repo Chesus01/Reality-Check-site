@@ -1,14 +1,14 @@
 {
   "videos": [
     {
+      "id": "tySfeZRxfbI",
+      "title": "Reality Check: Abstract Shutdown",
+      "thumbnail": "https://i.ytimg.com/vi/tySfeZRxfbI/maxresdefault.jpg"
+    },
+    {
       "id": "7GshAf-CoL8",
       "title": "The CardWall - Live Claw Pulls",
       "thumbnail": "https://i.ytimg.com/vi/7GshAf-CoL8/maxresdefault.jpg"
-    },
-    {
-      "id": "tySfeZRxfbI",
-      "title": "Reality Check: Abstract Shutdown",
-      "thumbnail": "https://i.ytimg.com/vi/tySfeZRxfbI/maxresdefault_live.jpg"
     },
     {
       "id": "RuArO4VP9bg",
@@ -31,5 +31,5 @@
       "thumbnail": "https://i.ytimg.com/vi/n9xFS-lXjew/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-08T04:23:37.841204Z"
+  "updated": "2026-10-08T12:46:14.527629Z"
 }
