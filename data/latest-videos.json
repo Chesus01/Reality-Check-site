@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "aB6jzeByQ7I",
+      "title": "Reality Check: Abstract/ SB & Moonbirds / Market Updates",
+      "thumbnail": "https://i.ytimg.com/vi/aB6jzeByQ7I/maxresdefault_live.jpg"
+    },
+    {
       "id": "tySfeZRxfbI",
       "title": "Reality Check: Abstract Shutdown",
       "thumbnail": "https://i.ytimg.com/vi/tySfeZRxfbI/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "xjGR0QigS5E",
       "title": "Reality Check: The CardWall Giveaway / Abstract FUD",
       "thumbnail": "https://i.ytimg.com/vi/xjGR0QigS5E/maxresdefault.jpg"
-    },
-    {
-      "id": "n9xFS-lXjew",
-      "title": "Reality Check: The CardWall Giveaway / Abstract FUD",
-      "thumbnail": "https://i.ytimg.com/vi/n9xFS-lXjew/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-08T12:46:14.527629Z"
+  "updated": "2026-10-08T22:51:40.500720Z"
 }
