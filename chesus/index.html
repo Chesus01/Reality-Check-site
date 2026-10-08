@@ -203,7 +203,6 @@
               <div class="sidebar-tag"><span class="dot"></span>Crypto &amp; Markets</div>
               <div class="sidebar-tag"><span class="dot"></span>NFTs &amp; Culture</div>
               <div class="sidebar-tag"><span class="dot"></span>Web3 Gaming</div>
-              <div class="sidebar-tag"><span class="dot"></span>Abstract Ecosystem</div>
               <div class="sidebar-tag"><span class="dot"></span>Creator Economy</div>
             </div>
           </div>
@@ -365,20 +364,16 @@
 <script>
 // ── POST CAROUSEL ──
 const POSTS = [
-  'Screenshot 2026-06-05 093428.png',
-  'Screenshot 2026-06-05 094742.png',
-  'Screenshot 2026-06-05 094104.png',
-  'Screenshot 2026-06-05 093853.png',
-  'Screenshot 2026-06-05 094321.png',
-  'Screenshot 2026-06-05 094136.png',
-  'Screenshot 2026-06-05 093955.png',
-  'Screenshot 2026-06-05 095009.png',
-  'Screenshot 2026-06-05 093712.png',
-  'Screenshot 2026-06-05 093547.png',
-  'Screenshot 2026-06-05 093747.png',
-  'Screenshot 2026-06-05 094838.png',
-  'Screenshot 2026-06-05 094516.png',
-  'Screenshot 2026-06-05 094855.png'
+  'Screenshot 2026-10-08 143222.png',
+  'Screenshot 2026-10-08 143509.png',
+  'Screenshot 2026-10-08 143847.png',
+  'Screenshot 2026-10-08 143933.png',
+  'Screenshot 2026-10-08 144031.png',
+  'Screenshot 2026-10-08 144154.png',
+  'Screenshot 2026-10-08 144255.png',
+  'Screenshot 2026-10-08 144432.png',
+  'Screenshot 2026-10-08 144606.png',
+  'Screenshot 2026-06-05 094516.png'
 ];
 
 const stage = document.getElementById('post-stage');
@@ -386,7 +381,7 @@ const prevBtn = document.getElementById('post-prev');
 const nextBtn = document.getElementById('post-next');
 
 if (stage) {
-  let idx = 10;
+  let idx = 0;
   let animating = false;
   const TOTAL = POSTS.length;
   function mod(n) { return ((n % TOTAL) + TOTAL) % TOTAL; }
