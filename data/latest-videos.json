@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "IBAyj333Ehk",
+      "title": "Reality Check: Yield Fields / Abs Chicken / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/IBAyj333Ehk/maxresdefault_live.jpg"
+    },
+    {
       "id": "LNOPYHGiEHo",
       "title": "Reality Check: Ledger Hack / GVC x Stonkbrokers / Market Updates",
       "thumbnail": "https://i.ytimg.com/vi/LNOPYHGiEHo/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "RuArO4VP9bg",
       "title": "Reality Check: Ossen / Bearish Casino / Abstract & Market News",
       "thumbnail": "https://i.ytimg.com/vi/RuArO4VP9bg/maxresdefault.jpg"
-    },
-    {
-      "id": "OWkm3ENN3bo",
-      "title": "Reality Check: NFT Drama / Abstract & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/OWkm3ENN3bo/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-12T14:21:33.778436Z"
+  "updated": "2026-10-13T00:06:24.660812Z"
 }
