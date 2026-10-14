@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "ipg0D19JHqw",
+      "title": "Reality Check: GVC - The Cryo Chamber / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/ipg0D19JHqw/maxresdefault.jpg"
+    },
+    {
       "id": "u_znX3OxQpo",
       "title": "Reality Check: MDNA /  Blur / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/u_znX3OxQpo/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "tySfeZRxfbI",
       "title": "Reality Check: Abstract Shutdown",
       "thumbnail": "https://i.ytimg.com/vi/tySfeZRxfbI/maxresdefault.jpg"
-    },
-    {
-      "id": "7GshAf-CoL8",
-      "title": "The CardWall - Live Claw Pulls",
-      "thumbnail": "https://i.ytimg.com/vi/7GshAf-CoL8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-14T16:28:15.307500Z"
+  "updated": "2026-10-14T21:15:42.567879Z"
 }
