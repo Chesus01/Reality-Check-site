@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "rluPooGgKcg",
+      "title": "Reality Check: Standard Reserve / PumpFun /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/rluPooGgKcg/maxresdefault_live.jpg"
+    },
+    {
       "id": "ipg0D19JHqw",
       "title": "Reality Check: GVC - The Cryo Chamber / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/ipg0D19JHqw/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "aB6jzeByQ7I",
       "title": "Reality Check: Abstract/ SB & Moonbirds / Market Updates",
       "thumbnail": "https://i.ytimg.com/vi/aB6jzeByQ7I/maxresdefault.jpg"
-    },
-    {
-      "id": "tySfeZRxfbI",
-      "title": "Reality Check: Abstract Shutdown",
-      "thumbnail": "https://i.ytimg.com/vi/tySfeZRxfbI/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-15T10:49:11.284439Z"
+  "updated": "2026-10-15T16:16:05.184591Z"
 }
