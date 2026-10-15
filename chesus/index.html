@@ -396,7 +396,7 @@ if (stage) {
     const img = document.createElement('img');
     img.src = '../assets/posts/' + POSTS[mod(postIdx)];
     img.alt = 'X Post';
-    img.loading = 'lazy';
+    img.decoding = 'async';
     div.appendChild(img);
     return div;
   }
@@ -411,6 +411,8 @@ if (stage) {
     stage.appendChild(makeSlide(idx + 2, 'pos-far-right'));
   }
   render();
+  // Preload every post so slides never slide in blank
+  POSTS.forEach(f => { const im = new Image(); im.src = '../assets/posts/' + f; });
 
   function glowCenter() {
     const c = stage.querySelector('.pos-center');
@@ -421,54 +423,39 @@ if (stage) {
     setTimeout(() => c.classList.remove('lit'), 750);
   }
 
+  function setPos(el, pos) {
+    POSITIONS.forEach(c => el.classList.remove(c));
+    el.classList.add(pos);
+  }
+
   function advance(dir) {
     if (animating) return;
     animating = true;
     const slides = Array.from(stage.children);
+    let exiting;
 
     if (dir === 1) {
-      // Move all slides left one position
-      // far-left exits (remove after transition), others shift left, new far-right added
-      slides[0].classList.replace('pos-far-left','pos-far-left'); // will be removed
-      slides[0].style.transform = 'translateX(-900px) scale(0.5)';
-      slides[0].style.opacity = '0';
-
-      slides[1].classList.replace('pos-left','pos-far-left');
-      slides[2].classList.replace('pos-center','pos-left');
-      slides[3].classList.replace('pos-right','pos-center');
-      slides[4].classList.replace('pos-far-right','pos-right');
-
-      const newSlide = makeSlide(idx + 3, 'pos-far-right');
-      stage.appendChild(newSlide);
-
-      setTimeout(() => {
-        slides[0].remove();
-        idx = mod(idx + 1);
-        glowCenter();
-        animating = false;
-      }, 520);
-
+      // Everything shifts one slot left; the far left slide exits
+      exiting = slides[0];
+      exiting.style.transform = 'translateX(-900px) scale(0.5)';
+      exiting.style.opacity = '0';
+      for (let i = 1; i < 5; i++) setPos(slides[i], POSITIONS[i - 1]);
+      stage.appendChild(makeSlide(idx + 3, 'pos-far-right'));
     } else {
-      // Move all slides right one position
-      slides[4].style.transform = 'translateX(900px) scale(0.5)';
-      slides[4].style.opacity = '0';
-
-      slides[3].classList.replace('pos-far-right','pos-right');
-      slides[2].classList.replace('pos-right','pos-far-right');
-      slides[2].classList.replace('pos-center','pos-right');
-      slides[1].classList.replace('pos-left','pos-center');
-      slides[0].classList.replace('pos-far-left','pos-left');
-
-      const newSlide = makeSlide(idx - 3, 'pos-far-left');
-      stage.insertBefore(newSlide, stage.firstChild);
-
-      setTimeout(() => {
-        slides[4].remove();
-        idx = mod(idx - 1);
-        glowCenter();
-        animating = false;
-      }, 520);
+      // Everything shifts one slot right; the far right slide exits
+      exiting = slides[4];
+      exiting.style.transform = 'translateX(900px) scale(0.5)';
+      exiting.style.opacity = '0';
+      for (let i = 0; i < 4; i++) setPos(slides[i], POSITIONS[i + 1]);
+      stage.insertBefore(makeSlide(idx - 3, 'pos-far-left'), stage.firstChild);
     }
+
+    setTimeout(() => {
+      exiting.remove();
+      idx = mod(idx + dir);
+      glowCenter();
+      animating = false;
+    }, 520);
   }
 
   if (nextBtn) nextBtn.addEventListener('click', () => advance(1));
