@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "TfiPFSuOobk",
+      "title": "Reality Check: Tesla / Persona / Project Shutdowns /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/TfiPFSuOobk/maxresdefault_live.jpg"
+    },
+    {
       "id": "rluPooGgKcg",
       "title": "Reality Check: Standard Reserve / PumpFun /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/rluPooGgKcg/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "LNOPYHGiEHo",
       "title": "Reality Check: Ledger Hack / GVC x Stonkbrokers / Market Updates",
       "thumbnail": "https://i.ytimg.com/vi/LNOPYHGiEHo/maxresdefault.jpg"
-    },
-    {
-      "id": "aB6jzeByQ7I",
-      "title": "Reality Check: Abstract/ SB & Moonbirds / Market Updates",
-      "thumbnail": "https://i.ytimg.com/vi/aB6jzeByQ7I/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-16T16:01:25.496277Z"
+  "updated": "2026-10-16T20:28:07.777307Z"
 }
