@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "Hr6VshFopM4",
+      "title": "Reality Check: ApeFest /  Migrations / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/Hr6VshFopM4/maxresdefault_live.jpg"
+    },
+    {
       "id": "TfiPFSuOobk",
       "title": "Reality Check: Tesla / Persona / Project Shutdowns /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/TfiPFSuOobk/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "IBAyj333Ehk",
       "title": "Reality Check: Yield Fields / Abs Chicken / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/IBAyj333Ehk/maxresdefault.jpg"
-    },
-    {
-      "id": "LNOPYHGiEHo",
-      "title": "Reality Check: Ledger Hack / GVC x Stonkbrokers / Market Updates",
-      "thumbnail": "https://i.ytimg.com/vi/LNOPYHGiEHo/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-19T12:03:02.536882Z"
+  "updated": "2026-10-19T21:58:02.182322Z"
 }
