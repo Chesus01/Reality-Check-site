@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "O2XoAjyU8mA",
+      "title": "Reality Check: Bearish on ETH /  Books / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/O2XoAjyU8mA/maxresdefault.jpg"
+    },
+    {
       "id": "Hr6VshFopM4",
       "title": "Reality Check: ApeFest /  Migrations / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/Hr6VshFopM4/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "u_znX3OxQpo",
       "title": "Reality Check: MDNA /  Blur / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/u_znX3OxQpo/maxresdefault.jpg"
-    },
-    {
-      "id": "IBAyj333Ehk",
-      "title": "Reality Check: Yield Fields / Abs Chicken / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/IBAyj333Ehk/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-20T16:18:55.222837Z"
+  "updated": "2026-10-20T21:12:47.254778Z"
 }
