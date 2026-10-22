@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "lNKfx3UIIxU",
+      "title": "Reality Check: Kash / Prediction Markets",
+      "thumbnail": "https://i.ytimg.com/vi/lNKfx3UIIxU/maxresdefault.jpg?v=d"
+    },
+    {
       "id": "aOkYEheoh_w",
       "title": "Reality Check: RYFT CORP",
       "thumbnail": "https://i.ytimg.com/vi/aOkYEheoh_w/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "rluPooGgKcg",
       "title": "Reality Check: Standard Reserve / PumpFun /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/rluPooGgKcg/maxresdefault.jpg"
-    },
-    {
-      "id": "ipg0D19JHqw",
-      "title": "Reality Check: GVC - The Cryo Chamber / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/ipg0D19JHqw/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-22T11:07:06.203648Z"
+  "updated": "2026-10-22T16:35:21.522713Z"
 }
