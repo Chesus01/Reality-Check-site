@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "XPfwiyzQCKk",
+      "title": "Reality Check: The CardWall Live Claw Pulls",
+      "thumbnail": "https://i.ytimg.com/vi/XPfwiyzQCKk/maxresdefault.jpg?v=16"
+    },
+    {
       "id": "lNKfx3UIIxU",
       "title": "Reality Check: Kash / Prediction Markets",
       "thumbnail": "https://i.ytimg.com/vi/lNKfx3UIIxU/maxresdefault.jpg?v=d"
@@ -24,12 +29,7 @@
       "id": "TfiPFSuOobk",
       "title": "Reality Check: Tesla / Persona / Project Shutdowns /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/TfiPFSuOobk/maxresdefault.jpg"
-    },
-    {
-      "id": "rluPooGgKcg",
-      "title": "Reality Check: Standard Reserve / PumpFun /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/rluPooGgKcg/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-22T16:35:21.522713Z"
+  "updated": "2026-10-22T21:10:11.058315Z"
 }
