@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "DAeM8PG1VdA",
+      "title": "Reality Check: Bai Bai / Spire Labs",
+      "thumbnail": "https://i.ytimg.com/vi/DAeM8PG1VdA/maxresdefault.jpg?v=6adb863e"
+    },
+    {
       "id": "XPfwiyzQCKk",
       "title": "Reality Check: The CardWall Live Claw Pulls",
       "thumbnail": "https://i.ytimg.com/vi/XPfwiyzQCKk/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "Hr6VshFopM4",
       "title": "Reality Check: ApeFest /  Migrations / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/Hr6VshFopM4/maxresdefault.jpg"
-    },
-    {
-      "id": "TfiPFSuOobk",
-      "title": "Reality Check: Tesla / Persona / Project Shutdowns /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/TfiPFSuOobk/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-23T10:58:19.960169Z"
+  "updated": "2026-10-23T16:24:58.939756Z"
 }
