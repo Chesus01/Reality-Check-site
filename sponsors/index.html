@@ -64,6 +64,41 @@
     .blinko-qr-img img { width:100%; height:100%; object-fit:cover; border-radius:20px; display:block; }
     .blinko-qr-caption { font-size:11px; font-family:'Space Mono',monospace; color:var(--muted); margin-top:12px; letter-spacing:1px; }
 
+
+    /* SPONSOR ORDER NAV */
+    .sp-jump { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:28px; }
+    .sp-jump a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); background:var(--bg3); color:var(--muted); font-size:13px; font-weight:600; text-decoration:none; transition:all 0.2s; }
+    .sp-jump a:hover { border-color:var(--orange); color:var(--orange); }
+
+    /* THE CARDWALL */
+    .cw-card { margin-top:48px; background:var(--bg2); border:1px solid rgba(249,115,22,0.25); border-radius:20px; overflow:hidden; }
+    .cw-hero { position:relative; display:block; aspect-ratio:21/8; background:#000 center/cover no-repeat; }
+    .cw-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(10,10,10,0.92) 100%); }
+    .cw-hero-inner { position:absolute; left:40px; right:40px; bottom:28px; z-index:1; display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .cw-hero-inner img { height:44px; width:auto; display:block; }
+    .cw-pill { padding:6px 14px; border-radius:999px; background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.45); color:var(--orange); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
+    .cw-gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:20px 40px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(249,115,22,0.12); }
+    .cw-gallery img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:10px; display:block; }
+    .cw-body { padding:32px 40px 36px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; }
+    .cw-body h3 { font-size:1.8rem; margin-bottom:10px; }
+    .cw-body p { color:var(--muted); font-size:15px; line-height:1.7; max-width:600px; }
+    .cw-feats { display:flex; gap:10px; flex-wrap:wrap; margin:20px 0 26px; }
+
+    /* BEARISH DROPS */
+    .bd-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:28px; }
+    .bd-card { background:var(--bg2); border:1px solid rgba(249,115,22,0.22); border-radius:20px; overflow:hidden; display:flex; flex-direction:column; }
+    .bd-art { aspect-ratio:1200/630; width:100%; object-fit:cover; display:block; background:#111; }
+    .bd-tiles { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:6px; background:#000; aspect-ratio:1200/630; align-content:center; }
+    .bd-tiles img { width:100%; aspect-ratio:371/205; object-fit:cover; border-radius:8px; display:block; }
+    .bd-body { padding:26px 28px 28px; display:flex; flex-direction:column; gap:14px; flex:1; }
+    .bd-body h3 { font-size:1.5rem; line-height:1.15; }
+    .bd-body p { color:var(--muted); font-size:14px; line-height:1.65; }
+    .bd-foot { margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .bd-qr { width:96px; height:96px; border-radius:12px; border:2px solid rgba(249,115,22,0.45); display:block; }
+    .bd-note { font-size:12px; color:var(--muted); opacity:0.85; margin-top:18px; text-align:center; }
+    @media (max-width:900px) { .cw-body { grid-template-columns:1fr; padding:28px; } .cw-gallery { padding:16px 28px; } .cw-hero-inner { left:28px; right:28px; } .bd-grid { grid-template-columns:1fr; } }
+    @media (max-width:600px) { .cw-gallery { grid-template-columns:repeat(2,1fr); } .cw-hero { aspect-ratio:16/9; } .cw-hero-inner img { height:32px; } .bd-tiles { grid-template-columns:repeat(2,1fr); aspect-ratio:auto; } }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .blinko-wrap { grid-template-columns:1fr; }
@@ -185,15 +220,59 @@
     <div class="page-hero-inner" style="position:relative;z-index:1;">
       <p class="section-label">Partners &amp; Sponsors</p>
       <h1>Brands we <span class="orange">work with.</span></h1>
-      <p>These are the brands Reality Check has partnered with. Use our referral codes to support the show &mdash; and get exclusive perks from our partners.</p>
+      <p>These are the brands Reality Check has partnered with. Use our referral links to support the show and get perks from our partners.</p>
+      <div class="sp-jump"><a href="#cardwall">The CardWall</a><a href="#bearish">Bearish</a><a href="#imperial">Imperial</a></div>
+    </div>
+  </section>
+
+  <!-- THE CARDWALL -->
+  <section class="section" id="cardwall" style="background:var(--bg);">
+    <div class="section-inner">
+      <p class="section-label">Featured Partner</p>
+      <h2>The CardWall. <span class="orange">Pull real graded cards.</span></h2>
+      <div class="cw-card">
+        <a class="cw-hero" href="https://thecardwall.com/chesus" target="_blank" rel="noopener" style="background-image:url('https://thecardwall.com/brand/hero-alley-box-v2.jpg');" aria-label="Open The CardWall">
+          <div class="cw-hero-inner">
+            <img src="https://thecardwall.com/brand/kit/lockup-white-trim.png" alt="The CardWall" />
+            <span class="cw-pill">Live rips with Chesus</span>
+          </div>
+        </a>
+        <div class="cw-gallery">
+          <img src="https://thecardwall.com/brand/hero-rain-slabs.jpg" alt="Graded slabs on The CardWall" loading="lazy" />
+          <img src="https://thecardwall.com/brand/hero-binders-wall-v2.jpg" alt="The CardWall binders" loading="lazy" />
+          <img src="https://thecardwall.com/brand/hero-tournament-table.jpg" alt="The CardWall tournaments" loading="lazy" />
+          <img src="https://thecardwall.com/brand/hero-membership-coins.jpg" alt="The CardWall membership" loading="lazy" />
+        </div>
+        <div class="cw-body">
+          <div>
+            <h3>Every box holds a real graded slab.</h3>
+            <p>The CardWall is a home for trading card collectors: graded slabs across Pok&eacute;mon, One Piece, Dragon Ball and sports, with card values posted up front and instant sell back on any pull. Members also get a marketplace and tournaments. Catch Chesus ripping boxes live on stream, then try your own pull.</p>
+            <div class="cw-feats">
+              <span class="blinko-prize-tag"><span class="dot"></span>Real graded slabs</span>
+              <span class="blinko-prize-tag"><span class="dot"></span>Values shown up front</span>
+              <span class="blinko-prize-tag"><span class="dot"></span>Instant sell back</span>
+              <span class="blinko-prize-tag"><span class="dot"></span>Live rips on stream</span>
+            </div>
+            <div class="imp-actions">
+              <a href="https://thecardwall.com/chesus" target="_blank" rel="noopener" class="bearish-visit">Rip with Chesus &#8599;</a>
+              <a href="https://x.com/TheCardWall" target="_blank" rel="noopener" class="bearish-social"><svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> @TheCardWall</a>
+              <a href="https://thecardwall.com/chesus" target="_blank" rel="noopener" class="bearish-social">&#127760; thecardwall.com/chesus</a>
+            </div>
+          </div>
+          <div class="imp-qr">
+            <img src="../assets/cardwall-qr.png" alt="Scan to open The CardWall with Chesus" />
+            <div class="imp-qr-caption">SCAN TO RIP &bull; /CHESUS</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- BEARISH PARTNER -->
-  <section class="section" id="bearish" style="background:var(--bg);">
+  <section class="section" id="bearish" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="section-inner">
       <p class="section-label">Active Partner</p>
-      <h2>Bearish &mdash; The Cutest <span class="orange">Builders Onchain.</span></h2>
+      <h2>Bearish. <span class="orange">Blinko Season 2 and a social casino.</span></h2>
       <div class="bearish-card" style="margin-top:48px;">
         <div class="bearish-card-header">
           <div class="bearish-logo-wrap" style="background:#f9f3e8; padding:8px;">
@@ -201,22 +280,13 @@
           </div>
           <div class="bearish-header-info">
             <h3>Bearish</h3>
-            <p class="bearish-tagline">smart. cute. shipping. &mdash; The Cutest Builders Onchain</p>
-            <p>Bearish is the most active builder community on Ethereum Mainnet, with 12 billion+ Giphy views, 100+ community-built apps, and a gaming ecosystem reaching half a million plays. They build things people actually use &mdash; and make it look good doing it.</p>
+            <p class="bearish-tagline">smart. cute. shipping.</p>
+            <p>Bearish is one of the most active builder communities on Ethereum Mainnet, with 12 billion+ Giphy views and 100+ community built apps. Now they are shipping Blinko Season 2 and a full social casino built around the bears.</p>
           </div>
           <div class="bearish-stats">
-            <div class="bearish-stat">
-              <div class="bearish-stat-num">12B+</div>
-              <div class="bearish-stat-label">Giphy Views</div>
-            </div>
-            <div class="bearish-stat">
-              <div class="bearish-stat-num">500K+</div>
-              <div class="bearish-stat-label">Blinko Games</div>
-            </div>
-            <div class="bearish-stat">
-              <div class="bearish-stat-num">100+</div>
-              <div class="bearish-stat-label">Apps Shipped</div>
-            </div>
+            <div class="bearish-stat"><div class="bearish-stat-num">12B+</div><div class="bearish-stat-label">Giphy Views</div></div>
+            <div class="bearish-stat"><div class="bearish-stat-num">100+</div><div class="bearish-stat-label">Apps Shipped</div></div>
+            <div class="bearish-stat"><div class="bearish-stat-num">S2</div><div class="bearish-stat-label">Blinko Season</div></div>
           </div>
         </div>
         <div style="padding:20px 40px; border-top:1px solid rgba(249,115,22,0.12); border-bottom:1px solid rgba(249,115,22,0.12); background:rgba(0,0,0,0.2); display:grid; grid-template-columns:repeat(8,1fr); gap:10px;">
@@ -243,48 +313,34 @@
           <a href="https://www.bearish.af/" target="_blank" rel="noopener" class="bearish-visit">Visit Bearish &#8599;</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- BLINKO REFERRAL -->
-  <section class="section" id="blinko" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-    <div class="section-inner">
-      <div class="blinko-wrap">
-        <div>
-          <div class="blinko-badge">&#127918; Featured Partner Game</div>
-          <h2>Play Blinko.<br/><span class="orange">Win with Reality Check.</span></h2>
-          <p>
-            Bearish's game Blinko has hit <strong style="color:var(--text);">500K+ games</strong> and <strong style="color:var(--text);">$3M+ in volume</strong>. Use the Reality Check referral code when you play &mdash; we give away <strong style="color:var(--text);">NFTs and prizes</strong> to players who join through our link. Scan the QR or hit the link below to get started.
-          </p>
-          <div class="blinko-code-row">
-            <div class="blinko-code-box">
-              <div class="blinko-code-label">Referral Code</div>
-              <div class="blinko-code-val">REALITY</div>
-            </div>
-            <div>
-              <div class="blinko-link" style="margin-bottom:6px;">
-                <a href="https://blinko.gg/?r=reality" target="_blank" rel="noopener">blinko.gg/?r=reality &#8599;</a>
-              </div>
-              <div style="font-size:12px; color:var(--muted);">Use code at sign-up or scan QR &rarr;</div>
+      <div class="bd-grid">
+        <div class="bd-card">
+          <a href="https://blinko.game/?ref=cheese" target="_blank" rel="noopener"><img class="bd-art" src="https://blinko.game/brand/jungle-edition/og.jpg" alt="Blinko: Jungle Edition" /></a>
+          <div class="bd-body">
+            <div class="blinko-badge" style="margin-bottom:0;align-self:flex-start;">&#127918; Season 2</div>
+            <h3>Blinko: <span class="orange">Jungle Edition.</span></h3>
+            <p>Bearish's physics Plinko game is back with a new season and a jungle theme. Drop the ball, collect the letters B O N U S and play provably fair onchain.</p>
+            <div class="bd-foot">
+              <a href="https://blinko.game/?ref=cheese" target="_blank" rel="noopener" class="bearish-visit">Play Blinko S2 &#8599;</a>
+              <img class="bd-qr" src="../assets/blinko-s2-qr.png" alt="Scan to play Blinko with the Chesus referral" />
             </div>
           </div>
-          <div class="blinko-prizes">
-            <span class="blinko-prize-tag"><span class="dot"></span>NFT Giveaways</span>
-            <span class="blinko-prize-tag"><span class="dot"></span>Prizes for RC Players</span>
-            <span class="blinko-prize-tag"><span class="dot"></span>Live Show Announcements</span>
-            <span class="blinko-prize-tag"><span class="dot"></span>$3M+ Volume</span>
-          </div>
-          <a href="https://blinko.gg/?r=reality" target="_blank" rel="noopener" class="btn btn-orange" style="font-size:15px; padding:14px 28px;">
-            &#127918; Play Blinko with Code REALITY
-          </a>
         </div>
-        <div class="blinko-qr-wrap">
-          <div class="blinko-qr-img">
-            <img src="../assets/blinko-qr.png" alt="Scan to play Blinko with Reality Check referral code" />
+        <div class="bd-card">
+          <a href="https://bearish.games/r/CHEESE" target="_blank" rel="noopener" class="bd-tiles"><img src="../assets/bearish-casino/gummy-bearish.jpg" alt="Gummy Bearish" loading="lazy" /><img src="../assets/bearish-casino/honey-heist.jpg" alt="Honey Heist" loading="lazy" /><img src="../assets/bearish-casino/shady-carats.jpg" alt="Shady Carats" loading="lazy" /><img src="../assets/bearish-casino/foil-royale.jpg" alt="Foil Royale" loading="lazy" /><img src="../assets/bearish-casino/baitin-bears.jpg" alt="Baitin' Bears" loading="lazy" /><img src="../assets/bearish-casino/wrapscallion.jpg" alt="Wrapscallion" loading="lazy" /><img src="../assets/bearish-casino/haunted-harvest.jpg" alt="Haunted Harvest" loading="lazy" /><img src="../assets/bearish-casino/den-of-the-dead.jpg" alt="Den of the Dead" loading="lazy" /></a>
+          <div class="bd-body">
+            <div class="blinko-badge" style="margin-bottom:0;align-self:flex-start;">&#127920; Social Casino</div>
+            <h3>Bearish <span class="orange">Games.</span></h3>
+            <p>A whole casino of bear themed slots and scratch tickets, from Gummy Bearish and Honey Heist to Shady Carats and Foil Royale. Get in early through the Reality Check link.</p>
+            <div class="bd-foot">
+              <a href="https://bearish.games/r/CHEESE" target="_blank" rel="noopener" class="bearish-visit">Play Bearish Games &#8599;</a>
+              <img class="bd-qr" src="../assets/bearish-casino-qr.png" alt="Scan to open Bearish Games with the Chesus referral" />
+            </div>
           </div>
-          <div class="blinko-qr-caption">SCAN TO PLAY &bull; CODE: REALITY</div>
         </div>
       </div>
+      <p class="bd-note">18+. Games involve risk. Play responsibly and only with what you can afford to lose.</p>
     </div>
   </section>
 
