@@ -1,0 +1,23 @@
+name: fetch-cardwall-art
+on:
+  push:
+    branches: [claude/fetch-cardwall-art]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/fetch-cardwall-art
+      - run: |
+          mkdir -p tmp-art
+          curl -fsSL -A "Mozilla/5.0" -o tmp-art/cw-hero.jpg https://thecardwall.com/brand/hero-alley-box-v2.jpg
+          curl -fsSL -A "Mozilla/5.0" -o tmp-art/cw-logo.png https://thecardwall.com/brand/kit/lockup-white-trim.png
+          ls -la tmp-art
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add tmp-art
+          git commit -m "Fetched CardWall art [skip ci]"
+          git push
