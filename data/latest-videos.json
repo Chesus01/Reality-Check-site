@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "i8_M4M7qqmI",
+      "title": "Reality Check: TMF Mint / Marfa / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/i8_M4M7qqmI/maxresdefault.jpg?v=6adf9858"
+    },
+    {
       "id": "DAeM8PG1VdA",
       "title": "Reality Check: Bai Bai / Spire Labs",
       "thumbnail": "https://i.ytimg.com/vi/DAeM8PG1VdA/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "O2XoAjyU8mA",
       "title": "Reality Check: Bearish on ETH /  Books / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/O2XoAjyU8mA/maxresdefault.jpg"
-    },
-    {
-      "id": "Hr6VshFopM4",
-      "title": "Reality Check: ApeFest /  Migrations / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/Hr6VshFopM4/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-26T12:12:49.024162Z"
+  "updated": "2026-10-26T22:15:37.832724Z"
 }
