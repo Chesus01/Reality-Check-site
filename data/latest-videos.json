@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "YVkwbhbbD9o",
+      "title": "Reality Check: Imperial Perps /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/YVkwbhbbD9o/maxresdefault.jpg?v=6ae0b8c2"
+    },
+    {
       "id": "i8_M4M7qqmI",
       "title": "Reality Check: TMF Mint / Marfa / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/i8_M4M7qqmI/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "aOkYEheoh_w",
       "title": "Reality Check: RYFT CORP",
       "thumbnail": "https://i.ytimg.com/vi/aOkYEheoh_w/maxresdefault.jpg"
-    },
-    {
-      "id": "O2XoAjyU8mA",
-      "title": "Reality Check: Bearish on ETH /  Books / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/O2XoAjyU8mA/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-27T11:33:42.347970Z"
+  "updated": "2026-10-27T17:26:55.614483Z"
 }
