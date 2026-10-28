@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "sQT6ouzRk8A",
+      "title": "Reality Check: Robinhood / Walletchi /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/sQT6ouzRk8A/maxresdefault.jpg?v=6ae22b04"
+    },
+    {
       "id": "YVkwbhbbD9o",
       "title": "Reality Check: Imperial Perps /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/YVkwbhbbD9o/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "lNKfx3UIIxU",
       "title": "Reality Check: Kash / Prediction Markets",
       "thumbnail": "https://i.ytimg.com/vi/lNKfx3UIIxU/maxresdefault.jpg"
-    },
-    {
-      "id": "aOkYEheoh_w",
-      "title": "Reality Check: RYFT CORP",
-      "thumbnail": "https://i.ytimg.com/vi/aOkYEheoh_w/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-28T12:04:20.600231Z"
+  "updated": "2026-10-28T22:08:43.644958Z"
 }
