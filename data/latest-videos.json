@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "wxCVc4orEyY",
+      "title": "Reality Check:BOOKS / Robinhood  /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/wxCVc4orEyY/maxresdefault.jpg?v=6ae358be"
+    },
+    {
       "id": "sQT6ouzRk8A",
       "title": "Reality Check: Robinhood / Walletchi /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/sQT6ouzRk8A/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "XPfwiyzQCKk",
       "title": "Reality Check: The CardWall Live Claw Pulls",
       "thumbnail": "https://i.ytimg.com/vi/XPfwiyzQCKk/maxresdefault.jpg"
-    },
-    {
-      "id": "lNKfx3UIIxU",
-      "title": "Reality Check: Kash / Prediction Markets",
-      "thumbnail": "https://i.ytimg.com/vi/lNKfx3UIIxU/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-29T12:14:52.378172Z"
+  "updated": "2026-10-29T22:24:22.770736Z"
 }
