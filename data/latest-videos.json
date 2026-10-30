@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "R715C0x5KpA",
+      "title": "Reality Check:Binance / Robinhood  /  The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/R715C0x5KpA/maxresdefault.jpg?v=18"
+    },
+    {
       "id": "KRWkXt1p-ks",
       "title": "The Biggest Crypto Hack Ever, Explained \ud83d\udea8",
       "thumbnail": "https://i.ytimg.com/vi/KRWkXt1p-ks/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "i8_M4M7qqmI",
       "title": "Reality Check: TMF Mint / Marfa / The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/i8_M4M7qqmI/maxresdefault.jpg"
-    },
-    {
-      "id": "DAeM8PG1VdA",
-      "title": "Reality Check: Bai Bai / Spire Labs",
-      "thumbnail": "https://i.ytimg.com/vi/DAeM8PG1VdA/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-30T12:05:11.062705Z"
+  "updated": "2026-10-30T21:54:52.910615Z"
 }
