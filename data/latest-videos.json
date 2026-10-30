@@ -1,9 +1,14 @@
 {
   "videos": [
     {
+      "id": "KRWkXt1p-ks",
+      "title": "The Biggest Crypto Hack Ever, Explained \ud83d\udea8",
+      "thumbnail": "https://i.ytimg.com/vi/KRWkXt1p-ks/maxresdefault.jpg"
+    },
+    {
       "id": "wxCVc4orEyY",
       "title": "Reality Check:BOOKS / Robinhood  /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/wxCVc4orEyY/maxresdefault.jpg?v=6ae358be"
+      "thumbnail": "https://i.ytimg.com/vi/wxCVc4orEyY/maxresdefault.jpg"
     },
     {
       "id": "sQT6ouzRk8A",
@@ -24,12 +29,7 @@
       "id": "DAeM8PG1VdA",
       "title": "Reality Check: Bai Bai / Spire Labs",
       "thumbnail": "https://i.ytimg.com/vi/DAeM8PG1VdA/maxresdefault.jpg"
-    },
-    {
-      "id": "XPfwiyzQCKk",
-      "title": "Reality Check: The CardWall Live Claw Pulls",
-      "thumbnail": "https://i.ytimg.com/vi/XPfwiyzQCKk/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-10-30T04:16:12.546900Z"
+  "updated": "2026-10-30T12:05:11.062705Z"
 }
