@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "BGHBmraabzc",
+      "title": "Reality Check: Clutch TV / GVC & Market News",
+      "thumbnail": "https://i.ytimg.com/vi/BGHBmraabzc/maxresdefault.jpg?v=6aeb3b17"
+    },
+    {
       "id": "6Z-ZmmsmE3M",
       "title": "NFTs, Memecoins and Today\u2019s Breaking Crypto News | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/6Z-ZmmsmE3M/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "wxCVc4orEyY",
       "title": "Reality Check:BOOKS / Robinhood  /  The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/wxCVc4orEyY/maxresdefault.jpg"
-    },
-    {
-      "id": "sQT6ouzRk8A",
-      "title": "Reality Check: Robinhood / Walletchi /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/sQT6ouzRk8A/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-04T13:44:20.040077Z"
+  "updated": "2026-11-04T23:10:11.789277Z"
 }
