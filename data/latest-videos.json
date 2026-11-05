@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "6LjPZWKql1k",
+      "title": "Reality Check: Zack Brenner with OpenSea",
+      "thumbnail": "https://i.ytimg.com/vi/6LjPZWKql1k/maxresdefault.jpg?v=6aeca65d"
+    },
+    {
       "id": "BGHBmraabzc",
       "title": "Reality Check: Clutch TV / GVC & Market News",
       "thumbnail": "https://i.ytimg.com/vi/BGHBmraabzc/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "KRWkXt1p-ks",
       "title": "The Biggest Crypto Hack Ever, Explained \ud83d\udea8",
       "thumbnail": "https://i.ytimg.com/vi/KRWkXt1p-ks/maxresdefault.jpg"
-    },
-    {
-      "id": "wxCVc4orEyY",
-      "title": "Reality Check:BOOKS / Robinhood  /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/wxCVc4orEyY/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-05T13:56:58.540056Z"
+  "updated": "2026-11-05T23:14:11.197618Z"
 }
