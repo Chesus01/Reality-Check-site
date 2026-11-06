@@ -1,6 +1,16 @@
 {
   "videos": [
     {
+      "id": "VF2Ai8o_DhE",
+      "title": "The CardWall:  Live Claw Machine Pulls",
+      "thumbnail": "https://i.ytimg.com/vi/VF2Ai8o_DhE/maxresdefault.jpg?v=6aee1237"
+    },
+    {
+      "id": "ar8USxr4W2k",
+      "title": "Reality Check: Vlad / Clutch TV / Week Recap",
+      "thumbnail": "https://i.ytimg.com/vi/ar8USxr4W2k/maxresdefault.jpg?v=6aede45a"
+    },
+    {
       "id": "6LjPZWKql1k",
       "title": "Reality Check: Zack Brenner with OpenSea",
       "thumbnail": "https://i.ytimg.com/vi/6LjPZWKql1k/maxresdefault.jpg"
@@ -19,17 +29,7 @@
       "id": "oc8Njnr-Gvw",
       "title": "Kash Is Back: Social Markets on Everything Your Timeline Argues About",
       "thumbnail": "https://i.ytimg.com/vi/oc8Njnr-Gvw/maxresdefault.jpg"
-    },
-    {
-      "id": "R715C0x5KpA",
-      "title": "Reality Check:Binance / Robinhood  /  The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/R715C0x5KpA/maxresdefault.jpg"
-    },
-    {
-      "id": "KRWkXt1p-ks",
-      "title": "The Biggest Crypto Hack Ever, Explained \ud83d\udea8",
-      "thumbnail": "https://i.ytimg.com/vi/KRWkXt1p-ks/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-06T13:42:10.470661Z"
+  "updated": "2026-11-06T22:41:00.564728Z"
 }
