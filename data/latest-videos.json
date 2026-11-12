@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "nkvr97Rj0zo",
+      "title": "Reality Check; Jensen Quits Nvidia, CT News + Clutch TV",
+      "thumbnail": "https://i.ytimg.com/vi/nkvr97Rj0zo/maxresdefault.jpg?v=6af5ffd1"
+    },
+    {
       "id": "BT7h9LA-aW8",
       "title": "Reality Check: Market Pain / CT News",
       "thumbnail": "https://i.ytimg.com/vi/BT7h9LA-aW8/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "ar8USxr4W2k",
       "title": "Reality Check: Vlad / Clutch TV / Week Recap",
       "thumbnail": "https://i.ytimg.com/vi/ar8USxr4W2k/maxresdefault.jpg"
-    },
-    {
-      "id": "6LjPZWKql1k",
-      "title": "Reality Check: Zack Brenner with OpenSea",
-      "thumbnail": "https://i.ytimg.com/vi/6LjPZWKql1k/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-12T06:58:42.332621Z"
+  "updated": "2026-11-12T19:30:21.014160Z"
 }
