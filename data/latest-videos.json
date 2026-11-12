@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "BT7h9LA-aW8",
+      "title": "Reality Check: Market Pain / CT News",
+      "thumbnail": "https://i.ytimg.com/vi/BT7h9LA-aW8/maxresdefault.jpg?v=6af4cdf7"
+    },
+    {
       "id": "Vnq2rOSNb0E",
       "title": "Reality Check: CPI / Inflation / Clutch TV & The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/Vnq2rOSNb0E/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "6LjPZWKql1k",
       "title": "Reality Check: Zack Brenner with OpenSea",
       "thumbnail": "https://i.ytimg.com/vi/6LjPZWKql1k/maxresdefault.jpg"
-    },
-    {
-      "id": "BGHBmraabzc",
-      "title": "Reality Check: Clutch TV / GVC & Market News",
-      "thumbnail": "https://i.ytimg.com/vi/BGHBmraabzc/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-11T13:30:18.593987Z"
+  "updated": "2026-11-12T00:00:13.002955Z"
 }
