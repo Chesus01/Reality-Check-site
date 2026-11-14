@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "3aOhLIUoRvY",
+      "title": "The CardWall: Live Card Pulls",
+      "thumbnail": "https://i.ytimg.com/vi/3aOhLIUoRvY/maxresdefault.jpg?v=14"
+    },
+    {
       "id": "MHCuxPBWvj0",
       "title": "Reality Check: Nvidia Aftermath /  Market Bleeding / CardWall Giveaway",
       "thumbnail": "https://i.ytimg.com/vi/MHCuxPBWvj0/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "kMv00fTVAW8",
       "title": "Reality Check: GVC Reveal / Clutch TV & The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/kMv00fTVAW8/maxresdefault.jpg"
-    },
-    {
-      "id": "VF2Ai8o_DhE",
-      "title": "The CardWall:  Live Claw Machine Pulls",
-      "thumbnail": "https://i.ytimg.com/vi/VF2Ai8o_DhE/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-14T12:55:59.747132Z"
+  "updated": "2026-11-14T21:56:43.503033Z"
 }
