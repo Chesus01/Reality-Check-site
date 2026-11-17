@@ -91,7 +91,7 @@
     </header>
 
     <div class="hero">
-      <div class="kicker">OP18 drops Nov 20</div>
+      <div class="kicker">Coming next week</div>
       <h1>The Treasure <span>Map</span></h1>
       <p>Four torn pieces. One coded scroll. Three routes, and only one of them is real. Follow it to the end and you'll find a slab waiting on The CardWall.</p>
       <div class="stats">
@@ -171,11 +171,12 @@
     // ── CONFIG ──
     const SUPABASE_URL = 'https://rifbkcgcpmswpwfxsbbv.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZmJrY2djcG1zd3B3ZnhzYmJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1NzMxNDQsImV4cCI6MjEwOTE0OTE0NH0.xiJWIRJ3SBKtE8XvD-C5lUnrBmQ3Xyl5B-mbRaVRgFg';
+    const PAUSED = true; // hunt moved to next week; flip to false with new dates
     const OPENS_AT  = new Date('2026-11-17T13:00:00Z');
     const CLOSES_AT = new Date('2026-11-19T17:00:00Z'); // Thu Nov 19, 12:00 PM ET
     // Add each piece's image the day it drops. Never commit a piece early: the repo is public.
     const PIECES = [
-      { name: 'Piece I',   day: 'Tue AM',    src: 'pieces/piece_I.jpg' },
+      { name: 'Piece I',   day: 'Tue AM',    src: null },
       { name: 'Piece II',  day: 'Tue PM',    src: null },
       { name: 'Piece III', day: 'Wed AM',    src: null },
       { name: 'Piece IV',  day: 'Wed PM',    src: null },
@@ -215,6 +216,7 @@
       return (d ? d + 'd ' : '') + String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(x).padStart(2, '0'); };
     const tick = () => {
       const now = Date.now();
+      if (PAUSED) { clockLabel.textContent = 'Hunt starts'; clock.textContent = 'Next week'; btn.disabled = true; return; }
       if (now < OPENS_AT) { clockLabel.textContent = 'Hunt opens in'; clock.textContent = fmt(OPENS_AT - now); btn.disabled = true; }
       else if (now < CLOSES_AT) { clockLabel.textContent = 'Hunt closes in'; clock.textContent = fmt(CLOSES_AT - now); }
       else { clockLabel.textContent = 'The hunt is over'; clock.textContent = 'Closed'; btn.disabled = true; }
