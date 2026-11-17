@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Treasure Hunt Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #070605; color: #f2ead9; font-family: 'Space Grotesk', sans-serif; padding: 2rem 1rem; }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    h1 { color: #e8c478; margin-bottom: 1rem; }
+    .bar { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    input { background: #12100d; border: 1px solid rgba(232,196,120,.2); color: #f2ead9; border-radius: 10px; padding: .7rem 1rem; font: 1rem 'Space Mono', monospace; }
+    button { background: #e8c478; color: #1a1208; border: 0; border-radius: 10px; padding: .7rem 1.2rem; font-weight: 700; cursor: pointer; }
+    .sum { margin: 1rem 0; color: #8f8573; }
+    .sum b { color: #e8c478; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid rgba(232,196,120,.1); }
+    th { color: #8f8573; font-weight: 600; text-transform: uppercase; font-size: .72rem; letter-spacing: .1em; }
+    td { font-family: 'Space Mono', monospace; }
+    tr.win td { color: #e8c478; background: rgba(232,196,120,.07); }
+    .flag { color: #f87171; }
+    label { color: #8f8573; font-size: .85rem; display: flex; align-items: center; gap: .4rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Treasure Hunt Admin</h1>
+    <div class="bar">
+      <input id="pass" type="password" placeholder="Admin passcode" />
+      <button id="load">Load entries</button>
+      <label><input type="checkbox" id="onlyWin" /> Correct only</label>
+    </div>
+    <div class="sum" id="sum"></div>
+    <table><thead><tr><th>#</th><th>X handle</th><th>Cert</th><th>Scroll</th><th>CardWall</th><th>Time (ET)</th><th>Correct</th><th>Shared IP</th></tr></thead><tbody id="rows"></tbody></table>
+  </div>
+  <script>
+    const SUPABASE_URL = 'https://rifbkcgcpmswpwfxsbbv.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZmJrY2djcG1zd3B3ZnhzYmJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1NzMxNDQsImV4cCI6MjEwOTE0OTE0NH0.xiJWIRJ3SBKtE8XvD-C5lUnrBmQ3Xyl5B-mbRaVRgFg';
+    let data = [];
+    const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const render = () => {
+      const only = document.getElementById('onlyWin').checked;
+      const list = only ? data.filter(r => r.is_correct) : data;
+      const wins = data.filter(r => r.is_correct);
+      document.getElementById('sum').innerHTML = `<b>${data.length}</b> entries, <b>${wins.length}</b> correct.` +
+        (wins[0] ? ` First correct: <b>${esc(wins[0].x_handle)}</b>` : '');
+      document.getElementById('rows').innerHTML = list.map(r => `<tr class="${r.is_correct ? 'win' : ''}">
+        <td>${r.rank}</td><td>${esc(r.x_handle)}</td><td>${esc(r.cert)}</td><td>${esc(r.proof)}</td><td>${esc(r.cardwall_user)}</td>
+        <td>${new Date(r.created_at).toLocaleString('en-US', { timeZone: 'America/New_York' })}</td>
+        <td>${r.is_correct ? 'YES' : ''}</td><td class="${r.shared_ip_count > 1 ? 'flag' : ''}">${r.shared_ip_count > 1 ? r.shared_ip_count + ' on this IP' : ''}</td></tr>`).join('');
+    };
+    document.getElementById('onlyWin').addEventListener('change', render);
+    document.getElementById('load').addEventListener('click', async () => {
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/rpc/treasure_admin`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_pass: document.getElementById('pass').value })
+      });
+      if (!r.ok) { document.getElementById('sum').textContent = 'Wrong passcode.'; return; }
+      data = await r.json(); render();
+    });
+  </script>
+</body>
+</html>
