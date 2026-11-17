@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "x7TVziRZeSA",
+      "title": "Reality Check: Is this the bottom / Weekend News",
+      "thumbnail": "https://i.ytimg.com/vi/x7TVziRZeSA/maxresdefault.jpg?v=6afb22ef"
+    },
+    {
       "id": "3aOhLIUoRvY",
       "title": "The CardWall: Live Card Pulls",
       "thumbnail": "https://i.ytimg.com/vi/3aOhLIUoRvY/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "Vnq2rOSNb0E",
       "title": "Reality Check: CPI / Inflation / Clutch TV & The CardWall",
       "thumbnail": "https://i.ytimg.com/vi/Vnq2rOSNb0E/maxresdefault.jpg"
-    },
-    {
-      "id": "kMv00fTVAW8",
-      "title": "Reality Check: GVC Reveal / Clutch TV & The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/kMv00fTVAW8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-16T14:42:36.276897Z"
+  "updated": "2026-11-17T01:31:48.497204Z"
 }
