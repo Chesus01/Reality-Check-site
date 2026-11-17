@@ -107,7 +107,7 @@
     <section>
       <h2>How It Works</h2>
       <div class="steps">
-        <div class="step">Collect all four torn pieces as they drop on X, one a day.</div>
+        <div class="step">Collect all four torn pieces as they drop on X. Two on Tuesday, two on Wednesday.</div>
         <div class="step">Crack the scroll. It's locked, and the key is split up. Some of it is hidden in the pieces, and some of it gets spoken out loud on Reality Check.</div>
         <div class="step">Put the map back together. The pieces won't come to you facing the right way.</div>
         <div class="step">Sail the route the scroll gives you to the island it names.</div>
@@ -144,7 +144,7 @@
         <li>The first correct entry wins the treasure slab itself. Runner ups are drawn from everyone else who got it right.</li>
         <li>Winners have to confirm from the X account they entered with.</li>
         <li>Keep your answers to yourself. Post your guesses in public and you're handing the treasure to someone else.</li>
-        <li>Winners get crowned live on the big stream.</li>
+        <li>Entries close Thursday at 12 PM ET. Winners get crowned live on the stream Thursday at 1 PM ET.</li>
       </ul>
     </section>
 
@@ -171,13 +171,13 @@
     const SUPABASE_URL = 'https://rifbkcgcpmswpwfxsbbv.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpZmJrY2djcG1zd3B3ZnhzYmJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1NzMxNDQsImV4cCI6MjEwOTE0OTE0NH0.xiJWIRJ3SBKtE8XvD-C5lUnrBmQ3Xyl5B-mbRaVRgFg';
     const OPENS_AT  = new Date('2026-11-17T13:00:00Z');
-    const CLOSES_AT = new Date('2026-11-21T04:59:00Z'); // Fri Nov 20, 11:59 PM ET
+    const CLOSES_AT = new Date('2026-11-19T17:00:00Z'); // Thu Nov 19, 12:00 PM ET
     // Add each piece's image the day it drops. Never commit a piece early: the repo is public.
     const PIECES = [
-      { name: 'Piece I',   day: 'Tuesday',   src: null },
-      { name: 'Piece II',  day: 'Wednesday', src: null },
-      { name: 'Piece III', day: 'Thursday',  src: null },
-      { name: 'Piece IV',  day: 'Friday',    src: null },
+      { name: 'Piece I',   day: 'Tue AM',    src: null },
+      { name: 'Piece II',  day: 'Tue PM',    src: null },
+      { name: 'Piece III', day: 'Wed AM',    src: null },
+      { name: 'Piece IV',  day: 'Wed PM',    src: null },
     ];
 
     const rpc = (fn, body) => fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
