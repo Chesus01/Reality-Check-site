@@ -49,6 +49,7 @@
     .piece { border: 1px solid var(--line); background: var(--panel); border-radius: 14px; overflow: hidden; }
     .piece .img { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #0c0a08; }
     .piece .img img { width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; }
+    .piece .img img.lockimg { cursor: default; }
     .piece .img .locked { font-family: 'Pirata One', serif; font-size: 3.2rem; color: rgba(232,196,120,.18); }
     .piece .meta { padding: .8rem 1rem; display: flex; justify-content: space-between; font-size: .85rem; }
     .piece .meta b { color: var(--gold); font-weight: 600; }
@@ -191,13 +192,14 @@
     PIECES.forEach(p => {
       const el = document.createElement('div');
       el.className = 'piece';
-      el.innerHTML = `<div class="img">${p.src ? `<img src="${p.src}" alt="${p.name}" loading="lazy" />` : '<div class="locked">?</div>'}</div>
+      const n = p.name.split(' ')[1];
+      el.innerHTML = `<div class="img">${p.src ? `<img src="${p.src}" alt="${p.name}" loading="lazy" />` : `<img class="lockimg" src="pieces/locked_${n}.png" alt="${p.name} locked" loading="lazy" />`}</div>
         <div class="meta"><b>${p.name}</b><span>${p.src ? 'Released' : 'Drops ' + p.day}</span></div>`;
       grid.appendChild(el);
     });
     const zoom = document.getElementById('zoom');
     grid.addEventListener('click', e => {
-      if (e.target.tagName === 'IMG') { zoom.querySelector('img').src = e.target.src; zoom.classList.add('on'); }
+      if (e.target.tagName === 'IMG' && !e.target.classList.contains('lockimg')) { zoom.querySelector('img').src = e.target.src; zoom.classList.add('on'); }
     });
     zoom.addEventListener('click', () => zoom.classList.remove('on'));
 
