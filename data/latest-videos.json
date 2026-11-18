@@ -1,9 +1,14 @@
 {
   "videos": [
     {
+      "id": "x3gNTkNJULY",
+      "title": "TEST",
+      "thumbnail": "https://i.ytimg.com/vi/x3gNTkNJULY/maxresdefault.jpg?v=8"
+    },
+    {
       "id": "EQUSArSfB-k",
       "title": "Reality Check: Is 60k Next? / Clutch TV / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/EQUSArSfB-k/maxresdefault.jpg?v=6afc72c2"
+      "thumbnail": "https://i.ytimg.com/vi/EQUSArSfB-k/maxresdefault.jpg"
     },
     {
       "id": "XnDaItESRNU",
@@ -24,12 +29,7 @@
       "id": "MHCuxPBWvj0",
       "title": "Reality Check: Nvidia Aftermath /  Market Bleeding / CardWall Giveaway",
       "thumbnail": "https://i.ytimg.com/vi/MHCuxPBWvj0/maxresdefault.jpg"
-    },
-    {
-      "id": "nkvr97Rj0zo",
-      "title": "Reality Check; Jensen Quits Nvidia, CT News + Clutch TV",
-      "thumbnail": "https://i.ytimg.com/vi/nkvr97Rj0zo/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-18T00:28:33.812419Z"
+  "updated": "2026-11-18T15:02:54.127139Z"
 }
