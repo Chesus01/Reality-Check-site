@@ -6,15 +6,22 @@ if (nav) {
   });
 }
 
-// Mark active nav link based on current page
-const currentPage = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
-  a.classList.remove('active');
-  const href = a.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    a.classList.add('active');
-  }
-});
+// Mark active nav link based on current page.
+// Normalizes "/watch", "/watch/" and "/watch/index.html" so they all match,
+// and clears the hard coded orange on the Newsletter link so only the page
+// you are actually on lights up.
+(function () {
+  const norm = p => (p || '/').replace(/index\.html$/, '').replace(/\/+$/, '') || '/';
+  const here = norm(location.pathname);
+  document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#' || /^(https?:|mailto:)/.test(href)) return;
+    if (/newsletter/.test(href)) { a.style.color = ''; a.style.fontWeight = ''; }
+    let target;
+    try { target = norm(new URL(href, location.href).pathname); } catch (_) { return; }
+    a.classList.toggle('active', target === here);
+  });
+})();
 
 // Smooth scroll for anchor links (skip bare # links used for modals)
 document.querySelectorAll('a[href^="#"]').forEach(a => {
