@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "EQUSArSfB-k",
+      "title": "Reality Check: Is 60k Next? / Clutch TV / The CardWall",
+      "thumbnail": "https://i.ytimg.com/vi/EQUSArSfB-k/maxresdefault.jpg?v=6afc72c2"
+    },
+    {
       "id": "XnDaItESRNU",
       "title": "Pok\u00e9mon vs One Piece Tier List: Rayquaza in C Tier?!",
       "thumbnail": "https://i.ytimg.com/vi/XnDaItESRNU/hqdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "nkvr97Rj0zo",
       "title": "Reality Check; Jensen Quits Nvidia, CT News + Clutch TV",
       "thumbnail": "https://i.ytimg.com/vi/nkvr97Rj0zo/maxresdefault.jpg"
-    },
-    {
-      "id": "BT7h9LA-aW8",
-      "title": "Reality Check: Market Pain / CT News",
-      "thumbnail": "https://i.ytimg.com/vi/BT7h9LA-aW8/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-17T15:27:53.771669Z"
+  "updated": "2026-11-18T00:28:33.812419Z"
 }
