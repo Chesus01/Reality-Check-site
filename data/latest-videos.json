@@ -1,9 +1,14 @@
 {
   "videos": [
     {
+      "id": "WJfnZhshlxc",
+      "title": "Testing",
+      "thumbnail": "https://i.ytimg.com/vi/WJfnZhshlxc/maxresdefault.jpg?v=11"
+    },
+    {
       "id": "h1o6ZNFyR_M",
       "title": "Reality Check: Anthropic IPO / Nvidia / The CardWall",
-      "thumbnail": "https://i.ytimg.com/vi/h1o6ZNFyR_M/maxresdefault.jpg?v=6afdc5a4"
+      "thumbnail": "https://i.ytimg.com/vi/h1o6ZNFyR_M/maxresdefault.jpg"
     },
     {
       "id": "EQUSArSfB-k",
@@ -24,12 +29,7 @@
       "id": "3aOhLIUoRvY",
       "title": "The CardWall: Live Card Pulls",
       "thumbnail": "https://i.ytimg.com/vi/3aOhLIUoRvY/maxresdefault.jpg"
-    },
-    {
-      "id": "MHCuxPBWvj0",
-      "title": "Reality Check: Nvidia Aftermath /  Market Bleeding / CardWall Giveaway",
-      "thumbnail": "https://i.ytimg.com/vi/MHCuxPBWvj0/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-18T23:51:25.080865Z"
+  "updated": "2026-11-19T05:49:08.155223Z"
 }
