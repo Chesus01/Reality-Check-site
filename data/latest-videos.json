@@ -1,18 +1,13 @@
 {
   "videos": [
     {
-      "id": "WJfnZhshlxc",
-      "title": "Testing",
-      "thumbnail": "https://i.ytimg.com/vi/WJfnZhshlxc/maxresdefault.jpg?v=11"
-    },
-    {
       "id": "h1o6ZNFyR_M",
-      "title": "Reality Check: Anthropic IPO / Nvidia / The CardWall",
+      "title": "The Anthropic IPO and Nvidia | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/h1o6ZNFyR_M/maxresdefault.jpg"
     },
     {
       "id": "EQUSArSfB-k",
-      "title": "Reality Check: Is 60k Next? / Clutch TV / The CardWall",
+      "title": "Is $60K Bitcoin Next? | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/EQUSArSfB-k/maxresdefault.jpg"
     },
     {
@@ -22,14 +17,19 @@
     },
     {
       "id": "x7TVziRZeSA",
-      "title": "Reality Check: Is this the bottom / Weekend News",
+      "title": "Is This the Bottom for Crypto? | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/x7TVziRZeSA/maxresdefault.jpg"
     },
     {
       "id": "3aOhLIUoRvY",
-      "title": "The CardWall: Live Card Pulls",
+      "title": "The CardWall: Live Pok\u00e9mon and Sports Card Pulls",
       "thumbnail": "https://i.ytimg.com/vi/3aOhLIUoRvY/maxresdefault.jpg"
+    },
+    {
+      "id": "MHCuxPBWvj0",
+      "title": "Nvidia Aftermath and a Bleeding Market | Reality Check",
+      "thumbnail": "https://i.ytimg.com/vi/MHCuxPBWvj0/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-19T05:49:08.155223Z"
+  "updated": "2026-11-19T15:12:08.210255Z"
 }
