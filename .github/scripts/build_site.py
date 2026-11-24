@@ -613,7 +613,7 @@ def render_watch(episodes, shorts, interviews, archive_ids):
         f'<h2 class="featured-title"><a href="/watch/{latest["id"]}/">{esc(latest["title"])}</a></h2>'
         f'<div class="ep-meta-line">{nice_date(latest.get("published", ""))} &middot; {esc(latest.get("duration", ""))}</div>'
         f'<p class="featured-desc">{latest_desc}</p>'
-        f'{chapters_list(latest)}{share_buttons(latest)}</div></div>'
+        f'{chapters_list(latest)}{share_buttons(latest)}{shorts_strip()}</div></div>'
     )
     data = [{
         "id": e["id"], "title": e["title"], "published": e.get("published", ""), "date": nice_date(e.get("published", "")),
