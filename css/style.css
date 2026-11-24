@@ -560,3 +560,15 @@ footer {
 .footer-socials a { width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; border-radius:9px; background:var(--bg2); border:1px solid var(--border); color:var(--text); transition:all .2s; }
 .footer-socials a:hover { border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
 .footer-socials svg { width:16px; height:16px; }
+
+/* ── SPINNING FRIENDS ROWS (shared) ── */
+.guest-rows { display:flex; flex-direction:column; gap:16px; overflow:hidden; width:100vw; position:relative; left:50%; margin-left:-50vw; }
+.friends-img-row { display:flex; gap:14px; width:max-content; align-items:center; will-change:transform; }
+.friends-img-row img { width:90px; height:90px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--border); transition:transform .2s, border-color .2s; }
+.friends-img-row img:hover { transform:scale(1.08); border-color:var(--orange); }
+.friends-img-row-left  { animation:img-left  90s linear infinite; }
+.friends-img-row-right { animation:img-right 90s linear infinite; }
+.friends-img-row:hover { animation-play-state:paused; }
+@keyframes img-left  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes img-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+@media (max-width:600px) { .friends-img-row img { width:72px; height:72px; } }
