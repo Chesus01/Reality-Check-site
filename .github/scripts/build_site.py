@@ -40,13 +40,20 @@ FALLBACK_INTERVIEWS = [
 ]
 
 TOPICS = [
-    ("Crypto & Markets", r"\b(crypto|bitcoin|btc|eth|ethereum|solana|sol|xrp|altcoins?|memecoins?|tokens?|markets?|trading|perps|etfs?|fed|macro|stocks?|nasdaq|bull|bear(ish)? market|bottom|pump|dump|price|\d+k)\b"),
+    ("Crypto & Markets", r"(\$[a-z]{2,12}\b|\b(crypto|hacks?|exploits?|binance|coinbase|kraken|ledger|bitget|pump ?fun|defi|robinhood chain|onchain|chain|stablecoins?|airdrops?|cpi|inflation|rates?|jobs report|recession|bitcoin|btc|eth|ethereum|solana|sol|xrp|altcoins?|memecoins?|tokens?|markets?|trading|perps|etfs?|fed|macro|stocks?|nasdaq|bull|bear(ish)? market|bottom|pump|dump|price|\d+k)\b)"),
     ("NFTs & Culture", r"\b(nfts?|pfps?|mint(ing|s)?|opensea|blur|ordinals|creepz|chimpers|pudgy|penguins|culture|memes?|art|collectors?|genuine undead)\b"),
     ("Pokémon & TCG", r"(pok[eé]mon|\btcg\b|card ?wall|one piece|\bslabs?\b|\bpsa\b|\bcards?\b|\bpulls?\b|booster|graded)"),
-    ("Gaming", r"\b(gaming|games?|gamers?|esports|blinko|arcade|steam|play to earn|playtest|gta ?6?|nintendo|switch 2|playstation|ps5|xbox|fortnite|roblox)\b"),
-    ("Interviews", r"(\binterviews?\b|\bfounders?\b|\bama\b|\bceo\b|\bcto\b|\bsits? down\b|\b1 ?on ?1\b|\bone on one\b|^reality check with\b)"),
+    ("Gaming", r"\b(gaming|games?|gamers?|esports|blinko|arcade|steam|play to earn|playtest|gta ?6?|nintendo|switch 2|playstation|ps5|xbox|fortnite|roblox|casino|ryft)\b"),
+    ("Interviews", r"(\binterviews?\b|\bfounders?\b|\bama\b|\bceo\b|\bcto\b|\bsits? down\b|\b1 ?on ?1\b|\bone on one\b|^reality check with\b|\bjoins reality check\b|\bof \w+ joins\b)"),
     ("AI & Tech", r"\b(ai|a\.i\.|anthropic|openai|chatgpt|claude|grok|gemini|nvidia|tech|quantum|robots?|apple|google|tesla|agents?)\b"),
 ]
+
+# Opening words of the standard paragraphs every episode description repeats.
+BOILERPLATE = (
+    "plus our daily cardwall segment", "today's partners", "todays partners", "reality check is a live",
+    "live monday through friday", "every show includes", "we question everything", "follow along for",
+    "follow on x", "question. think. verify", "#", "http", "shop graded cards",
+)
 
 CHAPTER_RE = re.compile(r"^\s*[\(\[]?((?:\d{1,2}:)?\d{1,2}:\d{2})[\)\]]?\s*[-–—:|•>]*\s*(.+?)\s*$")
 
@@ -127,7 +134,15 @@ def topic_tags(title, desc, is_interview=False):
     # and sponsor reads usually sit lower down). Interviews come from the title
     # or the interviews playlist only, so "with Kenny" in a description doesn't count.
     title_l = (title or "").lower()
-    text = f"{title_l}\n{(desc or '')[:300].lower()}"
+    # The episode's own summary is the first paragraph. Later paragraphs are the
+    # standard show text that every episode repeats, so they would tag everything.
+    first_para = ""
+    for para in re.split(r"\n\s*\n", (desc or "").strip()):
+        lines = [l for l in para.splitlines() if not l.strip().lower().startswith(BOILERPLATE)]
+        if lines:
+            first_para = "\n".join(lines)
+            break
+    text = f"{title_l}\n{first_para[:400].lower()}"
     tags = []
     for name, rx in TOPICS:
         hay = title_l if name == "Interviews" else text
@@ -265,7 +280,7 @@ def fetch():
     else:
         interviews = [dict(v, thumbnail=f"https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg") for v in FALLBACK_INTERVIEWS]
 
-    now = dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
     archive = read_json(DATA / "episode-archive.json", {"episodes": {}})
     for rec in episodes:
         archive["episodes"][rec["id"]] = {k: v for k, v in rec.items() if k != "broadcast"}

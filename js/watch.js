@@ -72,7 +72,7 @@
       var weekday = day >= 1 && day <= 5;
       var text = badge.querySelector('.txt');
       if (weekday && mins >= 660 && mins < 750) {
-        badge.className = 'live-badge is-live';
+        badge.className = 'show-badge is-live';
         text.textContent = 'Live now';
         return;
       }
@@ -81,7 +81,7 @@
         do { add++; } while (((day + add) % 7) === 0 || ((day + add) % 7) === 6);
       }
       var when = add === 0 ? 'Today' : add === 1 ? 'Tomorrow' : DAYS[(day + add) % 7];
-      badge.className = 'live-badge is-next';
+      badge.className = 'show-badge is-next';
       text.textContent = 'Next show: ' + when + ' at 11:00 AM ET';
     };
     update();

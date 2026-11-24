@@ -3,88 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watch &mdash; Reality Check | Live Web3 Show</title>
-  <meta name="description" content="Watch Reality Check episodes on YouTube and X Spaces. Live Mon–Fri at 11AM EST. Crypto, NFTs, Web3 gaming, and more." />
+  <title>Watch Reality Check | Every Episode of the Daily Web3 Show</title>
+  <meta name="description" content="Watch every Reality Check episode. Crypto, markets, NFTs, Pokémon and TCG, gaming and founder interviews. Live Monday to Friday at 11 AM ET on YouTube, X Spaces, Kick and Clutch TV." />
+  <link rel="canonical" href="https://rcweb3.xyz/watch/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://rcweb3.xyz/watch.html" />
-  <meta property="og:title" content="Watch — Reality Check | Live Web3 Show" />
-  <meta property="og:description" content="Watch Reality Check episodes on YouTube and X Spaces. Live Mon–Fri at 11AM EST. Crypto, NFTs, Web3 gaming, and more." />
+  <meta property="og:url" content="https://rcweb3.xyz/watch/" />
+  <meta property="og:title" content="Watch Reality Check | Every Episode" />
+  <meta property="og:description" content="Every Reality Check episode in one place. Live Monday to Friday at 11 AM ET. Crypto, NFTs, Pokémon and TCG, gaming and more." />
   <meta property="og:image" content="https://rcweb3.xyz/assets/rc-banner.png" />
   <meta property="og:image:width" content="1672" />
   <meta property="og:image:height" content="941" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@RealityCheck_RR" />
-  <meta name="twitter:title" content="Watch — Reality Check | Live Web3 Show" />
-  <meta name="twitter:description" content="Watch Reality Check episodes on YouTube and X Spaces. Live Mon–Fri at 11AM EST. Crypto, NFTs, Web3 gaming, and more." />
+  <meta name="twitter:title" content="Watch Reality Check | Every Episode" />
+  <meta name="twitter:description" content="Every Reality Check episode in one place. Live Monday to Friday at 11 AM ET." />
   <meta name="twitter:image" content="https://rcweb3.xyz/assets/rc-banner.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/watch.css" />
   <link rel="icon" href="../assets/RC Favicon Logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="../assets/RC Favicon Logo.png" />
-  <style>
-    .watch-hero { padding:80px 2rem 70px; border-bottom:1px solid var(--border); background:var(--bg2); position:relative; overflow:hidden; text-align:center; }
-    .watch-hero-glow { position:absolute; width:700px; height:500px; background:radial-gradient(ellipse,rgba(249,115,22,0.13) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:0; }
-    .watch-hero-inner { position:relative; z-index:1; max-width:700px; margin:0 auto; }
-    .watch-hero-inner p { color:var(--muted); font-size:1.1rem; max-width:560px; margin:16px auto 0; line-height:1.75; }
-
-    /* Platform links */
-    .platform-bar { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:36px; }
-    .platform-btn { display:inline-flex; align-items:center; gap:10px; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:700; text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--bg3); transition:all 0.2s; }
-    .platform-btn:hover { border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
-    .platform-btn svg { flex-shrink:0; width:24px; height:24px; }
-    .platform-btn img { flex-shrink:0; width:24px; height:24px; border-radius:4px; object-fit:cover; transition:filter 0.2s; }
-    .platform-btn:hover img { filter:sepia(1) saturate(6) hue-rotate(350deg) brightness(1.1); }
-
-    /* Featured / Latest */
-    .featured-wrap { margin-bottom:60px; }
-    .featured-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:16px; border:1px solid rgba(249,115,22,0.2); box-shadow:0 0 48px rgba(249,115,22,0.08); }
-    .featured-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:16px; }
-    .featured-label { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.3); border-radius:100px; font-size:11px; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
-
-    /* Video grid */
-    .video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .video-card { background:var(--bg2); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:all 0.25s; }
-    .video-card:hover { border-color:rgba(249,115,22,0.4); transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.4); }
-    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; }
-    .video-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
-    .video-info { padding:14px 16px; }
-    .video-title { font-size:14px; font-weight:600; line-height:1.4; margin-bottom:6px; }
-    .video-meta { font-size:12px; color:var(--muted); font-family:'Space Mono',monospace; }
-
-    /* Skeleton */
-    .video-skel-thumb { background:linear-gradient(90deg,var(--bg3) 25%,#222 50%,var(--bg3) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; padding-bottom:56.25%; height:0; }
-    .video-skel-line { height:13px; border-radius:6px; margin-bottom:8px; background:linear-gradient(90deg,var(--bg3) 25%,#222 50%,var(--bg3) 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
-    .video-skel-line.short { width:55%; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
-    /* Live section */
-    #live { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .live-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
-    .live-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:32px 28px; display:flex; align-items:center; gap:24px; transition:all 0.25s; }
-    .live-card:hover { border-color:var(--orange); box-shadow:0 8px 32px rgba(249,115,22,0.08); }
-    .live-card-icon { width:56px; height:56px; flex-shrink:0; border-radius:14px; background:var(--orange-dim); border:1px solid rgba(249,115,22,0.2); display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
-    .live-card-body h3 { font-size:1rem; margin-bottom:6px; }
-    .live-card-body p { color:var(--muted); font-size:13px; line-height:1.6; margin-bottom:12px; }
-    .live-card-body a { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:var(--orange); text-decoration:none; font-family:'Space Mono',monospace; }
-    .live-card-body a:hover { text-decoration:underline; }
-
-    /* Load more */
-    .load-more-wrap { text-align:center; margin-top:40px; }
-
-    @media (max-width:900px) {
-      .video-grid { grid-template-columns:1fr 1fr; }
-      .live-cards { grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:600px) {
-      .live-cards { grid-template-columns: 1fr; }
-    }
-    @media (max-width:600px) {
-      .video-grid { grid-template-columns:1fr; }
-      .platform-bar { flex-direction:column; align-items:center; }
-    }
-  </style>
 </head>
 <body>
 
@@ -140,165 +80,167 @@
 
   <!-- HERO -->
   <section class="watch-hero">
-    <div class="hero-bg-effects"></div>
-    <div class="hero-glow-1"></div>
-    <div class="hero-glow-2"></div>
-    <div class="watch-hero-glow"></div>
-    <div class="watch-hero-inner" style="position:relative;z-index:1;">
-      <p class="section-label">All Episodes</p>
+    <div class="watch-hero-inner">
+      <div class="live-status">
+        <span class="show-badge is-next" id="live-badge"><span class="dot"></span><span class="txt">Live Monday to Friday at 11:00 AM ET</span></span>
+        <a class="cal-btn" href="/assets/reality-check-live.ics" download>&#128197; Add to calendar</a>
+      </div>
       <h1>Watch Reality <span class="orange">Check.</span></h1>
-      <p>Every show archived on YouTube. Live every weekday at 11AM EST on X Spaces &mdash; tune in, catch up, never miss an episode.</p>
+      <p>Every episode of the daily Web3 show in one place. Crypto, markets, NFTs, Pokémon and TCG, gaming and founder interviews. Live every weekday at 11 AM ET.</p>
       <div class="platform-bar">
-        <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="platform-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube Channel
-        </a>
-        <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener" class="platform-btn">
-          <svg class="x-icon" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg>
-          Live on X Spaces
-        </a>
-        <a href="https://kick.com/chesus" target="_blank" rel="noopener" class="platform-btn" style="color:#53fc18; border-color:rgba(83,252,24,0.25);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#53fc18"/><polygon points="10 8 16 12 10 16 10 8" fill="#000"/></svg>
-          Watch on Kick
-        </a>
-      </div>
-      <!-- YouTube Subscribe -->
-      <div style="margin-top:24px;">
-        <a href="https://www.youtube.com/@RealityCheckWeb3?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-orange" style="font-size:14px; padding:12px 28px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          Subscribe on YouTube
-        </a>
+        <a href="https://www.youtube.com/@RealityCheckWeb3?sub_confirmation=1" target="_blank" rel="noopener" class="platform-btn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg> Subscribe on YouTube</a>
+        <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener" class="platform-btn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Live on X Spaces</a>
+        <a href="https://kick.com/chesus" target="_blank" rel="noopener" class="platform-btn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h5v4h2V5h2V3h9v6h-2v2h-2v2h2v2h2v6h-9v-2h-2v-2H8v4H3V3z"/></svg> Watch on Kick</a>
+        <a href="https://stonkbrokers.io/tv/realitycheck" target="_blank" rel="noopener" class="platform-btn"><img src="../assets/clutch-tv-logo.png" alt="Clutch TV logo" style="height:16px;width:auto;" /></a>
       </div>
     </div>
   </section>
 
-  <!-- LATEST EPISODES -->
-  <section class="section" id="episodes">
+  <!-- LATEST EPISODE -->
+  <section class="section" id="latest">
     <div class="section-inner">
+      <!-- BUILD:featured --><div class="featured-grid"><div><div class="lite-yt featured-player" data-id="QZmr7XTeLv4" data-title="Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check"><img src="https://i.ytimg.com/vi/QZmr7XTeLv4/maxresdefault.jpg" alt="Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check" loading="eager" /><button class="lite-play" type="button" aria-label="Play Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check"></button></div></div><div class="featured-info"><div class="featured-label">&#9654; Latest episode</div><h2 class="featured-title"><a href="/watch/QZmr7XTeLv4/">Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check</a></h2><div class="ep-meta-line">Nov 23, 2026 &middot; 1h 34m</div><p class="featured-desc">Hooja on OS, Jensen reinstated by Nvidia and Kraken&#x27;s $17K $BTC, live with the Reality Check crew. Plus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls. Today&#x27;s partners: The...</p><div class="ep-actions"><button type="button" class="btn btn-outline share-btn" data-url="https://rcweb3.xyz/watch/QZmr7XTeLv4/">Share</button><a class="btn btn-orange" href="https://www.youtube.com/watch?v=QZmr7XTeLv4" target="_blank" rel="noopener">Watch on YouTube &#8599;</a></div></div></div><!-- /BUILD:featured -->
+    </div>
+  </section>
 
-      <!-- Featured latest -->
-      <div class="featured-wrap" id="featured-wrap">
-        <div class="featured-label">&#9654; Latest Episode</div>
-        <div class="featured-embed" id="featured-embed">
-          <iframe src="https://www.youtube-nocookie.com/embed/mtrdS-hP88c?modestbranding=1&rel=0"
-            title="Reality Check Latest Episode" allowfullscreen loading="lazy"></iframe>
+  <!-- EPISODE LIBRARY -->
+  <section class="section band" id="library">
+    <div class="section-inner">
+      <div class="library-head">
+        <div>
+          <p class="section-label">Episode Library</p>
+          <h2>Every <span class="orange">episode.</span></h2>
         </div>
+        <span class="lib-count" id="lib-count"><!-- BUILD:count -->60<!-- /BUILD:count --> episodes</span>
       </div>
+      <div class="lib-tools">
+        <div class="lib-row">
+          <label class="lib-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+            <input type="search" id="lib-search" placeholder="Search episodes by title or topic" aria-label="Search episodes" />
+          </label>
+          <select class="lib-sort" id="lib-sort" aria-label="Sort episodes">
+            <option value="new">Newest</option>
+            <option value="old">Oldest</option>
+            <option value="long">Longest</option>
+          </select>
+        </div>
+        <div class="chips" id="lib-chips"><!-- BUILD:chips --><button type="button" class="chip active" data-topic="">All</button><button type="button" class="chip" data-topic="Crypto &amp; Markets">Crypto &amp; Markets</button><button type="button" class="chip" data-topic="NFTs &amp; Culture">NFTs &amp; Culture</button><button type="button" class="chip" data-topic="Pokémon &amp; TCG">Pokémon &amp; TCG</button><button type="button" class="chip" data-topic="Gaming">Gaming</button><button type="button" class="chip" data-topic="Interviews">Interviews</button><button type="button" class="chip" data-topic="AI &amp; Tech">AI &amp; Tech</button><!-- /BUILD:chips --></div>
+      </div>
+      <div class="ep-grid" id="library-grid"><!-- BUILD:library --><a class="ep-card" href="/watch/QZmr7XTeLv4/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/QZmr7XTeLv4/mqdefault.jpg" alt="Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 34m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Jensen Reinstated by Nvidia and Kraken&#x27;s $17K $BTC | Reality Check</h3><div class="ep-meta">Nov 23, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/wQvQxAfNVbs/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/wQvQxAfNVbs/mqdefault.jpg" alt="Anthropic $ANT: Crypto Bleeds While AI Feasts | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 52m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Anthropic $ANT: Crypto Bleeds While AI Feasts | Reality Check</h3><div class="ep-meta">Nov 20, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/QPq92x4iWWQ/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/QPq92x4iWWQ/mqdefault.jpg" alt="Anthropic $ANT and GTA 6 | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 9m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Anthropic $ANT and GTA 6 | Reality Check</h3><div class="ep-meta">Nov 19, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/h1o6ZNFyR_M/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/h1o6ZNFyR_M/mqdefault.jpg" alt="The Anthropic IPO and Nvidia | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 27m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">The Anthropic IPO and Nvidia | Reality Check</h3><div class="ep-meta">Nov 18, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/EQUSArSfB-k/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/EQUSArSfB-k/mqdefault.jpg" alt="Is $60K Bitcoin Next? | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 29m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Is $60K Bitcoin Next? | Reality Check</h3><div class="ep-meta">Nov 17, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/x7TVziRZeSA/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/x7TVziRZeSA/mqdefault.jpg" alt="Is This the Bottom for Crypto? | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">44m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Is This the Bottom for Crypto? | Reality Check</h3><div class="ep-meta">Nov 16, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/3aOhLIUoRvY/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/3aOhLIUoRvY/mqdefault.jpg" alt="The CardWall: Live Pokémon and Sports Card Pulls" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 36m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">The CardWall: Live Pokémon and Sports Card Pulls</h3><div class="ep-meta">Nov 14, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/MHCuxPBWvj0/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/MHCuxPBWvj0/mqdefault.jpg" alt="Nvidia Aftermath and a Bleeding Market | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 19m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Nvidia Aftermath and a Bleeding Market | Reality Check</h3><div class="ep-meta">Nov 13, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/nkvr97Rj0zo/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/nkvr97Rj0zo/mqdefault.jpg" alt="Jensen Huang Quits Nvidia | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 33m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Jensen Huang Quits Nvidia | Reality Check</h3><div class="ep-meta">Nov 12, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/BT7h9LA-aW8/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/BT7h9LA-aW8/mqdefault.jpg" alt="Crypto Market Pain and CT News | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 18m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Crypto Market Pain and CT News | Reality Check</h3><div class="ep-meta">Nov 11, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/Vnq2rOSNb0E/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/Vnq2rOSNb0E/mqdefault.jpg" alt="CPI and Inflation Day Reaction | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 19m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">CPI and Inflation Day Reaction | Reality Check</h3><div class="ep-meta">Nov 10, 2026<span class="ep-live-tag">Live</span></div></div></a><a class="ep-card" href="/watch/kMv00fTVAW8/"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/kMv00fTVAW8/mqdefault.jpg" alt="The GVC Reveal | Reality Check" loading="lazy" width="320" height="180" /><span class="ep-dur">1h 10m</span><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">The GVC Reveal | Reality Check</h3><div class="ep-meta">Nov 9, 2026<span class="ep-live-tag">Live</span></div></div></a><!-- /BUILD:library --></div>
+      <div class="center-row"><button type="button" class="btn btn-outline" id="lib-more">Load more episodes</button></div>
+      <!-- BUILD:library-data --><script type="application/json" id="episodes-data">[{"id": "QZmr7XTeLv4", "title": "Jensen Reinstated by Nvidia and Kraken's $17K $BTC | Reality Check", "published": "2026-11-23T16:01:20Z", "date": "Nov 23, 2026", "secs": 5676, "dur": "1h 34m", "desc": "Hooja on OS, Jensen reinstated by Nvidia and Kraken's $17K $BTC, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday thro", "tags": ["Crypto & Markets", "AI & Tech"], "live": true}, {"id": "wQvQxAfNVbs", "title": "Anthropic $ANT: Crypto Bleeds While AI Feasts | Reality Check", "published": "2026-11-20T16:01:56Z", "date": "Nov 20, 2026", "secs": 6754, "dur": "1h 52m", "desc": "Anthropic's $ANT, crypto bleeding while AI feasts, and building great DeFi tech, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\n", "tags": ["Crypto & Markets", "AI & Tech"], "live": true}, {"id": "QPq92x4iWWQ", "title": "Anthropic $ANT and GTA 6 | Reality Check", "published": "2026-11-19T16:01:31Z", "date": "Nov 19, 2026", "secs": 4159, "dur": "1h 9m", "desc": "Anthropic's $ANT and the GTA 6 news, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X ", "tags": ["Crypto & Markets", "Gaming", "AI & Tech"], "live": true}, {"id": "h1o6ZNFyR_M", "title": "The Anthropic IPO and Nvidia | Reality Check", "published": "2026-11-18T16:00:40Z", "date": "Nov 18, 2026", "secs": 5233, "dur": "1h 27m", "desc": "The Anthropic IPO and Nvidia, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X Spaces ", "tags": ["AI & Tech"], "live": true}, {"id": "EQUSArSfB-k", "title": "Is $60K Bitcoin Next? | Reality Check", "published": "2026-11-17T16:01:08Z", "date": "Nov 17, 2026", "secs": 5374, "dur": "1h 29m", "desc": "Is $60K Bitcoin next? Plus Clutch TV, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X", "tags": ["Crypto & Markets"], "live": true}, {"id": "x7TVziRZeSA", "title": "Is This the Bottom for Crypto? | Reality Check", "published": "2026-11-16T16:00:41Z", "date": "Nov 16, 2026", "secs": 2657, "dur": "44m", "desc": "Is this the bottom for crypto? Plus the weekend news, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday ", "tags": ["Crypto & Markets"], "live": true}, {"id": "3aOhLIUoRvY", "title": "The CardWall: Live Pokémon and Sports Card Pulls", "published": "2026-11-14T18:02:19Z", "date": "Nov 14, 2026", "secs": 5768, "dur": "1h 36m", "desc": "Live claw machine pulls on The CardWall, from $25 to $5,000, plus mystery box giveaways.\nPlus the latest news in TCG and sports collectibles: Pokémon, One Piece and sports cards.\n\nShop graded cards on The CardWall: thecardwall.com/chesus/shop\n\nJoin @chesus and the Reality Check crew for live claw pulls, mystery boxes and giveaways on The CardWall, where real graded trading cards live onchain. Win ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "MHCuxPBWvj0", "title": "Nvidia Aftermath and a Bleeding Market | Reality Check", "published": "2026-11-13T16:00:24Z", "date": "Nov 13, 2026", "secs": 4789, "dur": "1h 19m", "desc": "The Nvidia aftermath, a bleeding market and a CardWall giveaway, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday thro", "tags": ["Crypto & Markets", "Pokémon & TCG", "AI & Tech"], "live": true}, {"id": "nkvr97Rj0zo", "title": "Jensen Huang Quits Nvidia | Reality Check", "published": "2026-11-12T16:00:31Z", "date": "Nov 12, 2026", "secs": 5622, "dur": "1h 33m", "desc": "Jensen Huang quits Nvidia, plus CT news and Clutch TV, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday", "tags": ["AI & Tech"], "live": true}, {"id": "BT7h9LA-aW8", "title": "Crypto Market Pain and CT News | Reality Check", "published": "2026-11-11T16:00:42Z", "date": "Nov 11, 2026", "secs": 4729, "dur": "1h 18m", "desc": "Market pain and the latest CT news, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X S", "tags": ["Crypto & Markets"], "live": true}, {"id": "Vnq2rOSNb0E", "title": "CPI and Inflation Day Reaction | Reality Check", "published": "2026-11-10T16:00:25Z", "date": "Nov 10, 2026", "secs": 4744, "dur": "1h 19m", "desc": "CPI day, inflation and Clutch TV, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X Spa", "tags": ["Crypto & Markets"], "live": true}, {"id": "kMv00fTVAW8", "title": "The GVC Reveal | Reality Check", "published": "2026-11-09T16:00:29Z", "date": "Nov 9, 2026", "secs": 4230, "dur": "1h 10m", "desc": "The GVC reveal plus Clutch TV, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X Spaces", "tags": [], "live": true}, {"id": "VF2Ai8o_DhE", "title": "The CardWall: Live Claw Machine Pulls", "published": "2026-11-06T18:00:20Z", "date": "Nov 6, 2026", "secs": 5331, "dur": "1h 28m", "desc": "Live claw machine pulls on The CardWall, from $25 to $5,000, plus mystery box giveaways.\nPlus the latest news in TCG and sports collectibles: Pokémon, One Piece and sports cards.\n\nShop graded cards on The CardWall: thecardwall.com/chesus/shop\n\nJoin @chesus and the Reality Check crew for live claw pulls, mystery boxes and giveaways on The CardWall, where real graded trading cards live onchain. Win ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "ar8USxr4W2k", "title": "Vlad, Clutch TV and the Week Recap | Reality Check", "published": "2026-11-06T16:00:44Z", "date": "Nov 6, 2026", "secs": 3834, "dur": "1h 3m", "desc": "Vlad, Clutch TV and a recap of the week, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST o", "tags": [], "live": true}, {"id": "6LjPZWKql1k", "title": "Zack Brenner of OpenSea Joins Reality Check", "published": "2026-11-05T16:01:53Z", "date": "Nov 5, 2026", "secs": 5238, "dur": "1h 27m", "desc": "Zack Brenner of OpenSea joins the Reality Check crew live.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X Spaces and l", "tags": ["NFTs & Culture", "Interviews"], "live": true}, {"id": "BGHBmraabzc", "title": "Clutch TV, GVC and Market News | Reality Check", "published": "2026-11-04T16:00:22Z", "date": "Nov 4, 2026", "secs": 5268, "dur": "1h 27m", "desc": "Clutch TV, GVC and the day's market news, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST ", "tags": ["Crypto & Markets"], "live": true}, {"id": "6Z-ZmmsmE3M", "title": "NFTs, Memecoins and Today’s Breaking Crypto News | Reality Check", "published": "2026-11-03T16:00:37Z", "date": "Nov 3, 2026", "secs": 5888, "dur": "1h 38m", "desc": "Live NFT and memecoin talk with the Reality Check crew, plus the breaking news hitting crypto today.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday th", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "oc8Njnr-Gvw", "title": "Kash Is Back: Social Markets on Everything Your Timeline Argues About", "published": "2026-11-02T16:00:14Z", "date": "Nov 2, 2026", "secs": 5401, "dur": "1h 30m", "desc": "Kash is back on Reality Check with @gmbcooks and the Kash team to talk social markets and taking a side on the moments your timeline is already arguing about.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading c", "tags": ["Crypto & Markets"], "live": true}, {"id": "R715C0x5KpA", "title": "The $6.3 Billion Binance Hack | Reality Check", "published": "2026-10-30T15:00:56Z", "date": "Oct 30, 2026", "secs": 7096, "dur": "1h 58m", "desc": "The Binance hack and the latest Robinhood news, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11A", "tags": ["Crypto & Markets"], "live": true}, {"id": "wxCVc4orEyY", "title": "BOOKS and Robinhood Chain Talk | Reality Check", "published": "2026-10-29T15:00:34Z", "date": "Oct 29, 2026", "secs": 5624, "dur": "1h 33m", "desc": "BOOKS and the latest Robinhood Chain talk, live with the Reality Check crew.\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST", "tags": ["Crypto & Markets"], "live": true}, {"id": "sQT6ouzRk8A", "title": "Reality Check: Robinhood / Walletchi /  The CardWall", "published": "2026-10-28T15:00:33Z", "date": "Oct 28, 2026", "secs": 4918, "dur": "1h 21m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "YVkwbhbbD9o", "title": "Reality Check: Imperial Perps /  The CardWall", "published": "2026-10-27T15:00:24Z", "date": "Oct 27, 2026", "secs": 7067, "dur": "1h 57m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "i8_M4M7qqmI", "title": "Reality Check: TMF Mint / Marfa / The CardWall", "published": "2026-10-26T15:00:45Z", "date": "Oct 26, 2026", "secs": 4085, "dur": "1h 8m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "DAeM8PG1VdA", "title": "BaiBai on Prop AMMs, MEV and Tokenized Stocks", "published": "2026-10-23T15:00:56Z", "date": "Oct 23, 2026", "secs": 3798, "dur": "1h 3m", "desc": "Bai Bai and Spire Labs on Reality Check.\nWhat both teams are building.\n\nChapters\n0:00 Intro\n7:00 What BaiBai does\n8:40 Prop AMMs and MEV explained\n14:00 Pump Fun and FOMO competition\n18:30 0x and KyberSwap integrations\n22:05 Tokenized stocks on Base\n31:30 Trading campaigns and points\n42:05 Live swap and MEV receipt\n50:00 Token plans and SEC exemption\n56:35 How the 2x guarantee works\n\nReality Check", "tags": ["Crypto & Markets"], "live": true}, {"id": "XPfwiyzQCKk", "title": "Winning Real Graded Cards on The CardWall Claw Machine (Live)", "published": "2026-10-22T17:18:59Z", "date": "Oct 22, 2026", "secs": 6562, "dur": "1h 49m", "desc": "Live claw machine pulls on The CardWall, from $25 to $5,000, plus mystery box giveaways.\nPlus the latest news in TCG and sports collectibles: Pokémon, One Piece and sports cards.\n\nShop graded cards on The CardWall: thecardwall.com/chesus/shop\n\nJoin @chesus and the Reality Check crew for live claw pulls, mystery boxes and giveaways on The CardWall, where real graded trading cards live onchain. Win ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "lNKfx3UIIxU", "title": "Kash: Prediction Markets You Trade From X Replies", "published": "2026-10-22T15:00:04Z", "date": "Oct 22, 2026", "secs": 4070, "dur": "1h 7m", "desc": "Kash and the rise of prediction markets.\nHow prediction markets work and why people are paying attention.\n\nChapters\n0:00 Intro\n9:15 Why Lucas built Kash\n16:00 Markets native to social posts\n19:40 Regulation and Base to Solana\n25:45 Bonding curves vs order books\n29:35 Live demo creating a market\n36:25 AI resolution oracle\n39:30 Creator fees and spam controls\n47:55 Trading from X replies\n53:25 Kash ", "tags": ["Crypto & Markets"], "live": true}, {"id": "aOkYEheoh_w", "title": "RYFT: Building Games With AI on Robinhood Chain", "published": "2026-10-21T15:00:16Z", "date": "Oct 21, 2026", "secs": 4679, "dur": "1h 17m", "desc": "RYFT Corp on Reality Check.\nWhat RYFT is building and where it is headed.\n\nChapters\n0:00 Intro\n7:50 Neuro's background\n10:50 From Neural to RYFT\n19:10 What RYFT solves for gaming\n24:35 Building a game with AI\n28:30 Game tokens and launchpad\n33:20 Playing games on X\n40:35 RYFT tokenomics and buybacks\n43:00 TGE, presale and Robinhood Chain\n1:03:30 Season 1 game contest\n\nReality Check is a live Web3 ", "tags": ["Crypto & Markets", "Gaming", "AI & Tech"], "live": true}, {"id": "O2XoAjyU8mA", "title": "Reality Check: Bearish on ETH /  Books / The CardWall", "published": "2026-10-20T15:00:21Z", "date": "Oct 20, 2026", "secs": 8660, "dur": "2h 24m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "Hr6VshFopM4", "title": "Reality Check: ApeFest /  Migrations / The CardWall", "published": "2026-10-19T15:00:32Z", "date": "Oct 19, 2026", "secs": 5297, "dur": "1h 28m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "TfiPFSuOobk", "title": "Reality Check: Tesla / Persona / Project Shutdowns /  The CardWall", "published": "2026-10-16T15:00:25Z", "date": "Oct 16, 2026", "secs": 4564, "dur": "1h 16m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG", "AI & Tech"], "live": true}, {"id": "rluPooGgKcg", "title": "Reality Check: Standard Reserve / PumpFun /  The CardWall", "published": "2026-10-15T15:00:39Z", "date": "Oct 15, 2026", "secs": 4080, "dur": "1h 8m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "ipg0D19JHqw", "title": "GVC The Cryo Chamber + Live CardWall Claw Pulls", "published": "2026-10-14T15:01:08Z", "date": "Oct 14, 2026", "secs": 7484, "dur": "2h 4m", "desc": "GVC and The Cryo Chamber.\nPlus live claw pulls on The CardWall.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and commu", "tags": ["Pokémon & TCG"], "live": true}, {"id": "u_znX3OxQpo", "title": "Reality Check: MDNA /  Blur / The CardWall", "published": "2026-10-13T15:00:35Z", "date": "Oct 13, 2026", "secs": 4895, "dur": "1h 21m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "IBAyj333Ehk", "title": "Reality Check: Yield Fields / Abs Chicken / The CardWall", "published": "2026-10-12T15:00:27Z", "date": "Oct 12, 2026", "secs": 4930, "dur": "1h 22m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "LNOPYHGiEHo", "title": "Reality Check: Ledger Hack / GVC x Stonkbrokers / Market Updates", "published": "2026-10-09T15:00:38Z", "date": "Oct 9, 2026", "secs": 8150, "dur": "2h 15m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "aB6jzeByQ7I", "title": "Reality Check: Abstract/ SB & Moonbirds / Market Updates", "published": "2026-10-08T15:00:16Z", "date": "Oct 8, 2026", "secs": 4893, "dur": "1h 21m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "7GshAf-CoL8", "title": "The CardWall Claw Machine: Live Graded Card Pulls and Giveaways", "published": "2026-10-07T17:04:41Z", "date": "Oct 7, 2026", "secs": 7241, "dur": "2h", "desc": "Live claw machine pulls on The CardWall, from $25 to $5,000, plus mystery box giveaways.\nPlus the latest news in TCG and sports collectibles: Pokémon, One Piece and sports cards.\n\nShop graded cards on The CardWall: thecardwall.com/chesus/shop\n\nJoin @chesus and the Reality Check crew for live claw pulls, mystery boxes and giveaways on The CardWall, where real graded trading cards live onchain. Win ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "tySfeZRxfbI", "title": "Reality Check: Abstract Shutdown", "published": "2026-10-07T15:00:13Z", "date": "Oct 7, 2026", "secs": 5682, "dur": "1h 34m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture"], "live": true}, {"id": "RuArO4VP9bg", "title": "Reality Check: Ossen / Bearish Casino / Abstract & Market News", "published": "2026-10-06T15:00:50Z", "date": "Oct 6, 2026", "secs": 4589, "dur": "1h 16m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Gaming"], "live": true}, {"id": "OWkm3ENN3bo", "title": "Reality Check: NFT Drama / Abstract & Market News", "published": "2026-10-05T15:01:08Z", "date": "Oct 5, 2026", "secs": 4919, "dur": "1h 21m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "xjGR0QigS5E", "title": "Live Graded Card Giveaway on The CardWall", "published": "2026-10-02T15:00:37Z", "date": "Oct 2, 2026", "secs": 4074, "dur": "1h 7m", "desc": "A live graded card giveaway on The CardWall.\nPlus the Abstract FUD and what it means for the ecosystem.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "n9xFS-lXjew", "title": "Reality Check: The CardWall Giveaway / Abstract FUD", "published": "2026-10-01T15:00:12Z", "date": "Oct 1, 2026", "secs": 7450, "dur": "2h 4m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "aQDl8vZ9y_k", "title": "Reality Check: The CardWall / $STONKBROKER / MEMEs", "published": "2026-09-30T15:00:48Z", "date": "Sep 30, 2026", "secs": 4736, "dur": "1h 18m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "OO1ATsMnNOE", "title": "Reality Check: CardWall / $STONKBROKER / UsePaid", "published": "2026-09-29T15:00:16Z", "date": "Sep 29, 2026", "secs": 4857, "dur": "1h 20m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "bqVqu8ODlLw", "title": "Reality Check: CardWall / $STONKBROKER / Upcoming Mints", "published": "2026-09-28T15:00:34Z", "date": "Sep 28, 2026", "secs": 4188, "dur": "1h 9m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture", "Pokémon & TCG"], "live": true}, {"id": "h4-Brua-UxE", "title": "The CardWall Alley Claw Machine: Live Graded Card Pulls", "published": "2026-09-26T20:33:13Z", "date": "Sep 26, 2026", "secs": 6380, "dur": "1h 46m", "desc": "Live claw machine pulls on The CardWall, from $25 to $5,000, plus mystery box giveaways.\nPlus the latest news in TCG and sports collectibles: Pokémon, One Piece and sports cards.\n\nShop graded cards on The CardWall: thecardwall.com/chesus/shop\n\nJoin @chesus and the Reality Check crew for live claw pulls, mystery boxes and giveaways on The CardWall, where real graded trading cards live onchain. Win ", "tags": ["Pokémon & TCG"], "live": true}, {"id": "gypLv1ae9Xg", "title": "Reality Check:  NFT Exploit  / Bitget Hack / $STONKBROKER", "published": "2026-09-25T15:00:30Z", "date": "Sep 25, 2026", "secs": 6292, "dur": "1h 44m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "evJV7tC-TD8", "title": "Reality Check:  $POS / Interns  / $STONKBROKER", "published": "2026-09-24T15:00:45Z", "date": "Sep 24, 2026", "secs": 4321, "dur": "1h 12m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "aGn9G5B1aTs", "title": "Reality Check:  $POS / Interns  / $STONKBROKER", "published": "2026-09-23T15:00:37Z", "date": "Sep 23, 2026", "secs": 4467, "dur": "1h 14m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "_qsLxuCPWmg", "title": "Reality Check:  $POS / Interns  / $STONKBROKER", "published": "2026-09-22T15:00:08Z", "date": "Sep 22, 2026", "secs": 4981, "dur": "1h 23m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "WvkfgqAqC3s", "title": "Reality Check:  Interns Mint / $STONKBROKER / Markets Up", "published": "2026-09-18T15:00:26Z", "date": "Sep 18, 2026", "secs": 4090, "dur": "1h 8m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "P14ZronBNpg", "title": "Reality Check:  SEC Tokenized Stocks / Nightshade / $STONKBROKER", "published": "2026-09-17T15:00:37Z", "date": "Sep 17, 2026", "secs": 5816, "dur": "1h 36m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "m4zBmmRo4wU", "title": "Reality Check:  Nightshade / $STONKBROKER", "published": "2026-09-16T15:02:46Z", "date": "Sep 16, 2026", "secs": 4172, "dur": "1h 9m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "Yz8ry2Ld6NU", "title": "Reality Check: TIckerYard / Nightshade / $STONKBROKER", "published": "2026-09-15T15:00:00Z", "date": "Sep 15, 2026", "secs": 5276, "dur": "1h 27m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "BkfMVW7wCJc", "title": "Reality Check:Nightshade Mint/ $STONKBROKER", "published": "2026-09-14T15:00:51Z", "date": "Sep 14, 2026", "secs": 4750, "dur": "1h 19m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "gHY4ALgtR5Q", "title": "Reality Check: Fortune Foes / L.A.U.R.A. / $STONKBROKER", "published": "2026-09-11T15:00:20Z", "date": "Sep 11, 2026", "secs": 5382, "dur": "1h 29m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "ay-7dnqpYL0", "title": "Reality Check: The Mutual Fun / $STONKBROKER", "published": "2026-09-10T15:00:30Z", "date": "Sep 10, 2026", "secs": 3796, "dur": "1h 3m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "5On2lvVdLZs", "title": "Reality Check: Nightshades by MeebCo / Smart LP / $STONKBROKER", "published": "2026-09-09T15:00:24Z", "date": "Sep 9, 2026", "secs": 4058, "dur": "1h 7m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "uxfh5ZofjCs", "title": "Reality Check: Smart LP / $STONKBROKER", "published": "2026-09-08T15:02:26Z", "date": "Sep 8, 2026", "secs": 4758, "dur": "1h 19m", "desc": "Reality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, gaming, and the daily chaos of the timeline.\n\nHosted live Monday through Friday at 11AM EST on X Spaces and stream, Reality Check brings together creators, founders, traders, collectors, and communities from across Web3.\n\nWe question everything, verify the truth, talk through the noise, and t", "tags": ["Crypto & Markets", "NFTs & Culture"], "live": true}, {"id": "P54zyTyx5Sk", "title": "Hooja Co-Founder Nova on Robinhood Chain", "published": "2026-09-04T15:00:18Z", "date": "Sep 4, 2026", "secs": 4421, "dur": "1h 13m", "desc": "Hooja joins to talk Robinhood Chain.\n$PONS, $STONKBROKER and the Robinhood memecoin scene.\n\nChapters\n0:00 Intro\n9:35 Memecoin run and tokenized stocks\n14:05 $PONS and market news\n18:20 Goat Street and Wasteland mint\n30:00 Nova from Hooja joins\n37:00 Hooja GIFs and content\n43:35 Why Robinhood Chain\n46:05 Anvil, Unvault and Stonk Launcher\n54:40 Mint timeline and lore\n1:06:35 Mint details and wrap\n\nR", "tags": ["Crypto & Markets", "Interviews"], "live": true}]</script><!-- /BUILD:library-data -->
+    </div>
+  </section>
 
-      <!-- Grid — 3 curated latest episodes -->
+  <!-- NEWSLETTER -->
+  <section class="section nl-band" id="newsletter">
+    <div class="section-inner nl-inner">
       <div>
-        <p class="section-label">Recent Shows</p>
-        <h2 style="margin-bottom:36px;">More <span class="orange">episodes.</span></h2>
-        <div class="video-grid" id="video-grid">
-          <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/cv8UfYuDZ6c?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
-          </div>
-          <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/fLftEUjLV9M?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
-          </div>
-          <div class="video-card">
-            <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/jOihX3Kkxi8?modestbranding=1&rel=0" title="Reality Check Episode" allowfullscreen loading="lazy"></iframe></div>
-            <div class="video-info"><div class="video-title">Reality Check Episode</div><div class="video-meta">Reality Check &middot; Web3 Live Show</div></div>
-          </div>
-        </div>
-        <div class="load-more-wrap">
-          <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:8px;">
-            View Full Archive on YouTube &#8599;
-          </a>
-        </div>
+        <p class="section-label">The Checkpoint</p>
+        <h2>Get the daily <span class="orange">Web3 briefing.</span></h2>
+        <p class="nl-sub">Crypto, NFTs, markets, gaming and the signal that matters, in your inbox every weekday at 7 AM ET. Free.</p>
       </div>
-
+      <form class="nl-form" data-hook="https://hook.us2.make.com/jh06mlsk6gid56s52oypwek3sb4cotaj">
+        <input type="email" required placeholder="Enter your email address" aria-label="Email address" />
+        <button type="submit" class="btn btn-orange">Subscribe Free</button>
+      </form>
     </div>
   </section>
 
-  <!-- FOUNDER SERIES -->
-  <section class="section" id="founder-series" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <!-- INTERVIEWS -->
+  <section class="section" id="interviews">
     <div class="section-inner">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:16px;">
+      <div class="row-head">
         <div>
           <p class="section-label">Founder Series</p>
-          <h2>1-on-1 <span class="orange">interviews.</span></h2>
-          <p style="color:var(--muted); font-size:14px; margin-top:10px; max-width:560px;">Deep conversations with Web3 founders, builders, and project teams — unfiltered and on the record.</p>
+          <h2>One on one <span class="orange">interviews.</span></h2>
+          <p class="sub">Deep conversations with Web3 founders, builders and project teams. Unfiltered and on the record.</p>
         </div>
-        <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:13px; padding:10px 18px;">
-          View All &#8599;
-        </a>
       </div>
-      <div class="video-grid" id="founder-grid">
-        <div class="video-card">
-          <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/UpkfbNVKi1Y" title="Reality Check with Diam: L1 Quantum-Safe Blockchain" allowfullscreen loading="lazy"></iframe></div>
-          <div class="video-info"><div class="video-title">Reality Check with Diam: L1 Quantum-Safe Blockchain</div><div class="video-meta">Reality Check &middot; Founder Series</div></div>
+      <div class="ep-grid"><!-- BUILD:interviews --><a class="ep-card" href="https://www.youtube.com/watch?v=UpkfbNVKi1Y" target="_blank" rel="noopener"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/UpkfbNVKi1Y/mqdefault.jpg" alt="Reality Check with Diam: L1 Quantum Safe Blockchain" loading="lazy" width="320" height="180" /><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Reality Check with Diam: L1 Quantum Safe Blockchain</h3><div class="ep-meta">Founder Series</div></div></a><a class="ep-card" href="https://www.youtube.com/watch?v=umWTtU-U4Z8" target="_blank" rel="noopener"><div class="ep-thumb"><img src="https://i.ytimg.com/vi/umWTtU-U4Z8/mqdefault.jpg" alt="Reality Check: Chimpers / Online Shop &amp; Dojo" loading="lazy" width="320" height="180" /><span class="ep-play" aria-hidden="true"></span></div><div class="ep-card-body"><h3 class="ep-card-title">Reality Check: Chimpers / Online Shop &amp; Dojo</h3><div class="ep-meta">Founder Series</div></div></a><!-- /BUILD:interviews --></div>
+    </div>
+  </section>
+
+  <!-- SHORTS + FOLLOW CHESUS -->
+  <section class="section band" id="shorts">
+    <div class="section-inner">
+      <div class="row-head">
+        <div>
+          <p class="section-label">Shorts</p>
+          <h2>Quick <span class="orange">hits.</span></h2>
         </div>
-        <div class="video-card">
-          <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/3DPhXr9ZmtQ" title="Reality Check: Abstract XP Day &amp; NFT" allowfullscreen loading="lazy"></iframe></div>
-          <div class="video-info"><div class="video-title">Reality Check: Abstract XP Day &amp; NFT</div><div class="video-meta">Reality Check &middot; Founder Series</div></div>
+      </div>
+      <div class="shorts-layout">
+        <div>
+          <div class="shorts-row"><!-- BUILD:shorts --><a class="short-card" href="https://www.youtube.com/shorts/K1Fa0kgg1J0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/K1Fa0kgg1J0/hqdefault.jpg" alt="$1,450 To $898. Pokémon Prices Are Falling Fast." loading="lazy" /><span class="short-title">$1,450 To $898. Pokémon Prices Are Falling Fast.</span></a><a class="short-card" href="https://www.youtube.com/shorts/BORecuPgfh4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/BORecuPgfh4/hqdefault.jpg" alt="$990,000 For One Charizard. And That Might Be A Discount." loading="lazy" /><span class="short-title">$990,000 For One Charizard. And That Might Be A Discount.</span></a><a class="short-card" href="https://www.youtube.com/shorts/7EdhZQaFcys" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/7EdhZQaFcys/hqdefault.jpg" alt="$990,000 For One Charizard. And That Might Be A Discount." loading="lazy" /><span class="short-title">$990,000 For One Charizard. And That Might Be A Discount.</span></a><a class="short-card" href="https://www.youtube.com/shorts/sKXBOGZlx-w" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/sKXBOGZlx-w/hqdefault.jpg" alt="$12,000 In Pokémon Cards Stolen From 2 Shops In 1 Day" loading="lazy" /><span class="short-title">$12,000 In Pokémon Cards Stolen From 2 Shops In 1 Day</span></a><a class="short-card" href="https://www.youtube.com/shorts/N6nm_geSRrI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/N6nm_geSRrI/hqdefault.jpg" alt="Part 2: This Pokémon Box Was $724. Now It&#x27;s $350." loading="lazy" /><span class="short-title">Part 2: This Pokémon Box Was $724. Now It&#x27;s $350.</span></a><a class="short-card" href="https://www.youtube.com/shorts/CiDtoVDNojc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/CiDtoVDNojc/hqdefault.jpg" alt="This Pokémon Card Lost $16,600 in 2 Months" loading="lazy" /><span class="short-title">This Pokémon Card Lost $16,600 in 2 Months</span></a><a class="short-card" href="https://www.youtube.com/shorts/D7JdweebH_c" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/D7JdweebH_c/hqdefault.jpg" alt="Fake Walmart Driver Caught With $2,000 in Pokémon" loading="lazy" /><span class="short-title">Fake Walmart Driver Caught With $2,000 in Pokémon</span></a><a class="short-card" href="https://www.youtube.com/shorts/GCXKoBqBBH8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/GCXKoBqBBH8/hqdefault.jpg" alt="Pokémon Just Revealed Z Mega Evolution Cards" loading="lazy" /><span class="short-title">Pokémon Just Revealed Z Mega Evolution Cards</span></a><a class="short-card" href="https://www.youtube.com/shorts/4lp_ronw0k0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4lp_ronw0k0/hqdefault.jpg" alt="OP-18 vs Delta Reign Tier Battle: Is a $295 Rayquaza S Tier?" loading="lazy" /><span class="short-title">OP-18 vs Delta Reign Tier Battle: Is a $295 Rayquaza S Tier?</span></a><a class="short-card" href="https://www.youtube.com/shorts/m94jm-kjAqY" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/m94jm-kjAqY/hqdefault.jpg" alt="Pokémon vs One Piece Go to War Tomorrow" loading="lazy" /><span class="short-title">Pokémon vs One Piece Go to War Tomorrow</span></a><a class="short-card" href="https://www.youtube.com/shorts/4IeTba3aSl4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4IeTba3aSl4/hqdefault.jpg" alt="Pokémon&#x27;s 30th Anniversary Pack Crashed 83%. The Old Cards Are Exploding." loading="lazy" /><span class="short-title">Pokémon&#x27;s 30th Anniversary Pack Crashed 83%. The Old Cards Are Exploding.</span></a><a class="short-card" href="https://www.youtube.com/shorts/9Z5xaKiMC6Y" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/9Z5xaKiMC6Y/hqdefault.jpg" alt="This PSA 10 Mew Lost $226 in 19 Days" loading="lazy" /><span class="short-title">This PSA 10 Mew Lost $226 in 19 Days</span></a><!-- /BUILD:shorts --></div>
+          <div class="also-on">
+            <a href="https://www.tiktok.com/@chesus_02" target="_blank" rel="noopener">Also on TikTok &#8599;</a>
+            <a href="https://www.instagram.com/chesus02/" target="_blank" rel="noopener">Also on Instagram &#8599;</a>
+          </div>
         </div>
-        <div class="video-card">
-          <div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/umWTtU-U4Z8" title="Reality Check: Chimpers / Online Shop &amp; Dojo" allowfullscreen loading="lazy"></iframe></div>
-          <div class="video-info"><div class="video-title">Reality Check: Chimpers / Online Shop &amp; Dojo</div><div class="video-meta">Reality Check &middot; Founder Series</div></div>
-        </div>
+        <aside class="follow-card">
+          <p class="section-label">Follow Chesus</p>
+          <h3>Never miss a short</h3>
+          <p>New short every morning and every evening on TikTok, YouTube and Instagram.</p>
+          <div class="social-icons"><a href="https://www.tiktok.com/@chesus_02" target="_blank" rel="noopener" aria-label="Chesus on TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.7h-1z"/></svg></a><a href="https://www.instagram.com/chesus02/" target="_blank" rel="noopener" aria-label="Chesus on Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" aria-label="Chesus on YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a><a href="https://x.com/chesus" target="_blank" rel="noopener" aria-label="Chesus on X" title="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://kick.com/chesus" target="_blank" rel="noopener" aria-label="Chesus on Kick" title="Kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h5v4h2V5h2V3h9v6h-2v2h-2v2h2v2h2v6h-9v-2h-2v-2H8v4H3V3z"/></svg></a></div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- TUNE IN LIVE -->
+  <!-- WHERE TO WATCH LIVE -->
   <section class="section" id="live">
     <div class="section-inner">
-      <div style="text-align:center; margin-bottom:0;">
+      <div style="text-align:center;">
         <p class="section-label">Tune In Live</p>
         <h2>Where to watch <span class="orange">live.</span></h2>
       </div>
       <div class="live-cards">
         <div class="live-card">
-          <div class="live-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--orange)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </div>
-          <div class="live-card-body">
-            <h3>X Spaces</h3>
-            <p>Join us live every weekday at 11AM EST on X Spaces. Real-time conversation, community questions, and unfiltered Web3 takes.</p>
-            <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">Follow @RealityCheck_RR &#8599;</a>
-          </div>
+          <div class="live-card-icon" style="color:var(--orange);"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+          <h3>X Spaces</h3>
+          <p>Live every weekday at 11 AM ET. Real time conversation, community questions and unfiltered Web3 takes.</p>
+          <a class="go" href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">Follow @RealityCheck_RR &#8599;</a>
         </div>
         <div class="live-card">
-          <div class="live-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--orange)"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </div>
-          <div class="live-card-body">
-            <h3>YouTube Live &amp; VODs</h3>
-            <p>Every show is streamed live to YouTube and archived as a VOD. Subscribe so you never miss a broadcast or can catch up anytime.</p>
-            <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener">Subscribe on YouTube &#8599;</a>
-          </div>
+          <div class="live-card-icon" style="color:var(--orange);"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></div>
+          <h3>YouTube</h3>
+          <p>Every show streams live on YouTube and stays up as a full episode. Subscribe to catch up anytime.</p>
+          <a class="go" href="https://www.youtube.com/@RealityCheckWeb3?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube &#8599;</a>
         </div>
-        <!-- Kick -->
-        <div class="live-card" style="border-color:rgba(83,252,24,0.15);">
-          <div class="live-card-icon" style="background:rgba(83,252,24,0.08); border-color:rgba(83,252,24,0.2);">
-            <svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#53fc18"/><polygon points="10 8 16 12 10 16 10 8" fill="#000"/></svg>
-          </div>
-          <div class="live-card-body">
-            <h3>Kick</h3>
-            <p>Watch Chesus stream Vault777 and more live on Kick. Follow and turn on notifications so you never miss a stream.</p>
-            <a href="https://kick.com/chesus" target="_blank" rel="noopener" style="color:#53fc18;">Watch on Kick &#8599;</a>
-          </div>
+        <div class="live-card">
+          <div class="live-card-icon" style="color:#53fc18;background:rgba(83,252,24,0.08);border-color:rgba(83,252,24,0.2);"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h5v4h2V5h2V3h9v6h-2v2h-2v2h2v2h2v6h-9v-2h-2v-2H8v4H3V3z"/></svg></div>
+          <h3>Kick</h3>
+          <p>Watch Chesus stream live on Kick. Follow and turn on notifications so you never miss a stream.</p>
+          <a class="go" href="https://kick.com/chesus" target="_blank" rel="noopener">Watch on Kick &#8599;</a>
+        </div>
+        <div class="live-card">
+          <div class="clutch-logo"><img src="../assets/clutch-tv-logo.png" alt="Clutch TV logo" width="800" height="170" /></div>
+          <h3>Clutch TV</h3>
+          <p>Watch live on Clutch TV and grab the Backstage Pass.</p>
+          <a class="go" href="https://stonkbrokers.io/tv/realitycheck" target="_blank" rel="noopener">Watch on Clutch TV &#8599;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="cta" style="text-align:center; padding:100px 2rem; position:relative; overflow:hidden;">
-    <div style="position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;"></div>
-    <div style="position:relative; z-index:1; max-width:640px; margin:0 auto;">
-      <p class="section-label">Every Weekday</p>
-      <h2>Live at <span class="orange">11AM EST.</span></h2>
-      <p style="color:var(--muted); font-size:1.05rem; margin:16px 0 36px; line-height:1.75;">Mon through Friday. X Spaces and YouTube. No scripts, no fluff &mdash; just real Web3 conversation.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener" class="btn btn-orange">
-          <svg class="x-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Follow on X
-        </a>
-        <a href="https://www.youtube.com/@RealityCheckWeb3?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-outline">Subscribe on YouTube</a>
+  <!-- BACKSTAGE PASS -->
+  <section class="section band pass-section" id="backstage-pass">
+    <div class="section-inner pass-grid">
+      <div class="pass-img"><img src="../assets/backstage-pass.jpg" alt="Reality Check Backstage Pass" width="800" height="800" loading="lazy" /></div>
+      <div class="pass-copy">
+        <p class="section-label">On Clutch TV</p>
+        <h2>Reality Check <span class="orange">Backstage Pass</span></h2>
+        <p class="intro">The Backstage Pass is the Reality Check channel pass on Clutch TV. It lives on Robinhood Chain, and you can trade it anytime.</p>
+        <ul class="perks"><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".16"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Prize giveaways for pass holders</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".16"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Whitelist spots and early access to drops</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".16"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Holder only opportunities from RC partners</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".16"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Access to the Reality Check alpha chat on Clutch TV</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".16"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your name shows in gold in the live chat</span></li></ul>
+        <p class="steps-title">How it works</p>
+        <ol class="steps"><li>Open the Reality Check channel on Clutch TV</li><li>Connect your wallet and tap Buy pass</li><li>Hold the pass to unlock the alpha chat and holder perks</li></ol>
+        <p class="pass-note">Pass prices follow a curve and rise as more passes are bought.</p>
+        <div class="pass-btns">
+          <a class="btn btn-orange" href="https://stonkbrokers.io/tv/realitycheck" target="_blank" rel="noopener">Get the Backstage Pass</a>
+          <a class="btn btn-outline" href="https://stonkbrokers.io/tv/realitycheck" target="_blank" rel="noopener">Watch on Clutch TV</a>
+        </div>
       </div>
     </div>
   </section>
@@ -307,60 +249,22 @@
 
 <footer>
   <a href="/" class="footer-logo">
-    <img src="../assets/RC Favicon Logo.png" alt="Reality Check" />
-    <span style="font-weight:700;font-size:14px; color:var(--text);">Reality Check</span>
+    <img src="/assets/RC Favicon Logo.png" alt="Reality Check" />
+    <span style="font-weight:700;font-size:14px;color:var(--text);">Reality Check</span>
   </a>
-  <span class="footer-copy">Live Mon&ndash;Fri &middot; 11AM EST &middot; X Spaces &amp; Stream</span>
+  <span class="footer-copy">Live Monday to Friday &middot; 11 AM ET</span>
   <div class="footer-links">
+    <a href="/watch">Watch</a>
     <a href="/partners">Partner With Us</a>
     <a href="/chesus">Chesus</a>
     <a href="/kennypowerz">Kenny Powerz</a>
     <a href="/anidiot">AnIdiot</a>
-    <a href="https://x.com/RealityCheck_RR" target="_blank" rel="noopener">X</a>
-    <a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener">YouTube</a>
     <a href="mailto:realitycheckrr@gmail.com">Contact</a>
   </div>
+  <!-- FOOTER-SOCIALS --><div class="footer-socials"><a href="https://www.tiktok.com/@chesus_02" target="_blank" rel="noopener" aria-label="Chesus on TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.4a2.9 2.9 0 1 1-2-2.7V9.2a6.3 6.3 0 1 0 5.4 6.2V8.6a8.2 8.2 0 0 0 4.8 1.5V6.7h-1z"/></svg></a><a href="https://www.instagram.com/chesus02/" target="_blank" rel="noopener" aria-label="Chesus on Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@RealityCheckWeb3" target="_blank" rel="noopener" aria-label="Chesus on YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a><a href="https://x.com/chesus" target="_blank" rel="noopener" aria-label="Chesus on X" title="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://kick.com/chesus" target="_blank" rel="noopener" aria-label="Chesus on Kick" title="Kick"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h5v4h2V5h2V3h9v6h-2v2h-2v2h2v2h2v6h-9v-2h-2v-2H8v4H3V3z"/></svg></a></div><!-- /FOOTER-SOCIALS -->
 </footer>
 
 <script src="../js/main.js"></script>
-<script>
-async function loadLatestEpisodes() {
-  try {
-    const res = await fetch('../data/latest-videos.json?t=' + Date.now());
-    if (!res.ok) throw new Error('no data file');
-    const data = await res.json();
-    const videos = data.videos || [];
-    if (!videos.length) return;
-
-    // Update featured player with newest video
-    const featured = videos[0];
-    document.getElementById('featured-embed').innerHTML = `
-      <iframe src="https://www.youtube-nocookie.com/embed/${featured.id}?modestbranding=1&rel=0"
-        title="${featured.title}" allowfullscreen loading="lazy"></iframe>
-    `;
-
-    // Update Recent Shows grid with next 3
-    const gridVideos = videos.slice(1, 4);
-    if (gridVideos.length) {
-      document.getElementById('video-grid').innerHTML = gridVideos.map(v => `
-        <div class="video-card">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/${v.id}?modestbranding=1&rel=0"
-              title="${v.title}" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div class="video-info">
-            <div class="video-title">${v.title}</div>
-            <div class="video-meta">Reality Check &middot; Web3 Live Show</div>
-          </div>
-        </div>
-      `).join('');
-    }
-  } catch (_) {
-    // Fallback: leave existing hardcoded iframes in place
-  }
-}
-
-loadLatestEpisodes();
-</script>
+<script src="../js/watch.js"></script>
 </body>
 </html>
