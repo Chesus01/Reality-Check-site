@@ -1,3 +1,15 @@
+// ── ANALYTICS ──
+// Cloudflare Web Analytics: free, no cookies, no banner needed.
+// Paste the site token from Cloudflare (Web Analytics > rcweb3.xyz) between the quotes.
+const CF_ANALYTICS_TOKEN = '';
+if (CF_ANALYTICS_TOKEN && location.hostname === 'rcweb3.xyz') {
+  const cf = document.createElement('script');
+  cf.defer = true;
+  cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  cf.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_ANALYTICS_TOKEN }));
+  document.head.appendChild(cf);
+}
+
 // Nav shadow on scroll
 const nav = document.querySelector('nav');
 if (nav) {

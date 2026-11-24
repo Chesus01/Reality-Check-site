@@ -159,6 +159,16 @@
     .about-image img { width:100%; height:auto; display:block; }
     .about-text p { color:var(--muted); font-size:1.05rem; line-height:1.8; margin-bottom:1.2rem; }
     .about-text p strong { color:var(--text); }
+    .guests-head { text-align:center; margin-bottom:32px; }
+    .guests-sub { color:#a3a3a3; font-size:15px; margin-top:10px; }
+    .guests-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .guest-chip { position:relative; display:flex; flex-direction:column; gap:4px; padding:18px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:14px; text-decoration:none; transition:all .2s; }
+    a.guest-chip:hover { border-color:var(--orange); transform:translateY(-2px); }
+    .guest-name { color:var(--text); font-weight:700; font-size:16px; }
+    .guest-proj { color:var(--orange); font-family:'Space Mono',monospace; font-size:12px; }
+    .guest-watch { position:absolute; top:16px; right:16px; font-size:11px; font-family:'Space Mono',monospace; color:#8a8a8a; }
+    a.guest-chip:hover .guest-watch { color:var(--orange); }
+    @media (max-width:800px) { .guests-grid { grid-template-columns:1fr 1fr; } }
     .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
     .stat-box { background:var(--bg3); border:1px solid var(--border); border-radius:12px; padding:20px; }
     .stat-num { font-size:2rem; font-weight:700; font-family:'Space Mono',monospace; color:var(--orange); }
@@ -386,24 +396,37 @@
           </p>
           <div class="about-stats">
             <div class="stat-box">
-              <div class="stat-num">5&times;</div>
-              <div class="stat-label">Live shows per week</div>
+              <div class="stat-num">1,500+</div>
+              <div class="stat-label">Spaces and live streams hosted</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">11AM</div>
-              <div class="stat-label">Eastern, every weekday</div>
+              <div class="stat-num">200+</div>
+              <div class="stat-label">Live listeners every show</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">1%</div>
-              <div class="stat-label">Real alpha in the noise</div>
+              <div class="stat-num">5 yrs</div>
+              <div class="stat-label">Building the show in Web3</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">Live</div>
-              <div class="stat-label">X Spaces + Stream</div>
+              <div class="stat-num">Mon to Fri</div>
+              <div class="stat-label">Live at 11 AM ET</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PAST GUESTS -->
+  <section class="section" id="guests" style="padding-top:20px;">
+    <div class="section-inner">
+      <div class="guests-head">
+        <p class="section-label">On the show</p>
+        <h2>Past <span class="orange">guests.</span></h2>
+        <p class="guests-sub">Founders and builders from across Web3 have joined Reality Check live.</p>
+      </div>
+      <div class="guests-grid"><div class="guest-chip"><span class="guest-name">Justin Sun</span><span class="guest-proj">Tron</span></div><div class="guest-chip"><span class="guest-name">Luca Netz</span><span class="guest-proj">Pudgy Penguins</span></div><div class="guest-chip"><span class="guest-name">Kevin</span><span class="guest-proj">DeGods</span></div><div class="guest-chip"><span class="guest-name">Insight</span><span class="guest-proj">Chimpers</span></div><div class="guest-chip"><span class="guest-name">Simple Farmer</span><span class="guest-proj">StonkBrokers</span></div><div class="guest-chip"><span class="guest-name">OSF</span><span class="guest-proj">Rekt Guy</span></div><a class="guest-chip" href="/watch/6LjPZWKql1k/"><span class="guest-name">Zack Brenner</span><span class="guest-proj">OpenSea</span><span class="guest-watch">Watch &#9654;</span></a><a class="guest-chip" href="/watch/P54zyTyx5Sk/"><span class="guest-name">Nova</span><span class="guest-proj">Hooja</span><span class="guest-watch">Watch &#9654;</span></a></div>
+      <div class="center-row" style="margin-top:28px;"><a class="btn btn-outline" href="/watch/?topic=Interviews#library">Watch the interviews</a> <a class="btn btn-orange" href="mailto:realitycheckrr@gmail.com?subject=Guest%20request%20for%20Reality%20Check">Come on the show</a></div>
     </div>
   </section>
 
