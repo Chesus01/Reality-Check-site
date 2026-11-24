@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rcweb3.xyz/sitemap.xml
