@@ -80,8 +80,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
           });
         }
         row.style.animationPlayState = 'running';
+        row.querySelectorAll('video').forEach(v => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); });
       } else {
         row.style.animationPlayState = 'paused';
+        row.querySelectorAll('video').forEach(v => v.pause());
       }
     });
   }, { rootMargin: '0px 0px 300px 0px' }); // pre-load 300px before reaching view
