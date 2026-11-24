@@ -1,6 +1,20 @@
 {
-  "updated": "2026-11-24T13:13:43Z",
+  "updated": "2026-11-24T23:49:50Z",
   "episodes": [
+    {
+      "id": "nBQ0bEtS57s",
+      "title": "Reality Check: Ansem Hack + $BTC Bottom?",
+      "published": "2026-11-24T16:01:13Z",
+      "duration_seconds": 4450,
+      "duration": "1h 14m",
+      "description": "Reality Check: Ansem Hack + $BTC Bottom?\n\nPlus our daily CardWall segment: Pokémon, One Piece and sports card news, prices and pulls.\n\nToday's partners: The CardWall\n\nReality Check is a live Web3 show built around real conversations, market reactions, crypto culture, NFTs, trading cards, and the daily chaos of the timeline.\n\nLive Monday through Friday at 11AM EST on X Spaces and livestream, Realit",
+      "thumbnail": "https://i.ytimg.com/vi/nBQ0bEtS57s/maxresdefault.jpg",
+      "live_stream": true,
+      "chapters": [],
+      "tags": [
+        "Crypto & Markets"
+      ]
+    },
     {
       "id": "QZmr7XTeLv4",
       "title": "Jensen Reinstated by Nvidia and Kraken's $17K $BTC | Reality Check",
@@ -1022,72 +1036,6 @@
       "tags": [
         "Crypto & Markets",
         "NFTs & Culture"
-      ]
-    },
-    {
-      "id": "P54zyTyx5Sk",
-      "title": "Hooja Co-Founder Nova on Robinhood Chain",
-      "published": "2026-09-04T15:00:18Z",
-      "duration_seconds": 4421,
-      "duration": "1h 13m",
-      "description": "Hooja joins to talk Robinhood Chain.\n$PONS, $STONKBROKER and the Robinhood memecoin scene.\n\nChapters\n0:00 Intro\n9:35 Memecoin run and tokenized stocks\n14:05 $PONS and market news\n18:20 Goat Street and Wasteland mint\n30:00 Nova from Hooja joins\n37:00 Hooja GIFs and content\n43:35 Why Robinhood Chain\n46:05 Anvil, Unvault and Stonk Launcher\n54:40 Mint timeline and lore\n1:06:35 Mint details and wrap\n\nR",
-      "thumbnail": "https://i.ytimg.com/vi/P54zyTyx5Sk/maxresdefault.jpg",
-      "live_stream": true,
-      "chapters": [
-        {
-          "t": 0,
-          "time": "0:00",
-          "label": "Intro"
-        },
-        {
-          "t": 575,
-          "time": "9:35",
-          "label": "Memecoin run and tokenized stocks"
-        },
-        {
-          "t": 845,
-          "time": "14:05",
-          "label": "$PONS and market news"
-        },
-        {
-          "t": 1100,
-          "time": "18:20",
-          "label": "Goat Street and Wasteland mint"
-        },
-        {
-          "t": 1800,
-          "time": "30:00",
-          "label": "Nova from Hooja joins"
-        },
-        {
-          "t": 2220,
-          "time": "37:00",
-          "label": "Hooja GIFs and content"
-        },
-        {
-          "t": 2615,
-          "time": "43:35",
-          "label": "Why Robinhood Chain"
-        },
-        {
-          "t": 2765,
-          "time": "46:05",
-          "label": "Anvil, Unvault and Stonk Launcher"
-        },
-        {
-          "t": 3280,
-          "time": "54:40",
-          "label": "Mint timeline and lore"
-        },
-        {
-          "t": 3995,
-          "time": "1:06:35",
-          "label": "Mint details and wrap"
-        }
-      ],
-      "tags": [
-        "Crypto & Markets",
-        "Interviews"
       ]
     }
   ]
