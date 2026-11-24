@@ -179,3 +179,13 @@
   .featured-title { font-size:1.3rem; }
   .lite-play { width:64px; height:46px; }
 }
+
+/* Daily shorts strip on episode pages */
+.ep-shorts { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:22px; padding:16px 18px; border:1px solid rgba(249,115,22,0.35); border-radius:14px; background:linear-gradient(90deg, rgba(249,115,22,0.10), rgba(249,115,22,0.02)); }
+.ep-shorts-text { display:flex; flex-direction:column; gap:3px; }
+.ep-shorts-text strong { font-size:15px; color:var(--text); }
+.ep-shorts-text span { font-size:13px; color:var(--muted); }
+.ep-shorts-links { display:flex; gap:8px; flex-wrap:wrap; }
+.ep-shorts-links a { display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:rgba(8,8,8,0.6); color:var(--text); font-size:13px; font-weight:600; text-decoration:none; transition:border-color .2s, color .2s; }
+.ep-shorts-links a svg { width:15px; height:15px; }
+.ep-shorts-links a:hover { border-color:var(--orange); color:var(--orange); }

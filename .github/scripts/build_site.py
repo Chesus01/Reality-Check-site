@@ -455,6 +455,22 @@ def share_buttons(ep):
     )
 
 
+def shorts_strip():
+    links = "".join(
+        f'<a href="{url}" target="_blank" rel="noopener">{ICONS[key]}{label}</a>'
+        for key, label, url in (
+            ("tiktok", "TikTok", "https://www.tiktok.com/@chesus_02"),
+            ("instagram", "Instagram", "https://www.instagram.com/chesus02/"),
+            ("youtube", "YouTube Shorts", "https://www.youtube.com/@RealityCheckWeb3/shorts"),
+        )
+    )
+    return (
+        '<div class="ep-shorts"><div class="ep-shorts-text"><strong>Catch the daily shorts</strong>'
+        '<span>New Reality Check shorts every morning and evening.</span></div>'
+        f'<div class="ep-shorts-links">{links}</div></div>'
+    )
+
+
 # ───────────────────────── episode pages ─────────────────────────
 def episode_page(ep, all_eps):
     vid = ep["id"]
@@ -528,6 +544,7 @@ def episode_page(ep, all_eps):
         <h1 class="ep-title">{title_t}</h1>
         <div class="ep-meta-line">{meta_line}</div>
         {share_buttons(ep)}
+        {shorts_strip()}
       </div>
       <div class="ep-cols{' has-chapters' if chapters else ''}">
         <div class="ep-desc"><h2>About this episode</h2><div class="ep-desc-text">{linkify(desc_full) or 'Reality Check, the daily Web3 show.'}</div></div>
