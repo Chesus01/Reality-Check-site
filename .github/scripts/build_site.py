@@ -180,8 +180,14 @@ def read_json(path, default):
 
 
 def write_json(path, obj):
+    """Write JSON, but skip the write when only the "updated" stamp would change."""
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and isinstance(obj, dict):
+        old = read_json(path, None)
+        if isinstance(old, dict) and {k: v for k, v in old.items() if k != "updated"} == {k: v for k, v in obj.items() if k != "updated"}:
+            return False
     path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return True
 
 
 def write_if_changed(path, text):
