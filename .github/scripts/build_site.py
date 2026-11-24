@@ -460,7 +460,8 @@ def episode_page(ep, all_eps):
     vid = ep["id"]
     url = f"{SITE}/watch/{vid}/"
     desc_full = ep.get("description_full") or ep.get("description", "")
-    short_desc = summary(desc_full, 200) or f"Reality Check episode: {ep['title']}"
+    short_desc = summary(desc_full, 155) or f"Reality Check episode: {ep['title']}"
+    page_title = ep["title"] if "reality check" in ep["title"].lower() else f"{ep['title']} | Reality Check"
     related = [o for o in all_eps if o["id"] != vid and set(o.get("tags", [])) & set(ep.get("tags", []))][:3]
     if len(related) < 3:
         related += [o for o in all_eps if o["id"] != vid and o not in related][: 3 - len(related)]
@@ -491,7 +492,7 @@ def episode_page(ep, all_eps):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title_t} | Reality Check</title>
+  <title>{esc(page_title)}</title>
   <meta name="description" content="{esc(short_desc)}" />
   <link rel="canonical" href="{url}" />
   <meta property="og:type" content="video.other" />
