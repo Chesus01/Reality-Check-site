@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "GUE1QRg4l2k",
+      "title": "Reality Check: Trading with SimpleFarmer / SOMO Is Back",
+      "thumbnail": "https://i.ytimg.com/vi/GUE1QRg4l2k/maxresdefault.jpg"
+    },
+    {
       "id": "nBQ0bEtS57s",
       "title": "Reality Check: Ansem Hack + $BTC Bottom?",
       "thumbnail": "https://i.ytimg.com/vi/nBQ0bEtS57s/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "h1o6ZNFyR_M",
       "title": "The Anthropic IPO and Nvidia | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/h1o6ZNFyR_M/maxresdefault.jpg"
-    },
-    {
-      "id": "EQUSArSfB-k",
-      "title": "Is $60K Bitcoin Next? | Reality Check",
-      "thumbnail": "https://i.ytimg.com/vi/EQUSArSfB-k/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-24T23:49:50Z"
+  "updated": "2026-11-25T19:04:36Z"
 }
