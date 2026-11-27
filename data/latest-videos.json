@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "JJo2WJFWg1o",
+      "title": "Reality Check: Black Friday $BTC & News",
+      "thumbnail": "https://i.ytimg.com/vi/JJo2WJFWg1o/maxresdefault.jpg"
+    },
+    {
       "id": "GUE1QRg4l2k",
       "title": "Reality Check: Trading with SimpleFarmer / SOMO Is Back",
       "thumbnail": "https://i.ytimg.com/vi/GUE1QRg4l2k/maxresdefault.jpg"
@@ -24,12 +29,7 @@
       "id": "QPq92x4iWWQ",
       "title": "Anthropic $ANT and GTA 6 | Reality Check",
       "thumbnail": "https://i.ytimg.com/vi/QPq92x4iWWQ/maxresdefault.jpg"
-    },
-    {
-      "id": "h1o6ZNFyR_M",
-      "title": "The Anthropic IPO and Nvidia | Reality Check",
-      "thumbnail": "https://i.ytimg.com/vi/h1o6ZNFyR_M/maxresdefault.jpg"
     }
   ],
-  "updated": "2026-11-25T19:04:36Z"
+  "updated": "2026-11-27T21:04:14Z"
 }
