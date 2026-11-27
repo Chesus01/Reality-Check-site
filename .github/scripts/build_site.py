@@ -676,7 +676,42 @@ def render_sitemap(archive):
     return True
 
 
+# Episodes kept off the site entirely (by video id, or any title containing a blocked word)
+HIDDEN_IDS = {"YVkwbhbbD9o"}
+HIDDEN_WORDS = ("imperial",)
+
+
+def is_hidden(e):
+    return e.get("id") in HIDDEN_IDS or any(w in (e.get("title") or "").lower() for w in HIDDEN_WORDS)
+
+
+def purge_hidden():
+    """Drop hidden episodes from the saved data and delete their pages."""
+    arc_doc = read_json(DATA / "episode-archive.json", {"episodes": {}})
+    gone = [i for i, e in arc_doc["episodes"].items() if is_hidden(e)]
+    if gone:
+        for i in gone:
+            del arc_doc["episodes"][i]
+        write_json(DATA / "episode-archive.json", arc_doc)
+    for name in ("episodes.json", "latest-videos.json"):
+        doc = read_json(DATA / name, None)
+        if isinstance(doc, dict) and isinstance(doc.get("episodes"), list):
+            keep = [e for e in doc["episodes"] if not is_hidden(e)]
+            if len(keep) != len(doc["episodes"]):
+                doc["episodes"] = keep
+                write_json(DATA / name, doc)
+    for i in set(gone) | HIDDEN_IDS:
+        page = ROOT / "watch" / i / "index.html"
+        if page.exists():
+            page.unlink()
+            try:
+                page.parent.rmdir()
+            except OSError:
+                pass
+
+
 def render():
+    purge_hidden()
     archive = read_json(DATA / "episode-archive.json", {"episodes": {}})["episodes"]
     episodes = read_json(DATA / "episodes.json", {"episodes": []})["episodes"]
     shorts = read_json(DATA / "shorts.json", {"shorts": []})["shorts"]
